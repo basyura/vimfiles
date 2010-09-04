@@ -1,0 +1,9 @@
+record
+vimana
+.netrwhist
+.VimballRecord
+plugins/hatena-vim/cookies/*
+.DS_Store
+backup/*
+swp/*
+.git

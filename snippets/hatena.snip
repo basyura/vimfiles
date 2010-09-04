@@ -1,0 +1,58 @@
+
+snippet star2
+abbr    ★★
+  <span class="star">★★☆☆☆</span>
+
+snippet star3
+abbr    ★★★
+  <span class="star">★★★☆☆</span>
+
+snippet star4
+abbr    ★★★★
+  <span class="star">★★★★☆</span>
+    
+snippet pre
+abbr    >|| ||<
+prev_word   '^'
+    >|${1}|
+    ${2}
+    ||<
+
+snippet bl
+abbr    >> <<
+prev_word   '^'
+    >${1}:title=${2}>
+    ${3}
+    <<
+
+snippet     span
+abbr        span font-size:18pt
+    <span style="font-size:18pt">${1}</span>
+
+snippet     day
+abbr        *[日記]
+prev_word   '^'
+    *[日記] ${1}
+
+snippet     title
+abbr        *[ ]
+prev_word   '^'
+    *[${1}] ${2}
+
+snippet     book
+abbr        *[読書]
+prev_word   '^'
+    *[読書] ${1}
+
+snippet     food
+abbr        *[ご飯]
+prev_word   '^'
+    *[ご飯] ${1}
+
+snippet     red
+abbr        <span style="color:red">
+    <span class="red">${1}</span>
+
+snippet     twitter
+abbr        twitter:99999:detail
+    [twitter:${1}:detail]

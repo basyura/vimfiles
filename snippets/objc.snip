@@ -1,0 +1,93 @@
+snippet     importNSObject
+abbr        import nsobject
+prev_word   '^'
+    #import <Foundation/NSObject.h>
+
+snippet     importstdio
+abbr        import stdio.h
+prev_word   '^'
+    #import <stdio.h>
+
+snippet     importNSString
+abbr        import NSString.h
+prev_word   '^'
+    #import <Foundation/NSString.h>
+
+snippet     importNSAutoreleasePool
+abbr        import NSAutoreleasePool.h
+prev_word   '^'
+    #import <Foundation/NSAutoreleasePool.h>
+
+snippet     importFoundation
+abbr        import Foundation.h
+prev_word   '^'
+    #import <Foundation/Foundation.h>
+
+snippet     if
+abbr        if(){}
+    if(${1}) {
+        ${2}
+    }
+
+snippet     printf
+abbr        printf();
+    printf("${1}"${2});
+
+snippet     s
+abbr        []
+    [${1}]${2}
+
+snippet     a
+abbr        @"hoge"
+    @"${1}"${2}
+
+snippet     NSArrayWithObjects
+abbr        [NSArray arrayWithObjects:  ];
+    [NSArray arrayWithObjects:${1}];
+
+snippet     main
+abbr        int main(void) {}
+prev_word   '^'
+    int main(void) {
+        ${1}
+    }
+
+snippet     for
+abbr        for(i = 0 ; i < len ; i++) {}
+    for(${1}) {${2}
+    }
+
+snippet     while
+abbr        while(){}
+    while(${1}) {${2}
+    }
+
+snippet     nslog
+abbr        NSLog();
+    NSLog(@"${1}",${2});
+
+snippet     interface
+abbr        @interface {} @end
+prev_word   '^'
+    @interface ${1:Class} : ${2:Super} {${3}
+    }
+    ${4}
+    @end
+
+snippet     impl
+abbr        @implementation @end
+prev_word   '^'
+    @implementation ${1}
+    ${2}
+    @end
+
+snippet     protocol
+abbr        @protocol @end
+prev_word   '^'
+    @protocol ${1}
+    ${2}
+    @end
+
+snippet     ne
+abbr        [[**** alloc] init];
+    [[${1:Class} alloc] init];

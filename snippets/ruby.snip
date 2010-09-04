@@ -1,0 +1,22 @@
+snippet     a
+abbr        #{param}
+    #{${1}}
+
+snippet     encoding
+abbr        # -*- coding: utf-8 -*-
+prev_word   '^'
+    # -*- coding: utf-8 -*-
+
+snippet     s
+abbr        ' '
+    '${1}'
+
+snippet     test
+abbr        Test::Unit::TestCase
+    Test::Unit::TestCase
+
+snippet     class
+abbr        class Hoge end
+    class ${1}
+        ${2}
+    end

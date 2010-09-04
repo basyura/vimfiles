@@ -1,0 +1,28 @@
+snippet     al
+abbr        alert("message");
+    alert("${1}");
+
+snippet     for
+abbr        for(var i = 0 ; i < ${1} ; i++) {  }
+	for(var i = 0 ; i < ${1} ; i++) {
+		${2}
+	}
+
+snippet     func
+abbr        function() { }
+	function ${1}(${2}) {
+		${3}
+	}
+
+snippet     pmethod
+abbr        Function.prototype.method
+	Function.prototype.method = function(name , func) {
+		if(this.prototype[name] == undefined) {
+			this.prototype[name] = func;
+		}
+	}
+
+snippet s
+abbr    'ssss'
+    '${1}'
+
