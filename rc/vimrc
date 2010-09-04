@@ -151,6 +151,8 @@ nnoremap <C-b> <Left>
 "map <C-e> :Tlist<CR>
 vmap <C-b> :Batch<CR>
 
+nnoremap <C-s> :Scratch<CR>
+
 """"""""""""""""""""""""""""""""""
 "        neo complcache          "
 """"""""""""""""""""""""""""""""""
