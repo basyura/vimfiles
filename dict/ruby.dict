@@ -2,3 +2,12 @@ initialize
 instance_methods
 instance_variables
 Array
+superclass
+super
+BasicObject
+Module
+Class
+false
+true
+constants
+nesting

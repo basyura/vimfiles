@@ -122,6 +122,9 @@ noremap  <Space>gs. :<C-u>source $MYGVIMRC<Enter>
 inoremap <C-d> <Del>
 cmap <C-d> <Del>
 
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
+
 "コマンドモードで Ctl + v で貼り付ける
 cmap <C-v> <C-R>+
 "挿入モードで Ctl + v で貼り付ける
