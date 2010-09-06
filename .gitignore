@@ -7,3 +7,4 @@ plugins/hatena-vim/cookies/*
 .git
 swp/*
 backup/*
+plugins/*

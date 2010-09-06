@@ -5,6 +5,7 @@ if expand("%") != ".git/COMMIT_EDITMSG"
 	filetype plugin indent on
 	syntax enable
 	colorscheme koehler
+	set runtimepath+=~/.vim
 	set runtimepath+=~/.vim/plugins/*
 endif
 
@@ -219,7 +220,8 @@ command! -nargs=* Nes NeoComplCacheEditSnippets <args>
 let g:hatena_user = 'basyura'
 "let g:hatena_edit_new_tab = 1
 " vimwiki
-let g:vimwiki_list = [{'path':'~/dropbox/vimwiki/text/', 'path_html':'~/dropbox/vimwiki/html/'}]
+"let g:vimwiki_list = [{'path':'/vimwiki/text/', 'path_html':'~/dropbox/vimwiki/html/'}]
+let g:vimwiki_list = [{'path': "Z:/text", 'path_html/': "Z:/html/"}]
 " mru.vim
 let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*\|^/private/var\|COMMIT_EDITMSG'
 let MRU_Max_Entries   = 100
@@ -361,7 +363,9 @@ command! -bar -bang -nargs=? -complete=file Scouter
 command! -bar -bang -nargs=? -complete=file GScouter
 \        echo Scouter(empty(<q-args>) ? $MYGVIMRC : expand(<q-args>), <bang>0)
 
-let g:restart_vim_progname = "MacVim"
+if has('mac')
+  let g:restart_vim_progname = "MacVim"
+end
 
 
 

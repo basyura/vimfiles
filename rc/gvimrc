@@ -7,8 +7,10 @@ colorscheme wombat
 "           settings             "
 """"""""""""""""""""""""""""""""""
 if has('windows') && !has('unix')
-  set guifont=MeiryoKe_Gothic:h11:cSHIFTJIS
-  set linespace=5
+  "set guifont=MeiryoKe_Gothic:h11:cSHIFTJIS
+  "set linespace=5
+  set guifont=MS_Gothic:h10:cSHIFTJIS
+  set linespace=4
 elseif has('mac')
   " フォント
   set guifont=Monaco:h11.5
@@ -75,3 +77,13 @@ hi Visual		guifg=black guibg=#bde682
 "autocmd FileType vimwiki :hi Comment guifg=#ffffff
 "autocmd FileType vimwiki :hi PreProc guifg=#ffffff
 "autocmd FileType vimwiki :hi Special guifg=#ffffff
+"
+
+"hi Cursor		guibg=orange guifg=black
+hi Comment 		gui=none
+hi String 		gui=none
+hi StatusLine 	gui=none
+"hi PreProc      guifg=#ffffff
+"hi Folded       guifg=white
+"hi Visual       guifg=black guibg=#CAE682
+hi CursorLine   guibg=blue
