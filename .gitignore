@@ -3,6 +3,7 @@ vimana
 .netrwhist
 .VimballRecord
 plugins/hatena-vim/cookies/*
+plugins/hatena-vim
 .DS_Store
 .git
 swp/*
