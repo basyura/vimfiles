@@ -15,7 +15,7 @@ let mapleader = "m"
 "           settings             "
 """"""""""""""""""""""""""""""""""
 
-if filereadable('~/.vimrc_secret')
+if filereadable($HOME . '/.vimrc_secret')
   source ~/.vimrc_secret
 endif
 
@@ -289,7 +289,7 @@ nnoremap <Space>nn   :<C-u>NextTwitter<Enter>
 nnoremap <Leader>u   yw:UserTwitter <C-R>+<CR>
 
 let twitvim_browser_cmd = "open -a firefox "
-let twitvim_enable_python = 1
+"let twitvim_enable_python = 1
 
 
 
