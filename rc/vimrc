@@ -273,6 +273,7 @@ map <Leader>b :FufBookmark<CR>
 let g:fuf_modesDisable = ['mrucmd']
 let g:fuf_maxMenuWidth = 90
 let g:fuf_mrufile_exclude = '\v\~$|\.bak$|\.swp|/private/var/*|/private/tmp/*|COMMIT_EDITMSG|Downloads/*|\.DS_Store'
+let g:fuf_timeFormat=''
 "map <silent> <C-f> <C-n><C-e>
 "let g:fuf_mrufile_maxItem = 10000
 "let g:fuf_enumeratingLimit = 20
