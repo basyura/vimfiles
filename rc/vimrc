@@ -288,7 +288,12 @@ nnoremap <Space>tt   :<C-u>ListTwitter tottoruby<Enter>
 nnoremap <Space>nn   :<C-u>NextTwitter<Enter>
 nnoremap <Leader>u   yw:UserTwitter <C-R>+<CR>
 
-let twitvim_browser_cmd = "open -a firefox "
+if has('mac')
+  let twitvim_browser_cmd = "open -a firefox "
+else
+  let g:twitvim_browser_cmd = "D:/Program\ Files/Mozilla\ Firefox/firefox.exe"
+endif
+
 "let twitvim_enable_python = 1
 
 
