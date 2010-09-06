@@ -223,7 +223,7 @@ let g:hatena_user = 'basyura'
 "let g:vimwiki_list = [{'path':'/vimwiki/text/', 'path_html':'~/dropbox/vimwiki/html/'}]
 let g:vimwiki_list = [{'path': "Z:/text", 'path_html/': "Z:/html/"}]
 " mru.vim
-let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*\|^/private/var\|COMMIT_EDITMSG'
+let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*\|^/private/var\|COMMIT_EDITMSG|^(\/\/|\\\\|\/mnt\/|\/media\/|D:\\downloads)|.*デスクトップ.*|.*Temporary Internet Files.*|.*LOCALS\~.*|.*Local Settings\\Temp.*'
 let MRU_Max_Entries   = 100
 let MRU_Window_Height = 21
 let MRU_Add_Menu = 0
