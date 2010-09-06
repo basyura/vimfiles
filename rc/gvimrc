@@ -39,6 +39,7 @@ elseif has('unix')
 endif
 
 set guioptions-=rL
+set guioptions-=m
 set laststatus=0
 
 
