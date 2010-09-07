@@ -170,6 +170,7 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'objc'       : $HOME . '/.vim/dict/objc.dict',
     \ 'javascript' : $HOME . '/.vim/dict/js.dict',
     \ 'ruby'       : $HOME . '/.vim/dict/ruby.dict',
+    \ 'java'       : $HOME . '/.vim/dict/java.dict',
     \ 'default'    : $HOME . '/.vim/dict/default.dict'
 \ }
 " 日本語をキャッシュしない
