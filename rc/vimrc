@@ -155,6 +155,9 @@ nnoremap <C-b> <Left>
 "map <C-e> :Tlist<CR>
 vmap <C-b> :Batch<CR>
 
+nnoremap <M-k> <C-y>
+nnoremap <M-j> <C-e>
+
 nnoremap <C-s> :Scratch<CR>
 
 """"""""""""""""""""""""""""""""""
