@@ -231,6 +231,7 @@ let g:vimfiler_as_default_explorer = 1
 
 nnoremap <silent> <C-r>  :<C-u>Unite file_mru<CR>
 nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
+nnoremap <silent> <Leader>d :<C-u>Unite file<CR>
 
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
@@ -288,7 +289,7 @@ nnoremap <silent> <Space>cd :<C-u>CD<CR>
 "fuf
 "let g:fuf_keyOpen = ":"
 "map <silent> <C-n> :FufBuffer<CR>
-map <silent> <Leader>d :<C-u>CD<CR>:FufFile<CR>
+"map <silent> <Leader>d :<C-u>CD<CR>:FufFile<CR>
 map <Leader>f :FufFile **/
 " 編集履歴を表示
 "map <C-r> :FufMruFile<CR>
