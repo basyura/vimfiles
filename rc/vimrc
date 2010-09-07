@@ -219,6 +219,27 @@ imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 command! -nargs=* Nes NeoComplCacheEditSnippets <args>
 
+""""""""""""""""""""""""""""""""""
+"            vimfiler            "
+""""""""""""""""""""""""""""""""""
+
+let g:vimfiler_as_default_explorer = 1
+
+""""""""""""""""""""""""""""""""""
+"             unite              "
+""""""""""""""""""""""""""""""""""
+
+nnoremap <silent> <C-r>  :<C-u>Unite file_mru<CR>
+nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
+
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+  " Overwrite settings.
+  imap <buffer> jj <Plug>(unite_insert_leave)
+  imap <buffer> <ESC> <ESC><ESC>
+  nnoremap <buffer> t G
+  startinsert
+endfunction
 
 """"""""""""""""""""""""""""""""""
 "             misc               "
@@ -229,11 +250,6 @@ let g:hatena_user = 'basyura'
 " vimwiki
 "let g:vimwiki_list = [{'path':'/vimwiki/text/', 'path_html':'~/dropbox/vimwiki/html/'}]
 let g:vimwiki_list = [{'path': "Z:/text", 'path_html/': "Z:/html/"}]
-" mru.vim
-let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*\|^/private/var\|COMMIT_EDITMSG|^(\/\/|\\\\|\/mnt\/|\/media\/|D:\\downloads)|.*デスクトップ.*|.*Temporary Internet Files.*|.*LOCALS\~.*|.*Local Settings\\Temp.*'
-let MRU_Max_Entries   = 100
-let MRU_Window_Height = 21
-let MRU_Add_Menu = 0
 " taglist
 let g:Tlist_GainFocus_On_ToggleOpen = 1
 let g:Tlist_Show_One_File = 1
@@ -271,15 +287,15 @@ nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
 "fuf
 "let g:fuf_keyOpen = ":"
-map <silent> <C-n> :FufBuffer<CR>
+"map <silent> <C-n> :FufBuffer<CR>
 map <silent> <Leader>d :<C-u>CD<CR>:FufFile<CR>
 map <Leader>f :FufFile **/
 " 編集履歴を表示
-map <C-r> :FufMruFile<CR>
+"map <C-r> :FufMruFile<CR>
 map <Leader>b :FufBookmark<CR>
-let g:fuf_modesDisable = ['mrucmd']
+let g:fuf_modesDisable = ['mrucmd','mrufile']
 let g:fuf_maxMenuWidth = 90
-let g:fuf_mrufile_exclude = '\v\~$|\.bak$|\.swp|/private/var/*|/private/tmp/*|COMMIT_EDITMSG|Downloads/*|\.DS_Store'
+let g:fuf_mrufile_exclude = '^/tmp/.*\|^/var/tmp/.*\|^/private/var\|COMMIT_EDITMSG|^(\/\/|\\\\|\/mnt\/|\/media\/|D:\\downloads)|.*デスクトップ.*|.*Temporary Internet Files.*|.*LOCALS\~.*|.*Local Settings\\Temp.*'
 let g:fuf_timeFormat=''
 "map <silent> <C-f> <C-n><C-e>
 "let g:fuf_mrufile_maxItem = 10000
