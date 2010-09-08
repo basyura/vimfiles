@@ -93,6 +93,7 @@ autocmd FileType javascript :setlocal expandtab
 autocmd FileType netrw setlocal buftype=nofile bufhidden=delete
 
 autocmd FileType fuf NeoComplCacheLock
+autocmd FileType vimwiki NeoComplCacheLock
 
 """"""""""""""""""""""""""""""""""
 "            colors              "
@@ -228,6 +229,8 @@ let g:vimfiler_as_default_explorer = 1
 """"""""""""""""""""""""""""""""""
 "             unite              "
 """"""""""""""""""""""""""""""""""
+
+let g:unite_update_time = 1000
 
 nnoremap <silent> <C-r>  :<C-u>Unite file_mru<CR>
 nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
