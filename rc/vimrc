@@ -159,7 +159,9 @@ vmap <C-b> :Batch<CR>
 nnoremap <M-k> <C-y>
 nnoremap <M-j> <C-e>
 
+
 nnoremap <C-s> :Scratch<CR>
+nnoremap <Leader>s :Scratch<CR>
 
 """"""""""""""""""""""""""""""""""
 "        neo complcache          "
@@ -187,8 +189,8 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " 補完しなくなる文字数
 let g:neocomplcache_enable_auto_select = 1
 " 補完しないパターン
-let g:neocomplcache_disable_caching_buffer_name_pattern = '.*fuf.*|*.log'
-let g:neocomplcache_lock_buffer_name_pattern = '*.log|.*fuf.*'
+let g:neocomplcache_disable_caching_buffer_name_pattern = '.*fuf.*|*.log|unite'
+let g:neocomplcache_lock_buffer_name_pattern = '*.log|.*fuf.*|unite'
 " キャッシュ中に、メッセージをCommand-lineに表示しない
 "
 let g:neocomplcache_enable_caching_message = 0
@@ -231,6 +233,8 @@ let g:vimfiler_as_default_explorer = 1
 """"""""""""""""""""""""""""""""""
 
 let g:unite_update_time = 1000
+let g:unite_source_file_mru_time_format = ''
+let g:unite_enable_start_insert = 1
 
 nnoremap <silent> <C-r>  :<C-u>Unite file_mru<CR>
 nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
@@ -242,7 +246,7 @@ function! s:unite_my_settings()
   imap <buffer> jj <Plug>(unite_insert_leave)
   imap <buffer> <ESC> <ESC><ESC>
   nnoremap <buffer> t G
-  startinsert
+  "startinsert
 endfunction
 
 """"""""""""""""""""""""""""""""""
