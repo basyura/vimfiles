@@ -1,0 +1,17 @@
+#!/bin/sh
+
+cd ~/.vim/plugins
+
+pwd
+
+files=`ls`
+
+for path in ${files}; do
+  echo '++++++++++++++++++++++++++++++++++++++++++++++++++++++'
+  cd ${path}
+  pwd
+  git pull
+  git status
+  echo 
+  cd ..
+done
