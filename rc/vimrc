@@ -171,6 +171,7 @@ nnoremap <M-j> <C-e>
 
 nnoremap <C-s> :Scratch<CR>
 nnoremap <Leader>s :Scratch<CR>
+nnoremap <Leader>v :VimShell<CR>
 
 """"""""""""""""""""""""""""""""""
 "        neo complcache          "
@@ -199,7 +200,10 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 let g:neocomplcache_enable_auto_select = 1
 " 補完しないパターン
 let g:neocomplcache_disable_caching_buffer_name_pattern = '.*fuf.*|*.log|unite'
+" 自動補完しないパターン
 let g:neocomplcache_lock_buffer_name_pattern = '*.log|.*fuf.*|unite'
+" 自動選択しないパターン
+let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell'
 " キャッシュ中に、メッセージをCommand-lineに表示しない
 "
 let g:neocomplcache_enable_caching_message = 0
@@ -219,6 +223,7 @@ inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
 " 補完候補が出ていたら確定、なければ改行
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
+inoremap <expr><C-e> pumvisible() ? neocomplcache#close_popup() : "<End>"
 " 補完をキャンセル
 inoremap <expr><C-c>  neocomplcache#cancel_popup()
 " 補完をアンドゥ
