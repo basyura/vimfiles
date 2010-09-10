@@ -46,6 +46,7 @@ set wrap
 set hlsearch
 set smartindent
 set timeout timeoutlen=300 ttimeoutlen=100
+set shellslash
 
 " ubuntu だと画面がちらつく。mac だと音が出ちゃう。
 if has('mac')
