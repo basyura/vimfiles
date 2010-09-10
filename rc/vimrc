@@ -19,6 +19,14 @@ if filereadable($HOME . '/.vimrc_secret')
   source ~/.vimrc_secret
 endif
 
+if has('win32')
+  let g:vimproc_dll_path = $HOME . '/.vim/proc/windows/proc.dll'
+elseif has('win32unix')
+  let g:vimproc_dll_path = $HOME . '/.vim/proc/cygwin/proc.dll'
+elseif has('mac')
+  let g:vimproc_dll_path = $HOME . '/.vim/proc/mac/proc.so'
+endif
+
 set ambiwidth=double
 set nu
 set autoindent
@@ -121,6 +129,7 @@ nnoremap <Space>.   :<C-u>edit   $MYVIMRC<Enter>
 nnoremap <Space>s.  :<C-u>source $MYVIMRC<Enter>
 nnoremap <Space>g.  :<C-u>edit   $MYGVIMRC<Enter>
 noremap  <Space>gs. :<C-u>source $MYGVIMRC<Enter>
+noremap  <Space>v.  :<C-u>edit   ~/.vimshrc<Enter>
 inoremap <C-d> <Del>
 cmap <C-d> <Del>
 
