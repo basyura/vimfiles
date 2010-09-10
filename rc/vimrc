@@ -236,6 +236,16 @@ imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 command! -nargs=* Nes NeoComplCacheEditSnippets <args>
 
+
+""""""""""""""""""""""""""""""""""
+"            vimshell            "
+""""""""""""""""""""""""""""""""""
+autocmd FileType vimshell call s:vimshell_my_settings()
+function! s:vimshell_my_settings()
+"  imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
+endfunction
+
+
 """"""""""""""""""""""""""""""""""
 "            vimfiler            "
 """"""""""""""""""""""""""""""""""
