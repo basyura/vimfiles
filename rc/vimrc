@@ -11,6 +11,7 @@ endif
 
 let mapleader = "m"
 
+
 """"""""""""""""""""""""""""""""""
 "           settings             "
 """"""""""""""""""""""""""""""""""
@@ -69,39 +70,46 @@ set expandtab
 """"""""""""""""""""""""""""""""""
 "         auto command           "
 """"""""""""""""""""""""""""""""""
-au BufEnter * set bh=hide
-au BufNewFile,BufRead *.scala setf scala
-"set autochdir
-au BufEnter * execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
-" for ruby
-autocmd FileType ruby  :setlocal tabstop=2
-autocmd FileType ruby  :setlocal shiftwidth=2
-autocmd FileType ruby  :setlocal expandtab
-" for eruby
-autocmd FileType eruby :setlocal tabstop=2
-autocmd FileType eruby :setlocal shiftwidth=2
-autocmd FileType eruby :setlocal expandtab
-" for scala
-autocmd FileType scala :setlocal tabstop=2
-autocmd FileType scala :setlocal shiftwidth=2
-autocmd FileType scala :setlocal expandtab
-" for vim
-autocmd FileType scala :setlocal tabstop=4
-autocmd FileType scala :setlocal shiftwidth=4
-autocmd FileType scala :setlocal noexpandtab
-" for java
-autocmd FileType java :setlocal tabstop=4
-autocmd FileType java :setlocal shiftwidth=4
-autocmd FileType java :setlocal noexpandtab
-" for javascript
-autocmd FileType javascript :setlocal tabstop=2
-autocmd FileType javascript :setlocal shiftwidth=2
-autocmd FileType javascript :setlocal expandtab
+augroup MyGroup
+  autocmd! MyGroup
+  au BufEnter * set bh=hide
+  au BufNewFile,BufRead *.scala setf scala
+  "set autochdir
+  au BufEnter * execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
+  " for ruby
+  autocmd FileType ruby  :setlocal tabstop=2
+  autocmd FileType ruby  :setlocal shiftwidth=2
+  autocmd FileType ruby  :setlocal expandtab
+  " for eruby
+  autocmd FileType eruby :setlocal tabstop=2
+  autocmd FileType eruby :setlocal shiftwidth=2
+  autocmd FileType eruby :setlocal expandtab
+  " for scala
+  autocmd FileType scala :setlocal tabstop=2
+  autocmd FileType scala :setlocal shiftwidth=2
+  autocmd FileType scala :setlocal expandtab
+  " for vim
+  autocmd FileType scala :setlocal tabstop=4
+  autocmd FileType scala :setlocal shiftwidth=4
+  autocmd FileType scala :setlocal noexpandtab
+  " for java
+  autocmd FileType java :setlocal tabstop=4
+  autocmd FileType java :setlocal shiftwidth=4
+  autocmd FileType java :setlocal noexpandtab
+  " for javascript
+  autocmd FileType javascript :setlocal tabstop=2
+  autocmd FileType javascript :setlocal shiftwidth=2
+  autocmd FileType javascript :setlocal expandtab
 
-autocmd FileType netrw setlocal buftype=nofile bufhidden=delete
+  autocmd FileType netrw setlocal buftype=nofile bufhidden=delete
 
-autocmd FileType fuf NeoComplCacheLock
-autocmd FileType vimwiki NeoComplCacheLock
+  autocmd FileType fuf NeoComplCacheLock
+  autocmd FileType vimwiki NeoComplCacheLock
+
+  autocmd FileType vimshell call s:vimshell_my_settings()
+  autocmd FileType unite call s:unite_my_settings()
+  autocmd CmdwinEnter * call s:init_cmdwin()
+augroup END
 
 """"""""""""""""""""""""""""""""""
 "            colors              "
@@ -241,7 +249,6 @@ command! -nargs=* Nes NeoComplCacheEditSnippets <args>
 """"""""""""""""""""""""""""""""""
 "            vimshell            "
 """"""""""""""""""""""""""""""""""
-autocmd FileType vimshell call s:vimshell_my_settings()
 function! s:vimshell_my_settings()
 "  imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
 endfunction
@@ -265,7 +272,6 @@ nnoremap <silent> <C-r>  :<C-u>Unite file_mru<CR>
 nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
 nnoremap <silent> <Leader>d :<C-u>Unite file<CR>
 
-autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
   " Overwrite settings.
   imap <buffer> jj <Plug>(unite_insert_leave)
@@ -378,7 +384,6 @@ set cmdwinheight=1
 "nmap :  <sid>(command-line-enter)
 "xmap :  <sid>(command-line-enter)
 "autocmd CmdwinEnter * :NeoComplCacheLock
-autocmd CmdwinEnter * call s:init_cmdwin()
 function! s:init_cmdwin()
 "  nnoremap <buffer> q bw
 "  inoremap <buffer> q bw
