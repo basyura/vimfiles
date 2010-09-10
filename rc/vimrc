@@ -419,11 +419,17 @@ if has('mac')
 end
 
 
-
 command! MoveLeft call s:MoveLeft()
 function! s:MoveLeft()
   winpos 0 0
   set lines=43
 endfunction
+
+"color for cygwin
+
+if has('win32unix')
+  hi Pmenu     ctermfg=white   ctermbg=darkblue cterm=none
+  hi PmenuSel  ctermfg=232   ctermbg=magenta
+endif
 
 " vim: foldmethod=marker
