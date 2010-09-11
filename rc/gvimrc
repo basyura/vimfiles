@@ -64,9 +64,9 @@ AlterCommand wq WQ
 nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>:<C-u>source $MYGVIMRC<Enter>
 " esc 連打すれば ime  off にしちゃう
 " terminal だと git のコミットに失敗した気がするのでこちらに
-if has('mac')
-  map <silent> <ESC> <ESC>:set iminsert=0<CR>
-endif
+"if has('mac')
+"  map <silent> <ESC> <ESC>:set iminsert=0<CR>
+"ndif
 " カーソルオレンジ"
 hi Cursor	  guifg=bg	guibg=orange
 hi Visual		guifg=black guibg=#bde682

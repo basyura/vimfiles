@@ -181,7 +181,7 @@ nnoremap <M-j> <C-e>
 nnoremap <C-s> :Scratch<CR>
 nnoremap <Leader>s :Scratch<CR>
 nnoremap <Leader>v :VimShell<CR>
-nnoremap <Esc> :noh<CR>
+nnoremap <silent> <ESC> :noh<CR>
 
 """"""""""""""""""""""""""""""""""
 "        neo complcache          "
