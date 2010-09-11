@@ -182,6 +182,7 @@ nnoremap <C-s> :Scratch<CR>
 nnoremap <Leader>s :Scratch<CR>
 nnoremap <Leader>v :VimShell<CR>
 nnoremap <silent> <ESC> :noh<CR>
+nnoremap <silent> <Leader>o :on<CR>
 
 """"""""""""""""""""""""""""""""""
 "        neo complcache          "
@@ -288,8 +289,8 @@ endfunction
 let g:hatena_user = 'basyura'
 "let g:hatena_edit_new_tab = 1
 " vimwiki
-"let g:vimwiki_list = [{'path':'/vimwiki/text/', 'path_html':'~/dropbox/vimwiki/html/'}]
-let g:vimwiki_list = [{'path': "Z:/text", 'path_html/': "Z:/html/"}]
+let g:vimwiki_list = [{'path':'~/dropbox/vimwiki/text/', 'path_html':'~/dropbox/vimwiki/html/'}]
+"let g:vimwiki_list = [{'path': "Z:/text", 'path_html/': "Z:/html/"}]
 " taglist
 let g:Tlist_GainFocus_On_ToggleOpen = 1
 let g:Tlist_Show_One_File = 1
