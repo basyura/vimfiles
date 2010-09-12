@@ -26,3 +26,31 @@ abbr        module ModuleName ; end
     module ${1:Name}
         ${2}
     end
+
+snippet method_missing
+abbr    method_missing
+    method_missing(method , *args)
+
+snippet     re
+alias req
+abbr        require 'hoge'
+    require '${1}'
+
+
+snippet     d
+abbr        def
+    def ${1}
+        ${2}
+    end
+
+snippet     w
+abbr        "hoge"
+    "${1}"
+
+snippet     k
+abbr        ( )
+    (${1})
+
+snippet ww
+abbr    %w[ ]
+    %w[${1}]

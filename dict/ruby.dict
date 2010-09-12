@@ -15,3 +15,11 @@ ancestors
 Kernel
 private_instance_methods
 grep
+capitalize
+block_given?
+DelegateClass
+respond_to?
+const_missing
+downcase
+Benchmark
+Exception
