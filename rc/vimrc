@@ -167,6 +167,7 @@ imap <C-e> <End>
 imap <C-a> <HOME>
 imap <C-f> <Right>
 imap <C-b> <Left>
+
 nnoremap <C-e> <End>
 nnoremap <C-a> <HOME>
 nnoremap <C-f> <Right>
@@ -184,6 +185,8 @@ nnoremap <silent> <ESC> :noh<CR>
 nnoremap <silent> <Leader>o :on<CR>
 
 inoremap <silent><C-o> <ESC>o
+
+vnoremap <C-e> <End><Left>
 
 """"""""""""""""""""""""""""""""""
 "        neo complcache          "
