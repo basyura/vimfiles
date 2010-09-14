@@ -251,7 +251,7 @@ function! s:vimshell_my_settings()
 "  imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
   inoremap <buffer> <C-x> <ESC><C-w>h:on<CR>
   inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer <CR>
-  nmap <buffer> <CR> a
+  nmap <buffer> <CR> Go$ 
   imap <buffer> <C-x>     <ESC><C-w>h:on<CR>
 endfunction
 
