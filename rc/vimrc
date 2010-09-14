@@ -218,7 +218,7 @@ let g:neocomplcache_disable_caching_buffer_name_pattern = '.*fuf.*|*.log|unite'
 " 自動補完しないパターン
 let g:neocomplcache_lock_buffer_name_pattern = '*.log|.*fuf.*|unite'
 " 自動選択しないパターン
-let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell'
+let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell|unite'
 " キャッシュ中に、メッセージをCommand-lineに表示しない
 "
 let g:neocomplcache_enable_caching_message = 0
