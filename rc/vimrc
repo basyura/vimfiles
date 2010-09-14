@@ -250,6 +250,7 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 command! -nargs=* Nes NeoComplCacheEditSnippets <args>
+command! -nargs=* Nel NeoComplCacheLock <args>
 
 
 """"""""""""""""""""""""""""""""""
@@ -276,6 +277,7 @@ let g:unite_enable_start_insert = 1
 
 nnoremap <silent> <C-r>  :<C-u>Unite file_mru<CR>
 nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
+nnoremap <silent> <Leader>. :<C-u>Unite buffer <CR>
 nnoremap <silent> <Leader>d :<C-u>Unite file<CR>
 
 function! s:unite_my_settings()
