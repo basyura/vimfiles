@@ -214,11 +214,11 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " 補完しなくなる文字数
 let g:neocomplcache_enable_auto_select = 1
 " 補完しないパターン
-let g:neocomplcache_disable_caching_buffer_name_pattern = '.*fuf.*|*.log|unite'
+let g:neocomplcache_disable_caching_buffer_name_pattern = '.*fuf.*\|*.log\|unite'
 " 自動補完しないパターン
-let g:neocomplcache_lock_buffer_name_pattern = '*.log|.*fuf.*|unite'
+let g:neocomplcache_lock_buffer_name_pattern = '*.log\|.*fuf.*\|unite'
 " 自動選択しないパターン
-let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell|unite'
+let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell\|unite'
 " キャッシュ中に、メッセージをCommand-lineに表示しない
 "
 let g:neocomplcache_enable_caching_message = 0
@@ -334,26 +334,6 @@ map <silent> <Leader>r :<C-u>R<CR>
 
 " Change current directory.
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
-
-
-"fuf
-"let g:fuf_keyOpen = ":"
-"map <silent> <C-n> :FufBuffer<CR>
-"map <silent> <Leader>d :<C-u>CD<CR>:FufFile<CR>
-map <Leader>f :FufFile **/
-" 編集履歴を表示
-"map <C-r> :FufMruFile<CR>
-map <Leader>b :FufBookmark<CR>
-let g:fuf_modesDisable = ['mrucmd','mrufile']
-let g:fuf_maxMenuWidth = 90
-let g:fuf_mrufile_exclude = '^/tmp/.*\|^/var/tmp/.*\|^/private/var\|COMMIT_EDITMSG|^(\/\/|\\\\|\/mnt\/|\/media\/|D:\\downloads)|.*デスクトップ.*|.*Temporary Internet Files.*|.*LOCALS\~.*|.*Local Settings\\Temp.*'
-let g:fuf_timeFormat=''
-"map <silent> <C-f> <C-n><C-e>
-"let g:fuf_mrufile_maxItem = 10000
-"let g:fuf_enumeratingLimit = 20
-
-
-
 
 " twitvim
 nnoremap <Space>po   :<C-u>PosttoTwitter<Enter>
