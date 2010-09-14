@@ -47,21 +47,11 @@ set hlsearch
 set smartindent
 set timeout timeoutlen=300 ttimeoutlen=100
 set shellslash
+set cmdheight=1
 
 " ubuntu だと画面がちらつく。mac だと音が出ちゃう。
 if has('mac')
   set vb t_vb=
-endif
-
-if has('gui')
-  " コマンドラインの高さ(GUI使用時)
-  set cmdheight=1
-  " ビジュアル選択(D&D他)を自動的にクリップボードへ (:help guioptions_a)
-  set guioptions+=a
-  " クリップボード
-  set clipboard+=unnamed
-  " ツールバー非表示
-  set guioptions-=T
 endif
 
 set tabstop=2
@@ -123,10 +113,6 @@ hi Cursor	  guifg=bg	guibg=orange
 """"""""""""""""""""""""""""""""""
 map <silent> <S-u> :redo<CR>
 map bn    :bnext<CR>
-"map <silent> <C-f> :bnext<CR>
-"map <silent> <C-b> :bprevious<CR>
-"imap <silent> <C-f> <ESC>:bnext<CR>
-"imap <silent> <C-b> <ESC>:bprevious<CR>
 "ウインドウのフォーカス移動
 map  wh <C-w>h
 map  wl <C-w>l

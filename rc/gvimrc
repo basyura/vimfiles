@@ -10,6 +10,14 @@ colorscheme wombat
 set guioptions-=rL
 set guioptions-=m
 set laststatus=0
+" ビジュアル選択(D&D他)を自動的にクリップボードへ (:help guioptions_a)
+set guioptions+=a
+" クリップボード
+set clipboard+=unnamed
+" ツールバー非表示
+set guioptions-=T
+" コマンドラインの高さ
+set cmdheight=1
 
 augroup MyGGroup
   autocmd! MyGGroup
@@ -50,7 +58,6 @@ function! s:reload_color_scheme()
   endif
 endfunction
 
-set cmdheight=1
 call s:reload_color_scheme()
 
 "*******************************************************
