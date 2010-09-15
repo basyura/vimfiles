@@ -249,6 +249,8 @@ let g:vimshell_prompt = '$ '
 
 function! s:vimshell_my_settings()
 "  imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
+  setlocal fileencoding=utf8
+  setlocal encoding=utf8
   inoremap <buffer> <C-x> <ESC><C-w>h:on<CR>
   inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer <CR>
   nmap <buffer> <CR> Go$ 

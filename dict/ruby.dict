@@ -20,6 +20,7 @@ instance_methods
 instance_variables
 nesting
 private_instance_methods
+puts
 respond_to?
 super
 superclass
