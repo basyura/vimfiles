@@ -6,42 +6,59 @@ colorscheme wombat
 """"""""""""""""""""""""""""""""""
 "           settings             "
 """"""""""""""""""""""""""""""""""
-if has('windows') && !has('unix')
-  "set guifont=MeiryoKe_Gothic:h11:cSHIFTJIS
-  "set linespace=5
-  set guifont=MS_Gothic:h10:cSHIFTJIS
-  set linespace=4
-elseif has('mac')
-  " フォント
-  set guifont=Monaco:h11.5
-  " ウインドウ幅
-  if &columns == 80
-    set columns=95
- endif
-  " ウインドウの高さ
-  set lines=41
-  " 透明度
-  set transparency=7
-  " esc 時に ime off mac vim only
-  set imda
-  "
-elseif has('unix')
-  " 行間
-  set linespace=4
-  " アンチエイリアス
-  set antialias
-  " フォント
-  set guifont=MeiryoKe_Gothic\ 11.5
-  " 幅
-  set columns=100
-  " 高さ
-  set lines=28
-endif
 
 set guioptions-=rL
 set guioptions-=m
 set laststatus=0
+" ビジュアル選択(D&D他)を自動的にクリップボードへ (:help guioptions_a)
+set guioptions+=a
+" クリップボード
+set clipboard+=unnamed
+" ツールバー非表示
+set guioptions-=T
 
+augroup MyGGroup
+  autocmd! MyGGroup
+  autocmd BufEnter * call s:reload_color_scheme()
+augroup END
+
+function! s:reload_color_scheme()
+  if has('windows') && !has('unix')
+    "set guifont=MeiryoKe_Gothic:h11:cSHIFTJIS
+    "set linespace=5
+    set guifont=MS_Gothic:h10:cSHIFTJIS
+    set linespace=4
+  elseif has('mac')
+    " フォント
+    set guifont=Monaco:h11.5
+    " ウインドウ幅
+    if &columns == 80
+      set columns=95
+   endif
+    " ウインドウの高さ
+    set lines=41
+    " 透明度
+    set transparency=7
+    " esc 時に ime off mac vim only
+    set imda
+    "
+  elseif has('unix')
+    " 行間
+    set linespace=4
+    " アンチエイリアス
+    set antialias
+    " フォント
+    set guifont=MeiryoKe_Gothic\ 11.5
+    " 幅
+    set columns=100
+    " 高さ
+    set lines=28
+  endif
+endfunction
+
+call s:reload_color_scheme()
+" コマンドラインの高さ
+set cmdheight=1
 
 "*******************************************************
 "*                   保存・終了                        *

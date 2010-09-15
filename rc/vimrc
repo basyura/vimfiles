@@ -11,6 +11,7 @@ endif
 
 let mapleader = "m"
 
+let &termencoding='utf8'
 
 """"""""""""""""""""""""""""""""""
 "           settings             "
@@ -47,21 +48,11 @@ set hlsearch
 set smartindent
 set timeout timeoutlen=300 ttimeoutlen=100
 set shellslash
+"set cmdheight=1
 
 " ubuntu だと画面がちらつく。mac だと音が出ちゃう。
 if has('mac')
   set vb t_vb=
-endif
-
-if has('gui')
-  " コマンドラインの高さ(GUI使用時)
-  set cmdheight=1
-  " ビジュアル選択(D&D他)を自動的にクリップボードへ (:help guioptions_a)
-  set guioptions+=a
-  " クリップボード
-  set clipboard+=unnamed
-  " ツールバー非表示
-  set guioptions-=T
 endif
 
 set tabstop=2
@@ -112,6 +103,7 @@ augroup MyGroup
   autocmd CmdwinEnter * call s:init_cmdwin()
 augroup END
 
+
 """"""""""""""""""""""""""""""""""
 "            colors              "
 """"""""""""""""""""""""""""""""""
@@ -122,10 +114,6 @@ hi Cursor	  guifg=bg	guibg=orange
 """"""""""""""""""""""""""""""""""
 map <silent> <S-u> :redo<CR>
 map bn    :bnext<CR>
-"map <silent> <C-f> :bnext<CR>
-"map <silent> <C-b> :bprevious<CR>
-"imap <silent> <C-f> <ESC>:bnext<CR>
-"imap <silent> <C-b> <ESC>:bprevious<CR>
 "ウインドウのフォーカス移動
 map  wh <C-w>h
 map  wl <C-w>l
@@ -167,6 +155,7 @@ imap <C-e> <End>
 imap <C-a> <HOME>
 imap <C-f> <Right>
 imap <C-b> <Left>
+
 nnoremap <C-e> <End>
 nnoremap <C-a> <HOME>
 nnoremap <C-f> <Right>
@@ -184,6 +173,8 @@ nnoremap <silent> <ESC> :noh<CR>
 nnoremap <silent> <Leader>o :on<CR>
 
 inoremap <silent><C-o> <ESC>o
+
+vnoremap <C-e> <End><Left>
 
 """"""""""""""""""""""""""""""""""
 "        neo complcache          "
@@ -211,11 +202,11 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " 補完しなくなる文字数
 let g:neocomplcache_enable_auto_select = 1
 " 補完しないパターン
-let g:neocomplcache_disable_caching_buffer_name_pattern = '.*fuf.*|*.log|unite'
+let g:neocomplcache_disable_caching_buffer_name_pattern = '.*fuf.*\|*.log\|unite'
 " 自動補完しないパターン
-let g:neocomplcache_lock_buffer_name_pattern = '*.log|.*fuf.*|unite'
+let g:neocomplcache_lock_buffer_name_pattern = '*.log\|.*fuf.*\|unite'
 " 自動選択しないパターン
-let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell'
+let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell\|unite'
 " キャッシュ中に、メッセージをCommand-lineに表示しない
 "
 let g:neocomplcache_enable_caching_message = 0
@@ -247,13 +238,22 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 command! -nargs=* Nes NeoComplCacheEditSnippets <args>
+command! -nargs=* Nel NeoComplCacheLock <args>
 
 
 """"""""""""""""""""""""""""""""""
 "            vimshell            "
 """"""""""""""""""""""""""""""""""
+
+let g:vimshell_prompt = '$ '
+"let g:vimshell_user_prompt = 'getcwd()'
+
 function! s:vimshell_my_settings()
 "  imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
+  inoremap <buffer> <C-x> <ESC><C-w>h:on<CR>
+  inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer <CR>
+  nmap <buffer> <CR> Go$ 
+  imap <buffer> <C-x>     <ESC><C-w>h:on<CR>
 endfunction
 
 
@@ -273,6 +273,7 @@ let g:unite_enable_start_insert = 1
 
 nnoremap <silent> <C-r>  :<C-u>Unite file_mru<CR>
 nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
+nnoremap <silent> <Leader>. :<C-u>Unite buffer <CR>
 nnoremap <silent> <Leader>d :<C-u>Unite file<CR>
 
 function! s:unite_my_settings()
@@ -329,26 +330,6 @@ map <silent> <Leader>r :<C-u>R<CR>
 
 " Change current directory.
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
-
-
-"fuf
-"let g:fuf_keyOpen = ":"
-"map <silent> <C-n> :FufBuffer<CR>
-"map <silent> <Leader>d :<C-u>CD<CR>:FufFile<CR>
-map <Leader>f :FufFile **/
-" 編集履歴を表示
-"map <C-r> :FufMruFile<CR>
-map <Leader>b :FufBookmark<CR>
-let g:fuf_modesDisable = ['mrucmd','mrufile']
-let g:fuf_maxMenuWidth = 90
-let g:fuf_mrufile_exclude = '^/tmp/.*\|^/var/tmp/.*\|^/private/var\|COMMIT_EDITMSG|^(\/\/|\\\\|\/mnt\/|\/media\/|D:\\downloads)|.*デスクトップ.*|.*Temporary Internet Files.*|.*LOCALS\~.*|.*Local Settings\\Temp.*'
-let g:fuf_timeFormat=''
-"map <silent> <C-f> <C-n><C-e>
-"let g:fuf_mrufile_maxItem = 10000
-"let g:fuf_enumeratingLimit = 20
-
-
-
 
 " twitvim
 nnoremap <Space>po   :<C-u>PosttoTwitter<Enter>
@@ -454,5 +435,7 @@ if has('win32unix')
   hi Pmenu     ctermfg=white   ctermbg=darkblue cterm=none
   hi PmenuSel  ctermfg=232   ctermbg=magenta
 endif
+
+set cmdheight=1
 
 " vim: foldmethod=marker
