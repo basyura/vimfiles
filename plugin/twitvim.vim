@@ -1969,9 +1969,10 @@ function! s:convert_entity(str)
     let s = substitute(s, '&quot;', '"', 'g')
 
 "    let enc = &encoding
-    setlocal encoding=utf8
+"    setlocal encoding=utf8
     let s = substitute(s, '&#\(\d\+\);','\=nr2char(submatch(1))', 'g')
-"    let s = iconv(s, "utf-8" , "cp932")
+    let s = iconv(s, "utf-8" , &encoding)
+    let fenc = "utf-8"
 "    let s = iconv(s, "utf-8" , &termencoding)
 "    let s = iconv(s , &encoding, &termencoding)
 "    setlocal encoding=cp932
