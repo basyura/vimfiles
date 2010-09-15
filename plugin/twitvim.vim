@@ -8,7 +8,6 @@
 " Maintainer: Po Shan Cheah <morton@mortonfox.com>
 " Created: March 28, 2008
 " Last updated: August 16, 2010
-"
 " GetLatestVimScripts: 2204 1 twitvim.vim
 " ==============================================================
 
@@ -1968,11 +1967,14 @@ function! s:convert_entity(str)
     let s = substitute(s, '&lt;', '<', 'g')
     let s = substitute(s, '&gt;', '>', 'g')
     let s = substitute(s, '&quot;', '"', 'g')
-    setlocal encoding=utf-8
+
+"    let enc = &encoding
+    setlocal encoding=utf8
     let s = substitute(s, '&#\(\d\+\);','\=nr2char(submatch(1))', 'g')
-    let s = iconv(s, "utf-8", "cp932")
-    "let s = iconv(s , &encoding, &termencoding)
-    setlocal encoding=cp932
+"    let s = iconv(s, "utf-8" , "cp932")
+"    let s = iconv(s, "utf-8" , &termencoding)
+"    let s = iconv(s , &encoding, &termencoding)
+"    setlocal encoding=cp932
 
     return s
 endfunction

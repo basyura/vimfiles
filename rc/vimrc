@@ -11,6 +11,7 @@ endif
 
 let mapleader = "m"
 
+let &termencoding='utf8'
 
 """"""""""""""""""""""""""""""""""
 "           settings             "
@@ -47,7 +48,7 @@ set hlsearch
 set smartindent
 set timeout timeoutlen=300 ttimeoutlen=100
 set shellslash
-set cmdheight=1
+"set cmdheight=1
 
 " ubuntu だと画面がちらつく。mac だと音が出ちゃう。
 if has('mac')
@@ -434,5 +435,7 @@ if has('win32unix')
   hi Pmenu     ctermfg=white   ctermbg=darkblue cterm=none
   hi PmenuSel  ctermfg=232   ctermbg=magenta
 endif
+
+set cmdheight=1
 
 " vim: foldmethod=marker

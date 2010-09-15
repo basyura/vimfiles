@@ -16,8 +16,6 @@ set guioptions+=a
 set clipboard+=unnamed
 " ツールバー非表示
 set guioptions-=T
-" コマンドラインの高さ
-set cmdheight=1
 
 augroup MyGGroup
   autocmd! MyGGroup
@@ -59,6 +57,8 @@ function! s:reload_color_scheme()
 endfunction
 
 call s:reload_color_scheme()
+" コマンドラインの高さ
+set cmdheight=1
 
 "*******************************************************
 "*                   保存・終了                        *
