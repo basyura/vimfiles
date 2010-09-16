@@ -9,6 +9,10 @@ if expand("%") != ".git/COMMIT_EDITMSG"
 	set runtimepath+=~/.vim/plugins/*
 endif
 
+if &termencoding == ''
+  let &termencoding="utf-8"
+endif
+
 let mapleader = "m"
 
 """"""""""""""""""""""""""""""""""
@@ -253,6 +257,7 @@ function! s:vimshell_my_settings()
   inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer <CR>
   nmap <buffer> <CR> Go$ 
   imap <buffer> <C-x>     <ESC><C-w>h:on<CR>
+  "imap <buffer> <CR>      <Plug>(vimshell_enter)<C-x>i
 endfunction
 
 
