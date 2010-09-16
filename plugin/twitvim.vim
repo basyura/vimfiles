@@ -1968,17 +1968,36 @@ function! s:convert_entity(str)
     let s = substitute(s, '&gt;', '>', 'g')
     let s = substitute(s, '&quot;', '"', 'g')
 
-"    let enc = &encoding
-"    setlocal encoding=utf8
-    let s = substitute(s, '&#\(\d\+\);','\=nr2char(submatch(1))', 'g')
-    let s = iconv(s, "utf-8" , &encoding)
-    let fenc = "utf-8"
-"    let s = iconv(s, "utf-8" , &termencoding)
-"    let s = iconv(s , &encoding, &termencoding)
-"    setlocal encoding=cp932
+    "let s = substitute(s, '&#\(\d\+\);','\=nr2char(submatch(1))', 'g')
+    let s = substitute(s, '&#\(\d\+\);','\=s:nr2enc_char(submatch(1))', 'g')
+"    let s = iconv(s, "utf-8" , "cp932")
 
     return s
 endfunction
+
+" from http://github.com/mattn/googlesuggest-complete-vim/blob/master/googlesuggest-complete.vim
+" license is unknown
+function! s:nr2byte(nr)
+  if a:nr < 0x80
+    return nr2char(a:nr)
+  elseif a:nr < 0x800
+    return nr2char(a:nr/64+192).nr2char(a:nr%64+128)
+  else
+    return nr2char(a:nr/4096%16+224).nr2char(a:nr/64%64+128).nr2char(a:nr%64+128)
+  endif
+endfunction
+
+function! s:nr2enc_char(charcode)
+  if &encoding == 'utf-8'
+    return nr2char(a:charcode)
+  endif
+  let char = s:nr2byte(a:charcode)
+  if strlen(char) > 1
+    let char = strtrans(iconv(char, 'utf-8', &encoding))
+  endif
+  return char
+endfunction
+
 
 let s:twit_winname = "Twitter_".localtime()
 
