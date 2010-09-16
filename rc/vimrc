@@ -169,6 +169,7 @@ nnoremap <Leader>v :VimShell<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <silent> <ESC> :noh<CR>
 nnoremap <silent> <Leader>o :on<CR>
+nnoremap <Leader><Leader> <C-]>
 
 inoremap <silent><C-o> <ESC>o
 
