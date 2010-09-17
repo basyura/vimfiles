@@ -251,11 +251,22 @@ command! -nargs=* Nel NeoComplCacheLock <args>
 let g:vimshell_prompt = '$ '
 let g:vimshell_edit_no_split = 1
 "let g:vimshell_user_prompt = 'getcwd()'
+let g:vimshell_interactive_cygwin_path = 'D:/develop/dev/cygwin/bin'
+let g:vimshell_interactive_cygwin_home = 'D:/develop/dev/cygwin/home/Administrator'
+if !exists('g:vimshell_interactive_cygwin_commands')
+  let g:vimshell_interactive_cygwin_commands = {}
+endif
+let g:vimshell_interactive_cygwin_commands['git'] = {
+  \ 'name' : 'git',
+  \ 'kind' : 'execute',
+  \ 'description' : 'git [{options}...] {command}',
+\}
 
 function! s:vimshell_my_settings()
 "  imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
   inoremap <buffer> <C-x> <ESC><C-w>h:on<CR>
   inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer <CR>
+  inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>Unite file_mru <CR>
   nnoremap <buffer> <CR> Go$ 
   imap <buffer> <C-x>     <ESC><C-w>h:on<CR>
   "imap <buffer> <CR>      <Plug>(vimshell_enter)<C-x>i
