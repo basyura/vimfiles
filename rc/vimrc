@@ -262,6 +262,11 @@ let g:vimshell_interactive_cygwin_commands['git'] = {
   \ 'kind' : 'execute',
   \ 'description' : 'git [{options}...] {command}',
 \}
+let g:vimshell_interactive_cygwin_commands['termtter'] = {
+  \ 'name' : 'termtter',
+  \ 'kind' : 'execute',
+  \ 'description' : 'git [{options}...] {command}',
+\}
 
 function! s:vimshell_my_settings()
 "  imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
@@ -284,7 +289,7 @@ let g:vimfiler_as_default_explorer = 1
 "             unite              "
 """"""""""""""""""""""""""""""""""
 
-let g:unite_update_time = 1000
+"let g:unite_update_time = 200
 let g:unite_source_file_mru_time_format = ''
 let g:unite_enable_start_insert = 1
 
