@@ -262,6 +262,11 @@ let g:vimshell_interactive_cygwin_commands['git'] = {
   \ 'kind' : 'execute',
   \ 'description' : 'git [{options}...] {command}',
 \}
+let g:vimshell_interactive_cygwin_commands['termtter'] = {
+  \ 'name' : 'termtter',
+  \ 'kind' : 'execute',
+  \ 'description' : 'git [{options}...] {command}',
+\}
 
 function! s:vimshell_my_settings()
 "  imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
