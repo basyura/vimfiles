@@ -16,12 +16,14 @@ downcase
 false
 grep
 initialize
+inspect
 instance_methods
 instance_variables
 nesting
 private_instance_methods
 puts
 respond_to?
+split
 super
 superclass
 true
