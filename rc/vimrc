@@ -211,8 +211,9 @@ let g:neocomplcache_lock_buffer_name_pattern = '*.log\|.*fuf.*\|unite'
 " 自動選択しないパターン
 let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell\|unite'
 " キャッシュ中に、メッセージをCommand-lineに表示しない
-"
 let g:neocomplcache_enable_caching_message = 0
+" キー入力時にキーワード補完を行う入力数を制御する。
+let g:neocomplcache_auto_completion_start_length = 3
 "入力に大文字が含まれている場合は、大文字・小文字を無視しない 
 "let g:neocomplcache_enable_smart_case = 0
 " 辞書読み込み
@@ -226,10 +227,10 @@ inoremap <C-k> <C-o>D
 " C-nでneocomplcache補完
 inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 " C-pでkeyword補完
-inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
+"inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
 " 補完候補が出ていたら確定、なければ改行
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
-inoremap <expr><C-e> pumvisible() ? neocomplcache#close_popup() : "<End>"
+"inoremap <expr><C-e> pumvisible() ? neocomplcache#close_popup() : "<End>"
 " 補完をキャンセル
 inoremap <expr><C-c>  neocomplcache#cancel_popup()
 " 補完をアンドゥ
@@ -276,6 +277,8 @@ function! s:vimshell_my_settings()
   nnoremap <buffer> <CR> Go$ 
   imap <buffer> <C-x>     <ESC><C-w>h:on<CR>
   "imap <buffer> <CR>      <Plug>(vimshell_enter)<C-x>i
+  nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
+  :NeoComplCacheAutoCompletionLength 3
 endfunction
 
 

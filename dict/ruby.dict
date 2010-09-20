@@ -27,3 +27,6 @@ split
 super
 superclass
 true
+class_eval
+assert_equal
+Object
