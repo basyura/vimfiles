@@ -11,6 +11,7 @@ endif
 
 if &termencoding == ''
   let &termencoding="utf-8"
+"  let &termencoding="cp932"
 endif
 
 let mapleader = "m"
@@ -175,6 +176,8 @@ nnoremap <silent> <ESC> :noh<CR>
 nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> <C-]>
 
+nnoremap <silent> <Leader>u  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+
 inoremap <silent><C-o> <ESC>o
 
 vnoremap <C-e> <End><Left>
@@ -268,6 +271,11 @@ let g:vimshell_interactive_cygwin_commands['termtter'] = {
   \ 'kind' : 'execute',
   \ 'description' : 'git [{options}...] {command}',
 \}
+let g:vimshell_interactive_cygwin_commands['irb'] = {
+  \ 'name' : 'irb',
+  \ 'kind' : 'execute',
+  \ 'description' : 'git [{options}...] {command}',
+\}
 
 function! s:vimshell_my_settings()
 "  imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
@@ -278,6 +286,7 @@ function! s:vimshell_my_settings()
   imap <buffer> <C-x>     <ESC><C-w>h:on<CR>
   "imap <buffer> <CR>      <Plug>(vimshell_enter)<C-x>i
   nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
+  inoremap <C-v> <C-R>+
   :NeoComplCacheAutoCompletionLength 3
 endfunction
 
@@ -295,16 +304,18 @@ let g:vimfiler_as_default_explorer = 1
 "let g:unite_update_time = 200
 let g:unite_source_file_mru_time_format = ''
 let g:unite_enable_start_insert = 1
+let g:unite_source_file_mru_ignore_pattern='.*\/$\|.*Application\ Data.*'
 
 nnoremap <silent> <C-r>  :<C-u>Unite file_mru<CR>
 nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
 nnoremap <silent> <Leader>. :<C-u>Unite buffer <CR>
 nnoremap <silent> <Leader>d :<C-u>Unite file<CR>
+nnoremap <silent> <Leader>b :<C-u>Unite bookmark<CR>
 
 function! s:unite_my_settings()
   " Overwrite settings.
   imap <buffer> jj <Plug>(unite_insert_leave)
-  imap <buffer> <ESC> <ESC><ESC>
+  imap <buffer> <ESC> <Plug>(unite_exit)
   nnoremap <buffer> t G
   "startinsert
 endfunction
@@ -362,7 +373,7 @@ nnoremap <Space>fr   :<C-u>FriendsTwitter<Enter>
 nnoremap <Space>re   :<C-u>RepliesTwitter<Enter>
 nnoremap <Space>tt   :<C-u>ListTwitter tottoruby<Enter>
 nnoremap <Space>nn   :<C-u>NextTwitter<Enter>
-nnoremap <Leader>u   yw:UserTwitter <C-R>+<CR>
+"nnoremap <Leader>u   yw:UserTwitter <C-R>+<CR>
 
 if has('mac')
   let twitvim_browser_cmd = "open -a firefox "
