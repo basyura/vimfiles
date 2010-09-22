@@ -328,11 +328,13 @@ let g:hatena_user = 'basyura'
 "let g:hatena_edit_new_tab = 1
 " vimwiki
 
-if has('mac')
-  let g:vimwiki_list = [{'path':'~/dropbox/vimwiki/text/', 'path_html':'~/dropbox/vimwiki/html/'}]
-else
-  let g:vimwiki_list = [{'path': "Z:/text", 'path_html/': "Z:/html/"}]
-endif
+if !exists('g:vimwiki_list')
+  if has('mac')
+    let g:vimwiki_list = [{'path':'~/dropbox/vimwiki/text/', 'path_html':'~/dropbox/vimwiki/html/'}]
+  else
+    let g:vimwiki_list = [{'path': "Z:/text", 'path_html/': "Z:/html/"}]
+  endif
+end
 " taglist
 let g:Tlist_GainFocus_On_ToggleOpen = 1
 let g:Tlist_Show_One_File = 1
