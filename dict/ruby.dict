@@ -30,3 +30,4 @@ true
 class_eval
 assert_equal
 Object
+Fixnum
