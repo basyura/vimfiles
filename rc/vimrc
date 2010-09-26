@@ -179,6 +179,7 @@ nnoremap <Leader><Leader> <C-]>
 nnoremap <silent> <Leader>u  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
 inoremap <silent><C-o> <ESC>o
+inoremap <C-j> <ESC>
 inoremap jj <ESC>
 inoremap kk <ESC><S-o>
 
@@ -226,7 +227,7 @@ noremap  <Space>d. :<C-u>NeoComplCacheCachingDictionary<Enter>
 " <TAB> completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " C-jでオムニ補完
-inoremap <expr> <C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<C-p>"
+"inoremap <expr> <C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<C-p>"
 " C-kを押すと行末まで削除
 inoremap <C-k> <C-o>D
 " C-nでneocomplcache補完
