@@ -31,3 +31,6 @@ class_eval
 assert_equal
 Object
 Fixnum
+instance_variable_set
+instance_variable_get
+extend

@@ -179,6 +179,8 @@ nnoremap <Leader><Leader> <C-]>
 nnoremap <silent> <Leader>u  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
 inoremap <silent><C-o> <ESC>o
+inoremap jj <ESC>
+inoremap kk <ESC><S-o>
 
 vnoremap <C-e> <End><Left>
 
@@ -406,6 +408,10 @@ augroup vimrc-local
   autocmd!
   autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
 augroup END
+
+
+" カーソル位置の highlight グループを取得する．
+command! -nargs=0 GetHighlightingGroup echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans<' . synIDattr(synID(line('.'),col('.'),0),'name') . '> lo<' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name') . '>'
 
 function! s:vimrc_local(loc)
 "  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
