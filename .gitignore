@@ -4,9 +4,7 @@ vimana
 .VimballRecord
 plugins/hatena-vim/cookies/*
 plugins/hatena-vim
-plugins/quickrun/*
 .DS_Store
 .git
 swp/*
 backup/*
-plugins/*
