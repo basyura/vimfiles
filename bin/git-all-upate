@@ -1,12 +1,15 @@
 #!/bin/sh
 
-cd ~/.vim/plugins
+cd ~/.vim/gitplugins
 
 pwd
 
 files=`ls`
 
 for path in ${files}; do
+  if test ${path} = 'deleteme' ; then
+    continue
+  fi
   echo '++++++++++++++++++++++++++++++++++++++++++++++++++++++'
   cd ${path}
   pwd
