@@ -182,6 +182,7 @@ nnoremap <Leader><Leader> <C-]>
 inoremap <silent><C-o> <ESC>o
 inoremap <C-j> <ESC>
 inoremap jj <ESC>
+noremap <C-j> <ESC>
 inoremap kk <ESC><S-o>
 
 vnoremap <C-e> <End><Left>
@@ -305,7 +306,7 @@ let g:vimfiler_as_default_explorer = 1
 """"""""""""""""""""""""""""""""""
 "      unite or fuzzyfinder      "
 """"""""""""""""""""""""""""""""""
-if exists('use_fuzzy_finder')
+if exists('use_fuzzy_finder') && use_fuzzy_finder == 1
   "let g:fuf_keyOpen = ":"
   let g:fuf_modesDisable = ['mrucmd']
   let g:fuf_maxMenuWidth = 90
@@ -335,7 +336,9 @@ let g:unite_source_file_mru_ignore_pattern='.*\/$\|.*Application\ Data.*'
 
 function! s:unite_my_settings()
   " Overwrite settings.
-  imap <buffer> jj <Plug>(unite_insert_leave)
+  "imap <buffer> jj <Plug>(unite_insert_leave)
+  imap <buffer> jj <Plug>(unite_exit)
+  imap <buffer> <C-j> <Plug>(unite_exit)
   imap <buffer> <ESC> <Plug>(unite_exit)
   nnoremap <buffer> t G
   "startinsert
