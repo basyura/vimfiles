@@ -293,6 +293,8 @@ function! s:vimshell_my_settings()
   nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
   inoremap <C-v> <C-R>+
   inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+  imap <buffer> <C-o> <Plug>(vimshell_enter)
+
   :NeoComplCacheAutoCompletionLength 3
 endfunction
 
