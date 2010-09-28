@@ -307,6 +307,9 @@ let g:vimfiler_as_default_explorer = 1
 "      unite or fuzzyfinder      "
 """"""""""""""""""""""""""""""""""
 if exists('use_fuzzy_finder') && use_fuzzy_finder == 1
+  " 読み込んだことにしたいけどエラー出るのでコメントアウト
+  "let g:loaded_unite = 1
+
   "let g:fuf_keyOpen = ":"
   let g:fuf_modesDisable = ['mrucmd']
   let g:fuf_maxMenuWidth = 90
@@ -319,6 +322,9 @@ if exists('use_fuzzy_finder') && use_fuzzy_finder == 1
   nnoremap <C-r> :FufMruFile<CR>
   nnoremap <Leader>b :FufBookmarkFile<CR>
 else
+  " 読み込んだことにする
+  let g:fuf_loaded = 1
+
   nnoremap <silent> <C-r>  :<C-u>Unite file_mru<CR>
   nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
   nnoremap <silent> <Leader>. :<C-u>Unite buffer <CR>
