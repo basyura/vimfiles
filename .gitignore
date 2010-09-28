@@ -5,6 +5,7 @@ vimana
 plugins/hatena-vim/cookies/*
 plugins/hatena-vim
 plugins/vimshell
+gitplugins/*
 .DS_Store
 .git
 swp/*
