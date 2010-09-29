@@ -354,7 +354,7 @@ function! s:unite_my_settings()
   imap <buffer> jj <Plug>(unite_exit)
   imap <buffer> <C-j> <Plug>(unite_exit)
   imap <buffer> <ESC> <Plug>(unite_exit)
-  nnoremap <buffer> t G
+	imap <buffer> <C-o> <Plug>(unite_insert_leave):<C-u>call unite#mappings#do_action('above')<CR>
   "startinsert
 endfunction
 
