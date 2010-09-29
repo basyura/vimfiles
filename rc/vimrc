@@ -283,8 +283,8 @@ let g:vimshell_interactive_cygwin_commands['irb'] = {
 \}
 
 function! s:vimshell_my_settings()
-"  imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
-  imap <buffer><expr> <CR> (pumvisible() ? "<C-y><Tab>" : "<Plug>(vimshell_enter)")
+" imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
+  "imap <buffer><expr> <CR> (pumvisible() ? "<C-y><Tab>" : "<Plug>(vimshell_enter)")
   inoremap <buffer> <C-x> <ESC><C-w>h:on<CR>
   inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer <CR>
   inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>Unite file_mru <CR>
@@ -296,8 +296,11 @@ function! s:vimshell_my_settings()
   inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
   "imap <buffer><expr> <C-o> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)<Tab>")
   imap <buffer> <C-o> <Plug>(vimshell_enter)
+  inoremap <buffer> <C-l> <C-y>
+  imap <buffer> <C-s> <Plug>(vimshell_history_complete_whole)
 
   :NeoComplCacheAutoCompletionLength 3
+  ":NeoComplCacheLock
 endfunction
 
 
