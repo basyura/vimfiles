@@ -146,9 +146,6 @@ imap <C-v> <C-R>+
 map  <C-a><C-a> ggvG$
 "貼り付け
 map  <C-v> "+gP
-" バッファリストを表示
-map <silent> <F3> :call BufferList()<CR>
-map <silent> <C-l> <ESC>:call BufferList()<CR>
 " gvim で q → bd をしてる用
 map <C-q><C-q><C-q> ZQ
 
