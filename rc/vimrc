@@ -328,6 +328,7 @@ if exists('use_fuzzy_finder') && use_fuzzy_finder == 1
   nnoremap <Leader>f :FufFile **/
   nnoremap <C-r> :FufMruFile<CR>
   nnoremap <Leader>b :FufBookmarkFile<CR>
+  nnoremap <C-l> :FufBufferTag<CR>
 else
   " 読み込んだことにする
   let g:fuf_loaded = 1
