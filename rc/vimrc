@@ -260,6 +260,8 @@ let g:vimshell_edit_no_split = 1
 let g:vimshell_interactive_cygwin_path = 'D:/develop/dev/cygwin/bin'
 let g:vimshell_interactive_cygwin_home = 'D:/develop/dev/cygwin/home/Administrator'
 let g:vimshell_split_command = 'split'
+" ディレクトリの補完時に/を補います
+let g:vimshell_enable_auto_slash = 1
 if !exists('g:vimshell_interactive_cygwin_commands')
   let g:vimshell_interactive_cygwin_commands = {}
 endif
@@ -288,7 +290,7 @@ function! s:vimshell_my_settings()
   nnoremap <buffer> <CR> Go$ 
   imap <buffer> <C-x>     <ESC><C-w>h:on<CR>
   "imap <buffer> <CR>      <Plug>(vimshell_enter)<C-x>i
-  nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
+  nnoremap <buffer><silent> <C-n>  :<C-u>Unite buffer <CR>
   inoremap <C-v> <C-R>+
   inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
   "imap <buffer><expr> <C-o> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)<Tab>")
@@ -316,7 +318,7 @@ if exists('use_fuzzy_finder') && use_fuzzy_finder == 1
 
   "let g:fuf_keyOpen = ":"
   let g:fuf_modesDisable = ['mrucmd']
-  let g:fuf_maxMenuWidth = 90
+  "let g:fuf_maxMenuWidth = 90
   let g:fuf_mrufile_exclude = ''
   let g:fuf_timeFormat = ''
 
@@ -328,7 +330,8 @@ if exists('use_fuzzy_finder') && use_fuzzy_finder == 1
   nnoremap <C-l> :FufBufferTag<CR>
 else
   " 読み込んだことにする
-  let g:fuf_loaded = 1
+  let g:fuf_modesDisable = ['mrucmd','mrufile','file','coveragefile']
+  nnoremap <C-l> :FufBufferTag<CR>
 
   nnoremap <silent> <C-r>  :<C-u>Unite file_mru<CR>
   nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
