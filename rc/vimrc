@@ -106,6 +106,12 @@ augroup MyGroup
   autocmd FileType vimshell call s:vimshell_my_settings()
   autocmd FileType unite call s:unite_my_settings()
   autocmd CmdwinEnter * call s:init_cmdwin()
+
+  autocmd FileType lingr-rooms :setlocal nonu
+  autocmd FileType lingr-rooms :setlocal nowrap
+  autocmd FileType lingr-members :setlocal nonu
+  autocmd FileType lingr-members :setlocal nowrap
+  autocmd FileType lingr-messages :setlocal nonu
 augroup END
 
 
@@ -174,7 +180,13 @@ nnoremap <Leader>w :w<CR>
 nnoremap <silent> <ESC> :noh<CR>
 nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> <C-]>
-
+nnoremap <C-x><C-b> :tabprevious<CR>
+nnoremap <Space>d :<C-u>pwd<CR>
+nnoremap <C-l> :FufBufferTag<CR>
+nnoremap <C-t> :FufTag<CR>
+nnoremap <C-x><C-x> :tabnew<CR>
+nnoremap <C-x><C-l> :tabnext<CR>
+nnoremap <C-x><C-h> :tabprevious<CR>
 
 inoremap <silent><C-o> <ESC>o
 inoremap <C-j> <ESC>
@@ -197,6 +209,7 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'objc'       : $HOME . '/.vim/dict/objc.dict',
     \ 'javascript' : $HOME . '/.vim/dict/js.dict',
     \ 'ruby'       : $HOME . '/.vim/dict/ruby.dict',
+    \ 'eruby'      : $HOME . '/.vim/dict/ruby.dict',
     \ 'java'       : $HOME . '/.vim/dict/java.dict',
     \ 'default'    : $HOME . '/.vim/dict/default.dict'
 \ }
@@ -221,6 +234,8 @@ let g:neocomplcache_enable_caching_message = 0
 let g:neocomplcache_auto_completion_start_length = 3
 "入力に大文字が含まれている場合は、大文字・小文字を無視しない 
 "let g:neocomplcache_enable_smart_case = 0
+" セパレータ補完
+"let g:neocomplcache_enable_auto_delimiter = 1
 " 辞書読み込み
 noremap  <Space>d. :<C-u>NeoComplCacheCachingDictionary<Enter>
 " <TAB> completion.
@@ -327,18 +342,17 @@ if exists('use_fuzzy_finder') && use_fuzzy_finder == 1
   nnoremap <Leader>f :FufFile **/
   nnoremap <C-r> :FufMruFile<CR>
   nnoremap <Leader>b :FufBookmarkFile<CR>
-  nnoremap <C-l> :FufBufferTag<CR>
 else
   " 読み込んだことにする
   let g:fuf_modesDisable = ['mrucmd','mrufile','file','coveragefile']
-  nnoremap <C-l> :FufBufferTag<CR>
 
   nnoremap <silent> <C-r>  :<C-u>Unite file_mru<CR>
   nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
   nnoremap <silent> <Leader>. :<C-u>Unite buffer <CR>
   nnoremap <silent> <Leader>d :<C-u>Unite file<CR>
   nnoremap <silent> <Leader>b :<C-u>Unite bookmark<CR>
-  nnoremap <silent> <Leader>u  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+  nnoremap <silent> <Leader>u  :<C-u>Unite buffer file_mru bookmark file<CR>
+  nnoremap <Leader>f  :<C-u>Unite file_rec -input=
 end
 
 
@@ -350,8 +364,8 @@ let g:unite_source_file_mru_ignore_pattern='.*\/$\|.*Application\ Data.*'
 
 function! s:unite_my_settings()
   " Overwrite settings.
-  "imap <buffer> jj <Plug>(unite_insert_leave)
-  imap <buffer> jj <Plug>(unite_exit)
+  imap <buffer> jj <Plug>(unite_insert_leave)
+  "imap <buffer> jj <Plug>(unite_exit)
   imap <buffer> <C-j> <Plug>(unite_exit)
   imap <buffer> <ESC> <Plug>(unite_exit)
 	imap <buffer> <C-o> <Plug>(unite_insert_leave):<C-u>call unite#mappings#do_action('above')<CR>
@@ -438,16 +452,15 @@ function! FullScreen()
   set lines=43
 endfunction
 
+
+" カーソル位置の highlight グループを取得する．
+command! -nargs=0 GetHighlightingGroup echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans<' . synIDattr(synID(line('.'),col('.'),0),'name') . '> lo<' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name') . '>'
+
 " Load settings for each location.
 augroup vimrc-local
   autocmd!
   autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
 augroup END
-
-
-" カーソル位置の highlight グループを取得する．
-command! -nargs=0 GetHighlightingGroup echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans<' . synIDattr(synID(line('.'),col('.'),0),'name') . '> lo<' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name') . '>'
-
 function! s:vimrc_local(loc)
 "  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
 "  for i in reverse(filter(files, 'filereadable(v:val)'))
