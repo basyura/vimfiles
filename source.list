@@ -1,10 +1,12 @@
 http://github.com/Shougo/fakecygpty.git
-http://github.com/motemen/git-vim.git
 http://github.com/Shougo/neocomplcache.git
 http://github.com/Shougo/unite.vim.git
 http://github.com/Shougo/vimfiler.git
 http://github.com/Shougo/vimproc.git
-http://github.com/thinca/vim-quickrun.git
-http://github.com/tpope/vim-rails.git
 http://github.com/Shougo/vimshell.git
+http://github.com/motemen/git-vim.git
+http://github.com/tpope/vim-rails.git
+http://github.com/tsukkee/lingr-vim.git
 http://github.com/tyru/vim-altercmd.git
+http://github.com/ujihisa/quickrun.git
+https://github.com/basyura/hatena-vim.git
