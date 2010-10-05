@@ -105,6 +105,7 @@ augroup MyGroup
 
   autocmd FileType vimshell call s:vimshell_my_settings()
   autocmd FileType unite call s:unite_my_settings()
+  autocmd FileType fuf   call s:fuf_my_settings()
   autocmd CmdwinEnter * call s:init_cmdwin()
 
   autocmd FileType lingr-rooms :setlocal nonu
@@ -342,7 +343,8 @@ if exists('use_fuzzy_finder') && use_fuzzy_finder == 1
   "let g:fuf_maxMenuWidth = 90
   let g:fuf_mrufile_exclude = ''
   let g:fuf_timeFormat = ''
-
+  let g:fuf_keyOpenVsplit = '<C-v>'
+  let g:fuf_keyOpenSplit  = '<C-k>'
   nnoremap <silent> <C-n> :FufBuffer<CR>
   nnoremap <silent> <Leader>d :<C-u>CD<CR>:FufFile<CR>
   nnoremap <Leader>f :FufFile **/
@@ -376,6 +378,9 @@ function! s:unite_my_settings()
   imap <buffer> <ESC> <Plug>(unite_exit)
 	imap <buffer> <C-o> <Plug>(unite_insert_leave):<C-u>call unite#mappings#do_action('above')<CR>
   "startinsert
+endfunction
+function! s:fuf_my_settings()
+  inoremap <buffer> <C-j> <ESC>
 endfunction
 
 """"""""""""""""""""""""""""""""""
