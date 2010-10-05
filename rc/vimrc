@@ -296,6 +296,11 @@ let g:vimshell_interactive_cygwin_commands['irb'] = {
   \ 'kind' : 'execute',
   \ 'description' : 'git [{options}...] {command}',
 \}
+let g:vimshell_interactive_cygwin_commands['rake'] = {
+  \ 'name' : 'rake',
+  \ 'kind' : 'execute',
+  \ 'description' : 'git [{options}...] {command}',
+\}
 
 function! s:vimshell_my_settings()
 " imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
