@@ -277,6 +277,7 @@ let g:vimshell_interactive_cygwin_home = 'D:/develop/dev/cygwin/home/Administrat
 let g:vimshell_split_command = 'split'
 " ディレクトリの補完時に/を補います
 let g:vimshell_enable_auto_slash = 1
+"let g:vimshell_split_command = "vsplit"
 if !exists('g:vimshell_interactive_cygwin_commands')
   let g:vimshell_interactive_cygwin_commands = {}
 endif
