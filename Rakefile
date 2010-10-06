@@ -6,12 +6,14 @@ task :all_update => [:pull_vimfiles , :clone_github , :update_github] do
 end
 
 task :pull_vimfiles do
-  puts "■ pull vimfiles ..."
+  puts ""
+  puts ">>> pull vimfiles ..."
   puts `git pull`
 end
 
 task :clone_github do
-  puts "■ check github repositories ..."
+  puts ""
+  puts ">>> check github repositories ..."
   f = open("source.list" , "r")
   f.read.each_line do |line|
     line.chomp!
@@ -29,14 +31,15 @@ task :clone_github do
 end
 
 task :update_github do
-  puts "■ pull github repositories ..."
+  puts ""
+  puts ">>> pull github repositories ..."
   Dir.chdir("gitplugins")
   Dir.glob("*") do |d|
     next unless File.directory? d
     Dir.chdir(d)
+    puts ""
     puts "pull #{d} ..."
     puts `git pull`
-    puts ""
     Dir.chdir("..")
   end
   Dir.chdir("..")
