@@ -182,7 +182,7 @@ vmap <C-b> :Batch<CR>
 
 nnoremap <M-k> <C-y>
 nnoremap <M-j> <C-e>
-nnoremap <C-s> :Scratch<CR>
+"nnoremap <C-s> :Scratch<CR>
 nnoremap <Leader>s :Scratch<CR>
 nnoremap <Leader>v :VimShell<CR>
 nnoremap <Leader>w :w<CR>
