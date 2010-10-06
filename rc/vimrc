@@ -19,6 +19,14 @@ endif
 let mapleader = "m"
 
 """"""""""""""""""""""""""""""""""
+"        init variables          "
+""""""""""""""""""""""""""""""""""
+
+if !exists('g:use_fuzzy_finder')
+  let g:use_fuzzy_finder = 0
+endif
+
+""""""""""""""""""""""""""""""""""
 "           settings             "
 """"""""""""""""""""""""""""""""""
 
@@ -307,21 +315,25 @@ function! s:vimshell_my_settings()
 " imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
   "imap <buffer><expr> <CR> (pumvisible() ? "<C-y><Tab>" : "<Plug>(vimshell_enter)")
   inoremap <buffer> <C-x> <ESC><C-w>h:on<CR>
-  inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer <CR>
-  inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>Unite file_mru <CR>
   nnoremap <buffer> <CR> Go$ 
   imap <buffer> <C-x>     <ESC><C-w>h:on<CR>
-  "imap <buffer> <CR>      <Plug>(vimshell_enter)<C-x>i
-  nnoremap <buffer><silent> <C-n>  :<C-u>Unite buffer <CR>
   inoremap <C-v> <C-R>+
   inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-  "imap <buffer><expr> <C-o> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)<Tab>")
   imap <buffer> <C-o> <Plug>(vimshell_enter)
   inoremap <buffer> <C-l> <C-y>
   imap <buffer> <C-s> <Plug>(vimshell_history_complete_whole)
 
+  if g:use_fuzzy_finder == 1
+    inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>FufBuffer<CR>
+    inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>FufMruFile<CR>
+    nnoremap <buffer><silent> <C-n>  :<C-u>FufBuffer<CR>
+  else
+    inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer <CR>
+    inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>Unite file_mru <CR>
+    nnoremap <buffer><silent> <C-n>  :<C-u>Unite buffer <CR>
+  endif
+
   :NeoComplCacheAutoCompletionLength 3
-  ":NeoComplCacheLock
 endfunction
 
 
@@ -334,7 +346,7 @@ let g:vimfiler_as_default_explorer = 1
 """"""""""""""""""""""""""""""""""
 "      unite or fuzzyfinder      "
 """"""""""""""""""""""""""""""""""
-if exists('use_fuzzy_finder') && use_fuzzy_finder == 1
+if g:use_fuzzy_finder == 1
   " 読み込んだことにしたいけどエラー出るのでコメントアウト
   "let g:loaded_unite = 1
 
