@@ -2007,6 +2007,7 @@ function! s:twitter_win_syntax(wintype)
     if has("syntax") && exists("g:syntax_on")
 	" Reset syntax items in case there are any predefined in the new buffer.
 	syntax clear
+  setfiletype twitvim
 
 	" Twitter user name: from start of line to first colon.
 	syntax match twitterUser /^.\{-1,}:/
