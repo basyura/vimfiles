@@ -195,7 +195,6 @@ nnoremap <Leader>w :w<CR>
 nnoremap <silent> <ESC> :noh<CR>
 nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> <C-]>
-nnoremap <C-x><C-b> :tabprevious<CR>
 nnoremap <Space>d :<C-u>pwd<CR>
 nnoremap <C-l> :FufBufferTag<CR>
 nnoremap <C-t> :FufTag<CR>
