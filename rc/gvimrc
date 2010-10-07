@@ -64,7 +64,6 @@ set cmdheight=1
 "*                   保存・終了                        *
 "*******************************************************
 " gui の時だけ。Terminal ではやらない。
-call altercmd#load() "これを書かないとコマンド定義されない
 command! -nargs=? -bang WQ  call s:WriteClose('<bang>')
 function! s:WriteClose(bang)
   if a:bang == ''

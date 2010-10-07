@@ -30,6 +30,8 @@ endif
 "           settings             "
 """"""""""""""""""""""""""""""""""
 
+call altercmd#load()
+
 if filereadable($HOME . '/.vimrc_secret')
   source ~/.vimrc_secret
 endif
@@ -112,8 +114,10 @@ augroup MyGroup
   autocmd FileType vimwiki NeoComplCacheLock
 
   autocmd FileType vimshell call s:vimshell_my_settings()
-  autocmd FileType unite call s:unite_my_settings()
-  autocmd FileType fuf   call s:fuf_my_settings()
+  autocmd FileType unite    call s:unite_my_settings()
+  autocmd FileType fuf      call s:fuf_my_settings()
+  autocmd FileType scratch  call s:scratch_my_settings()
+
   autocmd CmdwinEnter * call s:init_cmdwin()
 
   autocmd FileType lingr-rooms :setlocal nonu
@@ -184,6 +188,7 @@ nnoremap <M-k> <C-y>
 nnoremap <M-j> <C-e>
 "nnoremap <C-s> :Scratch<CR>
 nnoremap <Leader>s :Scratch<CR>
+"nnoremap <Leader>s :sp ~/.[scratch]<CR>
 nnoremap <Leader>v :VimShell<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <silent> <ESC> :noh<CR>
@@ -357,6 +362,7 @@ if g:use_fuzzy_finder == 1
   let g:fuf_timeFormat = ''
   let g:fuf_keyOpenVsplit = '<C-v>'
   let g:fuf_keyOpenSplit  = '<C-k>'
+  let g:fuf_enumeratingLimit = 20
   nnoremap <silent> <C-n> :FufBuffer<CR>
   nnoremap <silent> <Leader>d :<C-u>CD<CR>:FufFile<CR>
   nnoremap <Leader>f :FufFile **/
@@ -400,6 +406,7 @@ endfunction
 """"""""""""""""""""""""""""""""""
 " hatena.vim
 let g:hatena_user = 'basyura'
+let g:scratchBackupFile=$HOME . "/.scratch.txt"
 "let g:hatena_edit_new_tab = 1
 " vimwiki
 
@@ -558,6 +565,9 @@ command! MoveLeft call s:MoveLeft()
 function! s:MoveLeft()
   winpos 0 0
   set lines=43
+endfunction
+function! s:scratch_my_settings()
+  AlterCommand <buffer> q :Scratch<CR>
 endfunction
 
 "color for cygwin

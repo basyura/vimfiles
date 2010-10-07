@@ -105,10 +105,10 @@ function! <SID>ShowScratchBuffer()
   setlocal nobuflisted
   setlocal noswapfile
   setlocal noro
+  setfiletype scratch
   nmap <buffer> <silent> <Plug>ShowScratchBuffer :hide<cr>
   imap <buffer> <silent> <Plug>InsShowScratchBuffer <c-o>:hide<cr>
   command! -buffer -nargs=0 Scratch :hide
-  on
 endfunction
 
 function! s:BackupScratchBuffer()
