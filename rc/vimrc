@@ -364,7 +364,8 @@ if g:use_fuzzy_finder == 1
   let g:fuf_keyOpenSplit  = '<C-k>'
   let g:fuf_enumeratingLimit = 20
   nnoremap <silent> <C-n> :FufBuffer<CR>
-  nnoremap <silent> <Leader>d :<C-u>CD<CR>:FufFile<CR>
+  "nnoremap <silent> <Leader>d :<C-u>CD<CR>:FufFile<CR>
+  nnoremap <Leader>d :<C-u>FufFile<CR>
   nnoremap <Leader>f :FufFile **/
   nnoremap <C-r> :FufMruFile<CR>
   nnoremap <Leader>b :FufBookmarkFile<CR>
