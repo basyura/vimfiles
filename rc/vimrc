@@ -380,7 +380,7 @@ else
   nnoremap <Leader>b :<C-u>Unite bookmark<CR>
 end
 
-nnoremap <silent> <Leader>u  :<C-u>Unite buffer file_mru bookmark file<CR>
+nnoremap <silent> <Leader>u  :<C-u>Unite buffer file file_mru bookmark<CR>
 
 "let g:unite_update_time = 200
 let g:unite_source_file_mru_time_format = ''
