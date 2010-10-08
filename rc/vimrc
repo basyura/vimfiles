@@ -363,25 +363,24 @@ if g:use_fuzzy_finder == 1
   let g:fuf_keyOpenVsplit = '<C-v>'
   let g:fuf_keyOpenSplit  = '<C-k>'
   let g:fuf_enumeratingLimit = 20
-  nnoremap <silent> <C-n> :FufBuffer<CR>
   "nnoremap <silent> <Leader>d :<C-u>CD<CR>:FufFile<CR>
+  nnoremap <C-r> :FufMruFile<CR>
+  nnoremap <C-n> :FufBuffer<CR>
   nnoremap <Leader>d :<C-u>FufFile<CR>
   nnoremap <Leader>f :FufFile **/
-  nnoremap <C-r> :FufMruFile<CR>
   nnoremap <Leader>b :FufBookmarkFile<CR>
 else
   " 読み込んだことにする
   let g:fuf_modesDisable = ['mrucmd','mrufile','file','coveragefile']
 
-  nnoremap <silent> <C-r>  :<C-u>Unite file_mru<CR>
-  nnoremap <silent> <C-n>  :<C-u>Unite buffer <CR>
-  nnoremap <silent> <Leader>. :<C-u>Unite buffer <CR>
-  nnoremap <silent> <Leader>d :<C-u>Unite file<CR>
-  nnoremap <silent> <Leader>b :<C-u>Unite bookmark<CR>
-  nnoremap <silent> <Leader>u  :<C-u>Unite buffer file_mru bookmark file<CR>
+  nnoremap <C-r>  :<C-u>Unite file_mru<CR>
+  nnoremap <C-n>  :<C-u>Unite buffer <CR>
+  nnoremap <Leader>d :<C-u>Unite file<CR>
   nnoremap <Leader>f  :<C-u>Unite file_rec -input=
+  nnoremap <Leader>b :<C-u>Unite bookmark<CR>
 end
 
+nnoremap <silent> <Leader>u  :<C-u>Unite buffer file_mru bookmark file<CR>
 
 "let g:unite_update_time = 200
 let g:unite_source_file_mru_time_format = ''
