@@ -489,7 +489,7 @@ command! -nargs=0 GetHighlightingGroup echo 'hi<' . synIDattr(synID(line('.'),co
 " Load settings for each location.
 augroup vimrc-local
   autocmd!
-  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+  autocmd BufNewFile,BufReadPost,BufWinEnter * call s:vimrc_local(expand('<afile>:p:h'))
 augroup END
 
 command! FindTags call s:vimrc_local(expand('<afile>:p:h'))
