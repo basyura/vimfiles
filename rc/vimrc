@@ -351,18 +351,19 @@ let g:vimfiler_as_default_explorer = 1
 """"""""""""""""""""""""""""""""""
 "      unite or fuzzyfinder      "
 """"""""""""""""""""""""""""""""""
+"let g:fuf_keyOpen = ":"
+"let g:fuf_maxMenuWidth = 90
+let g:fuf_modesDisable     = ['mrucmd']
+let g:fuf_mrufile_exclude  = ''
+let g:fuf_timeFormat       = ''
+let g:fuf_keyOpenVsplit    = '<C-v>'
+let g:fuf_keyOpenSplit     = '<C-k>'
+let g:fuf_enumeratingLimit = 20
+
 if g:use_fuzzy_finder == 1
   " 読み込んだことにしたいけどエラー出るのでコメントアウト
   "let g:loaded_unite = 1
 
-  "let g:fuf_keyOpen = ":"
-  let g:fuf_modesDisable = ['mrucmd']
-  "let g:fuf_maxMenuWidth = 90
-  let g:fuf_mrufile_exclude = ''
-  let g:fuf_timeFormat = ''
-  let g:fuf_keyOpenVsplit = '<C-v>'
-  let g:fuf_keyOpenSplit  = '<C-k>'
-  let g:fuf_enumeratingLimit = 20
   "nnoremap <silent> <Leader>d :<C-u>CD<CR>:FufFile<CR>
   nnoremap <C-r> :FufMruFile<CR>
   nnoremap <C-n> :FufBuffer<CR>
@@ -489,7 +490,8 @@ command! -nargs=0 GetHighlightingGroup echo 'hi<' . synIDattr(synID(line('.'),co
 " Load settings for each location.
 augroup vimrc-local
   autocmd!
-  autocmd BufNewFile,BufReadPost,BufWinEnter * call s:vimrc_local(expand('<afile>:p:h'))
+  "autocmd BufNewFile,BufReadPost,BufWinEnter * call s:vimrc_local(expand('<afile>:p:h'))
+  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
 augroup END
 
 command! FindTags call s:vimrc_local(expand('<afile>:p:h'))
@@ -499,6 +501,7 @@ function! s:vimrc_local(loc)
 "    source `=i`
 "  endfor
   let &l:tags=findfile('.tags' , '.;')
+"  let &tags=findfile('.tags' , '.;')
 endfunction
 
 

@@ -1,0 +1,571 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_JP_AUTHOR	Hirohito Higashi	/h_east@pop11.odn.ne.jp/
+!_TAG_PROGRAM_JP_URL	http://hp.vector.co.jp/authors/VA025040/	//
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.6b1J1	//
+FufGlobal	autoload/fuf.vim	/^augroup FufGlobal$/;"	a
+activateFufBuffer	autoload/fuf.vim	/^function s:activateFufBuffer()$/;"	f
+bookmark	autoload/fuf/bookmarkdir.vim	/^function s:bookmark(word)$/;"	f
+bookmarkHere	autoload/fuf/bookmarkfile.vim	/^function s:bookmarkHere(word)$/;"	f
+changeCoverage	autoload/fuf/coveragefile.vim	/^function s:changeCoverage(name)$/;"	f
+checkDataFileCompatibility	autoload/fuf.vim	/^function s:checkDataFileCompatibility()$/;"	f
+compareTimeDescending	autoload/fuf/buffer.vim	/^function s:compareTimeDescending(i1, i2)$/;"	f
+createChangeCoverageListener	autoload/fuf/coveragefile.vim	/^function s:createChangeCoverageListener()$/;"	f
+createDataBufferListener	autoload/fuf.vim	/^function s:createDataBufferListener(dataFile)$/;"	f
+createEditDataListener	autoload/fuf.vim	/^function s:createEditDataListener()$/;"	f
+deactivateFufBuffer	autoload/fuf.vim	/^function s:deactivateFufBuffer()$/;"	f
+enumHelpTags	autoload/fuf/help.vim	/^function s:enumHelpTags(tagFiles)$/;"	f
+enumItems	autoload/fuf/callbackfile.vim	/^function s:enumItems(dir)$/;"	f
+enumItems	autoload/fuf/coveragefile.vim	/^function s:enumItems()$/;"	f
+enumItems	autoload/fuf/dir.vim	/^function s:enumItems(dir)$/;"	f
+enumItems	autoload/fuf/file.vim	/^function s:enumItems(dir)$/;"	f
+enumNonCurrentItems	autoload/fuf/file.vim	/^function s:enumNonCurrentItems(dir, bufNrPrev, cache)$/;"	f
+enumTaggedFiles	autoload/fuf/taggedfile.vim	/^function s:enumTaggedFiles(tagFiles)$/;"	f
+enumTags	autoload/fuf/tag.vim	/^function s:enumTags(tagFiles)$/;"	f
+evaluateLearningRank	autoload/fuf.vim	/^function s:evaluateLearningRank(word, stats)$/;"	f
+expandAbbrevMap	autoload/fuf.vim	/^function s:expandAbbrevMap(pattern, abbrevMap)$/;"	f
+expandSearchDir	autoload/fuf/mrufile.vim	/^function s:expandSearchDir(dir, level)$/;"	f
+findItem	autoload/fuf/bookmarkdir.vim	/^function s:findItem(items, word)$/;"	f
+findItem	autoload/fuf/bookmarkfile.vim	/^function s:findItem(items, word)$/;"	f
+findItem	autoload/fuf/buffer.vim	/^function s:findItem(items, word)$/;"	f
+formatItemUsingCache	autoload/fuf/mrufile.vim	/^function s:formatItemUsingCache(item)$/;"	f
+fuf#addMode	autoload/fuf.vim	/^function fuf#addMode(modeName)$/;"	f
+fuf#bookmarkdir#createHandler	autoload/fuf/bookmarkdir.vim	/^function fuf#bookmarkdir#createHandler(base)$/;"	f
+fuf#bookmarkdir#getEditableDataNames	autoload/fuf/bookmarkdir.vim	/^function fuf#bookmarkdir#getEditableDataNames()$/;"	f
+fuf#bookmarkdir#getSwitchOrder	autoload/fuf/bookmarkdir.vim	/^function fuf#bookmarkdir#getSwitchOrder()$/;"	f
+fuf#bookmarkdir#onInit	autoload/fuf/bookmarkdir.vim	/^function fuf#bookmarkdir#onInit()$/;"	f
+fuf#bookmarkdir#renewCache	autoload/fuf/bookmarkdir.vim	/^function fuf#bookmarkdir#renewCache()$/;"	f
+fuf#bookmarkdir#requiresOnCommandPre	autoload/fuf/bookmarkdir.vim	/^function fuf#bookmarkdir#requiresOnCommandPre()$/;"	f
+fuf#bookmarkfile#createHandler	autoload/fuf/bookmarkfile.vim	/^function fuf#bookmarkfile#createHandler(base)$/;"	f
+fuf#bookmarkfile#getEditableDataNames	autoload/fuf/bookmarkfile.vim	/^function fuf#bookmarkfile#getEditableDataNames()$/;"	f
+fuf#bookmarkfile#getSwitchOrder	autoload/fuf/bookmarkfile.vim	/^function fuf#bookmarkfile#getSwitchOrder()$/;"	f
+fuf#bookmarkfile#onInit	autoload/fuf/bookmarkfile.vim	/^function fuf#bookmarkfile#onInit()$/;"	f
+fuf#bookmarkfile#renewCache	autoload/fuf/bookmarkfile.vim	/^function fuf#bookmarkfile#renewCache()$/;"	f
+fuf#bookmarkfile#requiresOnCommandPre	autoload/fuf/bookmarkfile.vim	/^function fuf#bookmarkfile#requiresOnCommandPre()$/;"	f
+fuf#buffer#createHandler	autoload/fuf/buffer.vim	/^function fuf#buffer#createHandler(base)$/;"	f
+fuf#buffer#getEditableDataNames	autoload/fuf/buffer.vim	/^function fuf#buffer#getEditableDataNames()$/;"	f
+fuf#buffer#getSwitchOrder	autoload/fuf/buffer.vim	/^function fuf#buffer#getSwitchOrder()$/;"	f
+fuf#buffer#onInit	autoload/fuf/buffer.vim	/^function fuf#buffer#onInit()$/;"	f
+fuf#buffer#renewCache	autoload/fuf/buffer.vim	/^function fuf#buffer#renewCache()$/;"	f
+fuf#buffer#requiresOnCommandPre	autoload/fuf/buffer.vim	/^function fuf#buffer#requiresOnCommandPre()$/;"	f
+fuf#buffertag#createHandler	autoload/fuf/buffertag.vim	/^function fuf#buffertag#createHandler(base)$/;"	f
+fuf#buffertag#getEditableDataNames	autoload/fuf/buffertag.vim	/^function fuf#buffertag#getEditableDataNames()$/;"	f
+fuf#buffertag#getSwitchOrder	autoload/fuf/buffertag.vim	/^function fuf#buffertag#getSwitchOrder()$/;"	f
+fuf#buffertag#onInit	autoload/fuf/buffertag.vim	/^function fuf#buffertag#onInit()$/;"	f
+fuf#buffertag#renewCache	autoload/fuf/buffertag.vim	/^function fuf#buffertag#renewCache()$/;"	f
+fuf#buffertag#requiresOnCommandPre	autoload/fuf/buffertag.vim	/^function fuf#buffertag#requiresOnCommandPre()$/;"	f
+fuf#callbackfile#createHandler	autoload/fuf/callbackfile.vim	/^function fuf#callbackfile#createHandler(base)$/;"	f
+fuf#callbackfile#getEditableDataNames	autoload/fuf/callbackfile.vim	/^function fuf#callbackfile#getEditableDataNames()$/;"	f
+fuf#callbackfile#getSwitchOrder	autoload/fuf/callbackfile.vim	/^function fuf#callbackfile#getSwitchOrder()$/;"	f
+fuf#callbackfile#launch	autoload/fuf/callbackfile.vim	/^function fuf#callbackfile#launch(initialPattern, partialMatching, prompt, exclude, listener)$/;"	f
+fuf#callbackfile#onInit	autoload/fuf/callbackfile.vim	/^function fuf#callbackfile#onInit()$/;"	f
+fuf#callbackfile#renewCache	autoload/fuf/callbackfile.vim	/^function fuf#callbackfile#renewCache()$/;"	f
+fuf#callbackfile#requiresOnCommandPre	autoload/fuf/callbackfile.vim	/^function fuf#callbackfile#requiresOnCommandPre()$/;"	f
+fuf#callbackitem#createHandler	autoload/fuf/callbackitem.vim	/^function fuf#callbackitem#createHandler(base)$/;"	f
+fuf#callbackitem#getEditableDataNames	autoload/fuf/callbackitem.vim	/^function fuf#callbackitem#getEditableDataNames()$/;"	f
+fuf#callbackitem#getSwitchOrder	autoload/fuf/callbackitem.vim	/^function fuf#callbackitem#getSwitchOrder()$/;"	f
+fuf#callbackitem#launch	autoload/fuf/callbackitem.vim	/^function fuf#callbackitem#launch(initialPattern, partialMatching, prompt, listener, items, forPath)$/;"	f
+fuf#callbackitem#onInit	autoload/fuf/callbackitem.vim	/^function fuf#callbackitem#onInit()$/;"	f
+fuf#callbackitem#renewCache	autoload/fuf/callbackitem.vim	/^function fuf#callbackitem#renewCache()$/;"	f
+fuf#callbackitem#requiresOnCommandPre	autoload/fuf/callbackitem.vim	/^function fuf#callbackitem#requiresOnCommandPre()$/;"	f
+fuf#changelist#createHandler	autoload/fuf/changelist.vim	/^function fuf#changelist#createHandler(base)$/;"	f
+fuf#changelist#getEditableDataNames	autoload/fuf/changelist.vim	/^function fuf#changelist#getEditableDataNames()$/;"	f
+fuf#changelist#getSwitchOrder	autoload/fuf/changelist.vim	/^function fuf#changelist#getSwitchOrder()$/;"	f
+fuf#changelist#onInit	autoload/fuf/changelist.vim	/^function fuf#changelist#onInit()$/;"	f
+fuf#changelist#renewCache	autoload/fuf/changelist.vim	/^function fuf#changelist#renewCache()$/;"	f
+fuf#changelist#requiresOnCommandPre	autoload/fuf/changelist.vim	/^function fuf#changelist#requiresOnCommandPre()$/;"	f
+fuf#compareRanks	autoload/fuf.vim	/^function fuf#compareRanks(i1, i2)$/;"	f
+fuf#countModifiedFiles	autoload/fuf.vim	/^function fuf#countModifiedFiles(files, time)$/;"	f
+fuf#coveragefile#createHandler	autoload/fuf/coveragefile.vim	/^function fuf#coveragefile#createHandler(base)$/;"	f
+fuf#coveragefile#getEditableDataNames	autoload/fuf/coveragefile.vim	/^function fuf#coveragefile#getEditableDataNames()$/;"	f
+fuf#coveragefile#getSwitchOrder	autoload/fuf/coveragefile.vim	/^function fuf#coveragefile#getSwitchOrder()$/;"	f
+fuf#coveragefile#onInit	autoload/fuf/coveragefile.vim	/^function fuf#coveragefile#onInit()$/;"	f
+fuf#coveragefile#renewCache	autoload/fuf/coveragefile.vim	/^function fuf#coveragefile#renewCache()$/;"	f
+fuf#coveragefile#requiresOnCommandPre	autoload/fuf/coveragefile.vim	/^function fuf#coveragefile#requiresOnCommandPre()$/;"	f
+fuf#defineKeyMappingInHandler	autoload/fuf.vim	/^function fuf#defineKeyMappingInHandler(key, func)$/;"	f
+fuf#defineLaunchCommand	autoload/fuf.vim	/^function fuf#defineLaunchCommand(CmdName, modeName, prefixInitialPattern, tempVars)$/;"	f
+fuf#dir#createHandler	autoload/fuf/dir.vim	/^function fuf#dir#createHandler(base)$/;"	f
+fuf#dir#getEditableDataNames	autoload/fuf/dir.vim	/^function fuf#dir#getEditableDataNames()$/;"	f
+fuf#dir#getSwitchOrder	autoload/fuf/dir.vim	/^function fuf#dir#getSwitchOrder()$/;"	f
+fuf#dir#onInit	autoload/fuf/dir.vim	/^function fuf#dir#onInit()$/;"	f
+fuf#dir#renewCache	autoload/fuf/dir.vim	/^function fuf#dir#renewCache()$/;"	f
+fuf#dir#requiresOnCommandPre	autoload/fuf/dir.vim	/^function fuf#dir#requiresOnCommandPre()$/;"	f
+fuf#echoError	autoload/fuf.vim	/^function fuf#echoError(msg)$/;"	f
+fuf#echoWarning	autoload/fuf.vim	/^function fuf#echoWarning(msg)$/;"	f
+fuf#editDataFile	autoload/fuf.vim	/^function fuf#editDataFile()$/;"	f
+fuf#enumExpandedDirsEntries	autoload/fuf.vim	/^function fuf#enumExpandedDirsEntries(dir, exclude)$/;"	f
+fuf#expandTailDotSequenceToParentDir	autoload/fuf.vim	/^function fuf#expandTailDotSequenceToParentDir(pattern)$/;"	f
+fuf#file#createHandler	autoload/fuf/file.vim	/^function fuf#file#createHandler(base)$/;"	f
+fuf#file#getEditableDataNames	autoload/fuf/file.vim	/^function fuf#file#getEditableDataNames()$/;"	f
+fuf#file#getSwitchOrder	autoload/fuf/file.vim	/^function fuf#file#getSwitchOrder()$/;"	f
+fuf#file#onInit	autoload/fuf/file.vim	/^function fuf#file#onInit()$/;"	f
+fuf#file#renewCache	autoload/fuf/file.vim	/^function fuf#file#renewCache()$/;"	f
+fuf#file#requiresOnCommandPre	autoload/fuf/file.vim	/^function fuf#file#requiresOnCommandPre()$/;"	f
+fuf#formatPrompt	autoload/fuf.vim	/^function fuf#formatPrompt(prompt, partialMatching, otherString)$/;"	f
+fuf#getCurrentTagFiles	autoload/fuf.vim	/^function fuf#getCurrentTagFiles()$/;"	f
+fuf#getDataFileTime	autoload/fuf.vim	/^function fuf#getDataFileTime(modeName, dataName)$/;"	f
+fuf#getFileLines	autoload/fuf.vim	/^function fuf#getFileLines(file)$/;"	f
+fuf#getModeNames	autoload/fuf.vim	/^function fuf#getModeNames()$/;"	f
+fuf#getRunningHandler	autoload/fuf.vim	/^function fuf#getRunningHandler()$/;"	f
+fuf#givencmd#createHandler	autoload/fuf/givencmd.vim	/^function fuf#givencmd#createHandler(base)$/;"	f
+fuf#givencmd#getEditableDataNames	autoload/fuf/givencmd.vim	/^function fuf#givencmd#getEditableDataNames()$/;"	f
+fuf#givencmd#getSwitchOrder	autoload/fuf/givencmd.vim	/^function fuf#givencmd#getSwitchOrder()$/;"	f
+fuf#givencmd#launch	autoload/fuf/givencmd.vim	/^function fuf#givencmd#launch(initialPattern, partialMatching, prompt, items)$/;"	f
+fuf#givencmd#onInit	autoload/fuf/givencmd.vim	/^function fuf#givencmd#onInit()$/;"	f
+fuf#givencmd#renewCache	autoload/fuf/givencmd.vim	/^function fuf#givencmd#renewCache()$/;"	f
+fuf#givencmd#requiresOnCommandPre	autoload/fuf/givencmd.vim	/^function fuf#givencmd#requiresOnCommandPre()$/;"	f
+fuf#givendir#createHandler	autoload/fuf/givendir.vim	/^function fuf#givendir#createHandler(base)$/;"	f
+fuf#givendir#getEditableDataNames	autoload/fuf/givendir.vim	/^function fuf#givendir#getEditableDataNames()$/;"	f
+fuf#givendir#getSwitchOrder	autoload/fuf/givendir.vim	/^function fuf#givendir#getSwitchOrder()$/;"	f
+fuf#givendir#launch	autoload/fuf/givendir.vim	/^function fuf#givendir#launch(initialPattern, partialMatching, prompt, items)$/;"	f
+fuf#givendir#onInit	autoload/fuf/givendir.vim	/^function fuf#givendir#onInit()$/;"	f
+fuf#givendir#renewCache	autoload/fuf/givendir.vim	/^function fuf#givendir#renewCache()$/;"	f
+fuf#givendir#requiresOnCommandPre	autoload/fuf/givendir.vim	/^function fuf#givendir#requiresOnCommandPre()$/;"	f
+fuf#givenfile#createHandler	autoload/fuf/givenfile.vim	/^function fuf#givenfile#createHandler(base)$/;"	f
+fuf#givenfile#getEditableDataNames	autoload/fuf/givenfile.vim	/^function fuf#givenfile#getEditableDataNames()$/;"	f
+fuf#givenfile#getSwitchOrder	autoload/fuf/givenfile.vim	/^function fuf#givenfile#getSwitchOrder()$/;"	f
+fuf#givenfile#launch	autoload/fuf/givenfile.vim	/^function fuf#givenfile#launch(initialPattern, partialMatching, prompt, items)$/;"	f
+fuf#givenfile#onInit	autoload/fuf/givenfile.vim	/^function fuf#givenfile#onInit()$/;"	f
+fuf#givenfile#renewCache	autoload/fuf/givenfile.vim	/^function fuf#givenfile#renewCache()$/;"	f
+fuf#givenfile#requiresOnCommandPre	autoload/fuf/givenfile.vim	/^function fuf#givenfile#requiresOnCommandPre()$/;"	f
+fuf#glob	autoload/fuf.vim	/^function fuf#glob(expr)$/;"	f
+fuf#help#createHandler	autoload/fuf/help.vim	/^function fuf#help#createHandler(base)$/;"	f
+fuf#help#getEditableDataNames	autoload/fuf/help.vim	/^function fuf#help#getEditableDataNames()$/;"	f
+fuf#help#getSwitchOrder	autoload/fuf/help.vim	/^function fuf#help#getSwitchOrder()$/;"	f
+fuf#help#onInit	autoload/fuf/help.vim	/^function fuf#help#onInit()$/;"	f
+fuf#help#renewCache	autoload/fuf/help.vim	/^function fuf#help#renewCache()$/;"	f
+fuf#help#requiresOnCommandPre	autoload/fuf/help.vim	/^function fuf#help#requiresOnCommandPre()$/;"	f
+fuf#jumplist#createHandler	autoload/fuf/jumplist.vim	/^function fuf#jumplist#createHandler(base)$/;"	f
+fuf#jumplist#getEditableDataNames	autoload/fuf/jumplist.vim	/^function fuf#jumplist#getEditableDataNames()$/;"	f
+fuf#jumplist#getSwitchOrder	autoload/fuf/jumplist.vim	/^function fuf#jumplist#getSwitchOrder()$/;"	f
+fuf#jumplist#onInit	autoload/fuf/jumplist.vim	/^function fuf#jumplist#onInit()$/;"	f
+fuf#jumplist#renewCache	autoload/fuf/jumplist.vim	/^function fuf#jumplist#renewCache()$/;"	f
+fuf#jumplist#requiresOnCommandPre	autoload/fuf/jumplist.vim	/^function fuf#jumplist#requiresOnCommandPre()$/;"	f
+fuf#launch	autoload/fuf.vim	/^function fuf#launch(modeName, initialPattern, partialMatching)$/;"	f
+fuf#line#createHandler	autoload/fuf/line.vim	/^function fuf#line#createHandler(base)$/;"	f
+fuf#line#getEditableDataNames	autoload/fuf/line.vim	/^function fuf#line#getEditableDataNames()$/;"	f
+fuf#line#getSwitchOrder	autoload/fuf/line.vim	/^function fuf#line#getSwitchOrder()$/;"	f
+fuf#line#onInit	autoload/fuf/line.vim	/^function fuf#line#onInit()$/;"	f
+fuf#line#renewCache	autoload/fuf/line.vim	/^function fuf#line#renewCache()$/;"	f
+fuf#line#requiresOnCommandPre	autoload/fuf/line.vim	/^function fuf#line#requiresOnCommandPre()$/;"	f
+fuf#loadDataFile	autoload/fuf.vim	/^function fuf#loadDataFile(modeName, dataName)$/;"	f
+fuf#makeNonPathItem	autoload/fuf.vim	/^function fuf#makeNonPathItem(word, menu)$/;"	f
+fuf#makePathItem	autoload/fuf.vim	/^function fuf#makePathItem(fname, menu, appendsDirSuffix)$/;"	f
+fuf#makePatternSet	autoload/fuf.vim	/^function fuf#makePatternSet(patternBase, interpreter, partialMatching)$/;"	f
+fuf#makePreviewLinesAround	autoload/fuf.vim	/^function fuf#makePreviewLinesAround(lines, indices, page, maxHeight)$/;"	f
+fuf#makePreviewLinesForFile	autoload/fuf.vim	/^function fuf#makePreviewLinesForFile(file, count, maxHeight)$/;"	f
+fuf#mapToSetAbbrWithSnippedWordAsPath	autoload/fuf.vim	/^function fuf#mapToSetAbbrWithSnippedWordAsPath(items)$/;"	f
+fuf#mapToSetSerialIndex	autoload/fuf.vim	/^function fuf#mapToSetSerialIndex(in, offset)$/;"	f
+fuf#mrucmd#createHandler	autoload/fuf/mrucmd.vim	/^function fuf#mrucmd#createHandler(base)$/;"	f
+fuf#mrucmd#getEditableDataNames	autoload/fuf/mrucmd.vim	/^function fuf#mrucmd#getEditableDataNames()$/;"	f
+fuf#mrucmd#getSwitchOrder	autoload/fuf/mrucmd.vim	/^function fuf#mrucmd#getSwitchOrder()$/;"	f
+fuf#mrucmd#onCommandPre	autoload/fuf/mrucmd.vim	/^function fuf#mrucmd#onCommandPre(cmd)$/;"	f
+fuf#mrucmd#onInit	autoload/fuf/mrucmd.vim	/^function fuf#mrucmd#onInit()$/;"	f
+fuf#mrucmd#renewCache	autoload/fuf/mrucmd.vim	/^function fuf#mrucmd#renewCache()$/;"	f
+fuf#mrucmd#requiresOnCommandPre	autoload/fuf/mrucmd.vim	/^function fuf#mrucmd#requiresOnCommandPre()$/;"	f
+fuf#mrufile#createHandler	autoload/fuf/mrufile.vim	/^function fuf#mrufile#createHandler(base)$/;"	f
+fuf#mrufile#getEditableDataNames	autoload/fuf/mrufile.vim	/^function fuf#mrufile#getEditableDataNames()$/;"	f
+fuf#mrufile#getSwitchOrder	autoload/fuf/mrufile.vim	/^function fuf#mrufile#getSwitchOrder()$/;"	f
+fuf#mrufile#onInit	autoload/fuf/mrufile.vim	/^function fuf#mrufile#onInit()$/;"	f
+fuf#mrufile#renewCache	autoload/fuf/mrufile.vim	/^function fuf#mrufile#renewCache()$/;"	f
+fuf#mrufile#requiresOnCommandPre	autoload/fuf/mrufile.vim	/^function fuf#mrufile#requiresOnCommandPre()$/;"	f
+fuf#onComplete	autoload/fuf.vim	/^function fuf#onComplete(findstart, base)$/;"	f
+fuf#openBuffer	autoload/fuf.vim	/^function fuf#openBuffer(bufNr, mode, reuse)$/;"	f
+fuf#openFile	autoload/fuf.vim	/^function fuf#openFile(path, mode, reuse)$/;"	f
+fuf#openHelp	autoload/fuf.vim	/^function fuf#openHelp(tag, mode)$/;"	f
+fuf#openTag	autoload/fuf.vim	/^function fuf#openTag(tag, mode)$/;"	f
+fuf#prejump	autoload/fuf.vim	/^function fuf#prejump(mode)$/;"	f
+fuf#quickfix#createHandler	autoload/fuf/quickfix.vim	/^function fuf#quickfix#createHandler(base)$/;"	f
+fuf#quickfix#getEditableDataNames	autoload/fuf/quickfix.vim	/^function fuf#quickfix#getEditableDataNames()$/;"	f
+fuf#quickfix#getSwitchOrder	autoload/fuf/quickfix.vim	/^function fuf#quickfix#getSwitchOrder()$/;"	f
+fuf#quickfix#onInit	autoload/fuf/quickfix.vim	/^function fuf#quickfix#onInit()$/;"	f
+fuf#quickfix#renewCache	autoload/fuf/quickfix.vim	/^function fuf#quickfix#renewCache()$/;"	f
+fuf#quickfix#requiresOnCommandPre	autoload/fuf/quickfix.vim	/^function fuf#quickfix#requiresOnCommandPre()$/;"	f
+fuf#saveDataFile	autoload/fuf.vim	/^function fuf#saveDataFile(modeName, dataName, items)$/;"	f
+fuf#setAbbrWithFormattedWord	autoload/fuf.vim	/^function fuf#setAbbrWithFormattedWord(item, abbrIndex)$/;"	f
+fuf#setOneTimeVariables	autoload/fuf.vim	/^function fuf#setOneTimeVariables(...)$/;"	f
+fuf#splitPath	autoload/fuf.vim	/^function fuf#splitPath(path)$/;"	f
+fuf#suffixNumber	autoload/fuf.vim	/^function fuf#suffixNumber(str)$/;"	f
+fuf#tag#createHandler	autoload/fuf/tag.vim	/^function fuf#tag#createHandler(base)$/;"	f
+fuf#tag#getEditableDataNames	autoload/fuf/tag.vim	/^function fuf#tag#getEditableDataNames()$/;"	f
+fuf#tag#getSwitchOrder	autoload/fuf/tag.vim	/^function fuf#tag#getSwitchOrder()$/;"	f
+fuf#tag#onInit	autoload/fuf/tag.vim	/^function fuf#tag#onInit()$/;"	f
+fuf#tag#renewCache	autoload/fuf/tag.vim	/^function fuf#tag#renewCache()$/;"	f
+fuf#tag#requiresOnCommandPre	autoload/fuf/tag.vim	/^function fuf#tag#requiresOnCommandPre()$/;"	f
+fuf#taggedfile#createHandler	autoload/fuf/taggedfile.vim	/^function fuf#taggedfile#createHandler(base)$/;"	f
+fuf#taggedfile#getEditableDataNames	autoload/fuf/taggedfile.vim	/^function fuf#taggedfile#getEditableDataNames()$/;"	f
+fuf#taggedfile#getSwitchOrder	autoload/fuf/taggedfile.vim	/^function fuf#taggedfile#getSwitchOrder()$/;"	f
+fuf#taggedfile#onInit	autoload/fuf/taggedfile.vim	/^function fuf#taggedfile#onInit()$/;"	f
+fuf#taggedfile#renewCache	autoload/fuf/taggedfile.vim	/^function fuf#taggedfile#renewCache()$/;"	f
+fuf#taggedfile#requiresOnCommandPre	autoload/fuf/taggedfile.vim	/^function fuf#taggedfile#requiresOnCommandPre()$/;"	f
+fuf#updateMruList	autoload/fuf.vim	/^function fuf#updateMruList(mrulist, newItem, maxItem, exclude)$/;"	f
+getBufIndicator	autoload/fuf/buffer.vim	/^function s:getBufIndicator(bufNr)$/;"	f
+getChangesLines	autoload/fuf/changelist.vim	/^function s:getChangesLines()$/;"	f
+getCurrentHelpTagFiles	autoload/fuf/help.vim	/^function s:getCurrentHelpTagFiles()$/;"	f
+getEditableDataFiles	autoload/fuf.vim	/^function s:getEditableDataFiles(modeName)$/;"	f
+getFileType	autoload/fuf/buffertag.vim	/^function s:getFileType(bufNr)$/;"	f
+getHelpTagEntries	autoload/fuf/help.vim	/^function s:getHelpTagEntries(tagFile)$/;"	f
+getJumpsLines	autoload/fuf/jumplist.vim	/^function s:getJumpsLines()$/;"	f
+getJumpsLines	autoload/fuf/quickfix.vim	/^function s:getJumpsLines()$/;"	f
+getLastBlockLength	autoload/fuf.vim	/^function s:getLastBlockLength(pattern, patternIsPath)$/;"	f
+getLinePattern	autoload/fuf/bookmarkfile.vim	/^function s:getLinePattern(lnum)$/;"	f
+getMatchingIndex	autoload/fuf/help.vim	/^function s:getMatchingIndex(lines, pattern)$/;"	f
+getMatchingIndex	autoload/fuf/tag.vim	/^function s:getMatchingIndex(lines, cmd)$/;"	f
+getMatchingLineNumber	autoload/fuf/bookmarkfile.vim	/^function s:getMatchingLineNumber(lines, pattern, lnumBegin)$/;"	f
+getSnippedHead	autoload/fuf.vim	/^function s:getSnippedHead(head, baseLen)$/;"	f
+getTagData	autoload/fuf/buffertag.vim	/^function s:getTagData(bufNrs)$/;"	f
+getTagItems	autoload/fuf/buffertag.vim	/^function s:getTagItems(bufNr)$/;"	f
+getTagNames	autoload/fuf/tag.vim	/^function s:getTagNames(tagFile)$/;"	f
+getTaggedFileList	autoload/fuf/taggedfile.vim	/^function s:getTaggedFileList(tagfile)$/;"	f
+getWordBoundaries	autoload/fuf.vim	/^function s:getWordBoundaries(word)$/;"	f
+handler.getCompleteItems	autoload/fuf/bookmarkdir.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/bookmarkfile.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/buffer.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/buffertag.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/callbackfile.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/callbackitem.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/changelist.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/coveragefile.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/dir.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/file.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/givencmd.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/givendir.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/givenfile.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/help.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/jumplist.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/line.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/mrucmd.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/mrufile.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/quickfix.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/tag.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getCompleteItems	autoload/fuf/taggedfile.vim	/^function s:handler.getCompleteItems(patternPrimary)$/;"	f
+handler.getModeName	autoload/fuf/bookmarkdir.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/bookmarkfile.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/buffer.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/buffertag.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/callbackfile.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/callbackitem.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/changelist.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/coveragefile.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/dir.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/file.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/givencmd.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/givendir.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/givenfile.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/help.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/jumplist.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/line.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/mrucmd.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/mrufile.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/quickfix.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/tag.vim	/^function s:handler.getModeName()$/;"	f
+handler.getModeName	autoload/fuf/taggedfile.vim	/^function s:handler.getModeName()$/;"	f
+handler.getPreviewHeight	autoload/fuf/bookmarkdir.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/bookmarkfile.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/buffer.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/buffertag.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/callbackfile.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/callbackitem.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/changelist.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/coveragefile.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/dir.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/file.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/givencmd.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/givendir.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/givenfile.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/help.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/jumplist.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/line.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/mrucmd.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/mrufile.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/quickfix.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/tag.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPreviewHeight	autoload/fuf/taggedfile.vim	/^function s:handler.getPreviewHeight()$/;"	f
+handler.getPrompt	autoload/fuf/bookmarkdir.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/bookmarkfile.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/buffer.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/buffertag.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/callbackfile.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/callbackitem.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/changelist.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/coveragefile.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/dir.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/file.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/givencmd.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/givendir.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/givenfile.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/help.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/jumplist.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/line.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/mrucmd.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/mrufile.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/quickfix.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/tag.vim	/^function s:handler.getPrompt()$/;"	f
+handler.getPrompt	autoload/fuf/taggedfile.vim	/^function s:handler.getPrompt()$/;"	f
+handler.isOpenable	autoload/fuf/bookmarkdir.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/bookmarkfile.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/buffer.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/buffertag.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/callbackfile.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/callbackitem.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/changelist.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/coveragefile.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/dir.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/file.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/givencmd.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/givendir.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/givenfile.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/help.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/jumplist.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/line.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/mrucmd.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/mrufile.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/quickfix.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/tag.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.isOpenable	autoload/fuf/taggedfile.vim	/^function s:handler.isOpenable(enteredPattern)$/;"	f
+handler.makePatternSet	autoload/fuf/bookmarkdir.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/bookmarkfile.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/buffer.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/buffertag.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/callbackfile.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/callbackitem.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/changelist.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/coveragefile.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/dir.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/file.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/givencmd.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/givendir.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/givenfile.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/help.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/jumplist.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/line.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/mrucmd.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/mrufile.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/quickfix.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/tag.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePatternSet	autoload/fuf/taggedfile.vim	/^function s:handler.makePatternSet(patternBase)$/;"	f
+handler.makePreviewLines	autoload/fuf/bookmarkdir.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/bookmarkfile.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/buffer.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/buffertag.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/callbackfile.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/callbackitem.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/changelist.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/coveragefile.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/dir.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/file.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/givencmd.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/givendir.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/givenfile.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/help.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/jumplist.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/line.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/mrucmd.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/mrufile.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/quickfix.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/tag.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.makePreviewLines	autoload/fuf/taggedfile.vim	/^function s:handler.makePreviewLines(word, count)$/;"	f
+handler.onModeEnterPost	autoload/fuf/bookmarkdir.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/bookmarkfile.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/buffer.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/buffertag.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/callbackfile.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/callbackitem.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/changelist.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/coveragefile.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/dir.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/file.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/givencmd.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/givendir.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/givenfile.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/help.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/jumplist.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/line.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/mrucmd.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/mrufile.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/quickfix.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/tag.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPost	autoload/fuf/taggedfile.vim	/^function s:handler.onModeEnterPost()$/;"	f
+handler.onModeEnterPre	autoload/fuf/bookmarkdir.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/bookmarkfile.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/buffer.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/buffertag.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/callbackfile.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/callbackitem.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/changelist.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/coveragefile.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/dir.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/file.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/givencmd.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/givendir.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/givenfile.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/help.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/jumplist.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/line.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/mrucmd.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/mrufile.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/quickfix.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/tag.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeEnterPre	autoload/fuf/taggedfile.vim	/^function s:handler.onModeEnterPre()$/;"	f
+handler.onModeLeavePost	autoload/fuf/bookmarkdir.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/bookmarkfile.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/buffer.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/buffertag.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/callbackfile.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/callbackitem.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/changelist.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/coveragefile.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/dir.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/file.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/givencmd.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/givendir.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/givenfile.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/help.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/jumplist.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/line.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/mrucmd.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/mrufile.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/quickfix.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/tag.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onModeLeavePost	autoload/fuf/taggedfile.vim	/^function s:handler.onModeLeavePost(opened)$/;"	f
+handler.onOpen	autoload/fuf/bookmarkdir.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/bookmarkfile.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/buffer.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/buffertag.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/callbackfile.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/callbackitem.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/changelist.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/coveragefile.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/dir.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/file.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/givencmd.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/givendir.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/givenfile.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/help.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/jumplist.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/line.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/mrucmd.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/mrufile.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/quickfix.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/tag.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handler.onOpen	autoload/fuf/taggedfile.vim	/^function s:handler.onOpen(word, mode)$/;"	f
+handlerBase.addStat	autoload/fuf.vim	/^function s:handlerBase.addStat(pattern, word)$/;"	f
+handlerBase.concretize	autoload/fuf.vim	/^function s:handlerBase.concretize(deriv)$/;"	f
+handlerBase.existsPrompt	autoload/fuf.vim	/^function s:handlerBase.existsPrompt(line)$/;"	f
+handlerBase.getMatchingCompleteItems	autoload/fuf.vim	/^function s:handlerBase.getMatchingCompleteItems(patternBase)$/;"	f
+handlerBase.onBs	autoload/fuf.vim	/^function s:handlerBase.onBs()$/;"	f
+handlerBase.onComplete	autoload/fuf.vim	/^function s:handlerBase.onComplete(findstart, base)$/;"	f
+handlerBase.onCr	autoload/fuf.vim	/^function s:handlerBase.onCr(openType)$/;"	f
+handlerBase.onCursorMovedI	autoload/fuf.vim	/^function s:handlerBase.onCursorMovedI()$/;"	f
+handlerBase.onDeleteWord	autoload/fuf.vim	/^function s:handlerBase.onDeleteWord()$/;"	f
+handlerBase.onInsertLeave	autoload/fuf.vim	/^function s:handlerBase.onInsertLeave()$/;"	f
+handlerBase.onPreviewBase	autoload/fuf.vim	/^function s:handlerBase.onPreviewBase(repeatable)$/;"	f
+handlerBase.onRecallPattern	autoload/fuf.vim	/^function s:handlerBase.onRecallPattern(shift)$/;"	f
+handlerBase.onSwitchMatching	autoload/fuf.vim	/^function s:handlerBase.onSwitchMatching()$/;"	f
+handlerBase.onSwitchMode	autoload/fuf.vim	/^function s:handlerBase.onSwitchMode(shift)$/;"	f
+handlerBase.removePrompt	autoload/fuf.vim	/^function s:handlerBase.removePrompt(line)$/;"	f
+handlerBase.restorePrompt	autoload/fuf.vim	/^function s:handlerBase.restorePrompt(line)$/;"	f
+highlightError	autoload/fuf.vim	/^function s:highlightError()$/;"	f
+highlightPrompt	autoload/fuf.vim	/^function s:highlightPrompt(prompt)$/;"	f
+initialize	plugin/fuf.vim	/^function s:initialize()$/;"	f
+interpretPrimaryPatternForNonPath	autoload/fuf.vim	/^function s:interpretPrimaryPatternForNonPath(pattern)$/;"	f
+interpretPrimaryPatternForPath	autoload/fuf.vim	/^function s:interpretPrimaryPatternForPath(pattern)$/;"	f
+interpretPrimaryPatternForPathTail	autoload/fuf.vim	/^function s:interpretPrimaryPatternForPathTail(pattern)$/;"	f
+jumpToBookmark	autoload/fuf/bookmarkfile.vim	/^function s:jumpToBookmark(path, mode, pattern, lnum)$/;"	f
+jumpToTag	autoload/fuf/buffertag.vim	/^function s:jumpToTag(item, mode)$/;"	f
+listAroundFiles	autoload/fuf/mrufile.vim	/^function s:listAroundFiles(dir)$/;"	f
+makeAdditionalMigemoPattern	autoload/fuf.vim	/^function s:makeAdditionalMigemoPattern(pattern)$/;"	f
+makeCtagsCmd	autoload/fuf/buffertag.vim	/^function s:makeCtagsCmd(bufNr)$/;"	f
+makeFileAbbrInfo	autoload/fuf.vim	/^function s:makeFileAbbrInfo(item, maxLenStats)$/;"	f
+makeFuzzyMatchingExpr	autoload/fuf.vim	/^function s:makeFuzzyMatchingExpr(target, pattern)$/;"	f
+makeItem	autoload/fuf/buffer.vim	/^function s:makeItem(nr)$/;"	f
+makeItem	autoload/fuf/buffertag.vim	/^function s:makeItem(tag, itemMap)$/;"	f
+makeItem	autoload/fuf/changelist.vim	/^function s:makeItem(line)$/;"	f
+makeItem	autoload/fuf/jumplist.vim	/^function s:makeItem(line, bufnrPrev)$/;"	f
+makeItem	autoload/fuf/quickfix.vim	/^function s:makeItem(qfItem)$/;"	f
+makePartialMatchingExpr	autoload/fuf.vim	/^function s:makePartialMatchingExpr(target, pattern)$/;"	f
+makeRefiningExpr	autoload/fuf.vim	/^function s:makeRefiningExpr(pattern)$/;"	f
+onCommandPre	autoload/fuf.vim	/^function s:onCommandPre()$/;"	f
+parseChangesLine	autoload/fuf/changelist.vim	/^function s:parseChangesLine(line)$/;"	f
+parseHelpTagEntry	autoload/fuf/help.vim	/^function s:parseHelpTagEntry(line, tagFile)$/;"	f
+parseHelpTagFiles	autoload/fuf/help.vim	/^function s:parseHelpTagFiles(tagFiles, key)$/;"	f
+parseJumpsLine	autoload/fuf/jumplist.vim	/^function s:parseJumpsLine(line, bufnrPrev)$/;"	f
+parseJumpsLine	autoload/fuf/quickfix.vim	/^function s:parseJumpsLine(line)$/;"	f
+parseTagFiles	autoload/fuf/tag.vim	/^function s:parseTagFiles(tagFiles, key)$/;"	f
+parseTagFiles	autoload/fuf/taggedfile.vim	/^function s:parseTagFiles(tagFiles, key)$/;"	f
+parseTagLine	autoload/fuf/buffertag.vim	/^function s:parseTagLine(line)$/;"	f
+registerCoverage	autoload/fuf/coveragefile.vim	/^function s:registerCoverage()$/;"	f
+removeItemFromCache	autoload/fuf/mrufile.vim	/^function s:removeItemFromCache(word)$/;"	f
+renewCachesOfAllModes	plugin/fuf.vim	/^function s:renewCachesOfAllModes()$/;"	f
+s:ABBR_SNIP_MASK	autoload/fuf.vim	/^let s:ABBR_SNIP_MASK = '...'$/;"	v
+s:DATA_FILE_VERSION	autoload/fuf.vim	/^let s:DATA_FILE_VERSION = 400$/;"	v
+s:FUF_BUF_NAME	autoload/fuf.vim	/^let s:FUF_BUF_NAME = '[fuf]'$/;"	v
+s:MODE_NAME	autoload/fuf/bookmarkdir.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/bookmarkfile.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/buffer.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/buffertag.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/callbackfile.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/callbackitem.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/changelist.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/coveragefile.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/dir.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/file.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/givencmd.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/givendir.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/givenfile.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/help.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/jumplist.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/line.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/mrucmd.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/mrufile.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/quickfix.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/tag.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:MODE_NAME	autoload/fuf/taggedfile.vim	/^let s:MODE_NAME = expand('<sfile>:t:r')$/;"	v
+s:OPEN_TYPE_CURRENT	autoload/fuf.vim	/^let s:OPEN_TYPE_CURRENT = 1$/;"	v
+s:OPEN_TYPE_DELETE	autoload/fuf/bookmarkdir.vim	/^let s:OPEN_TYPE_DELETE = -1$/;"	v
+s:OPEN_TYPE_DELETE	autoload/fuf/bookmarkfile.vim	/^let s:OPEN_TYPE_DELETE = -1$/;"	v
+s:OPEN_TYPE_DELETE	autoload/fuf/buffer.vim	/^let s:OPEN_TYPE_DELETE = -1$/;"	v
+s:OPEN_TYPE_DELETE	autoload/fuf/line.vim	/^let s:OPEN_TYPE_DELETE = -1$/;"	v
+s:OPEN_TYPE_EXPAND	autoload/fuf/mrufile.vim	/^let s:OPEN_TYPE_EXPAND = -1$/;"	v
+s:OPEN_TYPE_SPLIT	autoload/fuf.vim	/^let s:OPEN_TYPE_SPLIT   = 2$/;"	v
+s:OPEN_TYPE_TAB	autoload/fuf.vim	/^let s:OPEN_TYPE_TAB     = 4$/;"	v
+s:OPEN_TYPE_VSPLIT	autoload/fuf.vim	/^let s:OPEN_TYPE_VSPLIT  = 3$/;"	v
+s:TEMP_VARIABLES_GROUP	autoload/fuf.vim	/^let s:TEMP_VARIABLES_GROUP = expand('<sfile>:p')$/;"	v
+s:TEMP_VARIABLES_GROUP	autoload/fuf/buffertag.vim	/^let s:TEMP_VARIABLES_GROUP = expand('<sfile>:p')$/;"	v
+s:bufTimes	autoload/fuf/buffer.vim	/^let s:bufTimes = {}$/;"	v
+s:bufferCursorPosMap	autoload/fuf.vim	/^let s:bufferCursorPosMap = {}$/;"	v
+s:handler	autoload/fuf/bookmarkdir.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/bookmarkfile.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/buffer.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/buffertag.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/callbackfile.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/callbackitem.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/changelist.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/coveragefile.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/dir.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/file.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/givencmd.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/givendir.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/givenfile.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/help.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/jumplist.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/line.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/mrucmd.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/mrufile.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/quickfix.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/tag.vim	/^let s:handler = {}$/;"	v
+s:handler	autoload/fuf/taggedfile.vim	/^let s:handler = {}$/;"	v
+s:handlerBase	autoload/fuf.vim	/^let s:handlerBase = {}$/;"	v
+s:modeNames	autoload/fuf.vim	/^let s:modeNames = []$/;"	v
+s:oneTimeVariables	autoload/fuf.vim	/^let s:oneTimeVariables = []$/;"	v
+scoreBoundaryMatching	autoload/fuf.vim	/^function s:scoreBoundaryMatching(wordForBoundary, pattern, exprBoundary)$/;"	f
+scoreSequentialMatching	autoload/fuf.vim	/^function s:scoreSequentialMatching(word, pattern)$/;"	f
+setAbbrWithFileAbbrData	autoload/fuf.vim	/^function s:setAbbrWithFileAbbrData(item, snippedHeads)$/;"	f
+setRanks	autoload/fuf.vim	/^function s:setRanks(item, pattern, exprBoundary, stats)$/;"	f
+toLowerForIgnoringCase	autoload/fuf.vim	/^function s:toLowerForIgnoringCase(str)$/;"	f
+updateBufTimes	autoload/fuf/buffer.vim	/^function s:updateBufTimes()$/;"	f
+updateData	autoload/fuf/mrufile.vim	/^function s:updateData()$/;"	f
+updateInfo	autoload/fuf/mrucmd.vim	/^function s:updateInfo(cmd)$/;"	f
