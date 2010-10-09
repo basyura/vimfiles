@@ -330,6 +330,7 @@ function! s:vimshell_my_settings()
   imap <buffer> <C-o> <Plug>(vimshell_enter)
   inoremap <buffer> <C-l> <C-y>
   imap <buffer> <C-s> <Plug>(vimshell_history_complete_whole)
+  nunmap <buffer> <C-d>
 
   if g:use_fuzzy_finder == 1
     inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>FufBuffer<CR>
