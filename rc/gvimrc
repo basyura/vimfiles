@@ -31,12 +31,6 @@ function! s:reload_color_scheme()
   elseif has('mac')
     " フォント
     set guifont=Monaco:h11.5
-    " ウインドウ幅
-    if &columns == 80
-      set columns=95
-   endif
-    " ウインドウの高さ
-    set lines=41
     " 透明度
     set transparency=7
     " esc 時に ime off mac vim only
@@ -55,6 +49,15 @@ function! s:reload_color_scheme()
     set lines=28
   endif
 endfunction
+
+if has('mac')
+  " ウインドウ幅
+  if &columns == 80
+    set columns=95
+  endif
+  " ウインドウの高さ
+  set lines=41
+endif
 
 call s:reload_color_scheme()
 " コマンドラインの高さ
