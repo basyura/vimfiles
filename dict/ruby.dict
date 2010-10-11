@@ -35,3 +35,5 @@ instance_variable_set
 instance_variable_get
 extend
 establish_connection
+Debugger
+debugger

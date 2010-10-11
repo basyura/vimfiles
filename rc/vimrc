@@ -242,7 +242,7 @@ let g:neocomplcache_enable_auto_select = 1
 " 補完しないパターン
 let g:neocomplcache_disable_caching_buffer_name_pattern = '.*fuf.*\|*.log\|unite'
 " 自動補完しないパターン
-let g:neocomplcache_lock_buffer_name_pattern = '*.log\|.*fuf.*\|unite'
+let g:neocomplcache_lock_buffer_name_pattern = '*.log\|.*fuf.*\|unite\|.*quickrun.*'
 " 自動選択しないパターン
 let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell\|unite'
 " キャッシュ中に、メッセージをCommand-lineに表示しない
@@ -391,6 +391,7 @@ nnoremap <silent> <Leader>u  :<C-u>Unite buffer file file_mru bookmark<CR>
 let g:unite_source_file_mru_time_format = ''
 let g:unite_enable_start_insert = 1
 let g:unite_source_file_mru_ignore_pattern='.*\/$\|.*Application\ Data.*'
+
 
 
 function! s:unite_my_settings()
