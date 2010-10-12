@@ -3473,7 +3473,7 @@ function! s:wpost_twitter()
   setlocal statusline=%f
   setlocal nobuflisted
   nnoremap <buffer> <silent> <CR> :call <SID>wpost_twitter_send()<CR>
-  nnoremap <buffer> q :bw!<CR>
+  nnoremap <buffer> <silent> q :bw!<CR>
   startinsert!
 endfunction
 
