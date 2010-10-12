@@ -590,6 +590,7 @@ endfunction
 " for twitvim say
 function! s:twitvim_say_my_settings()
   NeoComplCacheAutoCompletionLength 2
+  AlterCommand <buffer> q bw!<CR>
   nnoremap <buffer> <silent> <C-j> :bw!<CR>
 endfunction
 
