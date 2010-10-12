@@ -9,6 +9,8 @@ if expand("%") != ".git/COMMIT_EDITMSG"
 	set runtimepath+=~/.vim/plugins/*
 	set runtimepath+=~/.vim/gitplugins/*
   let g:vimball_home = "~/.vim"
+
+  call altercmd#load()
 endif
 
 if &termencoding == ''
@@ -30,7 +32,6 @@ endif
 "           settings             "
 """"""""""""""""""""""""""""""""""
 
-call altercmd#load()
 
 if filereadable($HOME . '/.vimrc_secret')
   source ~/.vimrc_secret
