@@ -1814,6 +1814,7 @@ if !exists(":BPosttoTwitter")
     command BPosttoTwitter :call <SID>post_twitter(join(getline(1, "$")), 0)
 endif
 
+
 " Post visual selection to Twitter.
 noremap <SID>Visual y:call <SID>post_twitter(@", 0)<cr>
 noremap <unique> <script> <Plug>TwitvimVisual <SID>Visual
@@ -3459,6 +3460,27 @@ endif
 if !exists(":SearchTwitter")
     command -range=1 -nargs=? SearchTwitter :call <SID>Summize(<q-args>, <count>)
 endif
+
+if !exists(":WPosttoTwitter")
+    command WPosttoTwitter :call <SID>wpost_twitter()
+endif
+
+function! s:wpost_twitter()
+  execute 'below split twitvim_say' 
+  execute '2 wincmd _'
+  let &filetype = 'twitvim_say'
+	setlocal bufhidden=delete 
+  setlocal statusline=%f
+  setlocal nobuflisted
+  nnoremap <buffer> <silent> <CR> :call <SID>wpost_twitter_send()<CR>
+  nnoremap <buffer> q :bw!<CR>
+  startinsert!
+endfunction
+
+function! s:wpost_twitter_send()
+  :call <SID>post_twitter(join(getline(1, "$")),0)
+  bw!
+endfunction
 
 let &cpo = s:save_cpo
 finish

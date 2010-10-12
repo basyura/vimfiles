@@ -458,7 +458,7 @@ nnoremap <silent> <Leader>r :<C-u>R<CR>
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
 " twitvim
-nnoremap <Space>po   :<C-u>PosttoTwitter<Enter>
+nnoremap <Space>po   :<C-u>WPosttoTwitter<Enter>
 nnoremap <Space>fr   :<C-u>FriendsTwitter<Enter>
 nnoremap <Space>re   :<C-u>RepliesTwitter<Enter>
 nnoremap <Space>tt   :<C-u>ListTwitter tottoruby<Enter>
