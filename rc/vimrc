@@ -229,6 +229,7 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'ruby'       : $HOME . '/.vim/dict/ruby.dict',
     \ 'eruby'      : $HOME . '/.vim/dict/ruby.dict',
     \ 'java'       : $HOME . '/.vim/dict/java.dict',
+    \ 'twitvim_say': $HOME . '/.vim/dict/twitvim_say.dict',
     \ 'default'    : $HOME . '/.vim/dict/default.dict'
 \ }
 " 日本語をキャッシュしない
@@ -464,10 +465,11 @@ nnoremap <Space>fr   :<C-u>FriendsTwitter<Enter>
 nnoremap <Space>re   :<C-u>RepliesTwitter<Enter>
 nnoremap <Space>tt   :<C-u>ListTwitter tottoruby<Enter>
 nnoremap <Space>nn   :<C-u>NextTwitter<Enter>
+nnoremap <Space>pp   :<C-u>BackTwitter<Enter>
 "nnoremap <Leader>u   yw:UserTwitter <C-R>+<CR>
 
 if has('mac')
-  let twitvim_browser_cmd = "open -a firefox "
+  let g:twitvim_browser_cmd = "open -a firefox "
 else
   let g:twitvim_browser_cmd = "D:/Program\ Files/Mozilla\ Firefox/firefox.exe"
 endif
@@ -586,6 +588,7 @@ function! s:twitvim_my_settings()
 endfunction
 " for twitvim say
 function! s:twitvim_say_my_settings()
+  NeoComplCacheAutoCompletionLength 2
   nnoremap <buffer> <silent> <C-j> :bw!<CR>
 endfunction
 
