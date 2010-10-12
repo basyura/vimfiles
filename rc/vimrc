@@ -118,6 +118,7 @@ augroup MyGroup
   autocmd FileType fuf      call s:fuf_my_settings()
   autocmd FileType scratch  call s:scratch_my_settings()
   autocmd FileType twitvim  call s:twitvim_my_settings()
+  autocmd FileType twitvim_say  call s:twitvim_say_my_settings()
 
   autocmd CmdwinEnter * call s:init_cmdwin()
 
@@ -579,8 +580,13 @@ endfunction
 function! s:scratch_my_settings()
   AlterCommand <buffer> q :Scratch<CR>
 endfunction
+" for twitvim
 function! s:twitvim_my_settings()
   nnoremap <buffer> <Leader>u   yw:UserTwitter <C-R>+<CR>
+endfunction
+" for twitvim say
+function! s:twitvim_say_my_settings()
+  nnoremap <buffer> <silent> <C-j> :bw!<CR>
 endfunction
 
 "color for cygwin
