@@ -340,9 +340,9 @@ function! s:vimshell_my_settings()
     inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>FufMruFile<CR>
     nnoremap <buffer><silent> <C-n>  :<C-u>FufBuffer<CR>
   else
-    inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer <CR>
+    inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer_tab <CR>
     inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>Unite file_mru <CR>
-    nnoremap <buffer><silent> <C-n>  :<C-u>Unite buffer <CR>
+    nnoremap <buffer><silent> <C-n>  :<C-u>Unite buffer_tab <CR>
   endif
 
   NeoComplCacheAutoCompletionLength 3
@@ -382,13 +382,13 @@ else
   let g:fuf_modesDisable = ['mrucmd','mrufile','file','coveragefile']
 
   nnoremap <C-r>  :<C-u>Unite file_mru<CR>
-  nnoremap <C-n>  :<C-u>Unite buffer <CR>
+  nnoremap <C-n>  :<C-u>Unite buffer_tab <CR>
   nnoremap <Leader>d :<C-u>Unite file<CR>
   nnoremap <Leader>f  :<C-u>Unite file_rec -input=
   nnoremap <Leader>b :<C-u>Unite bookmark<CR>
 end
 
-nnoremap <silent> <Leader>u  :<C-u>Unite buffer file file_mru bookmark<CR>
+nnoremap <silent> <Leader>u  :<C-u>Unite buffer_tab file file_mru bookmark<CR>
 
 "let g:unite_update_time = 200
 let g:unite_source_file_mru_time_format = ''
