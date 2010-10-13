@@ -358,6 +358,7 @@ let g:vimfiler_as_default_explorer = 1
 """"""""""""""""""""""""""""""""""
 "      unite or fuzzyfinder      "
 """"""""""""""""""""""""""""""""""
+let mru_ignore = '.*\/$\|.*Application\ Data.*\|.*デスクトップ.*'
 "let g:fuf_keyOpen = ":"
 "let g:fuf_maxMenuWidth = 90
 let g:fuf_modesDisable     = ['mrucmd']
@@ -366,6 +367,7 @@ let g:fuf_timeFormat       = ''
 let g:fuf_keyOpenVsplit    = '<C-v>'
 let g:fuf_keyOpenSplit     = '<C-k>'
 let g:fuf_enumeratingLimit = 20
+let g:fuf_mrufile_exclude = mru_ignore
 
 if g:use_fuzzy_finder == 1
   " 読み込んだことにしたいけどエラー出るのでコメントアウト
@@ -393,7 +395,7 @@ nnoremap <silent> <Leader>u  :<C-u>Unite buffer_tab file file_mru bookmark<CR>
 "let g:unite_update_time = 200
 let g:unite_source_file_mru_time_format = ''
 let g:unite_enable_start_insert = 1
-let g:unite_source_file_mru_ignore_pattern='.*\/$\|.*Application\ Data.*'
+let g:unite_source_file_mru_ignore_pattern=mru_ignore
 
 
 
@@ -461,12 +463,12 @@ nnoremap <silent> <Leader>r :<C-u>R<CR>
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
 " twitvim
-nnoremap <Space>po   :<C-u>WPosttoTwitter<Enter>
-nnoremap <Space>fr   :<C-u>FriendsTwitter<Enter>
-nnoremap <Space>re   :<C-u>RepliesTwitter<Enter>
-nnoremap <Space>tt   :<C-u>ListTwitter tottoruby<Enter>
-nnoremap <Space>nn   :<C-u>NextTwitter<Enter>
-nnoremap <Space>pp   :<C-u>BackTwitter<Enter>
+nnoremap <silent> <Space>po   :<C-u>WPosttoTwitter<Enter>
+nnoremap <silent> <Space>fr   :<C-u>FriendsTwitter<Enter>
+nnoremap <silent> <Space>re   :<C-u>RepliesTwitter<Enter>
+nnoremap <silent> <Space>tt   :<C-u>ListTwitter tottoruby<Enter>
+nnoremap <silent> <Space>nn   :<C-u>NextTwitter<Enter>
+nnoremap <silent> <Space>pp   :<C-u>BackTwitter<Enter>
 "nnoremap <Leader>u   yw:UserTwitter <C-R>+<CR>
 
 if has('mac')

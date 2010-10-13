@@ -3485,4 +3485,4 @@ endfunction
 let &cpo = s:save_cpo
 finish
 
-" vim:set tw=0:
+" vim:set tw=0 ts=8:
