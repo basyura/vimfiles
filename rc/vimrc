@@ -463,12 +463,12 @@ nnoremap <silent> <Leader>r :<C-u>R<CR>
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
 " twitvim
-nnoremap <silent> <Space>po   :<C-u>WPosttoTwitter<Enter>
-nnoremap <silent> <Space>fr   :<C-u>FriendsTwitter<Enter>
-nnoremap <silent> <Space>re   :<C-u>RepliesTwitter<Enter>
-nnoremap <silent> <Space>tt   :<C-u>ListTwitter tottoruby<Enter>
-nnoremap <silent> <Space>nn   :<C-u>NextTwitter<Enter>
-nnoremap <silent> <Space>pp   :<C-u>BackTwitter<Enter>
+nnoremap <Space>po   :<C-u>WPosttoTwitter<Enter>
+nnoremap <Space>fr   :<C-u>FriendsTwitter<Enter>
+nnoremap <Space>re   :<C-u>RepliesTwitter<Enter>
+nnoremap <Space>tt   :<C-u>ListTwitter tottoruby<Enter>
+nnoremap <Space>nn   :<C-u>NextTwitter<Enter>
+nnoremap <Space>pp   :<C-u>BackTwitter<Enter>
 "nnoremap <Leader>u   yw:UserTwitter <C-R>+<CR>
 
 if has('mac')
