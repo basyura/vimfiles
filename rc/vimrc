@@ -123,11 +123,13 @@ augroup MyGroup
 
   autocmd CmdwinEnter * call s:init_cmdwin()
 
-  autocmd FileType lingr-rooms :setlocal nonu
-  autocmd FileType lingr-rooms :setlocal nowrap
-  autocmd FileType lingr-members :setlocal nonu
-  autocmd FileType lingr-members :setlocal nowrap
+  autocmd FileType lingr-rooms    :setlocal nonu
+  autocmd FileType lingr-rooms    :setlocal nowrap
+  autocmd FileType lingr-members  :setlocal nonu
+  autocmd FileType lingr-members  :setlocal nowrap
   autocmd FileType lingr-messages :setlocal nonu
+  autocmd FileType lingr-messages call s:lingr_messages_setting()
+  autocmd FileType lingr-say      call s:lingr_say_setting()
 augroup END
 
 
@@ -594,6 +596,13 @@ function! s:twitvim_say_my_settings()
   NeoComplCacheAutoCompletionLength 2
   AlterCommand <buffer> q bw!<CR>
   nnoremap <buffer> <silent> <C-j> :bw!<CR>
+endfunction
+"
+function! s:lingr_messages_setting()
+  nmap <buffer> <silent> <Space>po <Plug>(lingr-messages-show-say-buffer)
+endfunction
+function! s:lingr_say_setting()
+  nmap <buffer> <silent> <C-j> <Plug>(lingr-say-close)
 endfunction
 
 "color for cygwin
