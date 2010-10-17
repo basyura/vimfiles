@@ -138,6 +138,7 @@ augroup END
 """"""""""""""""""""""""""""""""""
 hi Cursor	  guifg=bg	guibg=orange
 
+hi link lingrMessagesSpeaker Statement
 """"""""""""""""""""""""""""""""""
 "             map                "
 """"""""""""""""""""""""""""""""""
@@ -466,6 +467,7 @@ nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
 " twitvim
 nnoremap <Space>po   :<C-u>WPosttoTwitter<Enter>
+nnoremap s           :<C-u>WPosttoTwitter<Enter>
 nnoremap <Space>fr   :<C-u>FriendsTwitter<Enter>
 nnoremap <Space>re   :<C-u>RepliesTwitter<Enter>
 nnoremap <Space>tt   :<C-u>ListTwitter tottoruby<Enter>
