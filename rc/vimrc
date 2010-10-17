@@ -139,6 +139,7 @@ augroup END
 hi Cursor	  guifg=bg	guibg=orange
 
 hi link lingrMessagesSpeaker Statement
+hi link lingrRoomsActive Statement
 """"""""""""""""""""""""""""""""""
 "             map                "
 """"""""""""""""""""""""""""""""""
