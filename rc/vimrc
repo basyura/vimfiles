@@ -137,9 +137,11 @@ augroup END
 "            colors              "
 """"""""""""""""""""""""""""""""""
 hi Cursor	  guifg=bg	guibg=orange
-
+" lingr
 hi link lingrMessagesSpeaker Statement
-hi link lingrRoomsActive Statement
+hi link lingrRoomsActive     Statement
+" wimwiki
+hi link VimwikiPre Normal
 """"""""""""""""""""""""""""""""""
 "             map                "
 """"""""""""""""""""""""""""""""""
@@ -524,7 +526,7 @@ endfunction
 
 "Command-line window
 
-set cmdwinheight=1
+set cmdwinheight=10
 "nnoremap <sid>(command-line-enter) q:
 "xnoremap <sid>(command-line-enter) q:
 "nnoremap <sid>(command-line-norange) q:<C-u>
@@ -532,7 +534,8 @@ set cmdwinheight=1
 "xmap :  <sid>(command-line-enter)
 "autocmd CmdwinEnter * :NeoComplCacheLock
 function! s:init_cmdwin()
-"  nnoremap <buffer> q bw
+  nnoremap <buffer> q <C-c><CR>
+  nnoremap <buffer> <C-j> <C-c><CR>
 "  inoremap <buffer> q bw
 "  inoremap <buffer> wq WQ
 "
@@ -556,7 +559,7 @@ function! s:init_cmdwin()
 "  inoremap <C-k> <Up>
 "  inoremap <C-j> <Down>
 "
-  startinsert!
+"  startinsert!
 endfunction
 ""autocmd CmdwinLeave * call s:leave_cmdwin()
 ""function! s:leave_cmdwin()
@@ -615,6 +618,6 @@ if has('win32unix')
   hi PmenuSel  ctermfg=232   ctermbg=magenta
 endif
 
-set cmdheight=1
+"set cmdheight=5
 
 " vim: foldmethod=marker
