@@ -1543,12 +1543,36 @@ endfunction
 " This is for a local mapping in the timeline. Start an @-reply on the command
 " line to the author of the tweet on the current line.
 function! s:Quick_Reply()
-    let username = s:get_user_name(getline('.'))
-    if username != ""
-	" If the status ID is not available, get() will return 0 and
-	" post_twitter() won't add in_reply_to_status_id to the update.
-	call s:CmdLine_Twitter('@'.username.' ', get(s:curbuffer.statuses, line('.')))
-    endif
+    let username    = s:get_user_name(getline('.'))
+    let s:inreplyto = get(s:curbuffer.statuses, line('.'))
+
+    execute 'below split twitvim_say' 
+    execute '2 wincmd _'
+    let &filetype = 'twitvim_say'
+    setlocal bufhidden=delete 
+    setlocal statusline=%f
+    setlocal nobuflisted
+    setlocal noswapfile
+
+    setlocal paste
+    silent execute 'normal i' . '@' . username . ' '
+    setlocal nopaste
+
+    nnoremap <buffer> <silent> <CR> :call <SID>wreply_twitter_send()<CR>
+    nnoremap <buffer> <silent> q :bw!<CR>
+
+    startinsert!
+
+"    if username != ""
+"	" If the status ID is not available, get() will return 0 and
+"	" post_twitter() won't add in_reply_to_status_id to the update.
+"	call s:CmdLine_Twitter('@'.username.' ', get(s:curbuffer.statuses, line('.')))
+"    endif
+endfunction
+function! s:wreply_twitter_send()
+  call <SID>post_twitter(join(getline(1, "$")) , s:inreplyto)
+  let s:inreplyto = 0
+  bw!
 endfunction
 
 " Extract all user names from a line in the timeline. Return the poster's name as well as names from all the @replies.
@@ -3479,7 +3503,7 @@ function! s:wpost_twitter()
 endfunction
 
 function! s:wpost_twitter_send()
-  :call <SID>post_twitter(join(getline(1, "$")),0)
+  call <SID>post_twitter(join(getline(1, "$")),0)
   bw!
 endfunction
 

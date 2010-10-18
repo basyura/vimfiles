@@ -10,3 +10,4 @@ gitplugins/*
 .git
 swp/*
 backup/*
+.tags
