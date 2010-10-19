@@ -2079,6 +2079,7 @@ function! s:twitter_win(wintype)
     let winname = a:wintype == "userinfo" ? s:user_winname : s:twit_winname
     let newwin = 0
 
+    "let twit_bufnr = bufwinnr('^'.winname.'$')
     let twit_bufnr = bufwinnr('^'.winname.'$')
     if twit_bufnr > 0
 	execute twit_bufnr . "wincmd w"
@@ -2087,7 +2088,7 @@ function! s:twitter_win(wintype)
 	execute "new " . winname
 	setlocal noswapfile
 	setlocal buftype=nofile
-	setlocal bufhidden=delete 
+	setlocal bufhidden=wipe
 	setlocal foldcolumn=0
 	setlocal nobuflisted
 	setlocal nospell
@@ -2876,7 +2877,8 @@ if !exists(":RemoveFromListTwitter")
     command -nargs=+ RemoveFromListTwitter :call <SID>do_remove_from_list(<f-args>)
 endif
 
-let s:user_winname = "TwitterUserInfo_".localtime()
+"let s:user_winname = "TwitterUserInfo_".localtime()
+let s:user_winname = 'twitvim'
 
 " Process/format the user information.
 function! s:format_user_info(output)
