@@ -2024,7 +2024,8 @@ function! s:nr2enc_char(charcode)
 endfunction
 
 
-let s:twit_winname = "Twitter_".localtime()
+"let s:twit_winname = "Twitter_".localtime()
+let s:twit_winname = "twitvim"
 
 " Set syntax highlighting in timeline window.
 function! s:twitter_win_syntax(wintype)
@@ -2173,11 +2174,11 @@ function! s:twitter_wintext_view(text, wintype, view)
     " Go back to original window after updating buffer. If a new window is
     " created then our saved curwin number is wrong so the best we can do is to
     " take the user back to the last-accessed window using 'wincmd p'.
-    if newwin
-	wincmd p
-    else
-	execute curwin .  "wincmd w"
-    endif
+"    if newwin
+"	wincmd p
+"    else
+"	execute curwin .  "wincmd w"
+"    endif
 endfunction
 
 " Get a Twitter window and stuff text into it.
