@@ -2262,7 +2262,7 @@ function! s:show_timeline_xml(timeline, tline_name, username, page)
 
 	let line = s:format_status_xml(item)
 	call add(text, line)
-  call add(text, s:create_separator())
+        call add(text, s:create_separator())
 
 	let matchcount += 1
     endwhile
