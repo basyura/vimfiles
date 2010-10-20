@@ -236,6 +236,7 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'ruby'       : $HOME . '/.vim/dict/ruby.dict',
     \ 'eruby'      : $HOME . '/.vim/dict/ruby.dict',
     \ 'java'       : $HOME . '/.vim/dict/java.dict',
+    \ 'vimshell'   : $HOME . '/.vimshell_hist',
     \ 'twitvim_say': $HOME . '/.vim/dict/twitvim_say.dict',
     \ 'default'    : $HOME . '/.vim/dict/default.dict'
 \ }
