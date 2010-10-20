@@ -130,6 +130,8 @@ augroup MyGroup
   autocmd FileType lingr-messages :setlocal nonu
   autocmd FileType lingr-messages call s:lingr_messages_setting()
   autocmd FileType lingr-say      call s:lingr_say_setting()
+
+  autocmd FileType quickrun       call s:quickrun_setting()
 augroup END
 
 
@@ -349,7 +351,7 @@ function! s:vimshell_my_settings()
     nnoremap <buffer><silent> <C-n>  :<C-u>FufBuffer<CR>
   else
     inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer_tab <CR>
-    inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>Unite file_mru <CR>
+    inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>Unite file_mru -start-insert<CR>
     nnoremap <buffer><silent> <C-n>  :<C-u>Unite buffer_tab <CR>
   endif
 
@@ -391,7 +393,7 @@ else
   " 読み込んだことにする
   let g:fuf_modesDisable = ['mrucmd','mrufile','file','coveragefile']
 
-  nnoremap <C-r>  :<C-u>Unite file_mru<CR>
+  nnoremap <C-r>  :<C-u>Unite file_mru -start-insert<CR>
   nnoremap <C-n>  :<C-u>Unite buffer_tab <CR>
   nnoremap <Leader>d :<C-u>Unite file<CR>
   nnoremap <Leader>f  :<C-u>Unite file_rec -input=
@@ -402,7 +404,7 @@ nnoremap <silent> <Leader>u  :<C-u>Unite buffer_tab file file_mru bookmark<CR>
 
 "let g:unite_update_time = 200
 let g:unite_source_file_mru_time_format = ''
-let g:unite_enable_start_insert = 1
+"let g:unite_enable_start_insert = 1
 let g:unite_source_file_mru_ignore_pattern = mru_ignore
 let g:unite_source_file_mru_limit = 1000
 call unite#set_substitute_pattern('', '[[:alnum:]]', '*\0', 100)
@@ -616,8 +618,13 @@ endfunction
 function! s:lingr_messages_setting()
   nmap <buffer> <silent> <Space>po <Plug>(lingr-messages-show-say-buffer)
 endfunction
+
 function! s:lingr_say_setting()
   nmap <buffer> <silent> <C-j> <Plug>(lingr-say-close)
+endfunction
+
+function! s:quickrun_setting()
+  nmap <buffer> <C-j> :bw<CR>
 endfunction
 
 "color for cygwin
