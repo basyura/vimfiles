@@ -2075,15 +2075,18 @@ endfunction
 " Switch to the Twitter window if there is already one or open a new window for
 " Twitter.
 " Returns 1 if new window created, 0 otherwise.
+if !exists('s:buffer_number') 
+  let s:buffer_number = -1
+endif
 function! s:twitter_win(wintype)
     let winname = a:wintype == "userinfo" ? s:user_winname : s:twit_winname
     let newwin = 0
 
+    if(s:buffer_number == -1 || bufexists(s:buffer_number) == 0)
     "let twit_bufnr = bufwinnr('^'.winname.'$')
-    let twit_bufnr = bufwinnr('^'.winname.'$')
-    if twit_bufnr > 0
-	execute twit_bufnr . "wincmd w"
-    else
+    "if twit_bufnr > 0
+    "	execute twit_bufnr . "wincmd w"
+    "else
 	let newwin = 1
 	execute "new " . winname
 	setlocal noswapfile
@@ -2143,6 +2146,14 @@ function! s:twitter_win(wintype)
 	" Go back and forth through buffer stack.
 	nnoremap <buffer> <silent> <C-o> :call <SID>back_buffer()<cr>
 	nnoremap <buffer> <silent> <C-i> :call <SID>fwd_buffer()<cr>
+        let s:buffer_number = bufnr('%')
+    else
+      let buffer_win = bufwinnr(s:buffer_number)
+      if(buffer_win == -1)
+        exec 'sb '. s:buffer_number
+      else
+        exec buffer_win.'wincmd w'
+      endif
     endif
 
     call s:twitter_win_syntax(a:wintype)
