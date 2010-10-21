@@ -395,11 +395,11 @@ else
   " 読み込んだことにする
   let g:fuf_modesDisable = ['mrucmd','mrufile','file','coveragefile']
 
-  nnoremap <C-r>  :<C-u>Unite file_mru -start-insert<CR>
-  nnoremap <C-n>  :<C-u>Unite buffer_tab <CR>
-  nnoremap <Leader>d :<C-u>Unite file<CR>
-  nnoremap <Leader>f  :<C-u>Unite file_rec -input=
-  nnoremap <Leader>b :<C-u>Unite bookmark<CR>
+  nnoremap <silent> <C-r>  :<C-u>Unite file_mru -start-insert<CR>
+  nnoremap <silent> <C-n>  :<C-u>Unite buffer_tab <CR>
+  nnoremap <silent> <Leader>d :<C-u>Unite file -start-insert<CR>
+  nnoremap <silent> <Leader>f  :<C-u>Unite file_rec -input=
+  nnoremap <silent> <Leader>b :<C-u>Unite bookmark<CR>
 end
 
 nnoremap <silent> <Leader>u  :<C-u>Unite buffer_tab file file_mru bookmark<CR>
