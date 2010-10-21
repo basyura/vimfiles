@@ -208,7 +208,6 @@ nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> <C-]>
 nnoremap <Space>d :<C-u>pwd<CR>
 nnoremap <C-l> :FufBufferTag<CR>
-nnoremap <C-t> :FufTag<CR>
 nnoremap <C-x><C-x> :tabnew<CR>
 nnoremap <C-x><C-l> :tabnext<CR>
 nnoremap <C-x><C-h> :tabprevious<CR>
@@ -391,6 +390,7 @@ if g:use_fuzzy_finder == 1
   nnoremap <Leader>d :<C-u>FufFile<CR>
   nnoremap <Leader>f :FufFile **/
   nnoremap <Leader>b :FufBookmarkFile<CR>
+  nnoremap <C-t> :FufTag<CR>
 else
   " 読み込んだことにする
   let g:fuf_modesDisable = ['mrucmd','mrufile','file','coveragefile']
@@ -400,6 +400,7 @@ else
   nnoremap <Leader>d :<C-u>Unite file<CR>
   nnoremap <Leader>f  :<C-u>Unite file_rec -input=
   nnoremap <Leader>b :<C-u>Unite bookmark<CR>
+  nnoremap <C-t> :Unite tags -start-insert<CR>
 end
 
 nnoremap <silent> <Leader>u  :<C-u>Unite buffer_tab file file_mru bookmark<CR>
