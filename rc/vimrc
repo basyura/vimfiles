@@ -495,10 +495,12 @@ nnoremap <Space>nn   :<C-u>NextTwitter<Enter>
 nnoremap <Space>pp   :<C-u>BackTwitter<Enter>
 "nnoremap <Leader>u   yw:UserTwitter <C-R>+<CR>
 
-if has('mac')
-  let g:twitvim_browser_cmd = "open -a firefox "
-else
-  let g:twitvim_browser_cmd = "D:/Program\ Files/Mozilla\ Firefox/firefox.exe"
+if !exists('g:twitvim_browser_cmd')
+  if has('mac')
+    let g:twitvim_browser_cmd = "open -a firefox "
+  else
+    let g:twitvim_browser_cmd = "D:/Program\ Files/Mozilla\ Firefox/firefox.exe"
+  endif
 endif
 
 "let twitvim_enable_python = 1

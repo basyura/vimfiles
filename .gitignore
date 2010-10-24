@@ -11,3 +11,4 @@ gitplugins/*
 swp/*
 backup/*
 .tags
+gvim.exe.stackdump
