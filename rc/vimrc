@@ -419,7 +419,8 @@ endif
 
 function! s:unite_my_settings()
   " Overwrite settings.
-  imap <buffer> jj <Plug>(unite_insert_leave)
+  setlocal cursorline
+  imap <buffer> jj <Plug>(unite_insert_leave):setlocal cursorline<CR>
   "imap <buffer> jj <Plug>(unite_exit)
   imap <buffer> <C-j> <Plug>(unite_exit)
   imap <buffer> <ESC> <Plug>(unite_exit)
