@@ -114,7 +114,10 @@ endfunction
 function! s:BackupScratchBuffer()
   if s:buffer_number != -1 && exists('g:scratchBackupFile') &&
         \ g:scratchBackupFile != ''
-    exec 'split #' . s:buffer_number
+    " move to scratch buffer
+    if bufnr('%') != s:buffer_number
+      exec 'split #' . s:buffer_number
+    endif
     " Avoid writing empty scratch buffers.
     if line('$') > 1 || getline(1) !~ '^\s*$'
       let _cpo=&cpo
