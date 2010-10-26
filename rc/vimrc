@@ -399,7 +399,7 @@ else
 
   nnoremap <silent> <C-r>      :<C-u>Unite file_mru -start-insert<CR>
   nnoremap <silent> <C-n>      :<C-u>Unite buffer_tab <CR>
-  nnoremap <silent> <Leader>d  :<C-u>Unite file -start-insert -buffer-name=files<CR>
+  nnoremap <silent> <Leader>d  :<C-u>Unite file -start-insert<CR>
   nnoremap <silent> <Leader>f  :<C-u>Unite file_rec -input=
   nnoremap <silent> <Leader>b  :<C-u>Unite bookmark<CR>
   nnoremap <silent> <C-t>      :<C-u>Unite tags -start-insert<CR>
