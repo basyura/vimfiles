@@ -35,8 +35,8 @@ endif
 """"""""""""""""""""""""""""""""""
 
 
-if filereadable($HOME . '/.vimrc_secret')
-  source ~/.vimrc_secret
+if filereadable($HOME . '/.vimrc_local')
+  source ~/.vimrc_local
 endif
 
 if has('win32')
