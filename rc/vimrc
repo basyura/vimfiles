@@ -612,7 +612,7 @@ end
 command! MoveLeft call s:MoveLeft()
 function! s:MoveLeft()
   winpos 0 0
-  set lines=43
+  set lines=999
 endfunction
 function! s:scratch_my_settings()
   AlterCommand <buffer> q :Scratch<CR>
