@@ -16,6 +16,7 @@ task :clone_github do
   puts ">>> check github repositories ..."
   f = open("source.list" , "r")
   f.read.each_line do |line|
+    next if line =~ /^#/
     line.chomp!
     path = "./gitplugins/#{line.split(/\//)[-1]}".sub(/\.git/ , "")
     if File.exist?(path)

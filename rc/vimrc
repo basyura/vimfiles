@@ -381,6 +381,7 @@ let g:fuf_keyOpenVsplit    = '<C-v>'
 let g:fuf_keyOpenSplit     = '<C-k>'
 let g:fuf_enumeratingLimit = 20
 let g:fuf_mrufile_exclude = mru_ignore
+let g:fuf_mrufile_maxItem = 1000
 
 if g:use_fuzzy_finder == 1
   " 読み込んだことにしたいけどエラー出るのでコメントアウト
@@ -400,9 +401,9 @@ else
   nnoremap <silent> <C-r>      :<C-u>Unite file_mru -start-insert<CR>
   nnoremap <silent> <C-n>      :<C-u>Unite buffer_tab <CR>
   nnoremap <silent> <Leader>d  :<C-u>Unite file -start-insert<CR>
-  nnoremap <silent> <Leader>f  :<C-u>Unite file_rec -input=
   nnoremap <silent> <Leader>b  :<C-u>Unite bookmark<CR>
   nnoremap <silent> <C-t>      :<C-u>Unite tags -start-insert<CR>
+  nnoremap <Leader>f  :<C-u>Unite file_rec -input=
 end
 
 nnoremap <silent> <Leader>u  :<C-u>Unite buffer_tab file file_mru bookmark<CR>
