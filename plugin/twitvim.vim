@@ -1543,26 +1543,25 @@ endfunction
 " This is for a local mapping in the timeline. Start an @-reply on the command
 " line to the author of the tweet on the current line.
 function! s:Quick_Reply()
-    let username    = s:get_user_name(getline('.'))
     let s:inreplyto = get(s:curbuffer.statuses, line('.'))
 
-    execute 'below split twitvim_say' 
-    execute '2 wincmd _'
-    let &filetype = 'twitvim_say'
-
-    setlocal paste
-    silent execute 'normal i' . '@' . username . ' '
-    setlocal nopaste
+    let bufnr = bufwinnr('twitvim_say')
+    if bufnr > 0
+      exec bufnr.'wincmd w'
+    else
+      let username = s:get_user_name(getline('.'))
+      execute 'below split twitvim_say' 
+      execute '2 wincmd _'
+      setlocal paste
+      silent execute 'normal i' . '@' . username . ' '
+      setlocal nopaste
+      let &filetype = 'twitvim_say'
+    endif
 
     nnoremap <buffer> <silent> <CR> :call <SID>wreply_twitter_send()<CR>
 
     startinsert!
 
-"    if username != ""
-"	" If the status ID is not available, get() will return 0 and
-"	" post_twitter() won't add in_reply_to_status_id to the update.
-"	call s:CmdLine_Twitter('@'.username.' ', get(s:curbuffer.statuses, line('.')))
-"    endif
 endfunction
 function! s:wreply_twitter_send()
   call <SID>post_twitter(join(getline(1, "$")) , s:inreplyto)
@@ -3498,10 +3497,19 @@ if !exists(":WPosttoTwitter")
     command WPosttoTwitter :call <SID>wpost_twitter()
 endif
 
+if !exists('s:twitvim_say_buffer_number') 
+  let s:twitvim_say_buffer_number = -1
+endif
+
 function! s:wpost_twitter()
-  execute 'below split twitvim_say' 
-  execute '2 wincmd _'
-  let &filetype = 'twitvim_say'
+  let bufnr = bufwinnr('twitvim_say')
+  if bufnr > 0
+    exec bufnr.'wincmd w'
+  else
+    execute 'below split twitvim_say' 
+    execute '2 wincmd _'
+    let &filetype = 'twitvim_say'
+  endif
   nnoremap <buffer> <silent> <CR> :call <SID>wpost_twitter_send()<CR>
   startinsert!
 endfunction
