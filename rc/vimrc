@@ -417,7 +417,7 @@ let g:unite_source_file_mru_limit = 1000
 " unite ウインドウの高さ
 let g:unite_winheight = 10
 
-if load_runtime == 1
+if exists('g:loaded_unite') && g:loaded_unite == 1
   call unite#set_substitute_pattern('', '[[:alnum:]]', '*\0', 100)
 endif
 
