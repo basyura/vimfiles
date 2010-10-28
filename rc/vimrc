@@ -206,6 +206,7 @@ nnoremap <Leader>v :VimShell<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> <C-]>
+nnoremap <Leader>g  :Grep **/*.* 
 nnoremap <Space>d :<C-u>pwd<CR>
 nnoremap <C-l> :FufBufferTag<CR>
 nnoremap <C-x><C-x> :tabnew<CR>
@@ -545,6 +546,12 @@ function! s:vimrc_local(loc)
 "  endfor
   let &l:tags=findfile('.tags' , '.;')
 "  let &tags=findfile('.tags' , '.;')
+endfunction
+
+"http://vim-users.jp/2010/03/hack130/
+command! -complete=file -nargs=+ Grep  call s:grep([<f-args>])
+function! s:grep(args)
+  execute 'vimgrep' '/'.a:args[-1].'/' join(a:args[:-2])
 endfunction
 
 
