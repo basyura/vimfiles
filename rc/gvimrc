@@ -23,12 +23,10 @@ augroup MyGGroup
 augroup END
 
 function! s:reload_color_scheme()
-  if has('windows') && !has('unix')
-    "set guifont=MeiryoKe_Gothic:h11:cSHIFTJIS
-    "set linespace=5
+  if has('win32')
+   " set guifont=MeiryoKe_Gothic:h11:cSHIFTJIS
     set guifont=MS_Gothic:h10:cSHIFTJIS
     set linespace=4
-    set columns=88
   elseif has('mac')
     " フォント
     set guifont=Monaco:h11.5
@@ -58,6 +56,10 @@ if has('mac')
   endif
   " ウインドウの高さ
   set lines=41
+endif
+
+if has('win32')
+  set columns=88
 endif
 
 call s:reload_color_scheme()
