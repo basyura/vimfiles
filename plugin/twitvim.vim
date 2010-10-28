@@ -1549,17 +1549,12 @@ function! s:Quick_Reply()
     execute 'below split twitvim_say' 
     execute '2 wincmd _'
     let &filetype = 'twitvim_say'
-    setlocal bufhidden=delete 
-    setlocal statusline=%f
-    setlocal nobuflisted
-    setlocal noswapfile
 
     setlocal paste
     silent execute 'normal i' . '@' . username . ' '
     setlocal nopaste
 
     nnoremap <buffer> <silent> <CR> :call <SID>wreply_twitter_send()<CR>
-    nnoremap <buffer> <silent> q :bw!<CR>
 
     startinsert!
 
@@ -3507,13 +3502,23 @@ function! s:wpost_twitter()
   execute 'below split twitvim_say' 
   execute '2 wincmd _'
   let &filetype = 'twitvim_say'
-	setlocal bufhidden=delete 
+  nnoremap <buffer> <silent> <CR> :call <SID>wpost_twitter_send()<CR>
+  startinsert!
+endfunction
+
+augroup TwitvimSay
+  autocmd! TwitvimSay
+  autocmd  FileType twitvim_say call s:twitvim_say_settings()
+augroup END
+
+function! s:twitvim_say_settings()
+  setlocal bufhidden=delete 
   setlocal statusline=%f
   setlocal nobuflisted
   setlocal noswapfile
-  nnoremap <buffer> <silent> <CR> :call <SID>wpost_twitter_send()<CR>
   nnoremap <buffer> <silent> q :bw!<CR>
-  startinsert!
+  AlterCommand <buffer> w  :echo 'please enter to tweet'
+  AlterCommand <buffer> wq :echo 'please enter to tweet'
 endfunction
 
 function! s:wpost_twitter_send()
