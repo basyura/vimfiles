@@ -227,6 +227,8 @@ inoremap kk <ESC><S-o>
 
 vnoremap <C-e> <End><Left>
 
+cnoremap <C-j> <ESC>
+
 """"""""""""""""""""""""""""""""""
 "        neo complcache          "
 """"""""""""""""""""""""""""""""""
