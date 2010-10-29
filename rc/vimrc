@@ -634,7 +634,7 @@ function! s:twitvim_my_settings()
 endfunction
 " for twitvim say
 function! s:twitvim_say_my_settings()
-  NeoComplCacheAutoCompletionLength 2
+  NeoComplCacheLock
   AlterCommand <buffer> q bw!<CR>
   nnoremap <buffer> <silent> <C-j> :bw!<CR>
 endfunction
