@@ -1475,6 +1475,9 @@ endfunction
 let s:history = []
 " Common code ta post a message to Twitter.
 function! s:post_twitter(mesg, inreplyto)
+    " add to history
+    call add(s:history, a:mesg)
+
     let parms = {}
 
     " Add in_reply_to_status_id if status ID is available.
@@ -1503,8 +1506,6 @@ function! s:post_twitter(mesg, inreplyto)
     else
 	redraw
 	echo "Sending update to Twitter..."
-        " add to history
-	call add(s:history, mesg)
 
 	let url = s:get_api_root()."/statuses/update.xml"
 	let parms["status"] = mesg
