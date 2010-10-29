@@ -24,7 +24,7 @@ set cpo&vim
 " Twitter character limit. Twitter used to accept tweets up to 246 characters
 " in length and display those in truncated form, but that is no longer the
 " case. So 140 is now the hard limit.
-let s:char_limit = 140
+let s:char_limit = 246
 
 " Allow the user to override the API root, e.g. for identi.ca, which offers a
 " Twitter-compatible API.
@@ -1472,7 +1472,8 @@ function! s:mbstrlen(s)
     return strlen(substitute(a:s, ".", "x", "g"))
 endfunction
 
-" Common code to post a message to Twitter.
+let s:history = []
+" Common code ta post a message to Twitter.
 function! s:post_twitter(mesg, inreplyto)
     let parms = {}
 
@@ -1502,6 +1503,8 @@ function! s:post_twitter(mesg, inreplyto)
     else
 	redraw
 	echo "Sending update to Twitter..."
+        " add to history
+	call add(s:history, mesg)
 
 	let url = s:get_api_root()."/statuses/update.xml"
 	let parms["status"] = mesg
@@ -3525,6 +3528,7 @@ function! s:twitvim_say_settings()
   setlocal nobuflisted
   setlocal noswapfile
   nnoremap <buffer> <silent> q :bw!<CR>
+  nnoremap <buffer> <silent> <C-s> :call <SID>show_history()<CR>
   AlterCommand <buffer> w  :echo 'please enter to tweet'
   AlterCommand <buffer> wq :echo 'please enter to tweet'
 endfunction
@@ -3532,6 +3536,20 @@ endfunction
 function! s:wpost_twitter_send()
   call <SID>post_twitter(join(getline(1, "$")),0)
   bw!
+endfunction
+
+function! s:show_history()
+  let no = len(s:history)
+  if(no == 0)
+    return
+  endif
+  let no = (exists('b:history_no') ? b:history_no : no) - 1
+  if no == -1
+    let no = len(s:history) - 1
+  endif
+  silent %delete _
+  silent execute 'normal i' . s:history[no]
+  let b:history_no = no
 endfunction
 
 let &cpo = s:save_cpo
