@@ -2208,6 +2208,8 @@ function! s:format_status_xml(item)
     let text = s:convert_entity(s:xml_get_element(item, 'text'))
     let pubdate = s:time_filter(s:xml_get_element(item, 'created_at'))
 
+    let s:twitvim_users[user] = 1
+
     while len(user) < 10
       let user = user . ' '
     endwhile
@@ -2215,6 +2217,7 @@ function! s:format_status_xml(item)
     return user.': '.text.' |'.pubdate.'|'
 endfunction
 
+let s:twitvim_users = {}
 " Show a timeline from XML stream data.
 function! s:show_timeline_xml(timeline, tline_name, username, page)
     let matchcount = 1
@@ -2550,7 +2553,7 @@ if !exists(":FriendsTwitter")
     command -count=1 FriendsTwitter :call <SID>get_timeline("friends", '', <count>)
 endif
 if !exists(":UserTwitter")
-    command -range=1 -nargs=? UserTwitter :call <SID>get_timeline("user", <q-args>, <count>)
+    command -range=1 -nargs=? -complete=custom,Twitvim_Users_Completion  UserTwitter :call <SID>get_timeline("user", <q-args>, <count>)
 endif
 if !exists(":MentionsTwitter")
     command -count=1 MentionsTwitter :call <SID>get_timeline("replies", '', <count>)
@@ -3474,19 +3477,21 @@ function! s:create_separator()
 endfunction
 
 function! Twitvim_Users_Completion(ArgLead, CmdLine, CursorPos)
-  echomsg "-------"
-  if !exists('g:twitvim_users_list')
-    let g:twitvim_users_list = []
-  end
-  let l:users = deepcopy(g:twitvim_users_list)
-  echomsg join(l:users , ",")
-  "let name = substitute(split(a:ArgLead[0:a:CursorPos]," ")[-1] , "@" , "" , "")
-  let name = split(a:ArgLead[0:a:CursorPos]," ")[-1]
-  let filter_cmd = printf('v:val =~ "^%s"', name)
-  echomsg filter_cmd
-  let lis = filter(l:users , filter_cmd)
-  echomsg join(lis , ",")
-  return join(lis , "\n")
+  return join(keys(s:twitvim_users) , "\n")
+
+"  echomsg "-------"
+"  if !exists('g:twitvim_users_list')
+"    let g:twitvim_users_list = []
+"  end
+"  let l:users = deepcopy(g:twitvim_users_list)
+"  echomsg join(l:users , ",")
+"  "let name = substitute(split(a:ArgLead[0:a:CursorPos]," ")[-1] , "@" , "" , "")
+"  let name = split(a:ArgLead[0:a:CursorPos]," ")[-1]
+"  let filter_cmd = printf('v:val =~ "^%s"', name)
+"  echomsg filter_cmd
+"  let lis = filter(l:users , filter_cmd)
+"  echomsg join(lis , ",")
+"  return join(lis , "\n")
 endfunction
 
 
