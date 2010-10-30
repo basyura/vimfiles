@@ -21,6 +21,8 @@ let loaded_twitvim = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
+let s:twitvim_users_file = $HOME . '/.twitvim.users'
+
 " Twitter character limit. Twitter used to accept tweets up to 246 characters
 " in length and display those in truncated form, but that is no longer the
 " case. So 140 is now the hard limit.
@@ -2218,9 +2220,11 @@ function! s:format_status_xml(item)
 endfunction
 " read username file and cache
 let s:twitvim_users = {}
-for v in readfile($HOME . '/.twitvim.users')
-  let s:twitvim_users[v] = 1
-endfor
+if filereadable(s:twitvim_users_file)
+  for v in readfile(s:twitvim_users_file)
+    let s:twitvim_users[v] = 1
+  endfor
+endif
 " Show a timeline from XML stream data.
 function! s:show_timeline_xml(timeline, tline_name, username, page)
     let matchcount = 1
@@ -2286,7 +2290,7 @@ function! s:show_timeline_xml(timeline, tline_name, username, page)
     let s:curbuffer.buffer = text
     
     " write to ~/.twitvim.users as dicationary
-    call writefile(keys(s:twitvim_users) , $HOME . "/.twitvim.users")
+    call writefile(keys(s:twitvim_users) , s:twitvim_users_file)
 
 endfunction
 
