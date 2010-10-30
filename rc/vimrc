@@ -405,7 +405,13 @@ if g:use_fuzzy_finder == 1
   nnoremap <Leader>d :<C-u>FufFile<CR>
   nnoremap <Leader>f :FufFile **/
   nnoremap <C-x><C-f> <Esc>:FufFile **/
+  nnoremap <C-x><C-f><C-f> <Esc>:FufFile! **/
   inoremap <C-x><C-f> <Esc>:FufFile **/
+  inoremap <C-x><C-f><C-f> <Esc>:FufFile! **/
+  nnoremap <C-x><C-d> <Esc>:FufDir **/
+  nnoremap <C-x><C-d><C-d> <Esc>:FufDir! **/
+  inoremap <C-x><C-d> <Esc>:FufDir **/
+  inoremap <C-x><C-d><C-d> <Esc>:FufDir! **/
   nnoremap <Leader>b :FufBookmarkDir<CR>
   nnoremap <C-t> :FufTag<CR>
 else
@@ -418,8 +424,8 @@ else
   nnoremap <silent> <Leader>b  :<C-u>Unite bookmark<CR>
   nnoremap <silent> <C-t>      :<C-u>Unite tags -start-insert<CR>
   nnoremap <Leader>f  :<C-u>Unite file_rec -input=
-  nnoremap <Leader>f  :<C-u>Unite file_rec -input=
-  inoremap <Leader>f  :<C-u>Unite file_rec -input=
+  nnoremap <C-x><C-f>  :<C-u>Unite file_rec -input=
+  inoremap <C-x><C-f> :<C-u>Unite file_rec -input=
 end
 
 nnoremap <silent> <Leader>u  :<C-u>Unite buffer_tab file file_mru bookmark<CR>
