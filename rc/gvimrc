@@ -24,8 +24,13 @@ augroup END
 
 function! s:reload_color_scheme()
   if has('win32')
-   " set guifont=MeiryoKe_Gothic:h11:cSHIFTJIS
-    set guifont=MS_Gothic:h10:cSHIFTJIS
+    " font 
+    if exists('g:my_gui_font')
+      let &guifont=g:my_gui_font
+    else
+      set guifont=MS_Gothic:h10:cSHIFTJIS
+    endif
+
     set linespace=4
   elseif has('mac')
     " フォント
@@ -49,17 +54,20 @@ function! s:reload_color_scheme()
   endif
 endfunction
 
-if has('mac')
-  " ウインドウ幅
-  if &columns == 80
-    set columns=95
+" 起動時のみの処理
+if has('vim_starting')
+  " for mac
+  if has('mac')
+    " ウインドウ幅
+    if &columns == 80
+      set columns=95
+    endif
+    " ウインドウの高さ
+    set lines=41
+  " for windows
+  elseif has('win32')
+    set columns=88
   endif
-  " ウインドウの高さ
-  set lines=41
-endif
-
-if has('win32')
-  set columns=88
 endif
 
 call s:reload_color_scheme()

@@ -375,11 +375,10 @@ let g:vimfiler_as_default_explorer = 1
 """"""""""""""""""""""""""""""""""
 "      unite or fuzzyfinder      "
 """"""""""""""""""""""""""""""""""
-let mru_ignore = '.*\/$\|.*Application\ Data.*\|.*デスクトップ.*'
+let mru_ignore = '.*\/$\|.*Application\ Data.*\|.*デスクトップ.*\|.*Local/Temp/.*'
 "let g:fuf_keyOpen = ":"
 "let g:fuf_maxMenuWidth = 90
 let g:fuf_modesDisable     = ['mrucmd']
-let g:fuf_mrufile_exclude  = ''
 let g:fuf_timeFormat       = ''
 let g:fuf_keyOpenVsplit    = '<C-v>'
 let g:fuf_keyOpenSplit     = '<C-k>'
