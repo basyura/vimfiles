@@ -51,7 +51,8 @@ set ambiwidth=double
 set nu
 set autoindent
 set iminsert=0
-set titlestring=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}
+set titlestring=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}　-　%{getcwd()}
+set titlelen=200
 set laststatus=0
 set linespace=2
 set antialias
@@ -244,8 +245,8 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'ruby'       : $HOME . '/.vim/dict/ruby.dict',
     \ 'eruby'      : $HOME . '/.vim/dict/ruby.dict',
     \ 'java'       : $HOME . '/.vim/dict/java.dict',
-    \ 'vimshell'   : $HOME . '/.vimshell_hist',
-    \ 'twitvim_say': $HOME . '/.vim/dict/twitvim_say.dict',
+    \ 'vimshell'   : $HOME . '/.vimshell/command-history',
+    \ 'twitvim_say': $HOME . '/.twitvim.users',
     \ 'default'    : $HOME . '/.vim/dict/default.dict'
 \ }
 
@@ -634,7 +635,8 @@ function! s:twitvim_my_settings()
 endfunction
 " for twitvim say
 function! s:twitvim_say_my_settings()
-  NeoComplCacheLock
+  "NeoComplCacheLock
+  NeoComplCacheCachingDictionary
   AlterCommand <buffer> q bw!<CR>
   nnoremap <buffer> <silent> <C-j> :bw!<CR>
 endfunction

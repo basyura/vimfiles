@@ -2216,8 +2216,11 @@ function! s:format_status_xml(item)
 
     return user.': '.text.' |'.pubdate.'|'
 endfunction
-
+" read username file and cache
 let s:twitvim_users = {}
+for v in readfile($HOME . '/.twitvim.users')
+  let s:twitvim_users[v] = 1
+endfor
 " Show a timeline from XML stream data.
 function! s:show_timeline_xml(timeline, tline_name, username, page)
     let matchcount = 1
@@ -2281,6 +2284,10 @@ function! s:show_timeline_xml(timeline, tline_name, username, page)
     endwhile
     call s:twitter_wintext(text, "timeline")
     let s:curbuffer.buffer = text
+    
+    " write to ~/.twitvim.users as dicationary
+    call writefile(keys(s:twitvim_users) , $HOME . "/.twitvim.users")
+
 endfunction
 
 " Add a parameter to a URL.
