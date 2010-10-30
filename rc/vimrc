@@ -307,7 +307,7 @@ command! -nargs=* Nel NeoComplCacheLock <args>
 """"""""""""""""""""""""""""""""""
 
 let g:vimshell_prompt = '$ '
-let g:vimshell_user_prompt = "Noop()\ngetcwd()"
+let g:vimshell_user_prompt = "printf('%s','')\ngetcwd()"
 let g:vimshell_edit_no_split = 1
 "let g:vimshell_user_prompt = 'getcwd()'
 let g:vimshell_interactive_cygwin_path = 'D:/develop/dev/cygwin/bin'
@@ -651,10 +651,6 @@ endfunction
 
 function! s:quickrun_setting()
   nmap <buffer> <C-j> :bw<CR>
-endfunction
-
-function! Noop()
-  return ""
 endfunction
 
 "color for cygwin
