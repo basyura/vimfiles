@@ -1474,11 +1474,8 @@ function! s:mbstrlen(s)
     return strlen(substitute(a:s, ".", "x", "g"))
 endfunction
 
-let s:history = []
 " Common code ta post a message to Twitter.
 function! s:post_twitter(mesg, inreplyto)
-    " add to history
-    call add(s:history, a:mesg)
 
     let parms = {}
 
@@ -3536,7 +3533,8 @@ endfunction
 
 augroup TwitvimSay
   autocmd! TwitvimSay
-  autocmd  FileType twitvim_say call s:twitvim_say_settings()
+  autocmd FileType twitvim_say call s:twitvim_say_settings()
+  autocmd BufWinLeave twitvim_say call s:save_to_history_at_leave()
 augroup END
 
 function! s:twitvim_say_settings()
@@ -3555,6 +3553,9 @@ function! s:wpost_twitter_send()
   bw!
 endfunction
 
+" for recovery tweet
+let s:history = []
+
 function! s:show_history()
   let no = len(s:history)
   if(no == 0)
@@ -3567,6 +3568,13 @@ function! s:show_history()
   silent %delete _
   silent execute 'normal i' . s:history[no]
   let b:history_no = no
+endfunction
+
+function! s:save_to_history_at_leave()
+  let msg = join(getline(1, "$"))
+  if msg !~ '^\s\+$'
+    call add(s:history , msg)
+  endif
 endfunction
 
 let &cpo = s:save_cpo
