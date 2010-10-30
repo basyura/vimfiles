@@ -86,7 +86,7 @@ augroup MyGroup
   au BufEnter * set bh=hide
   au BufNewFile,BufRead *.scala setf scala
   "set autochdir
-  au BufEnter * execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
+  au BufEnter * call s:all_bufenter_setting()
   " for ruby
   autocmd FileType ruby  :setlocal tabstop=2
   autocmd FileType ruby  :setlocal shiftwidth=2
@@ -137,6 +137,10 @@ augroup MyGroup
   autocmd FileType quickrun       call s:quickrun_setting()
 augroup END
 
+function! s:all_bufenter_setting()
+  au BufEnter * execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
+  cmap <C-j> <C-c>
+endfunction
 
 """"""""""""""""""""""""""""""""""
 "            colors              "
@@ -357,11 +361,14 @@ function! s:vimshell_my_settings()
     inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>FufBuffer<CR>
     inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>FufMruFile<CR>
     nnoremap <buffer><silent> <C-n>  :<C-u>FufBuffer<CR>
+    inoremap <C-x><C-f> <Esc>:FufFile **/
   else
     inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer_tab <CR>
     inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>Unite file_mru -start-insert<CR>
     nnoremap <buffer><silent> <C-n>  :<C-u>Unite buffer_tab <CR>
+    inoremap <C-x><C-f> <Esc>:Unite file_rec -input=
   endif
+
 
   NeoComplCacheAutoCompletionLength 3
 endfunction
@@ -397,6 +404,8 @@ if g:use_fuzzy_finder == 1
   nnoremap <C-n> :FufBuffer<CR>
   nnoremap <Leader>d :<C-u>FufFile<CR>
   nnoremap <Leader>f :FufFile **/
+  nnoremap <C-x><C-f> <Esc>:FufFile **/
+  inoremap <C-x><C-f> <Esc>:FufFile **/
   nnoremap <Leader>b :FufBookmarkDir<CR>
   nnoremap <C-t> :FufTag<CR>
 else
@@ -409,6 +418,8 @@ else
   nnoremap <silent> <Leader>b  :<C-u>Unite bookmark<CR>
   nnoremap <silent> <C-t>      :<C-u>Unite tags -start-insert<CR>
   nnoremap <Leader>f  :<C-u>Unite file_rec -input=
+  nnoremap <Leader>f  :<C-u>Unite file_rec -input=
+  inoremap <Leader>f  :<C-u>Unite file_rec -input=
 end
 
 nnoremap <silent> <Leader>u  :<C-u>Unite buffer_tab file file_mru bookmark<CR>
