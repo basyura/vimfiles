@@ -3543,7 +3543,8 @@ function! s:twitvim_say_settings()
   setlocal nobuflisted
   setlocal noswapfile
   nnoremap <buffer> <silent> q :bw!<CR>
-  nnoremap <buffer> <silent> <C-s> :call <SID>show_history()<CR>
+  nnoremap <buffer> <silent> <C-s> :call <SID>show_history()<CR>0
+  inoremap <buffer> <silent> <C-s> <ESC>:call <SID>show_history()<CR>0
   AlterCommand <buffer> w  :echo 'please enter to tweet'
   AlterCommand <buffer> wq :echo 'please enter to tweet'
 endfunction
