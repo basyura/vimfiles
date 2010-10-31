@@ -3539,7 +3539,7 @@ augroup END
 
 function! s:twitvim_say_settings()
   setlocal bufhidden=delete 
-  setlocal statusline=%f
+"  setlocal statusline=%f
   setlocal nobuflisted
   setlocal noswapfile
   nnoremap <buffer> <silent> q :bw!<CR>

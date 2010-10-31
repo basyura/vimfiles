@@ -53,7 +53,6 @@ set autoindent
 set iminsert=0
 set titlestring=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}　-　%{getcwd()}
 set titlelen=200
-set laststatus=0
 set linespace=2
 set antialias
 "set nobackup
@@ -418,7 +417,7 @@ else
 
   nnoremap <silent> <C-r>      :<C-u>Unite file_mru -start-insert<CR>
   nnoremap <silent> <C-n>      :<C-u>Unite buffer_tab <CR>
-  nnoremap <silent> <Leader>d  :<C-u>Unite -start-insert -buffer-name=files file<CR>
+  nnoremap <silent> <Leader>d  :<C-u>Unite -buffer-name=files file<CR>
   nnoremap <silent> <Leader>b  :<C-u>Unite bookmark<CR>
   nnoremap <silent> <C-t>      :<C-u>Unite tags -start-insert<CR>
   nnoremap <Leader>f  :<C-u>Unite file_rec -input=
@@ -430,7 +429,7 @@ nnoremap <silent> <Leader>u  :<C-u>Unite buffer_tab file file_mru bookmark<CR>
 
 "let g:unite_update_time = 200
 let g:unite_source_file_mru_time_format = ''
-"let g:unite_enable_start_insert = 1
+let g:unite_enable_start_insert = 1
 let g:unite_source_file_mru_ignore_pattern = mru_ignore
 let g:unite_source_file_mru_limit = 1000
 " unite ウインドウの高さ
@@ -438,7 +437,7 @@ let g:unite_winheight = 10
 
 if exists('g:loaded_unite') && g:loaded_unite == 1
   call unite#set_substitute_pattern('', '[[:alnum:]]', '*\0', 100)
-  call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', 100)
+"  call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', 100)
 endif
 
 
