@@ -217,6 +217,7 @@ nnoremap <C-x><C-l> :tabnext<CR>
 nnoremap <C-x><C-h> :tabprevious<CR>
 " エンコードを指定して開き直す
 nnoremap <Space>r   :e ++enc=
+nnoremap <C-w>; <C-w>+
 " ターミナルだとなぜか起動時にインサートモードになるので
 if has('gui_running')
   nnoremap <silent> <ESC> :noh<CR>
