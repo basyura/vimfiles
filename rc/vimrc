@@ -65,7 +65,7 @@ set scrolloff=5
 set wrap
 set hlsearch
 set smartindent
-set timeout timeoutlen=300 ttimeoutlen=100
+set timeout timeoutlen=300 ttimeoutlen=200
 set shellslash
 "set cmdheight=1
 
