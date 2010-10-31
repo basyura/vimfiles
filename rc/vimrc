@@ -139,7 +139,6 @@ augroup END
 
 function! s:all_bufenter_setting()
   au BufEnter * execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
-  cmap <C-j> <C-c>
 endfunction
 
 """"""""""""""""""""""""""""""""""
@@ -227,12 +226,12 @@ endif
 inoremap <silent><C-o> <ESC>o
 inoremap <C-j> <ESC>
 inoremap jj <ESC>
-noremap <C-j> <ESC>:noh<CR>
+noremap <silent> <C-j> <ESC>:noh<CR>
 inoremap kk <ESC><S-o>
 
 vnoremap <C-e> <End><Left>
 
-cnoremap <C-j> <ESC>
+cnoremap <C-j> <C-u><ESC>
 
 """"""""""""""""""""""""""""""""""
 "        neo complcache          "
@@ -313,7 +312,6 @@ command! -nargs=* Nel NeoComplCacheLock <args>
 let g:vimshell_prompt = '$ '
 let g:vimshell_user_prompt = "printf('%s','')\ngetcwd()"
 let g:vimshell_edit_no_split = 1
-"let g:vimshell_user_prompt = 'getcwd()'
 let g:vimshell_interactive_cygwin_path = 'D:/develop/dev/cygwin/bin'
 let g:vimshell_interactive_cygwin_home = 'D:/develop/dev/cygwin/home/Administrator'
 let g:vimshell_split_command = 'split'
@@ -440,6 +438,7 @@ let g:unite_winheight = 10
 
 if exists('g:loaded_unite') && g:loaded_unite == 1
   call unite#set_substitute_pattern('', '[[:alnum:]]', '*\0', 100)
+  call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', 100)
 endif
 
 

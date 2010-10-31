@@ -3572,7 +3572,7 @@ endfunction
 
 function! s:save_to_history_at_leave()
   let msg = join(getline(1, "$"))
-  if msg !~ '^\s\+$'
+  if msg !~ '^\s\?$'
     call add(s:history , msg)
   endif
 endfunction
