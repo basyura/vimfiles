@@ -400,9 +400,9 @@ if g:use_fuzzy_finder == 1
   "let g:loaded_unite = 1
 
   "nnoremap <silent> <Leader>d :<C-u>CD<CR>:FufFile<CR>
-  nnoremap <C-r> :FufMruFile<CR>
-  nnoremap <C-n> :FufBuffer<CR>
-  nnoremap <Leader>d :<C-u>FufFile<CR>
+  nnoremap <silent> <C-r> :FufMruFile<CR>
+  nnoremap <silent> <C-n> :FufBuffer<CR>
+  nnoremap <silent> <Leader>d :<C-u>FufFile<CR>
   nnoremap <Leader>f :FufFile **/
   nnoremap <C-x><C-f> <Esc>:FufFile **/
   nnoremap <C-x><C-f><C-f> <Esc>:FufFile! **/
@@ -412,8 +412,8 @@ if g:use_fuzzy_finder == 1
   nnoremap <C-x><C-d><C-d> <Esc>:FufDir! **/
   inoremap <C-x><C-d> <Esc>:FufDir **/
   inoremap <C-x><C-d><C-d> <Esc>:FufDir! **/
-  nnoremap <Leader>b :FufBookmarkDir<CR>
-  nnoremap <C-t> :FufTag<CR>
+  nnoremap <silent> <Leader>b :FufBookmarkDir<CR>
+  nnoremap <silent> <C-t> :FufTag<CR>
 else
   " 読み込んだことにする
   let g:fuf_modesDisable = ['mrucmd','mrufile','file','coveragefile']
