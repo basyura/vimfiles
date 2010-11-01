@@ -467,13 +467,15 @@ endfunction
 "
 let QFixHowm_Key = '<Space>'
 let QFixHowm_KeyB = ''
-if !exists('home_dir')
+if !exists('howm_dir')
   let howm_dir = 'd:/document/howm'
 endif
 let howm_fileencoding = 'utf-8'
 let howm_fileformat   = 'unix'
 let g:QFix_PreviewEnable = 0
 let g:QFix_Height = 5
+"let g:QFix_Resize = 0
+let g:QFix_HeightFixMode = 1
 """"""""""""""""""""""""""""""""""
 "             misc               "
 """"""""""""""""""""""""""""""""""
