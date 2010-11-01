@@ -466,13 +466,14 @@ endfunction
 " howm
 "
 "Howmコマンドキーマップ
-let QFixHowm_Key = 'q'
+let QFixHowm_Key = '<Space>'
 "Howmコマンドの2ストローク目キーマップ
-let QFixHowm_KeyB = 'w'
-let howm_dir = 'd:/howm'
+let QFixHowm_KeyB = ''
+let howm_dir = 'd:/document/howm'
 let howm_fileencoding = 'utf-8'
 let howm_fileformat   = 'unix'
-
+let g:QFix_PreviewEnable = 0
+let g:QFix_Height = 5
 """"""""""""""""""""""""""""""""""
 "             misc               "
 """"""""""""""""""""""""""""""""""
