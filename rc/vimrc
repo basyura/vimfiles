@@ -353,6 +353,7 @@ function! s:vimshell_my_settings()
   imap <buffer> <C-o> <Plug>(vimshell_enter)
   inoremap <buffer> <C-l> <C-y>
   imap <buffer> <C-s> <Plug>(vimshell_history_complete_whole)
+  imap <buffer> <C-h> <Plug>(vimshell_delete_backward_char)
   nunmap <buffer> <C-d>
 
   if g:use_fuzzy_finder == 1
@@ -368,6 +369,7 @@ function! s:vimshell_my_settings()
   endif
 
 
+  hi VimShellPrompt guifg=#8ac6f2 gui=NONE
   NeoComplCacheAutoCompletionLength 3
 endfunction
 
@@ -512,13 +514,13 @@ nnoremap <silent> <Leader>r :<C-u>R<CR>
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
 " twitvim
-nnoremap <Space>po   :<C-u>WPosttoTwitter<Enter>
-nnoremap s           :<C-u>WPosttoTwitter<Enter>
-nnoremap <Space>fr   :<C-u>FriendsTwitter<Enter>
-nnoremap <Space>re   :<C-u>RepliesTwitter<Enter>
-nnoremap <Space>tt   :<C-u>ListTwitter tottoruby<Enter>
-nnoremap <Space>nn   :<C-u>NextTwitter<Enter>
-nnoremap <Space>pp   :<C-u>BackTwitter<Enter>
+nnoremap <silent> <Space>po   :<C-u>WPosttoTwitter<Enter>
+nnoremap <silent> s           :<C-u>WPosttoTwitter<Enter>
+nnoremap <silent> <Space>fr   :<C-u>FriendsTwitter<Enter>
+nnoremap <silent> <Space>re   :<C-u>RepliesTwitter<Enter>
+nnoremap <silent> <Space>tt   :<C-u>ListTwitter tottoruby<Enter>
+nnoremap <silent> <Space>nn   :<C-u>NextTwitter<Enter>
+nnoremap <silent> <Space>pp   :<C-u>BackTwitter<Enter>
 "nnoremap <Leader>u   yw:UserTwitter <C-R>+<CR>
 
 if !exists('g:twitvim_browser_cmd')
