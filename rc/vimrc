@@ -465,11 +465,11 @@ endfunction
 
 " howm
 "
-"Howmコマンドキーマップ
 let QFixHowm_Key = '<Space>'
-"Howmコマンドの2ストローク目キーマップ
 let QFixHowm_KeyB = ''
-let howm_dir = 'd:/document/howm'
+if !exists('home_dir')
+  let howm_dir = 'd:/document/howm'
+endif
 let howm_fileencoding = 'utf-8'
 let howm_fileformat   = 'unix'
 let g:QFix_PreviewEnable = 0
