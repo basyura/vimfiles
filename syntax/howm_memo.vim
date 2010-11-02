@@ -11,7 +11,7 @@ syn match   howmProblem ">>.*"
 
 hi howmComment   guifg=DarkGrey
 hi howmImportant guifg=orange
-" underline ‚ª‚Å‚È‚¢
+" underline ãŒã§ãªã„
 hi howmTitle1  guifg=orange  gui=underline
 hi howmTitle2  guifg=orange
 hi howmProblem guifg=#FF80FF
