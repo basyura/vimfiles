@@ -732,8 +732,8 @@ endfunction
 "color for cygwin
 
 if has('win32unix')
-  hi Pmenu     ctermfg=white   ctermbg=darkblue cterm=none
-  hi PmenuSel  ctermfg=232   ctermbg=magenta
+  hi Pmenu     ctermfg=white   ctermbg=black cterm=none
+  hi PmenuSel  ctermfg=232     ctermbg=magenta
 endif
 
 "set cmdheight=5
