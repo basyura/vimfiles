@@ -134,6 +134,7 @@ augroup MyGroup
   autocmd FileType lingr-say      call s:lingr_say_setting()
 
   autocmd FileType quickrun       call s:quickrun_setting()
+  autocmd FileType qf             call s:qfix_howm_setting()
 augroup END
 
 function! s:all_bufenter_setting()
@@ -209,7 +210,7 @@ nnoremap <Leader>v :VimShell<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> <C-]>
-nnoremap <Leader>g  :Grep **/*.* 
+nnoremap <Leader>g  :VimyGrep **/*.* 
 nnoremap <Space>d :<C-u>pwd<CR>
 nnoremap <C-l> :FufBufferTag<CR>
 nnoremap <C-x><C-x> :tabnew<CR>
@@ -218,6 +219,9 @@ nnoremap <C-x><C-h> :tabprevious<CR>
 " エンコードを指定して開き直す
 nnoremap <Space>r   :e ++enc=
 nnoremap <C-w>; <C-w>+
+nnoremap w; <C-w>+
+nnoremap w- <C-w>-
+nnoremap wm 100<C-w>+
 " ターミナルだとなぜか起動時にインサートモードになるので
 if has('gui_running')
   nnoremap <silent> <ESC> :noh<CR>
@@ -470,8 +474,8 @@ let QFixHowm_KeyB = ''
 if !exists('howm_dir')
   let howm_dir = 'd:/document/howm'
 endif
-let howm_fileencoding = 'utf-8'
-let howm_fileformat   = 'unix'
+"let howm_fileencoding = 'utf-8'
+"let howm_fileformat   = 'unix'
 let g:QFix_PreviewEnable = 0
 let g:QFix_Height = 5
 "let g:QFix_Resize = 0
@@ -583,7 +587,7 @@ function! s:vimrc_local(loc)
 endfunction
 
 "http://vim-users.jp/2010/03/hack130/
-command! -complete=file -nargs=+ Grep  call s:grep([<f-args>])
+command! -complete=file -nargs=+ VimGrep  call s:grep([<f-args>])
 function! s:grep(args)
   execute 'vimgrep' '/'.a:args[-1].'/' join(a:args[:-2])
 endfunction
@@ -682,6 +686,10 @@ endfunction
 
 function! s:quickrun_setting()
   nmap <buffer> <C-j> :bw<CR>
+endfunction
+
+function! s:qfix_howm_setting()
+  nnoremap <silent> <buffer> <C-j> :bw<CR>
 endfunction
 
 "color for cygwin
