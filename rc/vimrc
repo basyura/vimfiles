@@ -210,7 +210,7 @@ nnoremap <Leader>v :VimShell<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> <C-]>
-nnoremap <Leader>g  :VimyGrep **/*.* 
+nnoremap <Leader>g  :VimGrep **/*.* 
 nnoremap <Space>d :<C-u>pwd<CR>
 nnoremap <C-l> :FufBufferTag<CR>
 nnoremap <C-x><C-x> :tabnew<CR>
@@ -222,6 +222,7 @@ nnoremap <C-w>; <C-w>+
 nnoremap w; <C-w>+
 nnoremap w- <C-w>-
 nnoremap wm 100<C-w>+
+nnoremap co :copen<CR>
 " ターミナルだとなぜか起動時にインサートモードになるので
 if has('gui_running')
   nnoremap <silent> <ESC> :noh<CR>
