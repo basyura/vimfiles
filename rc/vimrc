@@ -116,7 +116,8 @@ augroup MyGroup
   autocmd FileType fuf NeoComplCacheLock
   autocmd FileType vimwiki NeoComplCacheLock
 
-  autocmd FileType vimshell call s:vimshell_my_settings()
+  autocmd FileType vimshell call s:vimshell_filetype_settings()
+
   autocmd FileType unite    call s:unite_my_settings()
   autocmd FileType fuf      call s:fuf_my_settings()
   autocmd FileType scratch  call s:scratch_my_settings()
@@ -222,7 +223,7 @@ nnoremap <C-w>; <C-w>+
 nnoremap w; <C-w>+
 nnoremap w- <C-w>-
 nnoremap wm 100<C-w>+
-nnoremap co :copen<CR>
+nnoremap <silent> co :copen<CR>
 " ターミナルだとなぜか起動時にインサートモードになるので
 if has('gui_running')
   nnoremap <silent> <ESC> :noh<CR>
@@ -347,8 +348,8 @@ let g:vimshell_interactive_cygwin_commands['rake'] = {
   \ 'description' : 'git [{options}...] {command}',
 \}
 
-function! s:vimshell_my_settings()
-" imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
+function! s:vimshell_filetype_settings()
+  "imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
   "imap <buffer><expr> <CR> (pumvisible() ? "<C-y><Tab>" : "<Plug>(vimshell_enter)")
   inoremap <buffer> <C-x> <ESC><C-w>h:on<CR>
   nnoremap <buffer> <CR> Go$ 
@@ -359,7 +360,9 @@ function! s:vimshell_my_settings()
   inoremap <buffer> <C-l> <C-y>
   imap <buffer> <C-s> <Plug>(vimshell_history_complete_whole)
   imap <buffer> <C-h> <Plug>(vimshell_delete_backward_char)
-  nunmap <buffer> <C-d>
+  "nunmap <buffer> <C-d>
+ 	call vimshell#hook#set('preexec'  , ['g:vimshell_preexec'])
+	call vimshell#hook#set('preprompt', ['g:vimshell_preprompt'])
 
   if g:use_fuzzy_finder == 1
     inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>FufBuffer<CR>
@@ -377,6 +380,37 @@ function! s:vimshell_my_settings()
   hi VimShellPrompt guifg=#8ac6f2 gui=NONE
   NeoComplCacheAutoCompletionLength 3
 endfunction
+" vim コマンド実行前処理
+function! g:vimshell_preexec(cmdline, context)
+  " 改行する
+  if a:cmdline =~ "^vim .*"
+    " ホントは色付のユーザプロンプトを出したい
+    call append('$', "")
+    call append('$', vimshell#get_prompt())
+    execute "normal G"
+  endif
+  return a:cmdline
+endfunction
+" vim コマンド実行後
+function! g:vimshell_preprompt(args, context)
+"  for key in keys(a:args)
+"    call append('$', key . '=' . a:args[key])
+"  endfor
+   
+"  if a:cmdline =~ "^vim .*"
+"    on
+"  endif
+"  return a:cmdline
+endfunction
+
+
+function! s:vimshell_my_settings_buf_leave()
+  echoerr "hello"
+  "<ESC><CR>
+  
+  "execute "\<ESC>\<CR>"
+  "startinsert!
+endfunction
 
 
 """"""""""""""""""""""""""""""""""
@@ -388,7 +422,7 @@ let g:vimfiler_as_default_explorer = 1
 """"""""""""""""""""""""""""""""""
 "      unite or fuzzyfinder      "
 """"""""""""""""""""""""""""""""""
-let mru_ignore = '.*\/$\|.*Application\ Data.*\|.*デスクトップ.*\|.*Local/Temp/.*'
+let mru_ignore = '.*\/$\|.*Application\ Data.*\|.*デスクトップ.*\|.*Local/Temp/.*\|\.howm'
 "let g:fuf_keyOpen = ":"
 "let g:fuf_maxMenuWidth = 90
 let g:fuf_modesDisable     = ['mrucmd']
@@ -452,8 +486,7 @@ endif
 
 function! s:unite_my_settings()
   " Overwrite settings.
-  setlocal cursorline
-  imap <buffer> jj <Plug>(unite_insert_leave):setlocal cursorline<CR>
+  imap <buffer> jj <Plug>(unite_insert_leave)
   "imap <buffer> jj <Plug>(unite_exit)
   imap <buffer> <C-j> <Plug>(unite_exit)
   imap <buffer> <ESC> <Plug>(unite_exit)
