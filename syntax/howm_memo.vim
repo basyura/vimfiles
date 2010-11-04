@@ -1,10 +1,10 @@
 
-syn region  howmComment   start="/\*" end="\*/" 
+syn region  howmComment   start="/\*" end="\*/"
 "syn region  howmImportant start=">|"  end="|<"
 syn match  howmImportant "\s!\s.*"
 
-syn match   howmTitle1  "^\*.*" 
-syn match   howmTitle2  "\s\*\*.*" 
+syn match   howmTitle1  "^\* .*"
+syn match   howmTitle2  "\s\*\* .*"
 syn match   howmProblem ">>.*"
 
 
