@@ -200,7 +200,6 @@ nnoremap <C-a> <HOME>
 nnoremap <C-f> <Right>
 nnoremap <C-b> <Left>
 "map <C-e> :Tlist<CR>
-vmap <C-b> :Batch<CR>
 
 nnoremap <M-k> <C-y>
 nnoremap <M-j> <C-e>
@@ -224,6 +223,7 @@ nnoremap w; <C-w>+
 nnoremap w- <C-w>-
 nnoremap wm 100<C-w>+
 nnoremap <silent> co :copen<CR>
+nmap <Leader>c <Plug>NERDCommenterToggle
 " ターミナルだとなぜか起動時にインサートモードになるので
 if has('gui_running')
   nnoremap <silent> <ESC> :noh<CR>
@@ -236,6 +236,8 @@ noremap <silent> <C-j> <ESC>:noh<CR>
 inoremap kk <ESC><S-o>
 
 vnoremap <C-e> <End><Left>
+vmap <Leader>c <Plug>NERDCommenterToggle
+vmap <C-b> :Batch<CR>
 
 cnoremap <C-j> <C-u><ESC>
 
