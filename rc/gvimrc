@@ -81,12 +81,12 @@ set cmdheight=1
 command! -nargs=? -bang WQ  call s:WriteClose('<bang>')
 function! s:WriteClose(bang)
   if a:bang == ''
-    write | bw
+    write | bd
   else
-    write! | bw!
+    write! | bd!
   endif
 endfunction
-AlterCommand q bw
+AlterCommand q bd
 AlterCommand wq WQ
 """"""""""""""""""""""""""""""""""
 "             other              "
