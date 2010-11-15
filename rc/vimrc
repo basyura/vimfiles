@@ -220,7 +220,8 @@ nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> :Unite 
 nnoremap <Leader>g  :VimGrep **/*.* 
 nnoremap <Space>d :<C-u>pwd<CR>
-nnoremap <C-l> :FufBufferTag<CR>
+"nnoremap <C-l> :FufBufferTag<CR>
+nnoremap <silent> <C-l> :Unite tags<CR>
 nnoremap <C-x><C-x> :tabnew<CR>
 nnoremap <C-x><C-l> :tabnext<CR>
 nnoremap <C-x><C-h> :tabprevious<CR>
