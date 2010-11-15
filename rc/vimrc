@@ -711,14 +711,14 @@ endfunction
 " for twitvim
 function! s:twitvim_my_settings()
   nnoremap <buffer> <Leader>u   yw:UserTwitter <C-R>+<CR>
-  nnoremap <buffer> <C-j>   :bw<CR>
+  nnoremap <buffer> <C-j>   :bd<CR>
 endfunction
 " for twitvim say
 function! s:twitvim_say_my_settings()
   "NeoComplCacheLock
   NeoComplCacheCachingDictionary
-  AlterCommand <buffer> q bw!<CR>
-  nnoremap <buffer> <silent> <C-j> :bw!<CR>
+  AlterCommand <buffer> q bd!<CR>
+  nnoremap <buffer> <silent> <C-j> :bd!<CR>
 endfunction
 "
 function! s:lingr_messages_setting()
@@ -730,11 +730,11 @@ function! s:lingr_say_setting()
 endfunction
 
 function! s:quickrun_setting()
-  nmap <buffer> <C-j> :bw<CR>
+  nmap <buffer> <C-j> :bd<CR>
 endfunction
 
 function! s:qfix_howm_setting()
-  nnoremap <silent> <buffer> <C-j> :bw<CR>
+  nnoremap <silent> <buffer> <C-j> :bd<CR>
 endfunction
 
 "color for cygwin
