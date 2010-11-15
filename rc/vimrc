@@ -140,6 +140,11 @@ augroup MyGroup
 augroup END
 
 function! s:all_bufenter_setting()
+
+  if &filetype == ''
+    setfiletype txt
+  endif
+
   au BufEnter * execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
 endfunction
 
@@ -210,7 +215,9 @@ nnoremap <Leader>s :Scratch<CR>
 nnoremap <Leader>v :VimShell<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <silent> <Leader>o :on<CR>
-nnoremap <Leader><Leader> <C-]>
+"nnoremap <Leader><Leader> <C-]>
+"nnoremap <silent> <Leader><Leader> :Unite file -buffer-name=file<CR>
+nnoremap <Leader><Leader> :Unite 
 nnoremap <Leader>g  :VimGrep **/*.* 
 nnoremap <Space>d :<C-u>pwd<CR>
 nnoremap <C-l> :FufBufferTag<CR>
@@ -364,6 +371,7 @@ function! s:vimshell_filetype_settings()
   imap <buffer> <C-s> <Plug>(vimshell_history_complete_whole)
   imap <buffer> <C-h> <Plug>(vimshell_delete_backward_char)
   "nunmap <buffer> <C-d>
+  nunm <buffer> q
  	call vimshell#hook#set('preexec'  , ['g:vimshell_preexec'])
 	call vimshell#hook#set('preprompt', ['g:vimshell_preprompt'])
 
