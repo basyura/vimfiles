@@ -19,7 +19,7 @@ set guioptions-=T
 
 augroup MyGGroup
   autocmd! MyGGroup
-  "autocmd BufEnter * call s:reload_color_scheme()
+  autocmd BufEnter * call s:reload_color_scheme()
 augroup END
 
 function! s:reload_color_scheme()
