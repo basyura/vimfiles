@@ -496,10 +496,7 @@ endif
 " unite ウインドウの高さ
 let g:unite_winheight = 10
 
-if exists('g:loaded_unite') && g:loaded_unite == 1
-  call unite#set_substitute_pattern('', '[[:alnum:]]', '*\0', 100)
-"  call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', 100)
-endif
+call unite#set_substitute_pattern('', '[[:alnum:]]', '*\0', 100)
 
 
 
