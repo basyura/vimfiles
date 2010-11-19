@@ -16,7 +16,7 @@ if expand("%") != ".git/COMMIT_EDITMSG"
 endif
 
 if &termencoding == ''
-"  let &termencoding="utf-8"
+  let &termencoding="utf-8"
 "  let &termencoding="cp932"
 endif
 
