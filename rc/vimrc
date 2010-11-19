@@ -244,6 +244,12 @@ inoremap <C-j> <ESC>
 inoremap jj <ESC>
 noremap <silent> <C-j> <ESC>:noh<CR>
 inoremap kk <ESC><S-o>
+inoremap () ()<Left>
+inoremap {} {}<Left>
+inoremap [] []<Left>
+inoremap "" ""<Left>
+inoremap '' ''<Left>
+inoremap <> <><Left>
 
 vnoremap <C-e> <End><Left>
 vmap <Leader>c <Plug>NERDCommenterToggle
