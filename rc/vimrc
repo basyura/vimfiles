@@ -218,7 +218,6 @@ nnoremap <silent> <Leader>o :on<CR>
 "nnoremap <Leader><Leader> <C-]>
 "nnoremap <silent> <Leader><Leader> :Unite file -buffer-name=file<CR>
 nnoremap <Leader><Leader> :Unite 
-nnoremap <C-m> :UniteResume<CR>
 nnoremap <Leader>g  :VimGrep **/*.* 
 nnoremap <Space>d :<C-u>pwd<CR>
 "nnoremap <C-l> :FufBufferTag<CR>
