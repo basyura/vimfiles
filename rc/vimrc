@@ -233,6 +233,7 @@ nnoremap w- <C-w>-
 nnoremap wm 100<C-w>+
 nnoremap man :Unite help<CR>
 nnoremap <silent>co :Unite -no-quit qflist<CR>
+nnoremap <silent>on 999<C-w>+
 nmap <Leader>c <Plug>NERDCommenterToggle
 " ターミナルだとなぜか起動時にインサートモードになるので
 if has('gui_running')
