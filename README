@@ -1,0 +1,79 @@
+Introduction
+=============
+
+ You can look over the information on redmine with vim. 
+
+
+Function
+=============
+
+ 1. Display ticket and display outline of ticket on Redmine with vim.
+ 2. It is possible to jump to URL of the ticket. 
+
+
+
+Requirement
+=============
+
+ 1. webapi.vim
+ 2. Redmine version >= 1.0.x
+ 3. enable Redmine REST API
+
+
+
+installation
+=============
+
+1. Install webapi.vim
+
+2. edit ~/.vimrc
+let g:redmine_auth_site = 'http://localhost:3000'
+let g:redmine_auth_key  = 'secret'
+let g:redmine_author_id = '5'
+let g:redmine_project_id = '1'
+
+
+
+Command
+========
+
+* RedmineViewAllTicket
+ All tickets are displayed.
+
+* RedmineViewMyTicket
+ Assigned ticket is displayed. (required g:redmine_author_id)
+
+* RedmineViewMyProjectTicket
+ Assigned ticket is displayed. (required g:redmine_author_id)
+ You can also specify Project_id. 
+
+* RedmineSearchTicket <condition>
+ Search tickets.
+
+* RedmineSearchProject <condition>
+ Search project.
+
+* RedmineEditTicket <issue_id> <edit_text>
+ Edit Ticket.
+
+
+Global Variable
+========
+
+* redmine_auth_site
+ Redmine URL
+
+* redmine_auth_key
+ Redmine API Key
+
+* redmine_browser
+ Launch browser
+
+* redmine_author_id
+ Assigned_id used in RedmineViewMyTicket/RedmineViewMyProjectTicket.
+
+* redmine_project_id
+ used in RedmineViewMyProjectTicket.
+ This is not required. "MyProject" will be retrieved automatically if you don't specify project_id.
+
+

@@ -1,0 +1,80 @@
+Introduction
+=============
+
+vim上からRedmineのチケット情報を参照します。
+
+
+Function
+=============
+
+ 1. Redmineのチケット情報をvimで表示します
+ 2. チケット番号を指定してURLにジャンプ出来ます. 
+
+
+
+Requirement
+=============
+
+ 1. webapi.vim
+ 2. Redmine version >= 1.0.x
+ 3. Redmine REST API を有効にする
+
+
+
+installation
+=============
+
+1. webapi.vim をインストール
+
+2. .vimrcに サーバ、 API Key を記述
+let g:redmine_auth_site = 'http://localhost:3000'
+let g:redmine_auth_key  = 'secret'
+let g:redmine_author_id = '5'
+let g:redmine_project_id = '1'
+
+
+
+Command
+========
+
+* RedmineViewAllTicket
+ 全てのチケットを表示します
+
+* RedmineViewMyTicket
+ 自分の担当チケットを表示します（要redmine_author_id）
+
+* RedmineViewMyProjectTicket
+ 自分の担当チケットを表示します（要redmine_author_id）
+ 条件にプロジェクトIDも指定できます
+
+* RedmineSearchTicket <condition>
+ チケットを検索します
+
+* RedmineSearchProject <condition>
+ プロジェクトを検索します
+
+* RedmineEditTicket <issue_id> <edit_text>
+ チケット編集します
+
+
+
+Global Variable
+========
+
+* redmine_auth_site
+ RedmineサイトURL
+
+* redmine_auth_key
+ Redmine API Key
+
+* redmine_browser
+ ブラウザ起動コマンド
+
+* redmine_author_id
+ RedmineViewMyTicket/RedmineViewMyProjectTicketで利用される担当id
+
+* redmine_project_id
+ RedmineViewMyProjectTicketで利用されるプロジェクトid
+ 必須ではありません。指定がない場合は自動でマイプロジェクトを検索してくれます
+
+
