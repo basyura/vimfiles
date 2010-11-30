@@ -220,8 +220,8 @@ nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> :Unite 
 nnoremap <Leader>g  :VimGrep **/*.* 
 nnoremap <Space>d :<C-u>pwd<CR>
-"nnoremap <C-l> :FufBufferTag<CR>
-nnoremap <silent> <C-l> :Unite outline<CR>
+nnoremap <silent> <C-l> :FufBufferTag<CR>
+"nnoremap <silent> <C-l> :Unite outline<CR>
 nnoremap <C-x><C-x> :tabnew<CR>
 nnoremap <C-x><C-l> :tabnext<CR>
 nnoremap <C-x><C-h> :tabprevious<CR>
@@ -713,7 +713,8 @@ end
 
 " indent xml
 command! IndentXML let @" = util#xml#indent(join(getline(1,'$'),"\n"))
-
+" xpath
+command! -nargs=1 XPath let @" = util#xml#xpath_text(join(getline(1,'$'),"\n") , <f-args>) | echo @"
 
 command! MoveLeft call s:MoveLeft()
 function! s:MoveLeft()
