@@ -221,7 +221,7 @@ nnoremap <Leader><Leader> :Unite
 nnoremap <Leader>g  :VimGrep **/*.* 
 nnoremap <Space>d :<C-u>pwd<CR>
 "nnoremap <C-l> :FufBufferTag<CR>
-nnoremap <silent> <C-l> :Unite tags<CR>
+nnoremap <silent> <C-l> :Unite outline<CR>
 nnoremap <C-x><C-x> :tabnew<CR>
 nnoremap <C-x><C-l> :tabnext<CR>
 nnoremap <C-x><C-h> :tabprevious<CR>
@@ -515,7 +515,6 @@ function! s:unite_my_settings()
   imap <buffer> <C-j> <Plug>(unite_exit)
   imap <buffer> <ESC> <Plug>(unite_exit)
 	imap <buffer> <C-o> <Plug>(unite_insert_leave):<C-u>call unite#mappings#do_action('above')<CR>
-  nmap <buffer> d     <Plug>(unite_do_delete_action)
   nmap <buffer> <C-n> <Plug>(unite_loop_cursor_down)
   nmap <buffer> <C-p> <Plug>(unite_loop_cursor_up)
   nmap <buffer> <C-j> <Plug>(unite_exit)
