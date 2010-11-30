@@ -711,6 +711,9 @@ if has('mac')
   let g:restart_vim_progname = "MacVim"
 end
 
+" indent xml
+command! IndentXML let @" = util#xml#indent(join(getline(1,'$'),"\n"))
+
 
 command! MoveLeft call s:MoveLeft()
 function! s:MoveLeft()
