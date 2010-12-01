@@ -66,6 +66,7 @@ set hlsearch
 set smartindent
 set timeout timeoutlen=300 ttimeoutlen=200
 set shellslash
+set incsearch
 "set cmdheight=1
 
 " ubuntu だと画面がちらつく。mac だと音が出ちゃう。
@@ -77,7 +78,11 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set noshowmatch
-
+set matchpairs+=<:>
+set shortmess+=I
+set complete=.
+set pumheight=10
+set showcmd
 """"""""""""""""""""""""""""""""""
 "         auto command           "
 """"""""""""""""""""""""""""""""""
@@ -371,6 +376,7 @@ let g:vimshell_interactive_cygwin_commands['telnet'] = {
   \ 'kind' : 'execute',
   \ 'description' : 'git [{options}...] {command}',
 \}
+call vimshell#set_execute_file('txt,vim,xml,java', 'vim')
 
 function! s:vimshell_filetype_settings()
   "imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
