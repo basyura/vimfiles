@@ -239,6 +239,7 @@ nnoremap wm 100<C-w>+
 nnoremap man :Unite help<CR>
 nnoremap <silent>co :Unite -no-quit qflist<CR>
 nnoremap <silent>on 999<C-w>+
+nnoremap <Space>g :execute "cd " . howm_dir<CR>:<C-u>call QFixHowmSearchInput("QFixHowm Grep : ", 0)<CR><C-u>
 nmap <Leader>c <Plug>NERDCommenterToggle
 " ターミナルだとなぜか起動時にインサートモードになるので
 if has('gui_running')
@@ -293,11 +294,11 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " 補完しなくなる文字数
 let g:neocomplcache_enable_auto_select = 1
 " 補完しないパターン
-let g:neocomplcache_disable_caching_buffer_name_pattern = '.*fuf.*\|*.log\|unite'
+let g:neocomplcache_disable_caching_buffer_name_pattern = '.*fuf.*\|*.log\|.*unite.*'
 " 自動補完しないパターン
-let g:neocomplcache_lock_buffer_name_pattern = '*.log\|.*fuf.*\|unite\|.*quickrun.*'
+let g:neocomplcache_lock_buffer_name_pattern = '*.log\|.*fuf.*\|.*unite.*\|.*quickrun.*'
 " 自動選択しないパターン
-let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell\|unite'
+let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell\|.*unite.*'
 " キャッシュ中に、メッセージをCommand-lineに表示しない
 let g:neocomplcache_enable_caching_message = 0
 " キー入力時にキーワード補完を行う入力数を制御する。

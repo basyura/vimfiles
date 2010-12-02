@@ -7,6 +7,7 @@ syn match   howmTitle1  "^\* .*"
 syn match   howmTitle2  "\s\* .*"
 syn match   howmTitle2  "\s\- .*"
 syn match   howmProblem ">>.*"
+syn match   quote       "^>.*"
 
 syntax match howmImportantComment /|[^|]\+|/ contains=howmImportantBar
 syntax match howmImportantBar /|/ contained
@@ -20,5 +21,6 @@ hi howmTitle1  guifg=orange  gui=underline
 hi howmTitle2  guifg=orange
 hi howmProblem guifg=#FF80FF
 hi howmTitle   guifg=#FF80FF gui=bold,underline
+hi link quote  Comment
 
 hi link howmImportantBar Ignore
