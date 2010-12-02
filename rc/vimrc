@@ -239,6 +239,7 @@ nnoremap <silent>co :Unite -no-quit qflist<CR>
 nnoremap <silent>on 999<C-w>+
 nnoremap <Space>g :<C-u>call QFixHowmSearchInput("QFixHowm Grep : ", 0)<CR><C-u>
 nnoremap <Space>a :<C-u>call QFixHowmListAllTitle(g:QFixHowm_Title, 0)<CR>
+
 nmap <Leader>c <Plug>NERDCommenterToggle
 " ターミナルだとなぜか起動時にインサートモードになるので
 if has('gui_running')
@@ -590,7 +591,7 @@ function! s:ChangeCurrentDir(directory, bang)
 endfunction
 
 " for rails.vim
-nnoremap <silent> <Leader>r :<C-u>R<CR>
+"nnoremap <silent> <Leader>r :<C-u>R<CR>
 
 
 " Change current directory.
@@ -762,6 +763,7 @@ function! s:qfix_howm_setting()
   nnoremap <silent> <buffer> <C-j> :bd<CR>
 endfunction
 
+
 "color for cygwin
 
 if has('win32unix')
@@ -769,6 +771,6 @@ if has('win32unix')
   hi PmenuSel  ctermfg=232     ctermbg=magenta
 endif
 
-"set cmdheight=5
+
 
 " vim: foldmethod=marker

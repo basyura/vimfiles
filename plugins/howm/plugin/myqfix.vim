@@ -785,6 +785,8 @@ endfunction
 "copen代替
 """"""""""""""""""""""""""""""
 function! QFixCopen(cmd, mode)
+  Unite qflist
+  return
   if a:cmd == ''
     let cmd = g:QFix_CopenCmd
   else
