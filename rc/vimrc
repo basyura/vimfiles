@@ -89,6 +89,7 @@ set showcmd
 augroup MyGroup
   autocmd! MyGroup
   au BufEnter * set bh=hide
+  au BufWritePre * call s:change_last_mod_date()
   au BufNewFile,BufRead *.scala setf scala
   "set autochdir
   au BufEnter * call s:all_bufenter_setting()
@@ -149,6 +150,16 @@ function! s:all_bufenter_setting()
     setfiletype txt
   endif
   execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
+endfunction
+
+function! s:change_last_mod_date()
+  let language =  v:lc_time
+  execute ':silent! language time C'
+  try
+    execute '1,5s/" Last Change: .*/" Last Change: ' . strftime("%d %b %Y") . '/'
+  catch
+  endtry
+  execute ':silent! language time ' . language
 endfunction
 
 """"""""""""""""""""""""""""""""""
