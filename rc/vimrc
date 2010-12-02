@@ -1,3 +1,6 @@
+"
+" Last Change: 02 Dec 2010
+"
 """"""""""""""""""""""""""""""""""
 "         core settings          "
 """"""""""""""""""""""""""""""""""
@@ -156,7 +159,7 @@ function! s:change_last_mod_date()
   let language =  v:lc_time
   execute ':silent! language time C'
   try
-    execute '1,5s/" Last Change: .*/" Last Change: ' . strftime("%d %b %Y") . '/'
+    execute '1,5s/" Last Change:.*/" Last Change: ' . strftime("%d %b %Y") . '/'
   catch
   endtry
   execute ':silent! language time ' . language
