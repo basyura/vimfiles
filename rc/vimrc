@@ -1,5 +1,5 @@
 "
-" Last Change: 02 12 2010
+" Last Modified: 02 Dec 2010
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -161,17 +161,17 @@ function! s:change_last_mod_date()
   let lineno = line(".")
   let colno  = col(".")
   :1
-  let time = '" Last Change: ' . strftime("%d %b %Y")
+  let language =  v:lc_time
+  execute ':silent! language time C'
+  let time = '" Last Modified: ' . strftime("%d %b %Y")
   " 同じだったらなにもしない
   if !search(time , '' , 5)
-    let language =  v:lc_time
-    execute ':silent! language time C'
     try
-      execute '1,5s/" Last Change:.*/' . time . '/'
+      execute '1,5s/" Last Modified:.*/' . time . '/'
     catch
     endtry
-    execute ':silent! language time ' . language
   endif
+  execute ':silent! language time ' . language
   call cursor(lineno , colno)
 endfunction
 
