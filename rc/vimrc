@@ -225,8 +225,8 @@ nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> :Unite 
 nnoremap <Leader>g  :VimGrep **/*.* 
 nnoremap <Space>d :<C-u>pwd<CR>
-nnoremap <silent> <C-l> :FufBufferTag<CR>
-"nnoremap <silent> <C-l> :Unite outline<CR>
+"nnoremap <silent> <C-l> :FufBufferTag<CR>
+nnoremap <silent> <C-l> :Unite outline<CR>
 nnoremap <C-x><C-x> :tabnew<CR>
 nnoremap <C-x><C-l> :tabnext<CR>
 nnoremap <C-x><C-h> :tabprevious<CR>
@@ -295,20 +295,20 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " 補完しなくなる文字数
 let g:neocomplcache_enable_auto_select = 1
 " 補完しないパターン
-let g:neocomplcache_disable_caching_buffer_name_pattern = '.*fuf.*\|*.log\|.*unite.*'
+let g:neocomplcache_disable_caching_buffer_name_pattern = '.log\|.jax'
 " 自動補完しないパターン
-let g:neocomplcache_lock_buffer_name_pattern = '*.log\|.*fuf.*\|.*unite.*\|.*quickrun.*'
+let g:neocomplcache_lock_buffer_name_pattern = '.log\|.*quickrun.*\|.jax'
 " 自動選択しないパターン
-let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell\|.*unite.*'
+let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell'
 " キャッシュ中に、メッセージをCommand-lineに表示しない
 let g:neocomplcache_enable_caching_message = 0
 " キー入力時にキーワード補完を行う入力数を制御する。
 let g:neocomplcache_auto_completion_start_length = 3
 "入力に大文字が含まれている場合は、大文字・小文字を無視しない 
-"let g:neocomplcache_enable_smart_case = 0
+"let g:neocomplcache_enable_smart_case = 1
 " セパレータ補完
 "let g:neocomplcache_enable_auto_delimiter = 1
-" 辞書読み込み
+" 辞書読み込
 noremap  <Space>d. :<C-u>NeoComplCacheCachingDictionary<Enter>
 " <TAB> completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -335,6 +335,7 @@ imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 command! -nargs=* Nes NeoComplCacheEditSnippets <args>
 command! -nargs=* Nel NeoComplCacheLock <args>
+command! -nargs=* NSource NeoComplCachePrintSource
 
 
 """"""""""""""""""""""""""""""""""
@@ -517,6 +518,8 @@ call unite#set_substitute_pattern('', '[[:alnum:]]', '*\0', 100)
 
 
 function! s:unite_my_settings()
+  NeoComplCacheDisableCaching
+  NeoComplCacheLock
   " Overwrite settings.
   imap <buffer> jj <Plug>(unite_insert_leave)
   "imap <buffer> jj <Plug>(unite_exit)
