@@ -239,8 +239,8 @@ nnoremap wm 100<C-w>+
 nnoremap man :Unite help<CR>
 nnoremap <silent>co :Unite -no-quit qflist<CR>
 nnoremap <silent>on 999<C-w>+
-nnoremap <Space>g :execute "cd " . howm_dir<CR>:<C-u>call QFixHowmSearchInput("QFixHowm Grep : ", 0)<CR><C-u>
-nnoremap <Space>a :execute "cd " . howm_dir<CR>:<C-u>call QFixHowmListAllTitle(g:QFixHowm_Title, 0)<CR>
+nnoremap <Space>g :<C-u>call QFixHowmSearchInput("QFixHowm Grep : ", 0)<CR><C-u>
+nnoremap <Space>a :<C-u>call QFixHowmListAllTitle(g:QFixHowm_Title, 0)<CR>
 nmap <Leader>c <Plug>NERDCommenterToggle
 " ターミナルだとなぜか起動時にインサートモードになるので
 if has('gui_running')
