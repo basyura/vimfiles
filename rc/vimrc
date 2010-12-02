@@ -274,16 +274,18 @@ let g:neocomplcache_enable_at_startup = 1
 " snippet ファイルの保存先
 let g:neocomplcache_snippets_dir='~/.vim/snippets'
 " dictionary
-let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'objc'       : $HOME . '/.vim/dict/objc.dict',
-    \ 'javascript' : $HOME . '/.vim/dict/js.dict',
-    \ 'ruby'       : $HOME . '/.vim/dict/ruby.dict',
-    \ 'eruby'      : $HOME . '/.vim/dict/ruby.dict',
-    \ 'java'       : $HOME . '/.vim/dict/java.dict',
-    \ 'vimshell'   : $HOME . '/.vimshell/command-history',
-    \ 'twitvim_say': $HOME . '/.twitvim.users',
-    \ 'default'    : $HOME . '/.vim/dict/default.dict'
-\ }
+if !exists('g:neocomplcache_dictionary_filetype_lists')
+  let g:neocomplcache_dictionary_filetype_lists = {}
+endif
+let neco_dic = g:neocomplcache_dictionary_filetype_lists
+let neco_dic.objc        = $HOME . '/.vim/dict/objc.dict'
+let neco_dic.javascript  = $HOME . '/.vim/dict/js.dict'
+let neco_dic.ruby        = $HOME . '/.vim/dict/ruby.dict'
+let neco_dic.eruby       = $HOME . '/.vim/dict/ruby.dict'
+let neco_dic.java        = $HOME . '/.vim/dict/java.dict'
+"let neco_dic.vimshell    = $HOME . '/.vimshell/command-history'
+let neco_dic.twitvim_say = $HOME . '/.twitvim.users'
+let neco_dic.default     = $HOME . '/.vim/dict/default.dict'
 
 " 日本語をキャッシュしない
 if !exists('g:neocomplcache_keyword_patterns')
