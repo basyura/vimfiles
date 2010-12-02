@@ -236,6 +236,7 @@ nnoremap w- <C-w>-
 nnoremap wm 100<C-w>+
 nnoremap man :Unite help<CR>
 nnoremap <silent>co :Unite -no-quit qflist<CR>
+nnoremap <silent><Leader>r :UniteResume<CR>
 nnoremap <silent>on 999<C-w>+
 nnoremap <Space>g :<C-u>call QFixHowmSearchInput("QFixHowm Grep : ", 0)<CR><C-u>
 nnoremap <Space>a :<C-u>call QFixHowmListAllTitle(g:QFixHowm_Title, 0)<CR>
