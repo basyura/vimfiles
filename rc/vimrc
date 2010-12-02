@@ -145,12 +145,10 @@ augroup MyGroup
 augroup END
 
 function! s:all_bufenter_setting()
-
   if &filetype == ''
     setfiletype txt
   endif
-
-  au BufEnter * execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
+  execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
 endfunction
 
 """"""""""""""""""""""""""""""""""
