@@ -7,7 +7,7 @@ syn match   howmTitle1  "^\* .*"
 syn match   howmTitle2  "\s\* .*"
 syn match   howmTitle2  "\s\- .*"
 syn match   howmProblem ">>.*"
-syn match   quote       "^>.*"
+syn match   quote       "^> .*"
 
 syntax match howmImportantComment /|[^|]\+|/ contains=howmImportantBar
 syntax match howmImportantBar /|/ contained

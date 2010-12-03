@@ -95,7 +95,7 @@ augroup MyGroup
   au BufWritePre * call s:change_last_mod_date()
   au BufNewFile,BufRead *.scala setf scala
   "set autochdir
-  "au BufEnter * call s:all_bufenter_setting()
+  au BufEnter * call s:all_bufenter_setting()
   " for ruby
   autocmd FileType ruby  :setlocal tabstop=2
   autocmd FileType ruby  :setlocal shiftwidth=2
@@ -150,10 +150,13 @@ augroup MyGroup
 augroup END
 
 function! s:all_bufenter_setting()
+  if &filetype =~ 'howm.*'
+    return
+  endif
   if &filetype == ''
     setfiletype txt
   endif
-  execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
+    execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
 endfunction
 "
 " Last Change を保存時に変更する
