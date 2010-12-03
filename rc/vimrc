@@ -1,5 +1,5 @@
 "
-" Last Modified: 02 Dec 2010
+" Last Modified: 03 Dec 2010
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -95,7 +95,7 @@ augroup MyGroup
   au BufWritePre * call s:change_last_mod_date()
   au BufNewFile,BufRead *.scala setf scala
   "set autochdir
-  au BufEnter * call s:all_bufenter_setting()
+  "au BufEnter * call s:all_bufenter_setting()
   " for ruby
   autocmd FileType ruby  :setlocal tabstop=2
   autocmd FileType ruby  :setlocal shiftwidth=2
@@ -125,6 +125,7 @@ augroup MyGroup
 
   autocmd FileType fuf NeoComplCacheLock
   autocmd FileType vimwiki NeoComplCacheLock
+  autocmd FileType howm_memo NeoComplCacheLock
 
   autocmd FileType vimshell call s:vimshell_filetype_settings()
 
@@ -321,7 +322,7 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " 補完しなくなる文字数
 let g:neocomplcache_enable_auto_select = 1
 " 補完しないパターン
-let g:neocomplcache_disable_caching_buffer_name_pattern = '.log\|.jax'
+let g:neocomplcache_disable_caching_buffer_name_pattern = '.log\|.jax\|.howm'
 " 自動補完しないパターン
 let g:neocomplcache_lock_buffer_name_pattern = '.log\|.*quickrun.*\|.jax'
 " 自動選択しないパターン

@@ -3,8 +3,8 @@
 "                 Preview, sortings and advanced search for Quickfix.
 "         Author: Futoshi Ueno <fuenor@gmail.com>
 "                 http://sites.google.com/site/fudist/Home  (Japanese)
-"  Last Modified: 2010-10-09 14:00
-"        Version: 2.23
+"  Last Modified: 2010-11-25 00:01
+"        Version: 2.25
 "=============================================================================
 "
 "What Is This:
@@ -145,7 +145,6 @@ augroup QFix
   autocmd BufWinLeave             * call <SID>QFixBufWinLeave()
   autocmd BufEnter                * call <SID>QFixBufEnter()
   autocmd BufLeave                * call <SID>QFixBufLeave()
-  autocmd BufWritePost            * call <SID>QFixBufWritePost()
   autocmd QuickFixCmdPre          * call <SID>QFixCmdPre()
   autocmd QuickFixCmdPost *vimgrep* call <SID>QFixSetVimgrepEnv()
   autocmd CursorHold              * call <SID>QFPreview()
@@ -181,13 +180,13 @@ else
   let g:QFix_HighSpeedPreview = 0
 endif
 let g:QFix_Win = -1
-let g:QFix_MyJump = 0
+let g:QFix_MyJump = 1
 
 let g:QFix_SearchPath = ''
 let g:QFix_SelectedLine = 1
 let g:QFix_SearchResult = []
 
-let g:QFix_DefaultUpdatetime = 0
+let g:QFix_DefaultUpdatetime = &updatetime
 let s:QFixPreviewfile = ''
 
 let g:QFix_Resize = 1
@@ -238,6 +237,13 @@ function! s:QFixBufEnter(...)
       copen
     endif
     call cursor(g:QFix_SelectedLine, 1)
+    return
+  endif
+  if &updatetime != g:QFix_PreviewUpdatetime
+    let g:QFix_DefaultUpdatetime = &updatetime
+  endif
+  if exists('b:updatetime')
+    exec 'setlocal updatetime='.b:updatetime
   elseif g:QFix_DefaultUpdatetime
     call QFixPclose()
     exec 'setlocal updatetime='.g:QFix_DefaultUpdatetime
@@ -256,9 +262,6 @@ endfunction
 
 "CursorHold
 function! s:QFPreview()
-  if g:QFix_PreviewUpdatetime != &updatetime
-    let g:QFix_DefaultUpdatetime = &updatetime
-  endif
   if expand('<abuf>') == g:QFix_Win
     if g:QFix_PreviewEnable > 0
       call QFixPreview()
@@ -279,10 +282,6 @@ endfunction
 function! s:QFixSetVimgrepEnv(...)
   let g:QFix_MyJump = 1
   let g:QFix_SelectedLine = 1
-endfunction
-
-"BufWritePost
-function! s:QFixBufWritePost(...)
 endfunction
 
 "Quickfixウィンドウの初期化
@@ -785,14 +784,13 @@ endfunction
 "copen代替
 """"""""""""""""""""""""""""""
 function! QFixCopen(cmd, mode)
-  Unite qflist
-  return
   if a:cmd == ''
     let cmd = g:QFix_CopenCmd
   else
     let cmd = a:cmd
   endif
   let spath = g:QFix_SearchPath
+  let spath = expand(spath)
   let opath = getcwd()
   let qf = getqflist()
   let idx = len(qf)-1
@@ -809,6 +807,7 @@ function! QFixCopen(cmd, mode)
     "登録されている半分のファイルが QFix_SearchPath以下になかったらクリア
     let none = 0
     let cpath = g:QFix_SearchPath
+    let cpath = expand(cpath)
     let ppath = '|'
     let none = idx / 2
     for n in qf
@@ -946,6 +945,9 @@ function! QFixGet(cmd, ...)
   endif
   let qf = getqflist()
   let cline = line('.')
+  if a:0 > 0
+    let cline = a:1
+  endif
   if cline > len(qf)
     return
   endif
@@ -1053,8 +1055,8 @@ function! QFixPreviewOpen(file, line, ...)
     let cmd = '-r '
     "howmのエンコーディング強制指定
     if exists('g:QFixHowm_FileExt') && file =~ g:QFixHowm_FileExt.'$'
-      if exists('g:howm_fileencoding') && exists('g:QFixHowm_ForceEncoding') && g:QFixHowm_ForceEncoding
-        let cmd = cmd.' ++enc='.g:howm_fileencoding
+      if g:QFixHowm_ForceEncoding
+        let cmd = cmd.' ++enc='.g:howm_fileencoding .' ++ff='.g:howm_fileformat
       endif
     endif
     silent! exec cmd.' '.escape(expand(file), ' %#')
@@ -1125,6 +1127,9 @@ function! MyGrepWriteResult(mode, file) range
     if text == ''
       continue
     endif
+    let fname = substitute(text, '|.*$', '', '')
+    let fname = fnamemodify(fname, ':p')
+    let text = fname . matchstr(text, '|.*')
     let s:result = add(s:result, text)
   endfor
   call writefile(s:result, expand(file))
@@ -1166,13 +1171,16 @@ function! MyGrepReadResult(readflag, ...)
   " MyQFixライブラリを使用可能にする。
 "  call QFixEnable(s:resultpath)
   redraw|echo 'QFixGrep : Loading...'
-  silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
+  let prevPath = getcwd()
+  let prevPath = escape(prevPath, ' ')
+"  silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
   let saved_efm = &efm
   "TODO:grepとvimgrepで分ける
   set errorformat=%f\|%\\s%#%l\|%m
     cgetexpr s:result
 "    silent! execute 'silent! cgetfile ' . file
   let &errorformat = saved_efm
+"  silent exec 'lchdir ' . prevPath
   redraw|echo 'QFixGrep : ReadResult "'.file.'"'
 "  OpenQFixWin
 "  call ToggleQFix(1)
@@ -1275,8 +1283,15 @@ augroup QFixResize
   au!
   au BufWinEnter __MRU_Files__ let g:QFix_Resize = 0
   au BufWinLeave __MRU_Files__ let g:QFix_Resize = -1
-  au BufEnter * if g:QFix_Resize == -1 |call ResizeQFixWin(QFix_Height)|let g:QFix_Resize = 1|endif
+  au BufEnter * call QFixResizeBufEnter()
 augroup END
+
+function! QFixResizeBufEnter()
+  if g:QFix_Resize == -1
+    call ResizeQFixWin(g:QFix_Height)
+    let g:QFix_Resize = 1
+  endif
+endfunction
 
 function! QFixExec(cmd)
   let g:QFix_Resize = 0
@@ -1321,6 +1336,9 @@ endfunction
 command! -nargs=* FList call s:FL(<q-args>)
 function! s:FL(file)
   let file = a:file
+  if file == ''
+    let file = '*'
+  endif
   if file !~ '[*.]$'
     let file = file.'/*'
   endif
@@ -1361,13 +1379,13 @@ function! s:ShowFileList(path, list)
   let g:QFix_SearchPath = a:path
   CloseQFixWin
   if g:QFix_SearchPath != ''
-    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
+"    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
   endif
   let g:QFix_Modified = 1
   let g:QFixPrevQFList = a:list
   call setqflist(a:list)
   QFixCopen
-  silent exec 'lchdir ' . prevPath
+"  silent exec 'lchdir ' . prevPath
 endfunction
 "サマリー
 function! s:addtitle(path, list)
@@ -1380,7 +1398,7 @@ function! s:addtitle(path, list)
   setlocal bufhidden=hide
   setlocal noswapfile
   setlocal nobuflisted
-  silent exec 'lchdir ' . escape(a:path, ' ')
+"  silent exec 'lchdir ' . escape(a:path, ' ')
   let prevfname = ''
   for d in a:list
     let file = d.filename

@@ -2,8 +2,8 @@
 "    Description: 拡張Quickfixに対応したhowm
 "         Author: fuenor <fuenor@gmail.com>
 "                 http://sites.google.com/site/fudist/Home/qfixhowm
-"  Last Modified: 2010-09-10 00:37
-"        Version: 2.33
+"  Last Modified: 2010-11-25 00:01
+"        Version: 2.35
 "=============================================================================
 scriptencoding utf-8
 
@@ -206,6 +206,10 @@ endif
 "MRUジャンプ先変更
 if !exists('g:QFixHowm_MRU_SummaryLineMode')
   let g:QFixHowm_MRU_SummaryLineMode = 1
+endif
+"MRUドライブ名をhowm_dirでのドライブ名に変更(Windows)
+if !exists('g:QFixHowm_MRU_DriveCnv')
+  let g:QFixHowm_MRU_DriveCnv = 0
 endif
 
 "howmのキーワードファイル
@@ -708,7 +712,7 @@ function! s:SetbuflocalKey()
     exec "silent! nnoremap <silent> <buffer> g<C-]> :<C-u>if !QFixHowmOpenClink() <Bar> exec 'normal! <C-]>' <Bar> endif<CR>"
     exec "silent! vnoremap <silent> <buffer> g<C-]> :<C-u>if !QFixHowmOpenClink() <Bar> exec 'normal! <C-]>' <Bar> endif<CR>"
   endif
-  exec "silent! nnoremap <unique> <silent> <buffer> <CR> :<C-u>call QFixHowmActionLock()<CR>"
+  exec "silent! nnoremap <silent> <buffer> <CR> :<C-u>call QFixHowmActionLock()<CR>"
   exec "silent! nnoremap <unique> <silent> <buffer> ".s:QFixHowm_Key."C :call QFixHowmInsertEntry('cnext')<CR>"
   exec "silent! nnoremap <unique> <silent> <buffer> ".s:QFixHowm_Key."n :QFixHowmCursor next<CR>:call QFixHowmInsertEntry('next')<CR>"
   exec "silent! nnoremap <unique> <silent> <buffer> ".s:QFixHowm_Key."N :QFixHowmCursor bottom<CR>:call QFixHowmInsertEntry('bottom')<CR>"
@@ -762,18 +766,19 @@ if QFixHowm_MenuBar
     exec 'amenu <silent> 41.332 '.s:menu.'.-sep4-			<Nop>'
     exec 'amenu <silent> 41.332 '.s:menu.'.RandomWalk(&R)<Tab>'.s:QFixHowm_Key.'rr/<F5>  :QFixHowmRandomWalk<CR>'
     exec 'amenu <silent> 41.332 '.s:menu.'.-sep5-			<Nop>'
-    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer\ Local(&B).Date(&D)<Tab>'.s:QFixHowm_Key.'d :call QFixHowmInsertDate("Date")<CR>'
-    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer\ Local(&B).Time(&T)<Tab>'.s:QFixHowm_Key.'T :call QFixHowmInsertDate("Time")<CR>'
-    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer\ Local(&B).-sep50-			<Nop>'
-    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer\ Local(&B).Outline(&O)<Tab>'.s:QFixHowm_Key.'o  :call QFixHowmOutline()<CR>'
-    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer\ Local(&B).-sep51-			<Nop>'
-    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer\ Local(&B).NewEntry(&1)<Tab>'.s:QFixHowm_Key.'P :QFixHowmCursor top<CR>:call QFixHowmInsertEntry("top")<CR>'
-    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer\ Local(&B).NewEntry(&P)<Tab>'.s:QFixHowm_Key.'p :QFixHowmCursor prev<CR>:call QFixHowmInsertEntry("prev")<CR>'
-    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer\ Local(&B).NewEntry(&N)<Tab>'.s:QFixHowm_Key.'n :QFixHowmCursor next<CR>:call QFixHowmInsertEntry("next")<CR>'
-    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer\ Local(&B).NewEntry(&B)<Tab>'.s:QFixHowm_Key.'N :QFixHowmCursor bottom<CR>:call QFixHowmInsertEntry("bottom")<CR>'
-    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer\ Local(&B).-sep52-			<Nop>'
-    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer\ Local(&B).DeleteEntry(&X)<Tab>'.s:QFixHowm_Key.'x  :call QFixHowmDeleteEntry()<CR>'
-    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer\ Local(&B).MoveEntry(&M)<Tab>'.s:QFixHowm_Key.'X  :call QFixHowmDeleteEntry("move")<CR>'
+    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer[Local]\ (&B).Date(&D)<Tab>'.s:QFixHowm_Key.'d :call QFixHowmInsertDate("Date")<CR>'
+    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer[Local]\ (&B).Time(&T)<Tab>'.s:QFixHowm_Key.'T :call QFixHowmInsertDate("Time")<CR>'
+    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer[Local]\ (&B).-sep50-			<Nop>'
+    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer[Local]\ (&B).Outline(&O)<Tab>'.s:QFixHowm_Key.'o  :call QFixHowmOutline()<CR>'
+    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer[Local]\ (&B).-sep51-			<Nop>'
+    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer[Local]\ (&B).NewEntry(&1)<Tab>'.s:QFixHowm_Key.'P :QFixHowmCursor top<CR>:call QFixHowmInsertEntry("top")<CR>'
+    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer[Local]\ (&B).NewEntry(&P)<Tab>'.s:QFixHowm_Key.'p :QFixHowmCursor prev<CR>:call QFixHowmInsertEntry("prev")<CR>'
+    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer[Local]\ (&B).NewEntry(&N)<Tab>'.s:QFixHowm_Key.'n :QFixHowmCursor next<CR>:call QFixHowmInsertEntry("next")<CR>'
+    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer[Local]\ (&B).NewEntry(&B)<Tab>'.s:QFixHowm_Key.'N :QFixHowmCursor bottom<CR>:call QFixHowmInsertEntry("bottom")<CR>'
+    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer[Local]\ (&B).-sep52-			<Nop>'
+    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer[Local]\ (&B).DeleteEntry(&X)<Tab>'.s:QFixHowm_Key.'x  :call QFixHowmDeleteEntry()<CR>'
+    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer[Local]\ (&B).MoveEntry(&M)<Tab>'.s:QFixHowm_Key.'X  :call QFixHowmDeleteEntry("move")<CR>'
+    exec 'amenu <silent> 41.332 '.s:menu.'.howm\ Buffer[Local]\ (&B).DivideEntry(&W)<Tab>'.s:QFixHowm_Key.'W  :call QFixHowmDivideEntry()<CR>'
     exec 'amenu <silent> 41.332 '.s:menu.'.-sep6-			<Nop>'
     exec 'amenu <silent> 41.332 '.s:menu.'.RebuildKeywordFile(&F)<Tab>'.s:QFixHowm_Key.'rk  :<C-u>call QFixHowmRebuildKeyword()<CR>'
     exec 'amenu <silent> 41.332 '.s:menu.'.RebuildRandomWalkFile(&F)<Tab>'.s:QFixHowm_Key.'rR  :<C-u>call QFixHowmRebuildRandomWalkFile(g:QFixHowm_RandomWalkFile)<CR>:QFixHowmRandomWalk<CR>'
@@ -790,12 +795,17 @@ augroup QFixHowm
   autocmd!
   exec "autocmd BufReadPre   *.".g:QFixHowm_FileExt." silent! call QFixHowmInit()"
   exec "autocmd BufReadPost  *.".g:QFixHowm_FileExt." silent! call QFixHowmBufReadPost_()"
-  exec "autocmd BufRead,BufNewFile *.".g:QFixHowm_FileExt." exec 'setlocal filetype='.g:QFixHowm_FileType.'| call QFixHowmHighlight()'"
+  exec "autocmd BufRead,BufNewFile *.".g:QFixHowm_FileExt." call QFixHowmFileType()"
   exec "autocmd BufWritePre  *.".g:QFixHowm_FileExt." call QFixHowmInsertLastModified()|call QFixHowmBufWritePre()"
   exec "autocmd BufWritePost *.".g:QFixHowm_FileExt." call s:QFixHowmBufWritePost()|call QFixHowmBufWritePost()"
   autocmd BufWinEnter quickfix call QFixHowmSetup()
   autocmd VimLeave * silent! call delete(s:uricmdfile)
 augroup END
+
+function! QFixHowmFileType()
+  exec 'setlocal filetype='.g:QFixHowm_FileType
+  call QFixHowmHighlight()
+endfunction
 
 function! QFixHowmBufReadPost_()
   if g:QFixHowm_NoBOM && &bomb
@@ -838,14 +848,26 @@ augroup QFixHowmMRU
 augroup END
 
 function! QFixHowmMRUBufEnter()
+  if s:QFixHowm_Init == 0
+    return
+  endif
   let b:howm_moved = 0
 endfunction
 
 function! QFixHowmMRUBufLeave()
+  if s:QFixHowm_Init == 0
+    return
+  endif
   call QFixHowmSaveMru(0)
 endfunction
 
 function! QFixHowmMRUCursorMoved()
+  if s:QFixHowm_Init == 0
+    return
+  endif
+  if !exists('b:howm_moved')
+    let b:howm_moved = 0
+  endif
   if b:howm_moved == 0
     call QFixHowmSaveMru(0)
     let b:howm_moved = 1
@@ -907,8 +929,6 @@ function! QFixHowmSetup(...)
     return
   endif
 
-"  vnoremap <buffer> <silent> <CR>    :call QFixHowmCmd_CR(0)<CR>
-"  vnoremap <buffer> <silent> <S-CR>  :call QFixHowmCmd_CR(1)<CR>
   if exists("*QFixHowmExportSchedule")
     nnoremap <buffer> <silent> !  :call QFixHowmCmd_ScheduleList()<CR>
     vnoremap <buffer> <silent> !  :call QFixHowmCmd_ScheduleList('visual')<CR>
@@ -952,6 +972,11 @@ function! QFixHowmInsertLastModified(...)
   let saved_reg = @/
   if g:QFixHowm_RecentMode == 0 && g:QFixHowm_SaveTime == -1
     let g:QFixHowm_WriteUpdateTime = 0
+  endif
+  if g:QFixHowm_FileExt != 'howm'
+    if fnamemodify(expand('%'), ':p') !~ fnamemodify(g:howm_dir, ':p')
+      return
+    endif
   endif
   call s:Autoformat()
   let save_cursor = getpos('.')
@@ -1335,7 +1360,7 @@ function! QFixHowmListAll(pattern, days)
   let prevPath = getcwd()
   let prevPath = escape(prevPath, ' ')
   let l:howm_dir = g:howm_dir
-  silent exec 'lchdir ' . escape(l:howm_dir, ' ')
+"  silent exec 'lchdir ' . escape(l:howm_dir, ' ')
   let gpattern = pattern
   if a:days
     let g:MyGrep_FileListWipeTime = localtime() - a:days*24*60*60
@@ -1343,7 +1368,7 @@ function! QFixHowmListAll(pattern, days)
   CloseQFixWin
   redraw|echo 'QFixHowm : Searching...'
   let addflag = MultiHowmDirGrep(gpattern, l:howm_dir, g:QFixHowm_SearchHowmFile, g:howm_fileencoding, addflag)
-  silent exec 'lchdir ' . escape(l:howm_dir, ' ')
+"  silent exec 'lchdir ' . escape(l:howm_dir, ' ')
   call MyGrep(gpattern, l:howm_dir, g:QFixHowm_SearchHowmFile, g:howm_fileencoding, addflag)
   let wlist = []
   let clist = []
@@ -1392,7 +1417,7 @@ function! QFixHowmListAll(pattern, days)
   let sq = clist + wlist + sq
   call QFixHowmTitleFilter(sq)
   call MyGrepSetqflist(sq)
-  silent exec 'lchdir ' . escape(g:howm_dir, ' ')
+"  silent exec 'lchdir ' . escape(g:howm_dir, ' ')
   if empty(sq)
     redraw | echo 'QFixHowm : Not found!'
   else
@@ -1490,7 +1515,7 @@ function! QFixHowmSort(cmd, days)
   return save_qflist
 endfunction
 
-function QFixHowmListDiary()
+function! QFixHowmListDiary()
   let QFixHowm_SearchHowmFile = g:QFixHowm_SearchHowmFile
   let g:QFixHowm_SearchHowmFile = g:QFixHowm_SearchDiaryFile
   call QFixHowmListAllTitle(g:QFixHowm_Title, 0)
@@ -1556,7 +1581,7 @@ function! QFixHowmListRecent(pattern, days, ...)
   let prevPath = getcwd()
   let prevPath = escape(prevPath, ' ')
   let l:howm_dir = g:howm_dir
-  silent exec 'lchdir ' . escape(g:howm_dir, ' ')
+"  silent exec 'lchdir ' . escape(g:howm_dir, ' ')
   if !exists('g:mygrepprg') || g:mygrepprg == 'internal' || g:mygrepprg == ''
     if g:QFixHowm_RecentMode == 3 || g:QFixHowm_RecentMode == 4
       let searchWord = '^'.s:sch_dateTime.' (\('.strftime('%Y%m%d')
@@ -1591,7 +1616,7 @@ function! QFixHowmListRecent(pattern, days, ...)
   endif
   redraw|echo 'QFixHowm : Searching...'
   let addflag = MultiHowmDirGrep(searchWord, g:howm_dir, g:QFixHowm_SearchHowmFile, g:howm_fileencoding, addflag)
-  silent exec 'lchdir ' . escape(g:howm_dir, ' ')
+"  silent exec 'lchdir ' . escape(g:howm_dir, ' ')
   call MyGrep(searchWord, g:howm_dir, g:QFixHowm_SearchHowmFile, g:howm_fileencoding, addflag)
 
   let sq = QFixHowmSort('ttime', days)
@@ -1621,11 +1646,11 @@ function! QFixHowmListRecent(pattern, days, ...)
   let g:QFix_Height = h
   call QFixHowmTitleFilter(sq)
   call MyGrepSetqflist(sq)
-  silent exec 'lchdir ' . escape(g:howm_dir, ' ')
+"  silent exec 'lchdir ' . escape(g:howm_dir, ' ')
 "  QFixCopen
-"  silent exec 'lchdir ' . prevPath
+""  silent exec 'lchdir ' . prevPath
   if g:QFix_SearchPathEnable && g:QFix_SearchPath != ''
-    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
+"    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
   endif
   if exists('+autochdir')
     let &autochdir = saved_ac
@@ -1693,7 +1718,7 @@ function! QFixHowmListRecentReplaceTitle(file, pattern, lnum)
         let text = alttext
         let lnum = line('.')
         let retval = [text, lnum]
-        silent exec 'lchdir ' . prevPath
+"        silent exec 'lchdir ' . prevPath
         return retval
         return text
       endif
@@ -1702,13 +1727,13 @@ function! QFixHowmListRecentReplaceTitle(file, pattern, lnum)
   if text =~ a:pattern
     let lnum = line('.')
     let retval = [text, lnum]
-    silent exec 'lchdir ' . prevPath
+"    silent exec 'lchdir ' . prevPath
     return retval
     return text
   endif
   let lnum = line('.')
   let retval = [text, lnum]
-  silent exec 'lchdir ' . prevPath
+"  silent exec 'lchdir ' . prevPath
   return retval
 endfunction
 
@@ -1848,45 +1873,6 @@ endfunction
 """"""""""""""""""""""""""""""
 "QFix拡張コマンド
 """""""""""""""""""""""""""""
-function! QFixHowmCmd_CR(mode) range
-  let loop = 1
-  if a:firstline == a:lastline
-    let choice = 1
-  else
-    let mes = printf("Open files")
-    let choice = confirm(mes, "&Yes\n&Cancel", 2)
-    if choice != 1
-      return
-    endif
-    let loop = a:lastline - a:firstline + 1
-  endif
-  let save_cursor = getpos('.')
-  let prevPath = getcwd()
-  let prevPath = escape(prevPath, ' ')
-  for index in range(1, loop)
-    if choice == 1
-      silent exec 'chdir ' . prevPath
-      let lnum = line('.')
-      let file = QFixGet('file')
-      call cursor(lnum+1, 1)
-      let saved_fom = g:QFix_FileOpenMode
-      if a:firstline != a:lastline
-        let g:QFix_FileOpenMode = 1
-      endif
-      if g:QFix_SearchPathEnable && g:QFix_SearchPath != ''
-        silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
-      endif
-      call QFixHowmEditFile(getcwd().'/'.file)
-      let g:QFix_FileOpenMode = saved_fom
-      call Move2QFixWin()
-    endif
-  endfor
-  silent exec 'lchdir ' . prevPath
-  call setpos('.', save_cursor)
-  wincmd p
-endfunction
-
-""""""""""""""""""""""""""""""
 function! QFixHowmCmd_X(...) range
   let lnum = QFixGet('lnum')
   let qf = getqflist()
@@ -1977,7 +1963,7 @@ function! QFixHowmCmd_RD(cmd) range
     let prevPath = getcwd()
     let prevPath = escape(prevPath, ' ')
     if g:QFix_SearchPathEnable && g:QFix_SearchPath != ''
-      silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
+"      silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
     endif
     if a:cmd == 'Delete'
       call delete(file)
@@ -1986,7 +1972,7 @@ function! QFixHowmCmd_RD(cmd) range
     endif
     call remove(qf, idx)
     call cursor(line('.')+1, 1)
-    silent exec 'lchdir ' . prevPath
+"    silent exec 'lchdir ' . prevPath
   endfor
   setlocal modifiable
   silent! exec 'normal! 9999999999u'
@@ -2000,8 +1986,6 @@ endfunction
 """"""""""""""""""""""""""""""
 function! QFixHowmCmd_AT(mode) range
   let save_cursor = getpos('.')
-  let prevPath = getcwd()
-  let prevPath = escape(prevPath, ' ')
   if exists('+autochdir')
     let saved_ac = &autochdir
 "    set noautochdir
@@ -2033,6 +2017,8 @@ function! QFixHowmCmd_AT(mode) range
     call add(llist, lnum)
   endfor
   CloseQFixWin
+  let prevPath = getcwd()
+  let prevPath = escape(prevPath, ' ')
   let rez = []
   let h = g:QFix_Height
   silent! exec 'split '
@@ -2042,7 +2028,7 @@ function! QFixHowmCmd_AT(mode) range
   setlocal bufhidden=hide
   setlocal nobuflisted
   if g:QFix_SearchPathEnable && g:QFix_SearchPath != ''
-    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
+"    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
   endif
   for n in range(cnt)
 "    echo flist[n] llist[n]
@@ -2065,7 +2051,7 @@ function! QFixHowmCmd_AT(mode) range
   setlocal buftype=nofile
   silent! bd!
   let g:QFix_Height = h
-  silent! exec 'lchdir ' . escape(g:howm_dir, ' ')
+"  silent! exec 'lchdir ' . escape(g:howm_dir, ' ')
   if g:QFixHowm_MergeEntryName != ''
     let lname = strftime(g:QFixHowm_MergeEntryName)
   else
@@ -2087,7 +2073,7 @@ function! QFixHowmCmd_AT(mode) range
     if exists('+autochdir')
       let &autochdir = saved_ac
     endif
-    silent exec 'lchdir ' . prevPath
+"    silent exec 'lchdir ' . prevPath
     let g:QFix_SelectedLine = save_cursor[1]
     return
   endif
@@ -2142,7 +2128,7 @@ function! QFixHowmATCombine(file, lnum)
   setlocal modifiable
   silent! %delete _
   if g:QFix_SearchPathEnable && g:QFix_SearchPath != ''
-    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
+"    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
   endif
   let file = a:file
   let tmpfile = escape(a:file, ' #%')
@@ -2173,14 +2159,14 @@ endfunction
 
 """"""""""""""""""""""""""""""
 function! QFixHowmCmd_Replace(mode)
-  let prevPath = getcwd()
-  let prevPath = escape(prevPath, ' ')
   if exists('+autochdir')
     let saved_ac = &autochdir
 "    set noautochdir
   endif
 "  call QFixSaveHeight(0)
   CloseQFixWin
+  let prevPath = getcwd()
+  let prevPath = escape(prevPath, ' ')
   let h = g:QFix_Height
   silent! exec 'split '
   silent! exec 'silent! edit '.s:howmtempfile
@@ -2188,7 +2174,7 @@ function! QFixHowmCmd_Replace(mode)
   setlocal bufhidden=hide
   setlocal noswapfile
   setlocal nobuflisted
-  silent exec 'lchdir ' . escape(g:howm_dir, ' ')
+"  silent exec 'lchdir ' . escape(g:howm_dir, ' ')
   let idx = 0
   let sq = getqflist()
   for d in sq
@@ -2219,6 +2205,7 @@ function! QFixHowmCmd_Replace(mode)
   call QFixHowmTitleFilter(sq)
   cexpr ''
   call MyGrepSetqflist(sq)
+  silent exec 'lchdir ' . prevPath
   if empty(sq)
     CloseQFixWin
     redraw | echo 'QFixHowm : Not found!'
@@ -2229,7 +2216,6 @@ function! QFixHowmCmd_Replace(mode)
 "    silent! exec 'normal! 9999999999u'
 "    call SetModifiable('restore')
   endif
-  silent exec 'lchdir ' . prevPath
   if exists('+autochdir')
     let &autochdir = saved_ac
   endif
@@ -2586,6 +2572,8 @@ function! QFixHowmInit()
     endif
     if exists('g:howm_fileencoding'.i)
       exec 'let l:howm_fileencoding = g:howm_fileencoding'.i
+    else
+      let l:howm_fileencoding = g:howm_fileencoding
     endif
     if g:howm_fileencoding != l:howm_fileencoding
       let g:QFixHowm_ForceEncoding = 0
@@ -2753,6 +2741,14 @@ function! QFixHowmActionLockStr()
       endif
     endif
   endfor
+  call setpos('.', save_cursor)
+  if getline('.') =~ '^'.s:sch_dateT.s:sch_Ext
+    call cursor('.', 1)
+    let ret = QFixHowmRepeatDateActionLock()
+    if ret != "\<CR>"
+      return ret
+    endif
+  endif
   call setpos('.', save_cursor)
   return "\<CR>"
 endfunction
@@ -3372,6 +3368,12 @@ function! QFixHowmLoadMru()
     return
   endif
   let mdic = readfile(expand(g:QFixHowm_MruFile))
+  if has('win32') || has('win64')
+    if g:QFixHowm_MRU_DriveCnv == 1
+      let drive = matchstr(g:howm_dir, '^[A-Za-z]:')
+      call map(mdic, 'substitute(v:val, "^[A-Za-z]:", drive, "")')
+    endif
+  endif
   let s:MruDic = []
   for d in mdic
     let buf = d
@@ -3404,7 +3406,7 @@ function! QFixHowmMru(delete)
 "  CloseQFixWin
   let s:PrevMruDic = deepcopy(s:MruDic)
 
-  silent exec 'lchdir ' . escape(g:howm_dir, ' ')
+"  silent exec 'lchdir ' . escape(g:howm_dir, ' ')
   let mruidx = 0
 
   let h = g:QFix_Height
@@ -3415,7 +3417,7 @@ function! QFixHowmMru(delete)
   setlocal noswapfile
   setlocal nobuflisted
   let g:QFix_SearchPath = g:howm_dir
-  silent exec 'lchdir ' . escape(g:howm_dir, ' ')
+"  silent exec 'lchdir ' . escape(g:howm_dir, ' ')
   let s:prevfname = ''
   let l:QFixHowm_Title = escape(g:QFixHowm_Title, g:QFixHowm_EscapeTitle)
   for d in s:MruDic
@@ -3450,8 +3452,8 @@ function! QFixHowmMru(delete)
   silent! bd!
   let g:QFix_Height = h
   let g:QFix_SearchResult = []
+  silent exec 'lchdir ' . prevPath
   QFixCopen
-"  silent exec 'lchdir ' . prevPath
 "  call SetModifiable('save')
 "  setlocal modifiable
 "  silent! exec 'normal! 9999999999u'
@@ -3464,7 +3466,7 @@ endfunction
 
 function! QFixHowmEntryRange(file, title)
   if g:QFix_SearchPathEnable && g:QFix_SearchPath != ''
-    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
+"    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
   endif
   if s:prevfname != a:file
     silent! %delete _
@@ -3548,6 +3550,9 @@ function! QFixHowmSaveMru(write)
   let file = expand('%:p')
   let file = substitute(file, '\\', '/', 'g')
   let file = substitute(file, '/\+', '/', 'g')
+  if &buftype=='nofile'
+    return
+  endif
   if file =~ s:QFixHowm_Helpfile || file =~ g:QFixHowm_Menufile || file =~ g:QFixHowm_MRU_Ignore
     return
   endif
@@ -3632,7 +3637,7 @@ function! QFixHowmSaveMru(write)
     endif
     "call writefile(mlist, expand(g:QFixHowm_MruFile))
   endif
-  silent exec 'lchdir ' . prevPath
+"  silent exec 'lchdir ' . prevPath
   return
 endfunction
 
@@ -3718,7 +3723,7 @@ function! QFixHowmListReminder(mode)
   else
     let addflag = MultiHowmDirGrep(searchWord, searchPath, l:SearchFile, g:howm_fileencoding, addflag, 'g:QFixHowm_ScheduleSearchDir')
   endif
-  silent exec 'lchdir ' . escape(searchPath, ' ')
+"  silent exec 'lchdir ' . escape(searchPath, ' ')
   call MyGrep(searchWord, searchPath, l:SearchFile, g:howm_fileencoding, addflag)
   let sq = getqflist()
   let s:UseTitleFilter = 1
@@ -4751,7 +4756,7 @@ function! QFixHowmOpenClink()
   if g:QFixHowm_UseAutoLinkTags == 0
     return 0
   endif
-  silent exec 'lchdir ' . escape(g:QFixHowm_TagsDir, ' ')
+"  silent exec 'lchdir ' . escape(g:QFixHowm_TagsDir, ' ')
   "TODO:ここにタグジャンプを実装する
   return 0
   exec 'normal! <C-]>'
@@ -5060,7 +5065,7 @@ function! QFixHowmCmd_ScheduleList(...) range
   else
     QFixCopen
   endif
-  silent exec 'lchdir ' . prevPath
+"  silent exec 'lchdir ' . prevPath
   return schlist
 endfunction
 
@@ -5073,7 +5078,7 @@ function! s:QFixHowmMakeScheduleList(sdic)
   let file = a:sdic['qffile']
   let lnum = a:sdic['qflnum']
   if g:QFix_SearchPathEnable && g:QFix_SearchPath != ''
-    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
+"    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
   endif
   let tmpfile = escape(file, ' #%')
   if g:QFixHowm_ForceEncoding
@@ -5108,14 +5113,16 @@ function! s:QFixHowmParseScheduleList(sdic)
     let d['Summary'] = substitute(d['qfline'], pattern, '', '')
     let pattern = '\['.s:sch_date
     let d['StartDate'] = strpart(matchstr(d['qfline'], pattern), 1)
+    let d['StartDate'] = substitute(d['StartDate'], '[/]', '-', 'g')
     let pattern = '\['.s:sch_date . ' '. s:sch_time
     let d['StartTime'] = strpart(matchstr(d['qfline'], pattern), 12)
     let pattern = '&\['.s:sch_date
     let d['EndDate'] = strpart(matchstr(d['orgline'], pattern), 2)
+    let d['EndDate'] = substitute(d['EndDate'], '[/]', '-', 'g')
     let pattern = '&\['.s:sch_date.' '. s:sch_time
     let d['EndTime'] = strpart(matchstr(d['orgline'], pattern), 13)
     if d['EndTime'] == ''
-      let d['EndDate'] = s:QFixHowmAddDate(d['EndDate'], g:QFixHowm_EndDateOffset)
+      let d['EndDate'] = QFixHowmAddDate(d['EndDate'], g:QFixHowm_EndDateOffset)
     endif
 
     let pattern = s:sch_dateCmd
@@ -5157,7 +5164,7 @@ function! s:QFixHowmParseScheduleList(sdic)
   endfor
 endfunction
 
-function! s:QFixHowmAddDate(date, param)
+function! QFixHowmAddDate(date, param)
   let day = QFixHowmDate2Int(a:date) + a:param
   let sttime = (day - g:DateStrftime) * 24 * 60 * 60 + g:QFixHowm_ST * (60 * 60)
   let str = strftime(s:hts_date, sttime)
@@ -5307,7 +5314,7 @@ function! QFixHowmFLaddtitle(path, list)
   setlocal bufhidden=hide
   setlocal noswapfile
   setlocal nobuflisted
-  silent exec 'lchdir ' . escape(a:path, ' ')
+"  silent exec 'lchdir ' . escape(a:path, ' ')
   let prevfname = ''
   for d in a:list
     let file = d.filename
@@ -5352,10 +5359,10 @@ function! QFixHowmShowFileList(path, list)
   let g:QFix_SearchResult = []
   let g:QFix_SearchPath = a:path
   CloseQFixWin
-  silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
+"  silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
   call MyGrepSetqflist(a:list)
   QFixCopen
-  silent exec 'lchdir ' . prevPath
+"  silent exec 'lchdir ' . prevPath
 endfunction
 
 "ファイルリストを作成して登録
@@ -5416,7 +5423,7 @@ function! QFixHowmFileListMultiDir(file)
     silent! call remove(tlist, cnt, -1)
   endif
   "サマリーを付加
-  exec 'lchdir ' . escape(g:howm_dir, ' ')
+"  exec 'lchdir ' . escape(g:howm_dir, ' ')
   call QFixHowmShowFileList(g:howm_dir, tlist)
 endfunction
 
@@ -5424,7 +5431,7 @@ endfunction
 function! QFixHowmGetFileList(path, file)
   let prevPath = getcwd()
   let prevPath = escape(prevPath, ' ')
-  exec 'lchdir ' . escape(a:path, ' ')
+"  exec 'lchdir ' . escape(a:path, ' ')
   let files = split(glob(a:file), '\n')
   let list = []
   let lnum = 1
@@ -5442,7 +5449,7 @@ function! QFixHowmGetFileList(path, file)
       call insert(list, usefile)
     endif
   endfor
-  silent! exec 'lchdir ' . prevPath
+"  silent! exec 'lchdir ' . prevPath
   return list
 endfunction
 
@@ -5510,6 +5517,9 @@ endfunction
 command! -count QFixHowmRandomWalk :call QFixHowmRandomWalk()
 let s:randomresulttime = 0
 function! QFixHowmRandomWalk()
+  if QFixHowmInit()
+    return
+  endif
   redraw|echo 'QFixHowm : Random Walk...'
   if exists('g:QFix_Win') && bufwinnr(g:QFix_Win)
     let h = winheight(bufwinnr(g:QFix_Win))
@@ -5541,13 +5551,16 @@ function! QFixHowmRandomWalk()
   let result = QFixHowmRandomList(s:randomresult, len)
   " MyQFixライブラリを使用可能にする。
   call QFixEnable(s:randomresultpath)
-  silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
+  let prevPath = getcwd()
+  let prevPath = escape(prevPath, ' ')
+"  silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
   let saved_efm = &efm
   set errorformat=%f\|%\\s%#%l\|%m
     cgetexpr result
 "    silent! execute 'silent! cgetfile ' . file
   let &errorformat = saved_efm
   redraw|echo ''
+"  silent exec 'lchdir ' . prevPath
   QFixCopen
 endfunction
 
@@ -5680,7 +5693,7 @@ function! MultiHowmDirGrep(pattern, dir, filepattern, enc, addflag, ...)
     if g:howm_fileencoding != l:howm_fileencoding
       let g:QFixHowm_ForceEncoding = 0
     endif
-    "silent exec 'lchdir ' . escape(expand(hdir), ' ')
+"    "silent exec 'lchdir ' . escape(expand(hdir), ' ')
     call MyGrep(pattern, hdir, filepattern, l:howm_fileencoding, addflag)
     let addflag = 1
   endfor
@@ -5799,7 +5812,8 @@ function! QFixHowmFileLink()
     endif
   endif
   let file = g:howm_glink_pattern.file
-  exec ':let @'.(has('unix') ? '"': '*').'=file'
+  exec ':let @"=file'
+  silent! exec ':let @*'.'=file'
 endfunction
 
 "特定ファイルにペアリンクされたhowmファイルを開く
@@ -5809,6 +5823,16 @@ function! QFixHowmPairFile()
   endif
   let file = expand('%:t').'.'.g:QFixHowm_FileExt
   let file = g:QFixHowm_PairLinkDir.'/'.file
+  let str = ''
+  if !filereadable(fnamemodify(g:howm_dir.'/'.file, ':p'))
+    let str = g:QFixHowm_Title . ' ' . expand('%:t') . ' '
+  endif
   call QFixHowmOpenQuickMemo(file)
+  if str != ''
+    call setline(1, [str])
+    if line('.') == 1
+      call cursor('1', col('$'))
+    endif
+  endif
 endfunction
 

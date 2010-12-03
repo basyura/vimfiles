@@ -2,8 +2,8 @@
 "    Description: 日本語Grepヘルパー
 "         Author: fuenor <fuenor@gmail.com>
 "                 http://sites.google.com/site/fudist/Home/grep
-"  Last Modified: 2010-09-20 10:58
-"        Version: 2.26
+"  Last Modified: 2010-11-19 10:48
+"        Version: 2.27
 "================================================================================
 scriptencoding utf-8
 
@@ -196,6 +196,10 @@ if MyGrep_MenuBar
   exec 'amenu <silent> 41.331 '.s:menu.'.GrepBufferadd(&B)<TAB>'.s:MyGrep_Key.'B  :BGrepadd<CR>'
   exec 'amenu <silent> 41.331 '.s:menu.'.Vimgrepadd(&V)<Tab>'.s:MyGrep_Key.'V  :QFVGrepadd!<CR>'
   exec 'amenu <silent> 41.331 '.s:menu.'.-sep2-			<Nop>'
+  exec 'amenu <silent> 41.331 '.s:menu.'.Load\ Quickfix(&L)<Tab>'.s:MyGrep_Key.'k  :MyGrepReadResult<CR>\|:QFixCopen<CR>'
+  exec 'amenu <silent> 41.331 '.s:menu.'.Load\ Quickfix[Local]\ (&O)<Tab>O :MyGrepReadResult<CR>'
+  exec 'amenu <silent> 41.331 '.s:menu.'.Save\ Quickfix[Local]\ (&A)<Tab>A :MyGrepWriteResult<CR>'
+  exec 'amenu <silent> 41.331 '.s:menu.'.-sep3-			<Nop>'
   exec 'amenu <silent> 41.331 '.s:menu.'.Help(&H)<Tab>'.s:MyGrep_Key.'H  :<C-u>call QFixGrepHelp_()<CR>'
 
   if MyGrep_MenuBar == 1
@@ -308,7 +312,7 @@ function! UGrep(cmd, args, mode, addflag)
   call s:MyGrepPclose()
   silent! cclose
   if g:QFix_SearchPath != ''
-    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
+"    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
   endif
   if addflag
     let g:QFix_SearchPath = disppath
@@ -414,7 +418,7 @@ function! Grep(word, mode, title, addflag)
   silent! cclose
   call MyGrep(pattern, searchPath, filepattern, fenc, addflag)
   if g:QFix_SearchPath != ''
-    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
+"    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
   endif
   let save_qflist = getqflist()
   if empty(save_qflist)
@@ -435,7 +439,7 @@ function! Grep(word, mode, title, addflag)
     redraw | echo g:MyGrep_ErrorMes
     echohl None
   endif
-  silent exec 'lchdir ' . prevPath
+"  silent exec 'lchdir ' . prevPath
 endfunction
 
 """"""""""""""""""""""""""""""
@@ -478,7 +482,7 @@ function! BGrep(word, mode, addflag)
   call s:MyGrepPclose()
   silent! cclose
   if g:QFix_SearchPath != ''
-    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
+"    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
   endif
   silent! exec ':bufdo | try | vimgrepadd /' . pattern . '/j % | catch | endtry'
   silent! exec 'b'.bufnr
@@ -523,7 +527,7 @@ if !exists('g:MyGrepcmd_fix_ignore')
 endif
 "オプション
 if !exists('g:MyGrep_StayGrepDir')
-  let g:MyGrep_StayGrepDir = 1
+  let g:MyGrep_StayGrepDir = 0
 endif
 if !exists('g:MyGrep_Ignorecase')
   let g:MyGrep_Ignorecase = 1
@@ -992,7 +996,7 @@ endfunction
 """"""""""""""""""""""""""""""
 function! MyGrepSetqflist(sq)
   if g:QFix_SearchPath != ''
-    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
+"    silent exec 'lchdir ' . escape(g:QFix_SearchPath, ' ')
   endif
   let g:QFix_Modified = 1
   let g:QFixPrevQFList = a:sq
