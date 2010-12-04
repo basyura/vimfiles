@@ -1,5 +1,5 @@
 "
-" Last Modified: 03 Dec 2010
+" Last Modified: 04 Dec 2010
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -268,6 +268,8 @@ nnoremap <silent><Leader>r :UniteResume<CR>
 nnoremap <silent>on 999<C-w>+
 nnoremap <Space>g :<C-u>call QFixHowmSearchInput("QFixHowm Grep : ", 0)<CR><C-u>
 nnoremap <Space>a :<C-u>call QFixHowmListAllTitle(g:QFixHowm_Title, 0)<CR>
+nnoremap <silent><Leader><Leader>r :Unite redmine<CR>
+nnoremap <silent><Leader><Leader>h :Unite help<CR>
 
 nmap <Leader>c <Plug>NERDCommenterToggle
 " ターミナルだとなぜか起動時にインサートモードになるので
