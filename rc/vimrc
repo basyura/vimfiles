@@ -1,22 +1,23 @@
 "
-" Last Modified: 04 Dec 2010
+" Last Modified: 13 Dec 2010
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
 """"""""""""""""""""""""""""""""""
-let load_runtime = 0
-if expand("%") != ".git/COMMIT_EDITMSG"
-	filetype plugin indent on
-	syntax enable
-	colorscheme desert
-	set runtimepath+=~/.vim
-	set runtimepath+=~/.vim/plugins/*
-	set runtimepath+=~/.vim/gitplugins/*
-  let g:vimball_home = "~/.vim"
 
-  call altercmd#load()
-  let load_runtime = 1
+if expand("%") == ".git/COMMIT_EDITMSG"
+  finish
 endif
+
+filetype plugin indent on
+syntax enable
+colorscheme desert
+set runtimepath+=~/.vim
+set runtimepath+=~/.vim/plugins/*
+set runtimepath+=~/.vim/gitplugins/*
+let g:vimball_home = "~/.vim"
+
+call altercmd#load()
 
 if &termencoding == ''
   let &termencoding="utf-8"

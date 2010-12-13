@@ -6,6 +6,9 @@ colorscheme wombat
 """"""""""""""""""""""""""""""""""
 "           settings             "
 """"""""""""""""""""""""""""""""""
+if expand("%") == ".git/COMMIT_EDITMSG"
+  finish
+endif
 
 set guioptions-=rL
 set guioptions-=m
