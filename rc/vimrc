@@ -1,5 +1,5 @@
 "
-" Last Modified: 13 Dec 2010
+" Last Modified: 14 Dec 2010
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -87,6 +87,8 @@ set shortmess+=I
 set complete=.
 set pumheight=10
 set showcmd
+" 矩形選択中は行末にテキストがなくてもカーソルを行末以降に移動させることができる
+set virtualedit+=block
 """"""""""""""""""""""""""""""""""
 "         auto command           "
 """"""""""""""""""""""""""""""""""
@@ -155,9 +157,13 @@ function! s:all_bufenter_setting()
     return
   endif
   if &filetype == ''
-    setfiletype txt
+    if expand("%") == '[quickrun output]'
+      setfiletype quickrun
+    else
+      setfiletype txt
+    endif
   endif
-    execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
+  execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
 endfunction
 "
 " Last Change を保存時に変更する
@@ -220,7 +226,7 @@ imap <C-v> <C-R>+
 "全て選択
 map  <C-a><C-a> ggvG$
 "貼り付け
-map  <C-v> "+gP
+"map  <C-v> "+gP
 " gvim で q → bd をしてる用
 map <C-q><C-q><C-q> ZQ
 
