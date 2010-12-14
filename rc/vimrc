@@ -157,7 +157,7 @@ function! s:all_bufenter_setting()
     return
   endif
   if &filetype == ''
-    if expand("%") == '[quickrun output]'
+    if expand("%") =~ '\[quickrun output\]'
       setfiletype quickrun
     else
       setfiletype txt
