@@ -1,5 +1,5 @@
 "
-" Last Modified: 14 Dec 2010
+" Last Modified: 16 Dec 2010
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -290,7 +290,7 @@ inoremap jj <ESC>
 noremap <silent> <C-j> <ESC>:noh<CR>
 inoremap kk <ESC><S-o>
 inoremap () ()<Left>
-inoremap {} {}<Left>
+"inoremap {} {}<Left>
 inoremap [] []<Left>
 inoremap "" ""<Left>
 inoremap '' ''<Left>
@@ -495,7 +495,7 @@ let g:vimfiler_as_default_explorer = 1
 """"""""""""""""""""""""""""""""""
 "      unite or fuzzyfinder      "
 """"""""""""""""""""""""""""""""""
-let mru_ignore = '.*\/$\|.*Application\ Data.*\|.*デスクトップ.*\|.*Local/Temp/.*\|\.howm\|.*\.git.*\|[quickrun output]'
+let mru_ignore = '.*\/$\|.*Application\ Data.*\|.*デスクトップ.*\|.*Local/Temp/.*\|\.howm\|.*\.git.*\|\[quickrun output\]'
 "let g:fuf_keyOpen = ":"
 "let g:fuf_maxMenuWidth = 90
 let g:fuf_modesDisable     = ['mrucmd']
