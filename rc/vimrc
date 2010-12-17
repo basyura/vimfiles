@@ -1,5 +1,5 @@
 "
-" Last Modified: 16 Dec 2010
+" Last Modified: 17 Dec 2010
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -553,6 +553,7 @@ endif
 let g:unite_winheight = 10
 
 call unite#set_substitute_pattern('', '[[:alnum:]]', '*\0', 100)
+call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', 100)
 
 
 
