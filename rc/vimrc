@@ -556,7 +556,12 @@ endif
 let g:unite_winheight = 10
 
 call unite#set_substitute_pattern('', '[[:alnum:]]', '*\0', 100)
-call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', -150)
+if has('win32')
+  call unite#set_substitute_pattern('files', '[^~.]\zs/', '*/*', 20)
+  call unite#set_substitute_pattern('files', '/\ze[^*]', '/*', 10)
+else
+  call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', -150)
+endif
 
 function! s:unite_my_settings()
   NeoComplCacheDisableCaching
