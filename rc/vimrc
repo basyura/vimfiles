@@ -278,6 +278,7 @@ nnoremap <Space>a :<C-u>call QFixHowmListAllTitle(g:QFixHowm_Title, 0)<CR>
 nnoremap <silent><Leader><Leader>r :Unite redmine<CR>
 nnoremap <silent><Leader><Leader>h :Unite help<CR>
 nnoremap <silent><Leader><Leader>w :execute ':edit! ' . g:unite_uiki_path . '/FrontPage.uiki'<CR>
+nnoremap <silent><Leader><Leader>u :Unite uiki<CR>
 
 nmap <Leader>c <Plug>NERDCommenterToggle
 " ターミナルだとなぜか起動時にインサートモードになるので
