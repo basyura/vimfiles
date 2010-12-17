@@ -1,5 +1,5 @@
 "
-" Last Modified: 17 Dec 2010
+" Last Modified: 18 Dec 2010
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -556,8 +556,7 @@ endif
 let g:unite_winheight = 10
 
 call unite#set_substitute_pattern('', '[[:alnum:]]', '*\0', 100)
-call unite#set_substitute_pattern('files' , '[^~.]\zs/' , '*/*' , 20)
-call unite#set_substitute_pattern('files' , '/\ze[^*]'  , '/*'  , 10)
+call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', -150)
 
 function! s:unite_my_settings()
   NeoComplCacheDisableCaching
