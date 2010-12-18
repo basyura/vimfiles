@@ -89,12 +89,13 @@ set pumheight=10
 set showcmd
 " 矩形選択中は行末にテキストがなくてもカーソルを行末以降に移動させることができる
 set virtualedit+=block
+set fileencodings=utf-8,cp932,shift-jis,euc-jp
+set fileformats=unix,dos
 """"""""""""""""""""""""""""""""""
 "         auto command           "
 """"""""""""""""""""""""""""""""""
 augroup MyGroup
   autocmd! MyGroup
-  au BufEnter * set bh=hide
   au BufWritePre * call s:change_last_mod_date()
   au BufNewFile,BufRead *.scala setf scala
   "set autochdir
@@ -153,6 +154,7 @@ augroup MyGroup
 augroup END
 
 function! s:all_bufenter_setting()
+  setlocal bufhidden=hide
   if &filetype =~ 'howm.*'
     return
   endif
@@ -163,6 +165,12 @@ function! s:all_bufenter_setting()
       setfiletype txt
     endif
   endif
+
+  if join(getline(1,3)) == ""
+    setlocal fileencoding=utf-8
+    setlocal nomodified
+  endif
+
   execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
 endfunction
 "
