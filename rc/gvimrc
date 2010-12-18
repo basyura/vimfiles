@@ -22,7 +22,9 @@ set guioptions-=T
 
 augroup MyGGroup
   autocmd! MyGGroup
-"  autocmd BufEnter * call s:reload_color_scheme()
+  if has('mac')
+    autocmd BufEnter * call s:reload_color_scheme()
+  endif
 augroup END
 
 function! s:reload_color_scheme()
