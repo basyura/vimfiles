@@ -1,5 +1,5 @@
 "
-" Last Modified: 20 Dec 2010
+" Last Modified: 21 Dec 2010
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -129,7 +129,6 @@ augroup MyGroup
 
   autocmd FileType fuf NeoComplCacheLock
   autocmd FileType vimwiki NeoComplCacheLock
-  autocmd FileType howm_memo NeoComplCacheLock
 
   autocmd FileType vimshell call s:vimshell_filetype_settings()
 
@@ -150,14 +149,10 @@ augroup MyGroup
   autocmd FileType lingr-say      call s:lingr_say_setting()
 
   autocmd FileType quickrun       call s:quickrun_setting()
-  autocmd FileType qf             call s:qfix_howm_setting()
 augroup END
 
 function! s:all_bufenter_setting()
   setlocal bufhidden=hide
-  if &filetype =~ 'howm.*'
-    return
-  endif
   if &filetype == ''
     if expand("%") =~ '\[quickrun output\]'
       setfiletype quickrun
@@ -282,8 +277,6 @@ nnoremap man :Unite help<CR>
 nnoremap <silent>co :Unite -no-quit qflist<CR>
 nnoremap <silent><Leader>r :UniteResume<CR>
 nnoremap <silent>on 999<C-w>+
-nnoremap <Space>g :<C-u>call QFixHowmSearchInput("QFixHowm Grep : ", 0)<CR><C-u>
-nnoremap <Space>a :<C-u>call QFixHowmListAllTitle(g:QFixHowm_Title, 0)<CR>
 nnoremap <silent><Leader><Leader>r :Unite redmine<CR>
 nnoremap <silent><Leader><Leader>h :Unite help<CR>
 nnoremap <silent><Leader><Leader>w :execute ':edit! ' . g:unite_uiki_path . '/FrontPage.uiki'<CR>
@@ -346,7 +339,7 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " 補完しなくなる文字数
 let g:neocomplcache_enable_auto_select = 1
 " 補完しないパターン
-let g:neocomplcache_disable_caching_buffer_name_pattern = '.log\|.jax\|.howm'
+let g:neocomplcache_disable_caching_buffer_name_pattern = '.log\|.jax'
 " 自動補完しないパターン
 let g:neocomplcache_lock_buffer_name_pattern = '.log\|.*quickrun.*\|.jax'
 " 自動選択しないパターン
@@ -507,7 +500,7 @@ let g:vimfiler_as_default_explorer = 1
 """"""""""""""""""""""""""""""""""
 "      unite or fuzzyfinder      "
 """"""""""""""""""""""""""""""""""
-let mru_ignore = '.*\/$\|.*Application\ Data.*\|.*デスクトップ.*\|.*Local/Temp/.*\|\.howm\|.*\.git.*\|\[quickrun output\]'
+let mru_ignore = '.*\/$\|.*Application\ Data.*\|.*デスクトップ.*\|.*Local/Temp/.*\|.*\.git.*\|\[quickrun output\]'
 "let g:fuf_keyOpen = ":"
 "let g:fuf_maxMenuWidth = 90
 let g:fuf_modesDisable     = ['mrucmd']
@@ -590,19 +583,6 @@ function! s:fuf_my_settings()
   inoremap <buffer> <C-j> <ESC>
 endfunction
 
-" howm
-"
-let QFixHowm_Key = '<Space>'
-let QFixHowm_KeyB = ''
-if !exists('howm_dir')
-  let howm_dir = 'd:/document/howm'
-endif
-"let howm_fileencoding = 'utf-8'
-"let howm_fileformat   = 'unix'
-let g:QFix_PreviewEnable = 0
-let g:QFix_Height = 5
-"let g:QFix_Resize = 0
-let g:QFix_HeightFixMode = 1
 """"""""""""""""""""""""""""""""""
 "             misc               "
 """"""""""""""""""""""""""""""""""
@@ -814,11 +794,6 @@ endfunction
 function! s:quickrun_setting()
   nmap <buffer> <C-j> :bd!<CR>
 endfunction
-
-function! s:qfix_howm_setting()
-  nnoremap <silent> <buffer> <C-j> :bd<CR>
-endfunction
-
 
 "color for cygwin
 
