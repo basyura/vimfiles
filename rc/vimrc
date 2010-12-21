@@ -1,5 +1,5 @@
 "
-" Last Modified: 18 Dec 2010
+" Last Modified: 21 Dec 2010
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -543,7 +543,7 @@ else
 
   nnoremap <silent> <C-r>      :<C-u>Unite file_mru -start-insert<CR>
   nnoremap <silent> <C-n>      :<C-u>Unite buffer_tab <CR>
-  nnoremap <silent> <Leader>d  :<C-u>Unite -buffer-name=files file<CR>
+  nnoremap <silent> <Leader>d  :<C-u>Unite -buffer-name=file file<CR>
   nnoremap <silent> <Leader>b  :<C-u>Unite bookmark<CR>
   nnoremap <silent> <C-t>      :<C-u>Unite tags -start-insert<CR>
   nnoremap <Leader>f  :<C-u>Unite file_rec -input=
@@ -565,10 +565,10 @@ let g:unite_winheight = 10
 
 call unite#set_substitute_pattern('', '[[:alnum:]]', '*\0', 100)
 if has('win32')
-  call unite#set_substitute_pattern('files', '[^~.]\zs/', '*/*', 20)
-  call unite#set_substitute_pattern('files', '/\ze[^*]', '/*', 10)
+  call unite#set_substitute_pattern('file', '[^~.]\zs/', '*/*', 20)
+  call unite#set_substitute_pattern('file', '/\ze[^*]', '/*', 10)
 else
-  call unite#set_substitute_pattern('files', '[[:alnum:]]', '*\0', -150)
+  call unite#set_substitute_pattern('file', '[[:alnum:]]', '*\0', -150)
 endif
 
 function! s:unite_my_settings()
