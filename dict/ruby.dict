@@ -39,3 +39,5 @@ Debugger
 debugger
 each_line
 elsif
+before_filter
+skip_before_filter
