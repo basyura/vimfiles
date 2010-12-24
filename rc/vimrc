@@ -693,7 +693,7 @@ endfunction
 "http://vim-users.jp/2010/03/hack130/
 command! -complete=file -nargs=+ VimGrep  call s:grep([<f-args>])
 function! s:grep(args)
-  execute 'vimgrep' '/'.a:args[-1].'/' join(a:args[:-2])
+  execute 'vimgrep' '/'.a:args[-1].'/' join(a:args[:-2]) | :Unite qflist
 endfunction
 
 
