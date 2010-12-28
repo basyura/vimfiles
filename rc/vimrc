@@ -47,7 +47,7 @@ set ambiwidth=double
 set nu
 set autoindent
 set iminsert=0
-set titlestring=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}　-　%{getcwd()}
+set titlestring=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ \ %{getcwd()}
 set titlelen=200
 set linespace=2
 set antialias
@@ -503,6 +503,7 @@ let g:unite_source_file_mru_ignore_pattern = '.*\/$\|.*Application\ Data.*\|.*�
 let g:unite_winheight = 10
 
 call unite#set_substitute_pattern('', '[[:alnum:]]', '*\0', 100)
+call unite#set_substitute_pattern('file', '^\~', substitute(substitute($HOME, '\\', '/', 'g'), ' ', '\\\\ ', 'g'), -200)
 if has('win32')
   call unite#set_substitute_pattern('file', '[^~.]\zs/', '*/*', 20)
   call unite#set_substitute_pattern('file', '/\ze[^*]', '/*', 10)
@@ -637,7 +638,7 @@ endfunction
 "http://vim-users.jp/2010/03/hack130/
 command! -complete=file -nargs=+ VimGrep  call s:grep([<f-args>])
 function! s:grep(args)
-  execute 'vimgrep' '/'.a:args[-1].'/' join(a:args[:-2])
+  execute 'vimgrep' '/'.a:args[-1].'/' join(a:args[:-2]) | :Unite qflist
 endfunction
 
 
