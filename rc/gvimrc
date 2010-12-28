@@ -41,7 +41,7 @@ function! s:reload_color_scheme()
     " フォント
     set guifont=Monaco:h11.5
     " 透明度
-    set transparency=7
+    set transparency=5
     " esc 時に ime off mac vim only
     set imda
     "
