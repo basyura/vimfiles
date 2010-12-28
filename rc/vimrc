@@ -1,5 +1,5 @@
 "
-" Last Modified: 24 Dec 2010
+" Last Modified: 28 Dec 2010
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -55,7 +55,7 @@ set ambiwidth=double
 set nu
 set autoindent
 set iminsert=0
-set titlestring=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}　-　%{getcwd()}
+set titlestring=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ \ %{getcwd()}
 set titlelen=200
 set linespace=2
 set antialias
