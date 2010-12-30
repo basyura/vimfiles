@@ -1,5 +1,5 @@
 "
-" Last Modified: 28 Dec 2010
+" Last Modified: 29 Dec 2010
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -267,10 +267,10 @@ nnoremap w- <C-w>-
 nnoremap wm 100<C-w>+
 nnoremap man :Unite help<CR>
 nnoremap <silent>co :Unite -no-quit qflist<CR>
-"nnoremap <silent><Leader>r :UniteResume<CR>
+nnoremap <silent><Leader>r :UniteResume<CR>
 nnoremap <silent>on 999<C-w>+
 nnoremap <silent><Leader><Leader>r :Unite redmine<CR>
-nnoremap <silent><Leader><Leader>h :Unite help<CR>
+"nnoremap <silent><Leader>h :Unite help<CR>
 nnoremap <silent><Leader><Leader>w :execute ':edit! ' . g:unite_uiki_path . '/FrontPage.uiki'<CR>
 nnoremap <silent><Leader><Leader>u :Unite uiki<CR>
 
@@ -573,7 +573,7 @@ function! s:ChangeCurrentDir(directory, bang)
 endfunction
 
 " for rails.vim
-nnoremap <silent> <Leader>r :<C-u>R<CR>
+"nnoremap <silent> <Leader>r :<C-u>R<CR>
 
 
 " Change current directory.
@@ -603,7 +603,7 @@ endif
 
 silent! nmap <Leader>q :QuickRun<CR>
 let g:quickrun_config = {
-      \ '*' : {'into' : 1},
+      \ '*' : {'into' : 0},
       \}
 
 
