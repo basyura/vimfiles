@@ -1,5 +1,5 @@
 "
-" Last Modified: 29 Dec 2010
+" Last Modified: 03 Jan 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -317,8 +317,9 @@ let neco_dic.ruby        = $HOME . '/.vim/dict/ruby.dict'
 let neco_dic.eruby       = $HOME . '/.vim/dict/ruby.dict'
 let neco_dic.java        = $HOME . '/.vim/dict/java.dict'
 "let neco_dic.vimshell    = $HOME . '/.vimshell/command-history'
-let neco_dic.twitvim_say = $HOME . '/.twitvim.users,' . 
-                            \ $HOME . '/.twitvim.tags'
+let neco_dic.twitvim_say = $HOME . '/.twitvim.users' .
+                            \ ',' . $HOME . '/.twitvim.tags' .
+                            \ ',' . $HOME . '/.vim/dict/default.dict'
 let neco_dic.default     = $HOME . '/.vim/dict/default.dict'
 
 " 日本語をキャッシュしない
