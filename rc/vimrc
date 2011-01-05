@@ -1,5 +1,5 @@
 "
-" Last Modified: 28 Dec 2010
+" Last Modified: 05 Jan 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -454,6 +454,7 @@ function! s:vimshell_filetype_settings()
     inoremap <C-x><C-f> <Esc>:Unite file_rec -input=
   endif
 
+  AlterCommand <buffer> q echo 'use bd'
 
   hi VimShellPrompt guifg=#8ac6f2 gui=NONE
   NeoComplCacheAutoCompletionLength 3
@@ -500,7 +501,7 @@ let g:vimfiler_as_default_explorer = 1
 """"""""""""""""""""""""""""""""""
 "      unite or fuzzyfinder      "
 """"""""""""""""""""""""""""""""""
-let mru_ignore = '.*\/$\|.*Application\ Data.*\|.*デスクトップ.*\|.*Local/Temp/.*\|.*\.git.*\|\[quickrun output\]'
+let mru_ignore = '.*\/$\|.*Application\ Data.*\|.*デスクトップ.*\|.*Local Settings/Temp/.*\|.*\.git.*\|\[quickrun output\]'
 "let g:fuf_keyOpen = ":"
 "let g:fuf_maxMenuWidth = 90
 let g:fuf_modesDisable     = ['mrucmd']
