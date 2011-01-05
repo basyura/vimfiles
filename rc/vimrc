@@ -27,14 +27,6 @@ endif
 let mapleader = "m"
 
 """"""""""""""""""""""""""""""""""
-"        init variables          "
-""""""""""""""""""""""""""""""""""
-
-if !exists('g:use_fuzzy_finder')
-  let g:use_fuzzy_finder = 0
-endif
-
-""""""""""""""""""""""""""""""""""
 "           settings             "
 """"""""""""""""""""""""""""""""""
 
@@ -278,7 +270,7 @@ nnoremap <silent>co :Unite -no-quit qflist<CR>
 nnoremap <silent><Leader>r :UniteResume<CR>
 nnoremap <silent>on 999<C-w>+
 nnoremap <silent><Leader><Leader>r :Unite redmine<CR>
-nnoremap <silent><Leader><Leader>h :Unite help<CR>
+"nnoremap <silent><Leader>h :Unite help<CR>
 nnoremap <silent><Leader><Leader>w :execute ':edit! ' . g:unite_uiki_path . '/FrontPage.uiki'<CR>
 nnoremap <silent><Leader><Leader>u :Unite uiki<CR>
 
@@ -325,8 +317,9 @@ let neco_dic.ruby        = $HOME . '/.vim/dict/ruby.dict'
 let neco_dic.eruby       = $HOME . '/.vim/dict/ruby.dict'
 let neco_dic.java        = $HOME . '/.vim/dict/java.dict'
 "let neco_dic.vimshell    = $HOME . '/.vimshell/command-history'
-let neco_dic.twitvim_say = $HOME . '/.twitvim.users,' . 
-                            \ $HOME . '/.twitvim.tags'
+let neco_dic.twitvim_say = $HOME . '/.twitvim.users' .
+                            \ ',' . $HOME . '/.twitvim.tags' .
+                            \ ',' . $HOME . '/.vim/dict/default.dict'
 let neco_dic.default     = $HOME . '/.vim/dict/default.dict'
 
 " 日本語をキャッシュしない
@@ -442,17 +435,10 @@ function! s:vimshell_filetype_settings()
  	call vimshell#hook#set('preexec'  , ['g:vimshell_preexec'])
 	call vimshell#hook#set('preprompt', ['g:vimshell_preprompt'])
 
-  if g:use_fuzzy_finder == 1
-    inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>FufBuffer<CR>
-    inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>FufMruFile<CR>
-    nnoremap <buffer><silent> <C-n>  :<C-u>FufBuffer<CR>
-    inoremap <C-x><C-f> <Esc>:FufFile **/
-  else
-    inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer_tab <CR>
-    inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>Unite file_mru -start-insert<CR>
-    nnoremap <buffer><silent> <C-n>  :<C-u>Unite buffer_tab <CR>
-    inoremap <C-x><C-f> <Esc>:Unite file_rec -input=
-  endif
+  inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer_tab <CR>
+  inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>Unite file_mru -start-insert<CR>
+  nnoremap <buffer><silent> <C-n>  :<C-u>Unite buffer_tab <CR>
+  inoremap <C-x><C-f> <Esc>:Unite file_rec -input=
 
   AlterCommand <buffer> q echo 'use bd'
 
@@ -499,62 +485,24 @@ endfunction
 let g:vimfiler_as_default_explorer = 1
 
 """"""""""""""""""""""""""""""""""
-"      unite or fuzzyfinder      "
+"             unite              "
 """"""""""""""""""""""""""""""""""
-let mru_ignore = '.*\/$\|.*Application\ Data.*\|.*デスクトップ.*\|.*Local Settings/Temp/.*\|.*\.git.*\|\[quickrun output\]'
-"let g:fuf_keyOpen = ":"
-"let g:fuf_maxMenuWidth = 90
-let g:fuf_modesDisable     = ['mrucmd']
-let g:fuf_timeFormat       = ''
-let g:fuf_keyOpenVsplit    = '<C-v>'
-let g:fuf_keyOpenSplit     = '<C-k>'
-let g:fuf_buffer_keyDelete = '<C-d>'
-let g:fuf_enumeratingLimit = 20
-let g:fuf_mrufile_exclude = mru_ignore
-let g:fuf_mrufile_maxItem = 1000
 
-if g:use_fuzzy_finder == 1
-  " 読み込んだことにしたいけどエラー出るのでコメントアウト
-  "let g:loaded_unite = 1
-
-  "nnoremap <silent> <Leader>d :<C-u>CD<CR>:FufFile<CR>
-  nnoremap <silent> <C-r> :FufMruFile<CR>
-  nnoremap <silent> <C-n> :FufBuffer<CR>
-  nnoremap <silent> <Leader>d :<C-u>FufFile<CR>
-  nnoremap <Leader>f :FufFile **/
-  nnoremap <C-x><C-f> <Esc>:FufFile **/
-  nnoremap <C-x><C-f><C-f> <Esc>:FufFile! **/
-  inoremap <C-x><C-f> <Esc>:FufFile **/
-  inoremap <C-x><C-f><C-f> <Esc>:FufFile! **/
-  nnoremap <C-x><C-d> <Esc>:FufDir **/
-  nnoremap <C-x><C-d><C-d> <Esc>:FufDir! **/
-  inoremap <C-x><C-d> <Esc>:FufDir **/
-  inoremap <C-x><C-d><C-d> <Esc>:FufDir! **/
-  nnoremap <silent> <Leader>b :FufBookmarkDir<CR>
-  nnoremap <silent> <C-t> :FufTag<CR>
-else
-  " 読み込んだことにする
-  let g:fuf_modesDisable = ['mrucmd','mrufile','file','coveragefile']
-
-  nnoremap <silent> <C-r>      :<C-u>Unite file_mru -start-insert<CR>
-  nnoremap <silent> <C-n>      :<C-u>Unite buffer_tab <CR>
-  nnoremap <silent> <Leader>d  :<C-u>Unite -buffer-name=file file<CR>
-  nnoremap <silent> <Leader>b  :<C-u>Unite bookmark<CR>
-  nnoremap <silent> <C-t>      :<C-u>Unite tags -start-insert<CR>
-  nnoremap <Leader>f  :<C-u>Unite file_rec -input=
-  nnoremap <C-x><C-f>  :<C-u>Unite file_rec -input=
-  inoremap <C-x><C-f> :<C-u>Unite file_rec -input=
-end
+nnoremap <silent> <C-r>      :<C-u>Unite file_mru -start-insert<CR>
+nnoremap <silent> <C-n>      :<C-u>Unite buffer_tab <CR>
+nnoremap <silent> <Leader>d  :<C-u>Unite -buffer-name=file file<CR>
+nnoremap <silent> <Leader>b  :<C-u>Unite bookmark<CR>
+nnoremap <silent> <C-t>      :<C-u>Unite tags -start-insert<CR>
+nnoremap <Leader>f  :<C-u>Unite file_rec -input=
+nnoremap <C-x><C-f>  :<C-u>Unite file_rec -input=
+inoremap <C-x><C-f> :<C-u>Unite file_rec -input=
 
 nnoremap <silent> <Leader>u  :<C-u>Unite buffer_tab file file_mru bookmark<CR>
 
 "let g:unite_update_time = 200
 let g:unite_source_file_mru_time_format = ''
 let g:unite_enable_start_insert = 1
-let g:unite_source_file_mru_ignore_pattern = mru_ignore
-if !exists('g:unite_source_file_mru_limit')
-  let g:unite_source_file_mru_limit = 1000
-endif
+let g:unite_source_file_mru_ignore_pattern = '.*\/$\|.*Application\ Data.*\|.*デスクトップ.*\|.*Local/Temp/.*\|.*\.git.*\|\[quickrun output\]'
 " unite ウインドウの高さ
 let g:unite_winheight = 10
 
@@ -659,7 +607,7 @@ endif
 
 silent! nmap <Leader>q :QuickRun<CR>
 let g:quickrun_config = {
-      \ '*' : {'into' : 1},
+      \ '*' : {'into' : 0},
       \}
 
 
