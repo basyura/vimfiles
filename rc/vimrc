@@ -335,7 +335,7 @@ if !exists('g:neocomplcache_keyword_patterns')
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " 補完候補の数
-"let g:neocomplcache_max_list = 5
+let g:neocomplcache_max_list = 10
 " 補完しなくなる文字数
 let g:neocomplcache_enable_auto_select = 1
 " 補完しないパターン
@@ -760,7 +760,15 @@ if has('mac')
 end
 
 " indent xml
-command! IndentXML let @" = util#xml#indent(join(getline(1,'$'),"\n"))
+command! IndentXML call s:indent_xml()
+function! s:indent_xml()
+  let xml = util#xml#indent(join(getline(1,'$'),"\n"))
+  silent %delete _
+  set paste
+  execute 'normal i' . xml
+  set nopaste
+  :0
+endfunction
 " xpath
 command! -nargs=1 XPath let @" = util#xml#xpath_text(join(getline(1,'$'),"\n") , <f-args>) | echo @"
 
