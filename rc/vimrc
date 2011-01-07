@@ -1,5 +1,5 @@
 "
-" Last Modified: 05 Jan 2011
+" Last Modified: 06 Jan 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -285,7 +285,7 @@ inoremap <C-j> <ESC>
 inoremap jj <ESC>
 noremap <silent> <C-j> <ESC>:noh<CR>
 inoremap kk <ESC><S-o>
-inoremap () ()<Left>
+"inoremap () ()<Left>
 "inoremap {} {}<Left>
 inoremap [] []<Left>
 inoremap "" ""<Left>
@@ -751,6 +751,13 @@ endfunction
 
 function! s:quickrun_setting()
   nmap <buffer> <C-j> :bd!<CR>
+endfunction
+
+command! ChangeTab call s:change_tab()
+function! s:change_tab()
+  setlocal tabstop=4
+  setlocal shiftwidth=4
+  setlocal noexpandtab
 endfunction
 
 "color for cygwin
