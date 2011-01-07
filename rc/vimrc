@@ -1,5 +1,5 @@
 "
-" Last Modified: 06 Jan 2011
+" Last Modified: 07 Jan 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -366,6 +366,7 @@ inoremap <expr><C-c>  neocomplcache#cancel_popup()
 inoremap <expr><C-u>  neocomplcache#undo_completion()
 
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 "map <silent> <ESC> <ESC>:set iminsert=0<CR>
 " snippet 補完
 imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
