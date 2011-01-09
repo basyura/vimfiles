@@ -1,5 +1,5 @@
 "
-" Last Modified: 07 Jan 2011
+" Last Modified: 09 Jan 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -287,8 +287,8 @@ noremap <silent> <C-j> <ESC>:noh<CR>
 inoremap kk <ESC><S-o>
 "inoremap () ()<Left>
 "inoremap {} {}<Left>
-inoremap [] []<Left>
-inoremap "" ""<Left>
+"inoremap [] []<Left>
+"inoremap "" ""<Left>
 inoremap '' ''<Left>
 inoremap <> <><Left>
 
@@ -340,7 +340,10 @@ let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell'
 " キャッシュ中に、メッセージをCommand-lineに表示しない
 let g:neocomplcache_enable_caching_message = 0
 " キー入力時にキーワード補完を行う入力数を制御する。
-let g:neocomplcache_auto_completion_start_length = 3
+let g:neocomplcache_auto_completion_start_length = 2
+" 大文字・小文字を無視するか
+"let g:neocomplcache_enable_ignore_case = 0
+let g:neocomplcache_enable_smart_case = 1
 "入力に大文字が含まれている場合は、大文字・小文字を無視しない 
 "let g:neocomplcache_enable_smart_case = 1
 " セパレータ補完
