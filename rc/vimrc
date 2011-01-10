@@ -1,5 +1,5 @@
 "
-" Last Modified: 09 Jan 2011
+" Last Modified: 10 Jan 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -191,6 +191,8 @@ hi link lingrMessagesSpeaker Statement
 hi link lingrRoomsActive     Statement
 " wimwiki
 hi link VimwikiPre Normal
+
+let java_ignore_javadoc = 1
 """"""""""""""""""""""""""""""""""
 "             map                "
 """"""""""""""""""""""""""""""""""
@@ -289,8 +291,8 @@ inoremap kk <ESC><S-o>
 "inoremap {} {}<Left>
 "inoremap [] []<Left>
 "inoremap "" ""<Left>
-inoremap '' ''<Left>
-inoremap <> <><Left>
+"inoremap '' ''<Left>
+"inoremap <> <><Left>
 
 vnoremap <C-e> <End><Left>
 vmap <Leader>c <Plug>NERDCommenterToggle
@@ -342,8 +344,13 @@ let g:neocomplcache_enable_caching_message = 0
 " キー入力時にキーワード補完を行う入力数を制御する。
 let g:neocomplcache_auto_completion_start_length = 2
 " 大文字・小文字を無視するか
-"let g:neocomplcache_enable_ignore_case = 0
+let g:neocomplcache_enable_ignore_case = 0
 let g:neocomplcache_enable_smart_case = 1
+if !exists('g:neocomplcache_plugin_rank')
+  let g:neocomplcache_plugin_rank = {}
+endif
+let g:neocomplcache_plugin_rank.buffer_complete = 90
+
 "入力に大文字が含まれている場合は、大文字・小文字を無視しない 
 "let g:neocomplcache_enable_smart_case = 1
 " セパレータ補完
