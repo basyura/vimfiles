@@ -39,8 +39,9 @@ function! s:reload_color_scheme()
     set linespace=4
   elseif has('mac')
     " フォント
-    set guifont=Monaco:h11.5
+    "set guifontwide=Osaka-Mono:h14
     " 透明度
+    set linespace=4
     set transparency=5
     " esc 時に ime off mac vim only
     set imda
