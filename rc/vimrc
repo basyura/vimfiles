@@ -1,5 +1,5 @@
 "
-" Last Modified: 10 Jan 2011
+" Last Modified: 12 Jan 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -331,7 +331,7 @@ if !exists('g:neocomplcache_keyword_patterns')
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " 補完候補の数
-let g:neocomplcache_max_list = 10
+let g:neocomplcache_max_list = 100
 " 補完しなくなる文字数
 let g:neocomplcache_enable_auto_select = 1
 " 補完しないパターン
@@ -539,6 +539,8 @@ function! s:unite_my_settings()
   nmap <buffer> <C-n> <Plug>(unite_loop_cursor_down)
   nmap <buffer> <C-p> <Plug>(unite_loop_cursor_up)
   nmap <buffer> <C-j> <Plug>(unite_exit)
+  " neco 補完
+  inoremap <buffer> <C-l>  <C-x><C-u><C-p><Down>
   "startinsert
 endfunction
 function! s:fuf_my_settings()
