@@ -1,5 +1,5 @@
 "
-" Last Modified: 12 Jan 2011
+" Last Modified: 13 Jan 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -381,10 +381,12 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 "map <silent> <ESC> <ESC>:set iminsert=0<CR>
 " snippet 補完
 imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-i>  neocomplcache#complete_common_string()
 smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 command! -nargs=* Nes NeoComplCacheEditSnippets <args>
 command! -nargs=* Nel NeoComplCacheLock <args>
 command! -nargs=* NSource NeoComplCachePrintSource
+
 
 
 """"""""""""""""""""""""""""""""""
