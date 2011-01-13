@@ -359,7 +359,7 @@ let g:neocomplcache_plugin_rank.buffer_complete = 90
 " 辞書読み込
 noremap  <Space>d. :<C-u>NeoComplCacheCachingDictionary<Enter>
 " <TAB> completion.
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " C-jでオムニ補完
 "inoremap <expr> <C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<C-p>"
 " C-kを押すと行末まで削除
@@ -380,14 +380,12 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 "map <silent> <ESC> <ESC>:set iminsert=0<CR>
 " snippet 補完
-imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
-inoremap <expr><C-i>  neocomplcache#complete_common_string()
-smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
+imap <silent> <C-s> <Plug>(neocomplcache_snippets_expand)
+smap <silent> <C-s> <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-l>  neocomplcache#complete_common_string()
 command! -nargs=* Nes NeoComplCacheEditSnippets <args>
 command! -nargs=* Nel NeoComplCacheLock <args>
 command! -nargs=* NSource NeoComplCachePrintSource
-
-
 
 """"""""""""""""""""""""""""""""""
 "            vimshell            "
