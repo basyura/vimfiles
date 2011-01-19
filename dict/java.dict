@@ -20,7 +20,6 @@ AccessControlException
 AccessController
 AccessException
 Accessible
-AccessibleApplet
 AccessibleBundle
 AccessibleCellRendererPane
 AccessibleComponent
@@ -72,10 +71,6 @@ AlreadyBoundException
 AncestorEvent
 AncestorListener
 Annotation
-Applet
-AppletContext
-AppletInitializer
-AppletStub
 Area
 AreaAveragingScaleFilter
 ArithmeticException
@@ -1347,13 +1342,11 @@ ancestorResized
 andNot
 annotateClass
 annotateProxyClass
-append
+append(
 appendEvent
 appendRemainingComponent
 appendRemainingName
 appendText
-applet
-appletResize
 applyComponentOrientation
 applyLocalizedPattern
 applyPattern
@@ -2729,7 +2722,7 @@ toOctalString
 toPattern
 toRGB
 toRadians
-toString
+toString()
 toStub
 toTitleCase
 toURI
