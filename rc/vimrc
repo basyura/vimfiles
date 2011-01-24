@@ -1,5 +1,5 @@
 "
-" Last Modified: 23 Jan 2011
+" Last Modified: 24 Jan 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -63,6 +63,7 @@ set smartindent
 set timeout timeoutlen=300 ttimeoutlen=200
 set shellslash
 set incsearch
+set laststatus=1
 "set cmdheight=1
 
 " ubuntu だと画面がちらつく。mac だと音が出ちゃう。

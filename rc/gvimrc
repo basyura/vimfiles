@@ -12,7 +12,6 @@ endif
 
 set guioptions-=rL
 set guioptions-=m
-set laststatus=0
 " ビジュアル選択(D&D他)を自動的にクリップボードへ (:help guioptions_a)
 set guioptions+=a
 " クリップボード
