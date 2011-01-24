@@ -41,3 +41,5 @@ each_line
 elsif
 before_filter
 skip_before_filter
+params
+redirect_back_or_default

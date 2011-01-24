@@ -1,3 +1,5 @@
+
+
 snippet     v
 abbr        <%= %>
     <%= ${1} %>
@@ -5,3 +7,19 @@ abbr        <%= %>
 snippet     l
 abbr        <% %>
     <% ${1} %>
+
+snippet     link_to
+prev_word   "href=\""
+abbr        link_to "name" , path
+    <%= link_to "${1:name}" , ${2:path} %>
+
+snippet     form_for
+    <%= form_for ${1:entity} do |f| %>
+      ${2}
+    <% end %>
+
+snippet     text_field
+    <%= f.text_field :${1:field} %>
+
+snippet     submit_tag
+    <%= submit_tag '${1:name}' %>

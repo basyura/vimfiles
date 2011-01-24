@@ -1,5 +1,5 @@
 "
-" Last Modified: 18 Jan 2011
+" Last Modified: 23 Jan 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -330,6 +330,7 @@ if !exists('g:neocomplcache_keyword_patterns')
 	let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+"let g:neocomplcache_keyword_patterns['eruby'] = '>\|</\?\%([[:alnum:]_:-]\+\s*\)\?\%(/\?>\)\?\|&\h\%(\w*;\)\?\|\h[[:alnum:]_-]*="\%([^"]*"\?\)\?\|\h[[:alnum:]_:-]*\|[:alnum:]\>\|>'
 " 補完候補の数
 let g:neocomplcache_max_list = 100
 " 補完しなくなる文字数
@@ -381,6 +382,7 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 "map <silent> <ESC> <ESC>:set iminsert=0<CR>
 " snippet 補完
 imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
+imap <silent> <C-l>l <Plug>(neocomplcache_snippets_force_expand)
 smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 "inoremap <expr><C-l>  neocomplcache#complete_common_string()
 command! -nargs=* Nes NeoComplCacheEditSnippets <args>
@@ -502,6 +504,7 @@ let g:vimfiler_as_default_explorer = 1
 
 nnoremap <silent> <C-r>      :<C-u>Unite file_mru -start-insert<CR>
 nnoremap <silent> <C-n>      :<C-u>Unite buffer_tab <CR>
+nnoremap <silent> <C-n>      :<C-u>Unite buffer_tab <CR>
 nnoremap <silent> <Leader>d  :<C-u>Unite -buffer-name=file file<CR>
 nnoremap <silent> <Leader>b  :<C-u>Unite bookmark<CR>
 nnoremap <silent> <C-t>      :<C-u>Unite tags -start-insert<CR>
@@ -536,6 +539,7 @@ function! s:unite_my_settings()
   imap <buffer> <C-j> <Plug>(unite_exit)
   imap <buffer> <ESC> <Plug>(unite_exit)
 	imap <buffer> <C-o> <Plug>(unite_insert_leave):<C-u>call unite#mappings#do_action('above')<CR>
+  imap <buffer> <C-e> <Enter>
   nmap <buffer> <C-n> <Plug>(unite_loop_cursor_down)
   nmap <buffer> <C-p> <Plug>(unite_loop_cursor_up)
   nmap <buffer> <C-j> <Plug>(unite_exit)

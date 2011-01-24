@@ -1923,7 +1923,7 @@ hasListeners
 hasMore
 hasMoreElements
 hasMoreTokens
-hasNext
+hasNext()
 hasPrevious
 hasSameRules
 hasService
@@ -2210,7 +2210,7 @@ newPermissionCollection
 newPixels
 newProxyInstance
 newRowsAdded
-next
+next()
 nextBoolean
 nextBytes
 nextClearBit
