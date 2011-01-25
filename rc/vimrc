@@ -1,5 +1,5 @@
 "
-" Last Modified: 24 Jan 2011
+" Last Modified: 25 Jan 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -458,9 +458,10 @@ function! s:vimshell_filetype_settings()
   AlterCommand <buffer> q echo 'use bd'
 
   hi VimShellPrompt guifg=#8ac6f2 gui=NONE
-  NeoComplCacheAutoCompletionLength 3
+  NeoComplCacheAutoCompletionLength 2
 endfunction
 " vim コマンド実行前処理
+let s:is_vimshell_change_term_encoding = 0
 function! g:vimshell_preexec(cmdline, context)
   " 改行する
   if a:cmdline =~ "^vim .*"
@@ -469,18 +470,23 @@ function! g:vimshell_preexec(cmdline, context)
     call append('$', vimshell#get_prompt())
     execute "normal G"
   endif
+  if s:is_vimshell_change_termencoding_cmd(a:cmdline)
+    set termencoding=cp932
+    let s:is_vimshell_change_term_encoding = 1
+  endif
   return a:cmdline
 endfunction
 " vim コマンド実行後
 function! g:vimshell_preprompt(args, context)
-"  for key in keys(a:args)
-"    call append('$', key . '=' . a:args[key])
-"  endfor
-   
-"  if a:cmdline =~ "^vim .*"
-"    on
-"  endif
-"  return a:cmdline
+  if s:is_vimshell_change_term_encoding
+    set termencoding=utf-8
+    let s:is_vimshell_change_term_encoding = 0
+  endif
+endfunction
+
+function! s:is_vimshell_change_termencoding_cmd(cmd)
+  return exists('g:vimshell_change_termencoding_cmd')
+      \ && a:cmd =~ g:vimshell_change_termencoding_cmd
 endfunction
 
 
