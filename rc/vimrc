@@ -1,5 +1,5 @@
 "
-" Last Modified: 25 Jan 2011
+" Last Modified: 26 Jan 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -448,7 +448,7 @@ function! s:vimshell_filetype_settings()
   "nunmap <buffer> <C-d>
   nunm <buffer> q
  	call vimshell#hook#set('preexec'  , ['g:vimshell_preexec'])
-	call vimshell#hook#set('preprompt', ['g:vimshell_preprompt'])
+	call vimshell#hook#set('postexec' , ['g:vimshell_postexec'])
 
   inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer_tab <CR>
   inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>Unite file_mru -start-insert<CR>
@@ -461,7 +461,6 @@ function! s:vimshell_filetype_settings()
   NeoComplCacheAutoCompletionLength 2
 endfunction
 " vim コマンド実行前処理
-let s:is_vimshell_change_term_encoding = 0
 function! g:vimshell_preexec(cmdline, context)
   " 改行する
   if a:cmdline =~ "^vim .*"
@@ -472,15 +471,13 @@ function! g:vimshell_preexec(cmdline, context)
   endif
   if s:is_vimshell_change_termencoding_cmd(a:cmdline)
     set termencoding=cp932
-    let s:is_vimshell_change_term_encoding = 1
   endif
   return a:cmdline
 endfunction
 " vim コマンド実行後
-function! g:vimshell_preprompt(args, context)
-  if s:is_vimshell_change_term_encoding
+function! g:vimshell_postexec(cmdline, context)
+  if s:is_vimshell_change_termencoding_cmd(a:cmdline)
     set termencoding=utf-8
-    let s:is_vimshell_change_term_encoding = 0
   endif
 endfunction
 
