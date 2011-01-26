@@ -45,3 +45,7 @@ params
 redirect_back_or_default
 has_many
 belongs_to
+attr_accessor
+each_pair
+to_s
+to_i
