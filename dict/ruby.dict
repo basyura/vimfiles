@@ -43,3 +43,7 @@ before_filter
 skip_before_filter
 params
 redirect_back_or_default
+attr_accessor
+each_pair
+to_s
+to_i
