@@ -1,5 +1,5 @@
 "
-" Last Modified: 26 Jan 2011
+" Last Modified: 27 Jan 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -392,6 +392,7 @@ command! -nargs=* NSource NeoComplCachePrintSource
 command! -nargs=* NecoOff NeoComplCacheDisable
 command! -nargs=* NecoOn  NeoComplCacheEnable
 command! -nargs=* OutKeyWord  NeoComplCacheOutputKeyword
+command! -nargs=* Cache  NeoComplCacheCachingBuffer
 
 """"""""""""""""""""""""""""""""""
 "            vimshell            "
@@ -786,6 +787,17 @@ function! s:change_tab()
   setlocal tabstop=4
   setlocal shiftwidth=4
   setlocal noexpandtab
+endfunction
+
+command! CloseAll call s:close_all()
+function! s:close_all()
+  let l:bufnr = 1
+  while l:bufnr <= bufnr('$')
+    if buflisted(l:bufnr) && bufname(l:bufnr) !~ "vimshell"
+      exec "bd! " . l:bufnr
+    endif
+    let l:bufnr += 1
+  endwhile
 endfunction
 
 "color for cygwin
