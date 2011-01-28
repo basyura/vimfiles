@@ -1,5 +1,5 @@
 "
-" Last Modified: 27 Jan 2011
+" Last Modified: 28 Jan 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -485,9 +485,12 @@ function! g:vimshell_postexec(cmdline, context)
   endif
 endfunction
 
-function! s:is_vimshell_change_termencoding_cmd(cmd)
-  return exists('g:vimshell_change_termencoding_cmd')
-      \ && a:cmd =~ g:vimshell_change_termencoding_cmd
+function! s:is_vimshell_change_termencoding_cmd(cmdline)
+  if !exists('g:vimshell_change_termencoding_cmd')
+    return 0
+  endif
+  let l:args = vimproc#parser#split_args(a:cmdline)
+  return len(l:args) > 0 && l:args[0] =~ g:vimshell_change_termencoding_cmd
 endfunction
 
 
