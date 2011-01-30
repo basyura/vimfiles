@@ -49,3 +49,8 @@ attr_accessor
 each_pair
 to_s
 to_i
+ActionView::Helpers::TextHelper
+ActionView::Helpers::SanitizeHelper
+strip_tags
+gsub
+&nbsp;
