@@ -1,5 +1,5 @@
 "
-" Last Modified: 01 Feb 2011
+" Last Modified: 02 Feb 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -542,6 +542,8 @@ if has('win32')
 else
   call unite#set_substitute_pattern('file', '[[:alnum:]]', '*\0', -150)
 endif
+
+let g:unite_source_outline_cache_dir = ''
 
 function! s:unite_my_settings()
   " Overwrite settings.
