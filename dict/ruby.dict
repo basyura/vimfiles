@@ -54,3 +54,6 @@ ActionView::Helpers::SanitizeHelper
 strip_tags
 gsub
 &nbsp;
+length
+ljust
+rjust
