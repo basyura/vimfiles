@@ -1,5 +1,5 @@
 "
-" Last Modified: 02 Feb 2011
+" Last Modified: 05 Feb 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -258,7 +258,7 @@ nnoremap <Leader><Leader> :Unite
 nnoremap <Leader>g  :VimGrep **/*.* 
 nnoremap <Space>d :<C-u>pwd<CR>
 "nnoremap <silent> <C-l> :FufBufferTag<CR>
-nnoremap <silent> <C-l> :Unite outline<CR>
+nnoremap <silent> <C-l> :Unite outline  -winheight=30<CR>
 nnoremap <silent> <C-x><C-x> :tabnew<CR>
 nnoremap <silent> <C-x><C-l> :tabnext<CR>
 nnoremap <silent> <C-x><C-h> :tabprevious<CR>
