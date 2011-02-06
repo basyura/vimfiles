@@ -1,5 +1,5 @@
 "
-" Last Modified: 05 Feb 2011
+" Last Modified: 06 Feb 2011
 "
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -640,7 +640,7 @@ endif
 
 silent! nmap <Leader>q :QuickRun<CR>
 let g:quickrun_config = {
-      \ '*' : {'into' : 0},
+      \ '*' : {'into' : 0 , 'split' : ''},
       \}
 
 

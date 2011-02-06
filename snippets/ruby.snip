@@ -14,7 +14,8 @@ abbr        Test::Unit::TestCase
 snippet     class
 abbr        class Hoge end
     class ${1}
-        ${2} end
+        ${2} 
+    end
 
 snippet     mod
 abbr        module ModuleName ; end
@@ -58,4 +59,22 @@ snippet here
 snippet each
     each do |${1}|
       ${2}
+    end
+
+snippet sig
+    sig = class << self ; self end 
+    
+snippet each_pair
+    each_pair do |k , v|
+        ${1}
+    end
+
+snippet module_eval
+    module_eval do |mod|
+        ${1}
+    end
+
+snippet instance_eval
+    instance_eval do |obj|
+        ${1}
     end

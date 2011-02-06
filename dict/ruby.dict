@@ -57,3 +57,10 @@ gsub
 length
 ljust
 rjust
+self
+class
+define_method
+Proc
+send
+singleton_methods
+Time
