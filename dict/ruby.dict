@@ -64,3 +64,6 @@ Proc
 send
 singleton_methods
 Time
+sinatra
+sequel
+Sequel
