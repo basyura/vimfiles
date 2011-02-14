@@ -1,6 +1,3 @@
-"
-" Last Modified: 13 Feb 2011
-"
 """"""""""""""""""""""""""""""""""
 "         core settings          "
 """"""""""""""""""""""""""""""""""
@@ -276,6 +273,8 @@ nnoremap <silent><Leader><Leader>r :Unite redmine<CR>
 "nnoremap <silent><Leader>h :Unite help<CR>
 nnoremap <silent><Leader><Leader>w :execute ':edit! ' . g:unite_uiki_path . '/FrontPage.uiki'<CR>
 nnoremap <silent><Leader><Leader>u :Unite uiki<CR>
+nnoremap <C-x><C-c> :set termencoding=cp932<CR>:echo 'termencoding is cp932'<CR>
+nnoremap <C-x><C-u> :set termencoding=utf-8<CR>:echo 'termencoding is utf-8'<CR>
 
 nmap <Leader>c <Plug>NERDCommenterToggle
 " ターミナルだとなぜか起動時にインサートモードになるので
@@ -551,8 +550,12 @@ let g:unite_source_outline_cache_dir = ''
 
 function! s:unite_my_settings()
   " Overwrite settings.
-  NeoComplCacheDisableCaching
-  NeoComplCacheLock
+  if exists(':NeoComplCacheDisableCaching')
+    NeoComplCacheDisableCaching
+  endif
+  if exists(':NeoComplCacheLock')
+    NeoComplCacheLock
+  endif
   imap <buffer> jj <Plug>(unite_insert_leave)
   "imap <buffer> jj <Plug>(unite_exit)
   imap <buffer> <C-j> <Plug>(unite_exit)
@@ -772,8 +775,9 @@ function! s:twitvim_my_settings()
 endfunction
 " for twitvim say
 function! s:twitvim_say_my_settings()
-  "NeoComplCacheLock
-  NeoComplCacheCachingDictionary
+  if exists(':NeoComplCacheCachingDictionary')
+    NeoComplCacheCachingDictionary
+  endif
   AlterCommand <buffer> q bd!<CR>
   nnoremap <buffer> <silent> <C-j> :bd!<CR>
 endfunction
