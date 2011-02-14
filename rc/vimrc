@@ -1,6 +1,4 @@
-"
-" Last Modified: 09 Feb 2011
-"
+
 """"""""""""""""""""""""""""""""""
 "         core settings          "
 """"""""""""""""""""""""""""""""""
@@ -356,6 +354,10 @@ if !exists('g:neocomplcache_plugin_rank')
 endif
 let g:neocomplcache_plugin_rank.buffer_complete = 90
 
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.javascript = ''
 "入力に大文字が含まれている場合は、大文字・小文字を無視しない 
 "let g:neocomplcache_enable_smart_case = 1
 " セパレータ補完
