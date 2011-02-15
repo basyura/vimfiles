@@ -24,6 +24,12 @@ endif
 let mapleader = "m"
 
 """"""""""""""""""""""""""""""""""
+"             env                "
+""""""""""""""""""""""""""""""""""
+
+let $CYGWIN = 'nodosfilewarning acl'
+
+""""""""""""""""""""""""""""""""""
 "           settings             "
 """"""""""""""""""""""""""""""""""
 
@@ -294,6 +300,7 @@ inoremap kk <ESC><S-o>
 "inoremap '' ''<Left>
 "inoremap <> <><Left>
 
+"vnoremap = :Alignta = <CR>
 vnoremap <C-e> <End><Left>
 vmap <Leader>c <Plug>NERDCommenterToggle
 vmap <C-b> :Batch<CR>
@@ -407,9 +414,9 @@ let g:vimshell_edit_no_split = 1
 let g:vimshell_interactive_cygwin_path = 'D:/develop/dev/cygwin/bin'
 let g:vimshell_interactive_cygwin_home = 'D:/develop/dev/cygwin/home/Administrator'
 let g:vimshell_split_command = 'split'
+"let g:vimshell_split_command = "vsplit"
 " ディレクトリの補完時に/を補います
 let g:vimshell_enable_auto_slash = 1
-"let g:vimshell_split_command = "vsplit"
 if !exists('g:vimshell_interactive_cygwin_commands')
   let g:vimshell_interactive_cygwin_commands = {}
 endif
