@@ -48,14 +48,14 @@ right
 setBadge
 
 
-createSlider
-currentWindow
-createView
-createAlertDialog
-currentTab
-createWebView
-debug
-createTableViewRow
+Titanium.UI.createSlider
+Titanium.UI.currentWindow
+Titanium.UI.createView
+Titanium.UI.createAlertDialog
+Titanium.UI.currentTab
+Titanium.UI.createWebView
+Titanium.UI.createTableViewRow
+Titanium.API.debug
 modal
 modalTransitionStyle
 animated
