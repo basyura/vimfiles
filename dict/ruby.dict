@@ -29,8 +29,8 @@ class_eval
 const_missing
 constants
 debugger
-define_method
 downcase
+define_method
 each_line
 each_pair
 elsif
