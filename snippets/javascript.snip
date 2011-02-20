@@ -1,5 +1,4 @@
-snippet     al
-abbr        alert("message");
+snippet     alert(
     alert("${1}");
 
 snippet     for
@@ -26,7 +25,64 @@ snippet s
 abbr    'ssss'
     '${1}'
 
-snippet     print
-abbr        print()
+snippet     print(
     print(${0})
 
+snippet     addEventListener(
+    addEventListener('${1}' , function (${2}) {
+        ${3}
+      });
+
+snippet     createButton(
+abbr        js
+    createButton({
+        title  : '${1}' ,
+        height : ${2} ,
+        width  : ${3} ,
+        top    : ${3}
+        });
+
+snippet     createImageView(
+abbr        js
+   createImageView({
+       ${1}
+      });
+
+snippet     createWindow(
+abbr        js
+    createWindow({
+       title  : '${1}' ,
+       backgroundColor : '${2}' ,
+       url    : '${3}'
+     });
+
+snippet     createTab(
+abbr        js
+    createTab({
+        icon   : '${1}' ,
+        titl   : '${2}' ,
+        window : ${3}
+    });
+
+snippet     createTableView(
+abbr        js
+    createTableView({
+        data : ${1}
+    });
+
+snippet     createLabel(
+abbr        js
+    createLabel({
+        color  : '${1}',
+        text   : '${2}',
+        font   : { ${3} },
+        height : ${4} ,
+        width  : ${5}
+      });
+
+snippet     createSearchBar(
+abbr        js
+    createSearchBar({
+        barColor   : '${1}', 
+        showCancel : ${2}
+    });

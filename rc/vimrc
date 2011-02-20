@@ -337,6 +337,8 @@ if !exists('g:neocomplcache_keyword_patterns')
 	let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+"let g:neocomplcache_keyword_patterns['javascript'] = '\h\a*'
+
 "let g:neocomplcache_keyword_patterns['eruby'] = '>\|</\?\%([[:alnum:]_:-]\+\s*\)\?\%(/\?>\)\?\|&\h\%(\w*;\)\?\|\h[[:alnum:]_-]*="\%([^"]*"\?\)\?\|\h[[:alnum:]_:-]*\|[:alnum:]\>\|>'
 " 補完候補の数
 let g:neocomplcache_max_list = 100
@@ -358,7 +360,8 @@ let g:neocomplcache_enable_smart_case = 1
 if !exists('g:neocomplcache_plugin_rank')
   let g:neocomplcache_plugin_rank = {}
 endif
-let g:neocomplcache_plugin_rank.buffer_complete = 90
+let g:neocomplcache_plugin_rank.snippets_complete = 90
+"let g:neocomplcache_plugin_rank.buffer_complete = 90
 
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
@@ -392,8 +395,11 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 "map <silent> <ESC> <ESC>:set iminsert=0<CR>
 " snippet 補完
-imap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
-imap <silent> <C-l>l <Plug>(neocomplcache_snippets_force_expand)
+"
+imap <expr><C-l> pumvisible() ? 
+      \ "\<C-y><Plug>(neocomplcache_snippets_expand)" 
+      \ : "<Plug>(neocomplcache_snippets_expand)"
+imap <silent> <C-l>l <C-y><Plug>(neocomplcache_snippets_force_expand)
 smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 "inoremap <expr><C-l>  neocomplcache#complete_common_string()
 command! -nargs=* Nes NeoComplCacheEditSnippets <args>
