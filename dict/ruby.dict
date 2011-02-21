@@ -69,3 +69,4 @@ superclass
 to_i
 to_s
 true
+new

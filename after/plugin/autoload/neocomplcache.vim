@@ -7,9 +7,9 @@ function! neocomplcache#compare_len(i1, i2)
   return l:diff
 endfunction"}}}
 
-function! neocomplcache#compare_rank_only(i1, i2)
-  return a:i2.rank - a:i1.rank
-endfunction"}}}
+"function! neocomplcache#compare_rank(i1, i2)
+"  return a:i2.rank - a:i1.rank
+"endfunction"}}}
 
 function! neocomplcache#integrate_completion(complete_result, is_sort)"{{{
   if empty(a:complete_result)
@@ -91,7 +91,7 @@ function! neocomplcache#integrate_completion(complete_result, is_sort)"{{{
   let l:complete_words = l:words
 
   " 100個も補完候補が上がる事がほとんどないから意味ないよなぁ・・・
-  call sort(l:complete_words, 'neocomplcache#compare_rank_only')
+  "call sort(l:complete_words, 'neocomplcache#compare_rank_only')
 
   if g:neocomplcache_max_list >= 0
     let l:complete_words = l:complete_words[: g:neocomplcache_max_list]

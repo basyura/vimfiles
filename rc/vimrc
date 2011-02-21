@@ -9,9 +9,12 @@ endif
 filetype plugin indent on
 syntax enable
 colorscheme desert
+
 set runtimepath+=~/.vim
 set runtimepath+=~/.vim/plugins/*
 set runtimepath+=~/.vim/gitplugins/*
+set runtimepath+=~/.vim/after
+
 let g:vimball_home = "~/.vim"
 
 call altercmd#load()
