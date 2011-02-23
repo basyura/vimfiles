@@ -40,7 +40,7 @@ false
 grep
 gsub
 has_many
-initialize
+initialize(
 inspect
 instance_methods
 instance_variable_get
@@ -70,3 +70,5 @@ to_i
 to_s
 true
 new
+OptionParser
+optparse

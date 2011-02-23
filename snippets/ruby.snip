@@ -78,3 +78,12 @@ snippet instance_eval
     instance_eval do |obj|
         ${1}
     end
+
+snippet     optparse
+abbr        OptionParser
+prev_word   '^'
+    require 'optparse'
+    PConfig = Hash.new
+    opts = OptionParser.new
+    opts.on("-a"){|v| PConfig[:a] = true }
+    opts.parse!(ARGV)

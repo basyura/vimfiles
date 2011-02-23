@@ -1255,6 +1255,7 @@ freeMemory(
 fromCIEXYZ(
 fromRGB(
 future(
+get(
 generateCRL(
 generateCRLs(
 generateCertPath(
@@ -1431,6 +1432,7 @@ jdbcCompliant(
 join(
 joinGroup(
 keys(
+keySet()
 lang(
 last(
 lastEdit(
@@ -1819,7 +1821,7 @@ signum(
 singleton(
 singletonList(
 singletonMap(
-size(
+size()
 sizeColumnsToFit(
 sizeWidthToFit(
 skip(
