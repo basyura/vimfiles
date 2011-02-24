@@ -334,6 +334,7 @@ let neco_dic.twitvim_say = $HOME . '/.twitvim.users' .
                             \ ',' . $HOME . '/.vim/dict/default.dict'
 let neco_dic.hatena      = $HOME . '/.vim/dict/default.dict'
 let neco_dic.default     = $HOME . '/.vim/dict/default.dict'
+let neco_dic['lingr-say'] = $HOME . '/.lingr.dict'
 
 " 日本語をキャッシュしない
 if !exists('g:neocomplcache_keyword_patterns')
