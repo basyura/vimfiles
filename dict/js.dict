@@ -44,6 +44,8 @@ fontFamily
 bottom
 top
 right
+setAttribute(
+insertAdjacentHTML(
 
 setBadge
 
