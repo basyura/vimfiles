@@ -285,6 +285,8 @@ nnoremap <silent><Leader><Leader>u :Unite uiki<CR>
 nnoremap <C-x><C-c> :set termencoding=cp932<CR>:echo 'termencoding is cp932'<CR>
 nnoremap <C-x><C-u> :set termencoding=utf-8<CR>:echo 'termencoding is utf-8'<CR>
 
+nnoremap <Space>c :Cache<CR>
+
 nmap <Leader>c <Plug>NERDCommenterToggle
 " ターミナルだとなぜか起動時にインサートモードになるので
 if has('gui_running')
@@ -586,6 +588,8 @@ function! s:unite_my_settings()
   nmap <buffer> <C-j> <Plug>(unite_exit)
   " neco 補完
   inoremap <buffer> <C-l>  <C-x><C-u><C-p><Down>
+  inoremap <buffer> <C-f> <Right>
+  inoremap <buffer> <C-b> <Left>
   "startinsert
 endfunction
 function! s:fuf_my_settings()
@@ -799,6 +803,7 @@ function! s:twitvim_say_my_settings()
   endif
   AlterCommand <buffer> q bd!<CR>
   nnoremap <buffer> <silent> <C-j> :bd!<CR>
+  inoremap <buffer> <C-x><C-d> <ESC>:BitLy<CR>
 endfunction
 "
 function! s:lingr_messages_setting()
