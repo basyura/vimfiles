@@ -803,6 +803,7 @@ function! s:twitvim_say_my_settings()
   endif
   AlterCommand <buffer> q bd!<CR>
   nnoremap <buffer> <silent> <C-j> :bd!<CR>
+  inoremap <buffer> <C-x><C-d> <ESC>:BitLy<CR>
 endfunction
 "
 function! s:lingr_messages_setting()
