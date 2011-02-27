@@ -44,6 +44,7 @@ fontFamily
 bottom
 top
 right
+parseInt(
 setAttribute(
 insertAdjacentHTML(
 
