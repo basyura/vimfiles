@@ -18,7 +18,7 @@ abbr        for(var i = 0 ; i < ${1} ; i++) {  }
 
 snippet     func
 abbr        function() { }
-	function ${1}(${2}) {
+	function${1}(${2}) {
 		${3}
 	}
 
@@ -36,7 +36,12 @@ abbr    'ssss'
 
 
 snippet     addEventListener(
-    addEventListener('${1}' , function (${2}) {
+    addEventListener('${1}' , function(${2}) {
+        ${3}
+      });
+
+snippet     addRemoveListener(
+    addRemoveListener('${1}' , function(${2}) {
         ${3}
       });
 
@@ -52,7 +57,7 @@ abbr        js
 snippet     createImageView(
 abbr        js
    createImageView({
-       ${1}
+        image : ${1}
       });
 
 snippet     createWindow(
@@ -67,7 +72,7 @@ snippet     createTab(
 abbr        js
     createTab({
         icon   : '${1}' ,
-        titl   : '${2}' ,
+        title  : '${2}' ,
         window : ${3}
     });
 
@@ -93,3 +98,4 @@ abbr        js
         barColor   : '${1}', 
         showCancel : ${2}
     });
+
