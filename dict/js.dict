@@ -61,7 +61,16 @@ Titanium.UI.createAlertDialog
 Titanium.UI.currentTab
 Titanium.UI.createWebView
 Titanium.UI.createTableViewRow
+Titanium.Media.showCamera
+Titanium.Media.isCameraSupported
 Titanium.API.debug
+Titanium.Filesystem.getFile
+Titanium.Filesystem.resourcesDirectory
+Titanium.UI.createTextField
+
+paddingLeft
+hintText
+autocapitalization
 modal
 modalTransitionStyle
 animated
@@ -71,3 +80,7 @@ hideNavBar
 barColor
 addTab
 selectedBackgroundColor
+success
+cancel
+error
+

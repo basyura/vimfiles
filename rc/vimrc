@@ -285,7 +285,7 @@ nnoremap <silent><Leader><Leader>u :Unite uiki<CR>
 nnoremap <C-x><C-c> :set termencoding=cp932<CR>:echo 'termencoding is cp932'<CR>
 nnoremap <C-x><C-u> :set termencoding=utf-8<CR>:echo 'termencoding is utf-8'<CR>
 
-nnoremap <Space>c :Cache<CR>
+nnoremap <Space>c :Cache<CR>:NeoComplCacheCachingDictionary<CR>
 
 nmap <Leader>c <Plug>NERDCommenterToggle
 " ターミナルだとなぜか起動時にインサートモードになるので
