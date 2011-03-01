@@ -12,7 +12,7 @@ abbr        for(var i = 0 ; i < ${1} ; i++) {  }
 
 snippet     func
 abbr        function() { }
-	function ${1}(${2}) {
+	function${1}(${2}) {
 		${3}
 	}
 
@@ -32,7 +32,12 @@ snippet     print(
     print(${0})
 
 snippet     addEventListener(
-    addEventListener('${1}' , function (${2}) {
+    addEventListener('${1}' , function(${2}) {
+        ${3}
+      });
+
+snippet     addRemoveListener(
+    addRemoveListener('${1}' , function(${2}) {
         ${3}
       });
 

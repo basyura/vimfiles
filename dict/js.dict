@@ -67,7 +67,13 @@ Titanium.API.debug
 Titanium.Filesystem.getFile
 Titanium.Filesystem.resourcesDirectory
 Titanium.UI.createTextField
+Titanium.Geolocation.purpose
+Titanium.Geolocation.accuracy
+Titanium.Geolocation.ACCURACY_BEST
+Titanium.Geolocation.locationServicesEnabled
 
+coords.longitude
+coords.latitude
 paddingLeft
 hintText
 autocapitalization
