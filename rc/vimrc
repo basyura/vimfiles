@@ -284,6 +284,8 @@ nnoremap <silent><Leader><Leader>w :execute ':edit! ' . g:unite_uiki_path . '/Fr
 nnoremap <silent><Leader><Leader>u :Unite uiki<CR>
 nnoremap <C-x><C-c> :set termencoding=cp932<CR>:echo 'termencoding is cp932'<CR>
 nnoremap <C-x><C-u> :set termencoding=utf-8<CR>:echo 'termencoding is utf-8'<CR>
+nnoremap cn :cn<CR>
+nnoremap cp :cp<CR>
 
 nnoremap <Space>c :Cache<CR>:NeoComplCacheCachingDictionary<CR>
 
