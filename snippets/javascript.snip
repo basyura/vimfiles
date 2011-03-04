@@ -1,6 +1,12 @@
 delete proto
 delete ife
 
+snippet     if
+prev_word   '^'
+    if (${1}) {
+        ${2}
+    }
+
 snippet     alert(
     alert("${1}");
 
@@ -28,8 +34,6 @@ snippet s
 abbr    'ssss'
     '${1}'
 
-snippet     print(
-    print(${0})
 
 snippet     addEventListener(
     addEventListener('${1}' , function(${2}) {
