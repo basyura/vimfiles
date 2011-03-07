@@ -264,7 +264,7 @@ nnoremap <Leader><Leader> :Unite
 nnoremap <Leader>g  :VimGrep **/*.* 
 nnoremap <Space>d :<C-u>pwd<CR>
 "nnoremap <silent> <C-l> :FufBufferTag<CR>
-nnoremap <silent> <C-l> :Unite outline  -winheight=30<CR>
+nnoremap <silent> <C-l> :Unite outline  -winheight=30 -buffer-name=files<CR>
 nnoremap <silent> <C-x><C-x> :tabnew<CR>
 nnoremap <silent> <C-x><C-l> :tabnext<CR>
 nnoremap <silent> <C-x><C-h> :tabprevious<CR>
@@ -286,6 +286,7 @@ nnoremap <C-x><C-c> :set termencoding=cp932<CR>:echo 'termencoding is cp932'<CR>
 nnoremap <C-x><C-u> :set termencoding=utf-8<CR>:echo 'termencoding is utf-8'<CR>
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
+nnoremap wp <C-w>p
 
 nnoremap <Space>c :Cache<CR>:NeoComplCacheCachingDictionary<CR>
 
@@ -672,7 +673,7 @@ endif
 
 silent! nmap <Leader>q :QuickRun<CR>
 let g:quickrun_config = {
-      \ '*' : {'into' : 0 , 'split' : ''},
+      \ '*' : {'into' : 0 , 'split' : 'below'},
       \}
 
 

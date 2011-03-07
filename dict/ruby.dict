@@ -43,9 +43,10 @@ has_many
 initialize(
 inspect
 instance_methods
-instance_variable_get
-instance_variable_set
+instance_variable_get(
+instance_variable_set(
 instance_variables
+instance_of?
 kconv
 length
 ljust
@@ -102,3 +103,5 @@ TypeError
 ZeroDivisionError
 SystemExit
 fatal
+toutf8
+tosjis
