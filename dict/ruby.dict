@@ -105,3 +105,5 @@ SystemExit
 fatal
 toutf8
 tosjis
+undef_method
+remove_method
