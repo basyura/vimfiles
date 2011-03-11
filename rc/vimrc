@@ -123,6 +123,8 @@ augroup MyGroup
   autocmd FileType javascript :setlocal tabstop=2
   autocmd FileType javascript :setlocal shiftwidth=2
   autocmd FileType javascript :setlocal expandtab
+  autocmd FileType javascript call s:javascript_filetype_settings()
+
 
   autocmd FileType netrw setlocal buftype=nofile bufhidden=delete
 
@@ -187,6 +189,12 @@ function! s:change_last_mod_date()
   endif
   execute ':silent! language time ' . language
   call cursor(lineno , colno)
+endfunction
+
+function! s:javascript_filetype_settings()
+  autocmd BufLeave     <buffer> call jslint#clear()
+  autocmd BufWritePost <buffer> call jslint#check()
+  autocmd CursorMoved  <buffer> call jslint#message()
 endfunction
 
 """"""""""""""""""""""""""""""""""
