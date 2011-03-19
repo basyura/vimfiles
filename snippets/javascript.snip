@@ -11,10 +11,9 @@ snippet     alert(
     alert("${1}");
 
 snippet     for
-abbr        for(var i = 0 ; i < ${1} ; i++) {  }
-	for(var i = 0 ; i < ${1} ; i++) {
-		${2}
-	}
+    for(var i = 0 , max = ${1} ; i < max  ; i++) {
+        ${2}
+    }
 
 snippet     func
 abbr        function() { }
