@@ -2,7 +2,7 @@ document.getElementById
 document.getElementsByName
 Function
 Object
-hasOwnProperty
+hasOwnProperty(
 Infinity
 Array
 javascript
@@ -104,3 +104,4 @@ constructor
 print(
 println(
 length
+isNaN(
