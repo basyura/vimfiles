@@ -480,7 +480,7 @@ function! s:vimshell_filetype_settings()
   inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
   imap <buffer> <C-o> <Plug>(vimshell_enter)
   inoremap <buffer> <C-l> <C-y>
-  imap <buffer> <C-s> <Plug>(vimshell_history_complete_whole)
+  inoremap <buffer> <expr><silent> <C-s>  unite#sources#vimshell_history#start_complete()
   imap <buffer> <C-h> <Plug>(vimshell_delete_backward_char)
   "nunmap <buffer> <C-d>
   nunm <buffer> q
