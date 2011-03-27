@@ -1315,8 +1315,7 @@ identities(
 identityEquals(
 identityHashCode(
 implAccept(
-implements(
-implies(
+implements
 import
 importData(
 inClass(
@@ -1787,7 +1786,7 @@ startTag(
 startTimer(
 startsWith(
 stateChanged(
-static(
+static
 status(
 statusAll(
 statusID(

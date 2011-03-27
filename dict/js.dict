@@ -78,6 +78,7 @@ Titanium.Geolocation.ACCURACY_BEST
 Titanium.Geolocation.locationServicesEnabled
 Titanium.Map.createAnnotation
 Titanium.Filesystem.applicationDirectory
+Titanium.Network.createHTTPClient()
 userLocation
 annotations
 latitudeDelta

@@ -108,3 +108,16 @@ tosjis
 undef_method
 remove_method
 foreign_key
+link_to
+redirect_to
+upto
+update_attribute
+order
+where
+action
+index
+will_paginate
+paginate
+per_page
+destroy
+render

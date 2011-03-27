@@ -264,7 +264,7 @@ nnoremap <M-j> <C-e>
 nnoremap <Leader>s :Scratch<CR>
 "nnoremap <Leader>s :sp ~/.[scratch]<CR>
 nnoremap <Leader>v :VimShell<CR>
-nnoremap <Leader>w :w<CR>
+nnoremap <Leader>w :w<CR>:echo '... write to ' . bufname('%') . ' ... OK'<CR>
 nnoremap <silent> <Leader>o :on<CR>
 "nnoremap <Leader><Leader> <C-]>
 "nnoremap <silent> <Leader><Leader> :Unite file -buffer-name=file<CR>
@@ -315,7 +315,8 @@ inoremap kk <ESC><S-o>
 "inoremap "" ""<Left>
 "inoremap '' ''<Left>
 "inoremap <> <><Left>
-inoremap  , <Space>,
+"inoremap  , <Space>,
+inoremap  -- =>
 
 "vnoremap = :Alignta = <CR>
 vnoremap <C-e> <End><Left>
