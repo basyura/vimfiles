@@ -676,6 +676,7 @@ if !exists('g:twitvim_browser_cmd')
     let g:twitvim_browser_cmd = "D:/Program\ Files/Mozilla\ Firefox/firefox.exe"
   endif
 endif
+let g:twitvim_cert_insecure = 1
 
 "let twitvim_enable_python = 1
 
