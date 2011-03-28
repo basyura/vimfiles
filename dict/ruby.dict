@@ -20,6 +20,7 @@ active_axs
 ancestors
 assert_equal
 attr_accessor
+before
 before_filter
 belongs_to
 block_given?
@@ -121,3 +122,10 @@ paginate
 per_page
 destroy
 render
+context
+should
+should_not
+assign
+assigns
+created_at
+subject

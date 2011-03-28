@@ -264,7 +264,8 @@ nnoremap <M-j> <C-e>
 nnoremap <Leader>s :Scratch<CR>
 "nnoremap <Leader>s :sp ~/.[scratch]<CR>
 nnoremap <Leader>v :VimShell<CR>
-nnoremap <Leader>w :w<CR>:echo '... write to ' . bufname('%') . ' ... OK'<CR>
+"nnoremap <Leader>w :w<CR>:echo '... write to ' . bufname('%') . ' ... OK'<CR>
+nnoremap <Leader>w :WriteToFile<CR>
 nnoremap <silent> <Leader>o :on<CR>
 "nnoremap <Leader><Leader> <C-]>
 "nnoremap <silent> <Leader><Leader> :Unite file -buffer-name=file<CR>
@@ -848,6 +849,13 @@ function! s:close_all()
     endif
     let l:bufnr += 1
   endwhile
+endfunction
+
+command! WriteToFile call s:write_to_file()
+function! s:write_to_file()
+  silent w
+  let msg = '... write to ' . bufname('%') . ' ... OK !!! '
+  echohl CursorLine| echo msg | echohl None
 endfunction
 
 "color for cygwin
