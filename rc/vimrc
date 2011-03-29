@@ -853,9 +853,11 @@ endfunction
 
 command! WriteToFile call s:write_to_file()
 function! s:write_to_file()
-  silent w
-  let msg = '... write to ' . bufname('%') . ' ... OK !!! '
-  echohl CursorLine| echo msg | echohl None
+  try
+    silent w
+    let msg = '... write to ' . bufname('%') . ' ... OK !!! '
+    echohl CursorLine| echo msg | echohl None
+  endtry
 endfunction
 
 "color for cygwin
