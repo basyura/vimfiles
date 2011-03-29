@@ -129,3 +129,8 @@ assign
 assigns
 created_at
 subject
+capybara
+describe
+text_field
+text_area
+submit
