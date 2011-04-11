@@ -853,6 +853,10 @@ endfunction
 
 command! WriteToFile call s:write_to_file()
 function! s:write_to_file()
+  if &filetype == 'redmine'
+    echo 'please use :w'
+    return
+  end
   try
     silent w
     let msg = ' write to ' . bufname('%') . ' ... OK !!! '
