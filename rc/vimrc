@@ -273,7 +273,8 @@ nnoremap <Leader><Leader> :Unite
 nnoremap <Leader>g  :VimGrep **/*.* 
 nnoremap <Space>d :<C-u>pwd<CR>
 "nnoremap <silent> <C-l> :FufBufferTag<CR>
-nnoremap <silent> <C-l> :Unite outline  -winheight=30 -buffer-name=files<CR>
+nnoremap <silent> <C-l> :Unite outline  -winheight=30 -buffer-name=outline<CR>
+nnoremap <silent> <C-l><C-l> :Unite outline:!  -winheight=30 -buffer-name=outline<CR>
 nnoremap <silent> <C-x><C-x> :tabnew<CR>
 nnoremap <silent> <C-x><C-l> :tabnext<CR>
 nnoremap <silent> <C-x><C-h> :tabprevious<CR>
@@ -580,6 +581,14 @@ if has('win32')
 else
   call unite#set_substitute_pattern('file', '[[:alnum:]]', '*\0', -150)
 endif
+
+call unite#set_substitute_pattern('file_mru', '[[:alnum:]]', '*\0', 100)
+call unite#set_substitute_pattern('file_mru', '[^~.]\zs/', '*/*', 20)
+call unite#set_substitute_pattern('file_mru', '/\ze[^*]', '/*', 10)
+
+call unite#set_substitute_pattern('outline', '[[:alnum:]]', '*\0', 100)
+call unite#set_substitute_pattern('outline', '[^~.]\zs/', '*/*', 20)
+call unite#set_substitute_pattern('outline', '/\ze[^*]', '/*', 10)
 
 let g:unite_source_outline_cache_dir = ''
 
