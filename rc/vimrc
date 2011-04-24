@@ -313,7 +313,8 @@ noremap <silent> <C-j> <ESC>:noh<CR>
 inoremap kk <ESC><S-o>
 "inoremap () ()<Left>
 "inoremap {} {}<Left>
-"inoremap [] []<Left>
+inoremap [[ []<Left>
+inoremap <C-q> []<Left>
 "inoremap "" ""<Left>
 "inoremap '' ''<Left>
 "inoremap <> <><Left>
@@ -345,6 +346,7 @@ let neco_dic.javascript  = $HOME . '/.vim/dict/js.dict'
 let neco_dic.ruby        = $HOME . '/.vim/dict/ruby.dict'
 let neco_dic.eruby       = $HOME . '/.vim/dict/ruby.dict'
 let neco_dic.java        = $HOME . '/.vim/dict/java.dict'
+let neco_dic.c           = $HOME . '/.vim/dict/c.dict'
 "let neco_dic.vimshell    = $HOME . '/.vimshell/command-history'
 let neco_dic.twitvim_say = $HOME . '/.twitvim.users' .
                             \ ',' . $HOME . '/.twitvim.tags' .
@@ -366,9 +368,9 @@ let g:neocomplcache_max_list = 100
 " 補完しなくなる文字数
 let g:neocomplcache_enable_auto_select = 1
 " 補完しないパターン
-let g:neocomplcache_disable_caching_file_path_pattern = '\.log\|log\.\|.jax\'
+let g:neocomplcache_disable_caching_file_path_pattern = '\.log\|log\.\|\.jax'
 " 自動補完しないパターン
-let g:neocomplcache_lock_buffer_name_pattern = '\.log\|log\.\|.*quickrun.*\|.jax\'
+let g:neocomplcache_lock_buffer_name_pattern = '\.log\|log\.\|.*quickrun.*\|.jax'
 " 自動選択しないパターン
 let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell'
 " キャッシュ中に、メッセージをCommand-lineに表示しない
@@ -382,6 +384,7 @@ if !exists('g:neocomplcache_plugin_rank')
   let g:neocomplcache_plugin_rank = {}
 endif
 let g:neocomplcache_plugin_rank.snippets_complete = 90
+let g:neocomplcache_plugin_rank.buffer_complete = 80
 "let g:neocomplcache_plugin_rank.buffer_complete = 90
 
 if !exists('g:neocomplcache_omni_patterns')

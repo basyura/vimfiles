@@ -11,7 +11,7 @@ endfunction"}}}
 "  return a:i2.rank - a:i1.rank
 "endfunction"}}}
 
-function! neocomplcache#integrate_completion(complete_result, is_sort)"{{{
+function! __neocomplcache#integrate_completion(complete_result, is_sort)"{{{
   if empty(a:complete_result)
     if neocomplcache#get_cur_text() =~ '\s\+$'
           \ && neocomplcache#is_buffer_complete_enabled()

@@ -1,0 +1,15 @@
+
+snippet     for
+abbr        for () {}
+    for (${1} = 0 ; $1 < ${2} ; $1++) {
+        ${0}
+    }
+
+snippet printf
+    printf("${1}\n"${2});
+
+snippet main
+    int main(int argc, char const* argv[]) {
+        ${0}
+        return 0;
+    }
