@@ -10,7 +10,6 @@ setTimeout
 prototype
 slice
 arguments
-function
 return
 this
 apply(

@@ -384,7 +384,7 @@ if !exists('g:neocomplcache_plugin_rank')
   let g:neocomplcache_plugin_rank = {}
 endif
 let g:neocomplcache_plugin_rank.snippets_complete = 90
-let g:neocomplcache_plugin_rank.buffer_complete = 80
+"let g:neocomplcache_plugin_rank.buffer_complete = 80
 "let g:neocomplcache_plugin_rank.buffer_complete = 90
 
 if !exists('g:neocomplcache_omni_patterns')
