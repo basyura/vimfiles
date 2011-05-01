@@ -124,6 +124,10 @@ augroup MyGroup
   autocmd FileType javascript :setlocal shiftwidth=2
   autocmd FileType javascript :setlocal expandtab
   autocmd FileType javascript call s:javascript_filetype_settings()
+  " for c
+  autocmd FileType c,cpp :setlocal tabstop=4
+  autocmd FileType c,cpp :setlocal shiftwidth=4
+  autocmd FileType c,cpp :setlocal expandtab
 
 
   autocmd FileType netrw setlocal buftype=nofile bufhidden=delete
@@ -248,7 +252,7 @@ cmap <C-a> <HOME>
 cmap <C-f> <Right>
 cmap <C-b> <Left>
 imap <C-e> <End>
-imap <C-a> <HOME>
+imap <C-a> <ESC>^i
 imap <C-f> <Right>
 imap <C-b> <Left>
 
