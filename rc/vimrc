@@ -125,9 +125,9 @@ augroup MyGroup
   autocmd FileType javascript :setlocal expandtab
   autocmd FileType javascript call s:javascript_filetype_settings()
   " for c
-  autocmd FileType c,cpp :setlocal tabstop=4
-  autocmd FileType c,cpp :setlocal shiftwidth=4
-  autocmd FileType c,cpp :setlocal expandtab
+  autocmd FileType c,cpp,go :setlocal tabstop=4
+  autocmd FileType c,cpp,go :setlocal shiftwidth=4
+  autocmd FileType c,cpp,go :setlocal expandtab
 
 
   autocmd FileType netrw setlocal buftype=nofile bufhidden=delete
@@ -626,6 +626,14 @@ endfunction
 function! s:fuf_my_settings()
   inoremap <buffer> <C-j> <ESC>
 endfunction
+
+""""""""""""""""""""""""""""""""""
+"             go                 "
+""""""""""""""""""""""""""""""""""
+
+"let go_highlight_array_whitespace_error = 0
+"let go_highlight_space_tab_error = 0
+let go_highlight_trailing_whitespace_error = 0
 
 """"""""""""""""""""""""""""""""""
 "             misc               "
