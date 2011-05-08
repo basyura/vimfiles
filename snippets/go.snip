@@ -1,7 +1,24 @@
 
 snippet     for
-abbr        for
-prev_word   '^'
-    for ${1:i} := 0 ; $1 < ${2} ; $1++ {
+abbr        for () {}
+    for ${1:i} := 0; $1 < ${2}; $1++ {
         ${0}
+    }
+
+snippet     interface
+prev_word   '^'
+    type ${1:name} interface {
+        ${2}
+    }
+
+snippet     struct
+prev_word   '^'
+    type ${1:name} struct {
+        ${2}
+    }
+
+snippet     func
+prev_word   '^'
+    func ${1:name}(${2}) ${3} {
+        ${4}
     }

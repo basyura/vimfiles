@@ -125,9 +125,13 @@ augroup MyGroup
   autocmd FileType javascript :setlocal expandtab
   autocmd FileType javascript call s:javascript_filetype_settings()
   " for c
-  autocmd FileType c,cpp,go :setlocal tabstop=4
-  autocmd FileType c,cpp,go :setlocal shiftwidth=4
-  autocmd FileType c,cpp,go :setlocal expandtab
+  autocmd FileType c,cpp :setlocal tabstop=4
+  autocmd FileType c,cpp :setlocal shiftwidth=4
+  autocmd FileType c,cpp :setlocal expandtab
+  " for go
+  autocmd FileType go :setlocal tabstop=4
+  autocmd FileType go :setlocal shiftwidth=4
+  autocmd FileType go :setlocal noexpandtab
 
 
   autocmd FileType netrw setlocal buftype=nofile bufhidden=delete
@@ -137,6 +141,7 @@ augroup MyGroup
 
   autocmd FileType vimshell call s:vimshell_filetype_settings()
 
+  autocmd FileType go       call s:go_settings()
   autocmd FileType unite    call s:unite_my_settings()
   autocmd FileType fuf      call s:fuf_my_settings()
   autocmd FileType scratch  call s:scratch_my_settings()
@@ -154,7 +159,19 @@ augroup MyGroup
   autocmd FileType lingr-say      call s:lingr_say_setting()
 
   autocmd FileType quickrun       call s:quickrun_setting()
+
+  autocmd BufWritePost *.go call s:go_write_post()
+  
 augroup END
+
+function! s:go_settings()
+  inoremap <buffer> -- :=
+endfunction
+
+function! s:go_write_post()
+  :GoFmt
+  :setfiletype go
+endfunction
 
 function! s:all_bufenter_setting()
   setlocal bufhidden=hide
@@ -351,6 +368,7 @@ let neco_dic.ruby        = $HOME . '/.vim/dict/ruby.dict'
 let neco_dic.eruby       = $HOME . '/.vim/dict/ruby.dict'
 let neco_dic.java        = $HOME . '/.vim/dict/java.dict'
 let neco_dic.c           = $HOME . '/.vim/dict/c.dict'
+let neco_dic.go          = $HOME . '/.vim/dict/go.dict'
 "let neco_dic.vimshell    = $HOME . '/.vimshell/command-history'
 let neco_dic.twitvim_say = $HOME . '/.twitvim.users' .
                             \ ',' . $HOME . '/.twitvim.tags' .
@@ -888,6 +906,8 @@ function! s:write_to_file()
     echohl CursorLine| echo msg | echohl None
   endtry
 endfunction
+
+command! GoFmt execute ':silent !gofmt -w %' | execute ':edit! %'
 
 "color for cygwin
 
