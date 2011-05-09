@@ -129,6 +129,7 @@ augroup MyGroup
   autocmd FileType c,cpp,go :setlocal shiftwidth=4
   autocmd FileType c,cpp,go :setlocal expandtab
 
+  autocmd BufRead,BufNewFile *.go set filetype=go
 
   autocmd FileType netrw setlocal buftype=nofile bufhidden=delete
 
