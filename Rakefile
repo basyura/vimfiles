@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+require 'fileutils'
+
 task :default => "all_update"
 
 task :all_update => [:pull_vimfiles , :clone_github , :update_github] do
@@ -44,4 +46,14 @@ task :update_github do
     Dir.chdir("..")
   end
   Dir.chdir("..")
+end
+
+# cygwin の home になってしまう
+task :clear_cache do
+  puts ">>> clear neocomplcache's cache"
+  Dir.chdir(ENV["HOME"] + "/.neocon/")
+  list = Dir.glob("**/*")
+  puts "cd #{Dir.pwd}"
+  puts list
+  FileUtils.rm(list , {:force => true})
 end

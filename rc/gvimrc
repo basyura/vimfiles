@@ -36,6 +36,7 @@ function! s:reload_color_scheme()
     endif
 
     set linespace=4
+    set columns=96
   elseif has('mac')
     " フォント
     "set guifontwide=Osaka-Mono:h14

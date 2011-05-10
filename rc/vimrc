@@ -161,7 +161,9 @@ augroup MyGroup
 
   autocmd FileType quickrun       call s:quickrun_setting()
 
-  autocmd BufWritePost *.go call s:go_write_post()
+  if !exists('g:not_use_go_fmt')
+    autocmd BufWritePost *.go call s:go_write_post()
+  endif
   
 augroup END
 
