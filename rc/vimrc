@@ -161,9 +161,7 @@ augroup MyGroup
 
   autocmd FileType quickrun       call s:quickrun_setting()
 
-  if !exists('g:not_use_go_fmt')
-    autocmd BufWritePost *.go call s:go_write_post()
-  endif
+  autocmd BufWritePost *.go call s:go_write_post()
   
 augroup END
 
@@ -910,7 +908,7 @@ function! s:write_to_file()
   endtry
 endfunction
 
-command! GoFmt execute ':silent !gofmt -w %' | execute ':edit! %'
+command! GoFmt execute ':VimProcBang gofmt -w %' | execute ':edit! %'
 
 "color for cygwin
 
