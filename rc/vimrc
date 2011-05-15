@@ -321,7 +321,7 @@ nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
 
 nnoremap Y y$
-nnoremap <Tab> <C-w>w
+"nnoremap <Tab> <C-w>w
 
 nnoremap <Space>c :Cache<CR>:NeoComplCacheCachingDictionary<CR>
 
