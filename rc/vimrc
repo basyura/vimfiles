@@ -7,7 +7,7 @@ if expand("%") == ".git/COMMIT_EDITMSG"
 endif
 
 filetype plugin indent on
-syntax enable
+syntax on
 colorscheme desert
 
 set runtimepath+=~/.vim
@@ -88,7 +88,7 @@ set pumheight=10
 set showcmd
 " 矩形選択中は行末にテキストがなくてもカーソルを行末以降に移動させることができる
 set virtualedit+=block
-set fileencodings=utf-8,cp932,shift-jis,euc-jp
+set fileencodings=ucs-bom,utf-8,cp932,shift-jis,euc-jp
 set fileformats=unix,dos
 """"""""""""""""""""""""""""""""""
 "         auto command           "
@@ -320,6 +320,9 @@ nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
 
+nnoremap Y y$
+nnoremap <Tab> <C-w>w
+
 nnoremap <Space>c :Cache<CR>:NeoComplCacheCachingDictionary<CR>
 
 nmap <Leader>c <Plug>NERDCommenterToggle
@@ -461,7 +464,8 @@ command! -nargs=* Cache  NeoComplCacheCachingBuffer
 "            vimshell            "
 """"""""""""""""""""""""""""""""""
 
-let g:vimshell_prompt = '$ '
+"let g:vimshell_prompt = '$ '
+let g:vimshell_prompt = '⚡ '
 let g:vimshell_user_prompt = "printf('%s','')\ngetcwd()"
 let g:vimshell_edit_no_split = 1
 let g:vimshell_interactive_cygwin_path = 'D:/develop/dev/cygwin/bin'
@@ -503,7 +507,7 @@ function! s:vimshell_filetype_settings()
   "imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
   "imap <buffer><expr> <CR> (pumvisible() ? "<C-y><Tab>" : "<Plug>(vimshell_enter)")
   inoremap <buffer> <C-x> <ESC><C-w>h:on<CR>
-  nnoremap <buffer> <CR> Go$ 
+  nnoremap <buffer> <CR> Go⚡<Space>
   imap <buffer> <C-x>     <ESC><C-w>h:on<CR>
   inoremap <C-v> <C-R>+
   inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
@@ -532,8 +536,8 @@ function! g:vimshell_preexec(cmdline, context)
   " 改行する
   if a:cmdline =~ "^vim .*"
     " ホントは色付のユーザプロンプトを出したい
-    call append('$', "")
-    call append('$', vimshell#get_prompt())
+    call append(g:vimshell_prompt , "")
+    call append(g:vimshell_prompt , vimshell#get_prompt())
     execute "normal G"
   endif
   if s:is_vimshell_change_termencoding_cmd(a:cmdline)
