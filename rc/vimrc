@@ -464,8 +464,11 @@ command! -nargs=* Cache  NeoComplCacheCachingBuffer
 "            vimshell            "
 """"""""""""""""""""""""""""""""""
 
-"let g:vimshell_prompt = '$ '
-let g:vimshell_prompt = '⚡ '
+if has('mac')
+  let g:vimshell_prompt = '⚡ '
+else
+  let g:vimshell_prompt = '$ '
+endif
 let g:vimshell_user_prompt = "printf('%s','')\ngetcwd()"
 let g:vimshell_edit_no_split = 1
 let g:vimshell_interactive_cygwin_path = 'D:/develop/dev/cygwin/bin'
@@ -917,7 +920,8 @@ command! GoFmt execute ':VimProcBang gofmt -w %' | execute ':edit! %'
 "color for cygwin
 
 if has('win32unix')
-  hi Pmenu     ctermfg=white   ctermbg=black cterm=none
+  "hi Pmenu     ctermfg=white   ctermbg=black cterm=none
+  hi Pmenu     ctermfg=LightYellow   ctermbg=black cterm=none
   hi PmenuSel  ctermfg=232     ctermbg=magenta
 endif
 
