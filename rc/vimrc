@@ -464,11 +464,11 @@ command! -nargs=* Cache  NeoComplCacheCachingBuffer
 "            vimshell            "
 """"""""""""""""""""""""""""""""""
 
-if has('mac')
-  let g:vimshell_prompt = '⚡ '
-else
+"if has('mac')
+"  let g:vimshell_prompt = '⚡ '
+"else
   let g:vimshell_prompt = '$ '
-endif
+"endif
 let g:vimshell_user_prompt = "printf('%s','')\ngetcwd()"
 let g:vimshell_edit_no_split = 1
 let g:vimshell_interactive_cygwin_path = 'D:/develop/dev/cygwin/bin'
@@ -510,7 +510,7 @@ function! s:vimshell_filetype_settings()
   "imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
   "imap <buffer><expr> <CR> (pumvisible() ? "<C-y><Tab>" : "<Plug>(vimshell_enter)")
   inoremap <buffer> <C-x> <ESC><C-w>h:on<CR>
-  nnoremap <buffer> <CR> Go⚡<Space>
+  nnoremap <buffer> <CR> Go$<Space>
   imap <buffer> <C-x>     <ESC><C-w>h:on<CR>
   inoremap <C-v> <C-R>+
   inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
