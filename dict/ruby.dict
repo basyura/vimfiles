@@ -135,3 +135,7 @@ text_field
 text_area
 submit
 remove_const
+password_field
+validates_presence_of
+validate_on_create
+validate_on_update

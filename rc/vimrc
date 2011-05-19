@@ -297,7 +297,7 @@ nnoremap <Space>d :<C-u>pwd<CR>
 "nnoremap <silent> <C-l> :FufBufferTag<CR>
 nnoremap <silent> <C-l> :Unite outline  -winheight=30 -buffer-name=outline<CR>
 nnoremap <silent> <C-l><C-l> :Unite outline:!  -winheight=30 -buffer-name=outline<CR>
-nnoremap <silent> <C-x><C-x> :tabnew<CR>
+nnoremap <silent> <C-x><C-x> :TabNew<CR>
 nnoremap <silent> <C-x><C-l> :tabnext<CR>
 nnoremap <silent> <C-x><C-h> :tabprevious<CR>
 " エンコードを指定して開き直す
@@ -310,7 +310,7 @@ nnoremap man :Unite help<CR>
 nnoremap <silent>co :Unite -no-quit qflist<CR>
 nnoremap <silent><Leader>r :UniteResume<CR>
 nnoremap <silent>on 999<C-w>+
-nnoremap <silent><Leader><Leader>r :Unite redmine<CR>
+nnoremap <silent><Leader><Leader>r :Unite yarm<CR>
 "nnoremap <silent><Leader>h :Unite help<CR>
 nnoremap <silent><Leader><Leader>w :execute ':edit! ' . g:unite_uiki_path . '/FrontPage.uiki'<CR>
 nnoremap <silent><Leader><Leader>u :Unite uiki<CR>
@@ -904,7 +904,7 @@ endfunction
 
 command! WriteToFile call s:write_to_file()
 function! s:write_to_file()
-  if &filetype == 'redmine'
+  if &filetype == 'yarm'
     echo 'please use :w'
     return
   end
@@ -917,12 +917,85 @@ endfunction
 
 command! GoFmt execute ':VimProcBang gofmt -w %' | execute ':edit! %'
 
-"color for cygwin
+command! TabNew :call s:tabnew()
+function! s:tabnew()
+  tabnew
+  Scratch
+  wincmd p
+  bd
+endfunction
 
+" http://nanasi.jp/articles/vim/kwbd_vim.html
+":command! Kwbd let kwbd_bn= bufnr("%")|enew|exe "bdel ".kwbd_bn|unlet kwbd_bn 
+
+"color for cygwin
 if has('win32unix')
   "hi Pmenu     ctermfg=white   ctermbg=black cterm=none
   hi Pmenu     ctermfg=LightYellow   ctermbg=black cterm=none
   hi PmenuSel  ctermfg=232     ctermbg=magenta
 endif
+
+"here is a more exotic version of my original Kwbd script
+"delete the buffer; keep windows; create a scratch buffer if no buffers left
+function! s:Kwbd(kwbdStage)
+  if(a:kwbdStage == 1)
+    if(!buflisted(winbufnr(0)))
+      bd!
+      return
+    endif
+    let s:kwbdBufNum = bufnr("%")
+    let s:kwbdWinNum = winnr()
+    windo call s:Kwbd(2)
+    execute s:kwbdWinNum . 'wincmd w'
+    let s:buflistedLeft = 0
+    let s:bufFinalJump = 0
+    let l:nBufs = bufnr("$")
+    let l:i = 1
+    while(l:i <= l:nBufs)
+      if(l:i != s:kwbdBufNum)
+        if(buflisted(l:i))
+          let s:buflistedLeft = s:buflistedLeft + 1
+        else
+          if(bufexists(l:i) && !strlen(bufname(l:i)) && !s:bufFinalJump)
+            let s:bufFinalJump = l:i
+          endif
+        endif
+      endif
+      let l:i = l:i + 1
+    endwhile
+    if(!s:buflistedLeft)
+      if(s:bufFinalJump)
+        windo if(buflisted(winbufnr(0))) | execute "b! " . s:bufFinalJump | endif
+      else
+        enew
+        let l:newBuf = bufnr("%")
+        windo if(buflisted(winbufnr(0))) | execute "b! " . l:newBuf | endif
+      endif
+      execute s:kwbdWinNum . 'wincmd w'
+    endif
+    if(buflisted(s:kwbdBufNum) || s:kwbdBufNum == bufnr("%"))
+      execute "bd! " . s:kwbdBufNum
+    endif
+    if(!s:buflistedLeft)
+      setlocal buflisted
+      setlocal bufhidden=delete
+      setlocal buftype=nofile
+      setlocal noswapfile
+      setlocal filetype=scratch
+    endif
+  else
+    if(bufnr("%") == s:kwbdBufNum)
+      let prevbufvar = bufnr("#")
+      if(prevbufvar > 0 && buflisted(prevbufvar) && prevbufvar != s:kwbdBufNum)
+        b #
+      else
+        bn
+      endif
+    endif
+  endif
+endfunction
+
+command! Kwbd call <SID>Kwbd(1)
+"nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
 
 " vim: foldmethod=marker
