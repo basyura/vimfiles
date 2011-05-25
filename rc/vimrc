@@ -320,6 +320,12 @@ nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
 
+nnoremap <Leader><Leader>m :Unite rails/model<CR>
+nnoremap <Leader><Leader>c :Unite rails/controller<CR>
+nnoremap <Leader><Leader>v :Unite rails/view<CR>
+nnoremap <Leader><Leader>d :Unite rails/db<CR>
+nnoremap <Leader><Leader>f :Unite rails/config<CR>
+
 nnoremap Y y$
 "nnoremap <Tab> <C-w>w
 
@@ -532,7 +538,7 @@ function! s:vimshell_filetype_settings()
   AlterCommand <buffer> q echo 'use bd'
 
   hi VimShellPrompt guifg=#8ac6f2 gui=NONE
-  NeoComplCacheAutoCompletionLength 2
+  NeoComplCacheAutoCompletionLength 3
 endfunction
 " vim コマンド実行前処理
 function! g:vimshell_preexec(cmdline, context)
