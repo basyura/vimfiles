@@ -320,11 +320,15 @@ nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
 
+" for unite-rails
 nnoremap <Leader><Leader>m :Unite rails/model<CR>
 nnoremap <Leader><Leader>c :Unite rails/controller<CR>
 nnoremap <Leader><Leader>v :Unite rails/view<CR>
 nnoremap <Leader><Leader>d :Unite rails/db<CR>
 nnoremap <Leader><Leader>f :Unite rails/config<CR>
+nnoremap <Leader><Leader>l :Unite rails/lib<CR>
+nnoremap <Leader><Leader>h :Unite rails/helper<CR>
+nnoremap <C-x> :Unite rails/
 
 nnoremap Y y$
 "nnoremap <Tab> <C-w>w
