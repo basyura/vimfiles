@@ -92,8 +92,8 @@ function! s:WriteClose(bang)
     write! | bd!
   endif
 endfunction
-"AlterCommand q bd
-AlterCommand q Kwbd
+AlterCommand q bd
+"AlterCommand q Kwbd
 AlterCommand wq WQ
 """"""""""""""""""""""""""""""""""
 "             other              "
