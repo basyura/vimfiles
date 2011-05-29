@@ -326,8 +326,6 @@ nnoremap <C-x><C-c> :Unite rails/controller<CR>
 nnoremap <C-x><C-v> :Unite rails/view<CR>
 nnoremap <C-x><C-d> :Unite rails/db<CR>
 nnoremap <C-x><C-f> :Unite rails/config<CR>
-nnoremap <C-x><C-l> :Unite rails/lib<CR>
-nnoremap <C-x><C-h> :Unite rails/helper<CR>
 nnoremap <C-x> :Unite -immediately rails/
 
 nnoremap Y y$
