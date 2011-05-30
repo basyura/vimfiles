@@ -314,21 +314,19 @@ nnoremap <silent><Leader><Leader>r :Unite yarm<CR>
 "nnoremap <silent><Leader>h :Unite help<CR>
 nnoremap <silent><Leader><Leader>w :execute ':edit! ' . g:unite_uiki_path . '/FrontPage.uiki'<CR>
 nnoremap <silent><Leader><Leader>u :Unite uiki<CR>
-nnoremap <C-x><C-c> :set termencoding=cp932<CR>:echo 'termencoding is cp932'<CR>
-nnoremap <C-x><C-u> :set termencoding=utf-8<CR>:echo 'termencoding is utf-8'<CR>
+"nnoremap <C-x><C-c> :set termencoding=cp932<CR>:echo 'termencoding is cp932'<CR>
+"nnoremap <C-x><C-u> :set termencoding=utf-8<CR>:echo 'termencoding is utf-8'<CR>
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
 
 " for unite-rails
-nnoremap <Leader><Leader>m :Unite rails/model<CR>
-nnoremap <Leader><Leader>c :Unite rails/controller<CR>
-nnoremap <Leader><Leader>v :Unite rails/view<CR>
-nnoremap <Leader><Leader>d :Unite rails/db<CR>
-nnoremap <Leader><Leader>f :Unite rails/config<CR>
-nnoremap <Leader><Leader>l :Unite rails/lib<CR>
-nnoremap <Leader><Leader>h :Unite rails/helper<CR>
-nnoremap <C-x> :Unite rails/
+nnoremap <C-x><C-m> :Unite rails/model<CR>
+nnoremap <C-x><C-c> :Unite rails/controller<CR>
+nnoremap <C-x><C-v> :Unite rails/view<CR>
+nnoremap <C-x><C-d> :Unite rails/db<CR>
+nnoremap <C-x><C-f> :Unite rails/config<CR>
+nnoremap <C-x> :Unite -immediately rails/
 
 nnoremap Y y$
 "nnoremap <Tab> <C-w>w
@@ -599,14 +597,13 @@ let g:vimfiler_as_default_explorer = 1
 """"""""""""""""""""""""""""""""""
 
 nnoremap <silent> <C-r>      :<C-u>Unite file_mru -start-insert<CR>
-nnoremap <silent> <C-n>      :<C-u>Unite buffer_tab <CR>
-nnoremap <silent> <C-n>      :<C-u>Unite buffer_tab <CR>
+nnoremap <silent> <C-n>      :<C-u>Unite -immediately buffer_tab<CR>
 nnoremap <silent> <Leader>d  :<C-u>Unite -buffer-name=file file<CR>
 nnoremap <silent> <Leader>b  :<C-u>Unite bookmark<CR>
 nnoremap <silent> <C-t>      :<C-u>Unite tags -start-insert<CR>
 nnoremap <Leader>f  :<C-u>Unite file_rec -input=
-nnoremap <C-x><C-f>  :<C-u>Unite file_rec -input=
-inoremap <C-x><C-f> :<C-u>Unite file_rec -input=
+"nnoremap <C-x><C-f>  :<C-u>Unite file_rec -input=
+"inoremap <C-x><C-f> :<C-u>Unite file_rec -input=
 
 nnoremap <silent> <Leader>u  :<C-u>Unite buffer_tab file file_mru bookmark<CR>
 
