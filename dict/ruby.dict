@@ -144,3 +144,5 @@ errors
 add_column
 remove_column
 strftime
+javascript_include_tag
+javascript_tag
