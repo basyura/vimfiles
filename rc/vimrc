@@ -527,8 +527,8 @@ function! s:vimshell_filetype_settings()
   inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
   imap <buffer> <C-o> <Plug>(vimshell_enter)
   inoremap <buffer> <C-l> <C-y>
-  "inoremap <buffer> <expr><silent> <C-s>  unite#sources#vimshell_history#start_complete()
-  inoremap <buffer> <expr><silent> <C-s>  :Unite vimshell/history -default-action=insert -direction=below
+  inoremap <buffer> <expr><silent> <C-s>  unite#sources#vimshell_history#start_complete()
+  "inoremap <buffer> <expr><silent> <C-s> <ESC>:Unite vimshell/history -default-action=insert -direction=below<CR>
   imap <buffer> <C-h> <Plug>(vimshell_delete_backward_char)
   "nunmap <buffer> <C-d>
   nunm <buffer> q
