@@ -446,7 +446,7 @@ inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 "inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
 " 補完候補が出ていたら確定、なければ改行
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
-"inoremap <expr><C-e> pumvisible() ? neocomplcache#close_popup() : "<End>"
+inoremap <expr><C-e> pumvisible() ? neocomplcache#close_popup() : "<End>"
 " 補完をキャンセル
 inoremap <expr><C-c>  neocomplcache#cancel_popup()
 " 補完をアンドゥ
