@@ -148,6 +148,7 @@ augroup MyGroup
   autocmd FileType scratch  call s:scratch_my_settings()
   autocmd FileType twitvim  call s:twitvim_my_settings()
   autocmd FileType twitvim_say  call s:twitvim_say_my_settings()
+  autocmd FileType vimshell-bg  call s:bg_settings()
 
   autocmd CmdwinEnter * call s:init_cmdwin()
 
@@ -164,6 +165,10 @@ augroup MyGroup
   autocmd BufWritePost *.go call s:go_write_post()
   
 augroup END
+
+function! s:bg_settings()
+  AlterCommand <buffer> q bd
+endfunction
 
 function! s:go_settings()
   inoremap <buffer> -- :=
@@ -233,6 +238,9 @@ let java_ignore_javadoc = 1
 """"""""""""""""""""""""""""""""""
 "             map                "
 """"""""""""""""""""""""""""""""""
+map qq q
+nnoremap q <ESC>
+
 map <silent> <S-u> :redo<CR>
 map bn    :bnext<CR>
 "ウインドウのフォーカス移動
