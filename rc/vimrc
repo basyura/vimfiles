@@ -163,8 +163,16 @@ augroup MyGroup
   autocmd FileType quickrun       call s:quickrun_setting()
 
   autocmd BufWritePost *.go call s:go_write_post()
+
+  autocmd BufLeave * call s:buf_leave()
   
 augroup END
+
+function! s:buf_leave()
+  if &filetype == 'unite'
+    nohlsearch
+  endif
+endfunction
 
 function! s:bg_settings()
   AlterCommand <buffer> q bd
@@ -331,7 +339,7 @@ nnoremap wp <C-w>p
 " for unite-rails
 nnoremap <C-x><C-m> :Unite rails/model<CR>
 nnoremap <C-x><C-c> :Unite rails/controller<CR>
-nnoremap <C-x><C-v> :Unite rails/view<CR>
+nnoremap <C-x><C-j> :Unite rails/view<CR>
 nnoremap <C-x><C-d> :Unite rails/db<CR>
 nnoremap <C-x><C-f> :Unite rails/config<CR>
 nnoremap <C-x> :Unite -immediately rails/

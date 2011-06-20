@@ -146,3 +146,6 @@ remove_column
 strftime
 javascript_include_tag
 javascript_tag
+form_for
+after_initialize
+ActiveSupport::HashWithIndifferentAccess

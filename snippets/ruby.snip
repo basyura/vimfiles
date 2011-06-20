@@ -77,3 +77,8 @@ prev_word   '^'
     opts = OptionParser.new
     opts.on("-a"){|v| PConfig[:a] = true }
     opts.parse!(ARGV)
+
+snippet     add_column
+abbr        add_column
+prev_word   '^'
+    add_column ${1:table} , ${2:column} , ${3:type}
