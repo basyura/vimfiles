@@ -246,7 +246,7 @@ let java_ignore_javadoc = 1
 """"""""""""""""""""""""""""""""""
 "             map                "
 """"""""""""""""""""""""""""""""""
-map qq q
+nnoremap qq q
 nnoremap q <ESC>
 
 map <silent> <S-u> :redo<CR>
