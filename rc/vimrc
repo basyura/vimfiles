@@ -399,6 +399,7 @@ let neco_dic.ruby        = $HOME . '/.vim/dict/ruby.dict'
 let neco_dic.eruby       = $HOME . '/.vim/dict/ruby.dict'
 let neco_dic.java        = $HOME . '/.vim/dict/java.dict'
 let neco_dic.c           = $HOME . '/.vim/dict/c.dict'
+let neco_dic.cs          = $HOME . '/.vim/dict/cs.dict'
 let neco_dic.go          = $HOME . '/.vim/dict/go.dict'
 "let neco_dic.vimshell    = $HOME . '/.vimshell/command-history'
 let neco_dic.twitvim_say = $HOME . '/.twitvim.users' .
