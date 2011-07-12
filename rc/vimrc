@@ -125,9 +125,9 @@ augroup MyGroup
   autocmd FileType javascript :setlocal expandtab
   autocmd FileType javascript call s:javascript_filetype_settings()
   " for c
-  autocmd FileType c,cpp :setlocal tabstop=4
-  autocmd FileType c,cpp :setlocal shiftwidth=4
-  autocmd FileType c,cpp :setlocal expandtab
+  autocmd FileType c,cpp,cs :setlocal tabstop=4
+  autocmd FileType c,cpp,cs :setlocal shiftwidth=4
+  autocmd FileType c,cpp,cs :setlocal expandtab
   " for go
   autocmd FileType go :setlocal tabstop=4
   autocmd FileType go :setlocal shiftwidth=4
