@@ -3,3 +3,5 @@ System.Console.WriteLine
 STAThread
 Main
 ToString()
+DateTime.Now
+
