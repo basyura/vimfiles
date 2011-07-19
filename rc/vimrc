@@ -6,6 +6,8 @@ if expand("%") == ".git/COMMIT_EDITMSG"
   finish
 endif
 
+colorscheme wombat
+
 filetype plugin indent on
 syntax on
 colorscheme desert
@@ -961,6 +963,8 @@ if has('win32unix')
   "hi Pmenu     ctermfg=white   ctermbg=black cterm=none
   hi Pmenu     ctermfg=LightYellow   ctermbg=black cterm=none
   hi PmenuSel  ctermfg=232     ctermbg=magenta
+  hi Special   ctermfg=green cterm=none
+  hi PreProc   ctermfg=green cterm=none
 endif
 
 "here is a more exotic version of my original Kwbd script
