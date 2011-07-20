@@ -6,7 +6,6 @@ if expand("%") == ".git/COMMIT_EDITMSG"
   finish
 endif
 
-colorscheme wombat
 
 filetype plugin indent on
 syntax on
