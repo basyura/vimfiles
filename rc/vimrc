@@ -771,7 +771,7 @@ let g:quickrun_config = {
 
 if has('mac')
   let g:quickrun_config['cs'] = {
-        \ 'command' : 'cs',
+        \ 'command' : 'dmcs',
         \ 'runmode' : 'simple',
         \ 'exec' : ['%c %s > /dev/null', 'mono "%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
         \ 'tempfile' : '{tempname()}.cs',
