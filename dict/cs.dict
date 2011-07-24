@@ -26,3 +26,4 @@ BindingFlags
 NonPublic
 InvokeMember(
 InvokeMethod
+CompareTo(
