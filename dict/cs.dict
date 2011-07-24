@@ -27,3 +27,7 @@ NonPublic
 InvokeMember(
 InvokeMethod
 CompareTo(
+IEnumerator
+Length
+IEnumerable
+GetEnumerator
