@@ -31,3 +31,13 @@ IEnumerator
 Length
 IEnumerable
 GetEnumerator
+IComparable
+IComparer
+Add(
+Sort(
+Globalization
+IFormattable
+IFormatProvider
+CultureInfo
+GetLowerBound(
+GetUpperBound(
