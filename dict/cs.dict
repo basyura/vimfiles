@@ -41,3 +41,5 @@ IFormatProvider
 CultureInfo
 GetLowerBound(
 GetUpperBound(
+BinarySearch(
+ToCharArray()
