@@ -78,3 +78,7 @@ SetLastError
 MarshalAs
 UnmanagedType.LPStr
 UnmanagedType.LPWStr
+Location
+Point
+Size
+Controls
