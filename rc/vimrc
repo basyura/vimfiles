@@ -295,7 +295,8 @@ nnoremap <C-e> <End>
 nnoremap <C-a> <HOME>
 nnoremap <C-f> <Right>
 nnoremap <C-b> <Left>
-"map <C-e> :Tlist<CR>
+" カウントアップ
+nnoremap <C-c> <C-a>
 
 nnoremap <M-k> <C-y>
 nnoremap <M-j> <C-e>
@@ -781,7 +782,7 @@ else
         \ 'command' : 'csc',
         \ 'runmode' : 'simple',
         \ 'output_encode' : 'cp932:utf-8',
-        \ 'exec' : ['%c /nologo %s:gs?/?\\? > /dev/null', '"%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
+        \ 'exec' : ['%c /reference:System.dll %s:gs?/?\\? > /dev/null', '"%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
         \ 'tempfile' : '%{tempname()}.cs',
         \ }
 endif
