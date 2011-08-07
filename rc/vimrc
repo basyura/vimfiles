@@ -653,6 +653,9 @@ call unite#set_substitute_pattern('outline', '[[:alnum:]]', '*\0', 100)
 call unite#set_substitute_pattern('outline', '[^~.]\zs/', '*/*', 20)
 call unite#set_substitute_pattern('outline', '/\ze[^*]', '/*', 10)
 
+call unite#set_buffer_name_option('file', 'smartcase', 0)
+
+
 let g:unite_source_outline_cache_dir = ''
 
 function! s:unite_my_settings()
