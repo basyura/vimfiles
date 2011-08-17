@@ -204,7 +204,10 @@ function! s:all_bufenter_setting()
     setlocal nomodified
   endif
 
-  execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
+  try
+    execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
+  catch
+  endtry
 endfunction
 "
 " Last Change を保存時に変更する
