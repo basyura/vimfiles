@@ -624,7 +624,7 @@ let g:vimfiler_as_default_explorer = 1
 """"""""""""""""""""""""""""""""""
 
 nnoremap <silent> <C-r>      :<C-u>Unite file_mru -start-insert<CR>
-nnoremap <silent> <C-n>      :<C-u>Unite -immediately buffer_tab<CR>
+nnoremap <silent> <C-n>      :<C-u>Unite buffer_tab<CR>
 nnoremap <silent> <Leader>d  :<C-u>Unite -buffer-name=file file<CR>
 nnoremap <silent> <Leader>b  :<C-u>Unite bookmark<CR>
 nnoremap <silent> <C-t>      :<C-u>Unite tags -start-insert<CR>
