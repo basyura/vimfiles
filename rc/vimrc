@@ -757,7 +757,7 @@ nnoremap <silent> s           :<C-u>WPosttoTwitter<Enter>
 "nnoremap <silent> <Space>fr   :<C-u>FriendsTwitter<Enter>
 nnoremap <silent> <Space>fr   :<C-u>Unite -winheight=22 -no-start-insert twitter/list_statuses:basyura:all<Enter>
 "nnoremap <silent> <Space>re   :<C-u>RepliesTwitter<Enter>
-nnoremap <silent> <Space>re   :<C-u>Unite twitter/mentions<Enter>
+nnoremap <silent> <Space>re   :<C-u>Unite -winheight=22 -no-start-insert twitter/mentions<Enter>
 nnoremap <silent> <Space>tt   :<C-u>ListTwitter tottoruby<Enter>
 nnoremap <silent> <Space>nn   :<C-u>NextTwitter<Enter>
 nnoremap <silent> <Space>pp   :<C-u>BackTwitter<Enter>
