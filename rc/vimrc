@@ -561,6 +561,7 @@ function! s:vimshell_filetype_settings()
  	call vimshell#hook#set('preexec'  , ['g:vimshell_preexec'])
 	call vimshell#hook#set('postexec' , ['g:vimshell_postexec'])
   call vimshell#set_execute_file('txt,vim,xml,java,jax,jsp,rb,js', 'vim')
+  call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
 
   inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer_tab<CR>
   inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>Unite file_mru -start-insert<CR>
