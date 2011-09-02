@@ -415,9 +415,10 @@ let neco_dic.go          = $HOME . '/.vim/dict/go.dict'
 let neco_dic.twitvim_say = $HOME . '/.twitvim.users' .
                             \ ',' . $HOME . '/.twitvim.tags' .
                             \ ',' . $HOME . '/.vim/dict/default.dict'
-let neco_dic.unite_twitter = $HOME . '/.twitvim.users' .
-                            \ ',' . $HOME . '/.twitvim.tags' .
-                            \ ',' . $HOME . '/.vim/dict/default.dict'
+let neco_dic.unite_twitter = 
+      \ $HOME . '/.unite/twitter/screen_name' .
+      \ ',' . $HOME . '/.twitvim.tags' .
+      \ ',' . $HOME . '/.vim/dict/default.dict'
 let neco_dic.hatena      = $HOME . '/.vim/dict/default.dict'
 let neco_dic.default     = $HOME . '/.vim/dict/default.dict'
 let neco_dic['lingr-say'] = $HOME . '/.lingr.dict'
