@@ -762,9 +762,9 @@ nnoremap <silent> <Space>cd :<C-u>CD<CR>
 " twitvim
 nnoremap <silent> s           :<C-u>UniteTwitterPost<CR>
 "nnoremap <silent> <Space>fr   :<C-u>FriendsTwitter<Enter>
-nnoremap <silent> <Space>fr   :<C-u>Unite -no-split -no-start-insert twitter/list_statuses:basyura:all<Enter>:on<CR>
+nnoremap <silent> <Space>fr   :<C-u>Unite -no-split -no-start-insert twitter/list_statuses:basyura:all<CR>
 "nnoremap <silent> <Space>re   :<C-u>RepliesTwitter<Enter>
-nnoremap <silent> <Space>re   :<C-u>Unite -no-split -no-start-insert twitter/mentions<Enter>
+nnoremap <silent> <Space>re   :<C-u>Unite -no-split -no-start-insert twitter/mentions<CR>
 nnoremap <silent> <Space>tt   :<C-u>ListTwitter tottoruby<Enter>
 nnoremap <silent> <Space>nn   :<C-u>NextTwitter<Enter>
 nnoremap <silent> <Space>pp   :<C-u>BackTwitter<Enter>
