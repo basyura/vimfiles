@@ -695,6 +695,9 @@ function! s:unite_my_settings()
   inoremap <buffer> <C-l>  <C-x><C-u><C-p><Down>
   inoremap <buffer> <C-f> <Right>
   inoremap <buffer> <C-b> <Left>
+
+	nnoremap <silent><buffer><expr> o unite#do_action('link')
+	nnoremap <silent><buffer><expr> u unite#do_action('user')
   "startinsert
 endfunction
 function! s:fuf_my_settings()
@@ -762,7 +765,7 @@ nnoremap <silent> <Space>cd :<C-u>CD<CR>
 " twitvim
 nnoremap <silent> s           :<C-u>UniteTwitterPost<CR>
 "nnoremap <silent> <Space>fr   :<C-u>FriendsTwitter<Enter>
-nnoremap <silent> <Space>fr   :<C-u>Unite -no-split -no-start-insert twitter/list_statuses:basyura:all<CR>
+nnoremap <silent> <Space>fr   :<C-u>Unite -no-split -no-start-insert twitter/list:basyura:all<CR>
 "nnoremap <silent> <Space>re   :<C-u>RepliesTwitter<Enter>
 nnoremap <silent> <Space>re   :<C-u>Unite -no-split -no-start-insert twitter/mentions<CR>
 nnoremap <silent> <Space>tt   :<C-u>ListTwitter tottoruby<Enter>
