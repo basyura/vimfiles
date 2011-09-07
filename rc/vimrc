@@ -698,6 +698,8 @@ function! s:unite_my_settings()
 
 	nnoremap <silent><buffer><expr> o unite#do_action('link')
 	nnoremap <silent><buffer><expr> u unite#do_action('user')
+	nnoremap <silent><buffer><expr> r unite#do_action('reply')
+	nnoremap <silent><buffer><expr> i unite#do_action('inReplyTo')
   "startinsert
 endfunction
 function! s:fuf_my_settings()
