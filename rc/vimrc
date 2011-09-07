@@ -700,6 +700,7 @@ function! s:unite_my_settings()
 	nnoremap <silent><buffer><expr> u unite#do_action('user')
 	nnoremap <silent><buffer><expr> r unite#do_action('reply')
 	nnoremap <silent><buffer><expr> i unite#do_action('inReplyTo')
+	nnoremap <silent><buffer><expr> f unite#do_action('favorite')
   "startinsert
 endfunction
 function! s:fuf_my_settings()
