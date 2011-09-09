@@ -455,7 +455,10 @@ let g:neocomplcache_plugin_rank.snippets_complete = 90
 "let g:neocomplcache_plugin_rank.buffer_complete = 80
 "let g:neocomplcache_plugin_rank.buffer_complete = 90
 "
+" ソート条件
 let g:neocomplcache_compare_function = 'neocomplcache#compare_len'
+" ちらつき防止
+let g:neocomplcache_enable_prefetch = 1
 
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
@@ -695,6 +698,8 @@ function! s:unite_my_settings()
   inoremap <buffer> <C-l>  <C-x><C-u><C-p><Down>
   inoremap <buffer> <C-f> <Right>
   inoremap <buffer> <C-b> <Left>
+  inoremap <buffer><expr> <C-r>      unite#mappings#set_current_filters(
+        \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
 
 	nnoremap <silent><buffer><expr> o unite#do_action('link')
 	nnoremap <silent><buffer><expr> u unite#do_action('user')
