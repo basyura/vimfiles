@@ -109,6 +109,9 @@ hi Cursor	  guifg=bg	guibg=orange
 hi Visual		guifg=black guibg=#bde682
 hi VimShellUserPrompt guifg=#95e454
 hi VimShellPrompt guifg=#8ac6f2 gui=NONE
+hi Comment             gui=none
+hi String              gui=none
+hi StatusLine  gui=none
 " ポップアップの選択中
 "hi PmenuSel guibg=magenta guifg=white
 "hi Pmenu guibg=white guifg=black
