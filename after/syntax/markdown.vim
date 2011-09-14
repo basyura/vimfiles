@@ -23,7 +23,7 @@ hi markdownCodeBlock guifg=#cae682
 "markdownRule   xxx links to PreProc
 "markdownLineBreak xxx cleared
 "markdownLinkText xxx links to htmlLink
-hi markdownItalic guifg=#bee8ff gui=italic
+hi markdownItalic gui=none
 hi markdownBold   guifg=#ff9be8
 hi markdownCode   guifg=#cae682
 "markdownEscape xxx links to Special
