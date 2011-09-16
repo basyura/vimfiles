@@ -16,10 +16,10 @@ set runtimepath+=~/.vim/plugins/*
 set runtimepath+=~/.vim
 set runtimepath+=~/.vim/after
 
-if !exists('b:helptags_executed')
+"if !exists('b:helptags_executed')
   helptags ~/.vim/gitplugins/vimdoc-ja/doc
-  let b:helptags_executed = 1
-endif
+"  let b:helptags_executed = 1
+"endif
 
 let g:vimball_home = "~/.vim"
 
