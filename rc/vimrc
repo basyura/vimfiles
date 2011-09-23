@@ -143,14 +143,10 @@ augroup MyGroup
 
   autocmd FileType netrw setlocal buftype=nofile bufhidden=delete
 
-  autocmd FileType fuf NeoComplCacheLock
-  autocmd FileType vimwiki NeoComplCacheLock
-
   autocmd FileType vimshell call s:vimshell_filetype_settings()
 
   autocmd FileType go       call s:go_settings()
   autocmd FileType unite    call s:unite_my_settings()
-  autocmd FileType fuf      call s:fuf_my_settings()
   autocmd FileType scratch  call s:scratch_my_settings()
   autocmd FileType twitvim  call s:twitvim_my_settings()
   autocmd FileType twitvim_say   call s:twitvim_say_my_settings()
@@ -251,8 +247,6 @@ hi Cursor	  guifg=bg	guibg=orange
 " lingr
 hi link lingrMessagesSpeaker Statement
 hi link lingrRoomsActive     Statement
-" wimwiki
-hi link VimwikiPre Normal
 
 let java_ignore_javadoc = 1
 """"""""""""""""""""""""""""""""""
@@ -323,7 +317,6 @@ nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> :Unite 
 nnoremap <Leader>g  :VimGrep **/*.* 
 nnoremap <Space>d :<C-u>pwd<CR>
-"nnoremap <silent> <C-l> :FufBufferTag<CR>
 nnoremap <silent> <C-l> :Unite outline  -winheight=30 -buffer-name=outline<CR>
 nnoremap <silent> <C-l><C-l> :Unite outline:!  -winheight=30 -buffer-name=outline<CR>
 "nnoremap <silent> <C-l> :Unite -vertical -winwidth=40 -direction=rightbelow outline<CR>
@@ -461,7 +454,14 @@ let g:neocomplcache_plugin_rank.snippets_complete = 90
 "let g:neocomplcache_plugin_rank.buffer_complete = 90
 "
 " ソート条件
-let g:neocomplcache_compare_function = 'neocomplcache#compare_len'
+function! g:neocomplcache_compare_len(i1, i2)
+  let l:diff = len(a:i1.word) - len(a:i2.word)
+  if !l:diff
+    let l:diff = (a:i1.word ># a:i2.word) ? 1 : -1
+  endif
+  return l:diff
+endfunction
+let g:neocomplcache_compare_function = 'g:neocomplcache_compare_len'
 " ちらつき防止
 let g:neocomplcache_enable_prefetch = 1
 
@@ -714,9 +714,6 @@ function! s:unite_my_settings()
 	nnoremap <silent><buffer><expr> y unite#do_action('yank')
   "startinsert
 endfunction
-function! s:fuf_my_settings()
-  inoremap <buffer> <C-j> <ESC>
-endfunction
 
 """"""""""""""""""""""""""""""""""
 "             go                 "
@@ -732,20 +729,6 @@ let go_highlight_trailing_whitespace_error = 0
 " hatena.vim
 let g:hatena_user = 'basyura'
 let g:scratchBackupFile=$HOME . "/.scratch.txt"
-"let g:hatena_edit_new_tab = 1
-" vimwiki
-
-if !exists('g:vimwiki_list')
-  if has('mac')
-    let g:vimwiki_list = [{'path':'~/dropbox/vimwiki/text/', 'path_html':'~/dropbox/vimwiki/html/'}]
-  else
-    let g:vimwiki_list = [{'path': "Z:/text", 'path_html/': "Z:/html/"}]
-  endif
-end
-" taglist
-let g:Tlist_GainFocus_On_ToggleOpen = 1
-let g:Tlist_Show_One_File = 1
-let Tlist_Close_On_Select = 1
 " ubuntu の時だけ
 if !has('mac') && !has('win32') && !has('win32unix')
 	inoremap <silent> <esc> <esc>:call ForceImeOff()<cr>
@@ -768,9 +751,6 @@ function! s:ChangeCurrentDir(directory, bang)
         pwd
     endif
 endfunction
-
-" for rails.vim
-"nnoremap <silent> <Leader>r :<C-u>R<CR>
 
 
 " Change current directory.
@@ -795,10 +775,6 @@ if !exists('g:twitvim_browser_cmd')
   endif
 endif
 let g:twitvim_cert_insecure = 1
-
-"let twitvim_enable_python = 1
-
-
 
 silent! nmap <Leader>q :QuickRun<CR>
 let g:quickrun_config = {

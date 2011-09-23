@@ -1,7 +1,6 @@
 """"""""""""""""""""""""""""""""""
 "         core settings          "
 """"""""""""""""""""""""""""""""""
-"colorscheme koehler
 colorscheme wombat
 """"""""""""""""""""""""""""""""""
 "           settings             "
@@ -120,8 +119,4 @@ hi txtBold    guifg=#cae682 gui=bold
 "hi PmenuSel guibg=magenta guifg=white
 "hi Pmenu guibg=white guifg=black
 
-"autocmd FileType vimwiki :hi Folded  guifg=#ffffff
-"autocmd FileType vimwiki :hi Comment guifg=#ffffff
-"autocmd FileType vimwiki :hi PreProc guifg=#ffffff
-"autocmd FileType vimwiki :hi Special guifg=#ffffff
 
