@@ -712,6 +712,7 @@ function! s:unite_my_settings()
 	nnoremap <silent><buffer><expr> i unite#do_action('inReplyTo')
 	nnoremap <silent><buffer><expr> f unite#do_action('favorite')
 	nnoremap <silent><buffer><expr> y unite#do_action('yank')
+	inoremap <silent><buffer><expr> <C-f> unite#do_action('vimfiler')
   "startinsert
 endfunction
 
