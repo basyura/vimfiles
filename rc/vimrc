@@ -276,6 +276,8 @@ cmap <C-d> <Del>
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
 
+nnoremap gc `[v`]
+
 "コマンドモードで Ctl + v で貼り付ける
 cmap <C-v> <C-R>+
 "挿入モードで Ctl + v で貼り付ける
@@ -343,6 +345,20 @@ nnoremap <silent><Leader><Leader>u :Unite uiki<CR>
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
+
+nnoremap j gj
+nnoremap gj j
+nnoremap k gk
+nnoremap gk k
+nnoremap 0 g0
+nnoremap g0 0
+nnoremap $ g$
+nnoremap g$ $
+
+cnoremap <C-p> <Up>
+cnoremap <Up> <C-p>
+cnoremap <C-n> <Down>
+cnoremap <Down> <C-n>
 
 " for unite-rails
 nnoremap <C-x><C-m> :Unite rails/model<CR>
