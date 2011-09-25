@@ -16,10 +16,7 @@ set runtimepath+=~/.vim/plugins/*
 set runtimepath+=~/.vim
 set runtimepath+=~/.vim/after
 
-"if !exists('b:helptags_executed')
-  helptags ~/.vim/gitplugins/vimdoc-ja/doc
-"  let b:helptags_executed = 1
-"endif
+helptags ~/.vim/gitplugins/vimdoc-ja/doc
 
 let g:vimball_home = "~/.vim"
 
@@ -63,7 +60,6 @@ set titlestring=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ \ %{ge
 set titlelen=200
 set linespace=2
 set antialias
-"set nobackup
 set backupdir=~/.vim/backup
 set directory=~/.vim/swp
 "オートインデント時にタブが2つ入ることを防ぐ
@@ -76,7 +72,6 @@ set timeout timeoutlen=300 ttimeoutlen=200
 set shellslash
 set incsearch
 set laststatus=0
-"set cmdheight=1
 
 " ubuntu だと画面がちらつく。mac だと音が出ちゃう。
 if has('mac')
@@ -284,8 +279,6 @@ cmap <C-v> <C-R>+
 imap <C-v> <C-R>+
 "全て選択
 map  <C-a><C-a> ggvG$
-"貼り付け
-"map  <C-v> "+gP
 " gvim で q → bd をしてる用
 map <C-q><C-q><C-q> ZQ
 
@@ -307,22 +300,15 @@ nnoremap <C-c> <C-a>
 
 nnoremap <M-k> <C-y>
 nnoremap <M-j> <C-e>
-"nnoremap <C-s> :Scratch<CR>
 nnoremap <Leader>s :Scratch<CR>
-"nnoremap <Leader>s :sp ~/.[scratch]<CR>
 nnoremap <Leader>v :VimShell<CR>
-"nnoremap <Leader>w :w<CR>:echo '... write to ' . bufname('%') . ' ... OK'<CR>
 nnoremap <Leader>w :WriteToFile<CR>
 nnoremap <silent> <Leader>o :on<CR>
-"nnoremap <Leader><Leader> <C-]>
-"nnoremap <silent> <Leader><Leader> :Unite file -buffer-name=file<CR>
 nnoremap <Leader><Leader> :Unite 
 nnoremap <Leader>g  :VimGrep **/*.* 
 nnoremap <Space>d :<C-u>pwd<CR>
 nnoremap <silent> <C-l> :Unite outline  -winheight=30 -buffer-name=outline<CR>
 nnoremap <silent> <C-l><C-l> :Unite outline:!  -winheight=30 -buffer-name=outline<CR>
-"nnoremap <silent> <C-l> :Unite -vertical -winwidth=40 -direction=rightbelow outline<CR>
-"nnoremap <silent> <C-l><C-l> :Unite -vertical -winwidth=40 -direction=rightbelow outline:!<CR>
 nnoremap <silent> <C-x><C-x> :TabNew<CR>
 nnoremap <silent> <C-x><C-l> :tabnext<CR>
 nnoremap <silent> <C-x><C-h> :tabprevious<CR>
@@ -337,11 +323,8 @@ nnoremap <silent>co :Unite -no-quit qflist<CR>
 nnoremap <silent><Leader>r :UniteResume<CR>
 nnoremap <silent>on 999<C-w>+
 nnoremap <silent><Leader><Leader>r :Unite yarm<CR>
-"nnoremap <silent><Leader>h :Unite help<CR>
 nnoremap <silent><Leader><Leader>w :execute ':edit! ' . g:unite_uiki_path . '/FrontPage.uiki'<CR>
 nnoremap <silent><Leader><Leader>u :Unite uiki<CR>
-"nnoremap <C-x><C-c> :set termencoding=cp932<CR>:echo 'termencoding is cp932'<CR>
-"nnoremap <C-x><C-u> :set termencoding=utf-8<CR>:echo 'termencoding is utf-8'<CR>
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
@@ -369,7 +352,7 @@ nnoremap <C-x><C-f> :Unite rails/config<CR>
 nnoremap <C-x> :Unite -immediately rails/
 
 nnoremap Y y$
-"nnoremap <Tab> <C-w>w
+
 
 nnoremap <Space>c :Cache<CR>:NeoComplCacheCachingDictionary<CR>
 
@@ -394,7 +377,6 @@ inoremap <C-q> []<Left>
 "inoremap  , <Space>,
 inoremap  -- =>
 
-"vnoremap = :Alignta = <CR>
 vnoremap <C-e> <End><Left>
 vmap <Leader>c <Plug>NERDCommenterToggle
 vmap <C-b> :Batch<CR>
@@ -442,9 +424,6 @@ if !exists('g:neocomplcache_keyword_patterns')
 	let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-"let g:neocomplcache_keyword_patterns['javascript'] = '\h\a*'
-
-"let g:neocomplcache_keyword_patterns['eruby'] = '>\|</\?\%([[:alnum:]_:-]\+\s*\)\?\%(/\?>\)\?\|&\h\%(\w*;\)\?\|\h[[:alnum:]_-]*="\%([^"]*"\?\)\?\|\h[[:alnum:]_:-]*\|[:alnum:]\>\|>'
 " 補完候補の数
 let g:neocomplcache_max_list = 100
 " 補完しなくなる文字数
@@ -466,8 +445,6 @@ if !exists('g:neocomplcache_plugin_rank')
   let g:neocomplcache_plugin_rank = {}
 endif
 let g:neocomplcache_plugin_rank.snippets_complete = 90
-"let g:neocomplcache_plugin_rank.buffer_complete = 80
-"let g:neocomplcache_plugin_rank.buffer_complete = 90
 "
 " ソート条件
 function! g:neocomplcache_compare_len(i1, i2)
@@ -491,16 +468,10 @@ let g:neocomplcache_omni_patterns.javascript = ''
 "let g:neocomplcache_enable_auto_delimiter = 1
 " 辞書読み込
 noremap  <Space>d. :<C-u>NeoComplCacheCachingDictionary<Enter>
-" <TAB> completion.
-"inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" C-jでオムニ補完
-"inoremap <expr> <C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<C-p>"
 " C-kを押すと行末まで削除
 inoremap <C-k> <C-o>D
 " C-nでneocomplcache補完
 inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
-" C-pでkeyword補完
-"inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
 " 補完候補が出ていたら確定、なければ改行
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
 inoremap <expr><C-e> pumvisible() ? neocomplcache#close_popup() : "<End>"
@@ -511,7 +482,6 @@ inoremap <expr><C-u>  neocomplcache#undo_completion()
 
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-"map <silent> <ESC> <ESC>:set iminsert=0<CR>
 " snippet 補完
 "
 imap <expr><C-l> pumvisible() ? 
@@ -519,7 +489,6 @@ imap <expr><C-l> pumvisible() ?
       \ : "<Plug>(neocomplcache_snippets_expand)"
 imap <silent> <C-l>l <C-y><Plug>(neocomplcache_snippets_force_expand)
 smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
-"inoremap <expr><C-l>  neocomplcache#complete_common_string()
 command! -nargs=* Nes NeoComplCacheEditSnippets <args>
 command! -nargs=* Nel NeoComplCacheLock <args>
 command! -nargs=* NSource NeoComplCachePrintSource
@@ -632,17 +601,6 @@ function! s:is_vimshell_change_termencoding_cmd(cmdline)
   let l:args = vimproc#parser#split_args(a:cmdline)
   return len(l:args) > 0 && l:args[0] =~ g:vimshell_change_termencoding_cmd
 endfunction
-
-
-function! s:vimshell_my_settings_buf_leave()
-  echoerr "hello"
-  "<ESC><CR>
-  
-  "execute "\<ESC>\<CR>"
-  "startinsert!
-endfunction
-
-
 
 
 """"""""""""""""""""""""""""""""""
@@ -855,51 +813,6 @@ command! -complete=file -nargs=+ VimGrep  call s:grep([<f-args>])
 function! s:grep(args)
   execute 'vimgrep' '/'.a:args[-1].'/' join(a:args[:-2]) | :Unite qflist
 endfunction
-
-
-
-"Command-line window
-
-set cmdwinheight=10
-"nnoremap <sid>(command-line-enter) q:
-"xnoremap <sid>(command-line-enter) q:
-"nnoremap <sid>(command-line-norange) q:<C-u>
-"nmap :  <sid>(command-line-enter)
-"xmap :  <sid>(command-line-enter)
-"autocmd CmdwinEnter * :NeoComplCacheLock
-function! s:init_cmdwin()
-  nnoremap <buffer> q <C-c><CR>
-  nnoremap <buffer> <C-j> <C-c><CR>
-"  inoremap <buffer> q bw
-"  inoremap <buffer> wq WQ
-"
-"  "cnoreabbrev q   'bd'
-"  "inoreabbrev q   'bd'
-"  "inoreabbrev q!  'bd!'
-"  "inoreabbrev wq  'WQ'
-"
-  nnoremap <buffer> <Esc> :<C-u><C-c><C-h>
-"  inoremap <buffer> <C-c> :<ESC>
-  inoremap <buffer> <ESC> :<C-u><C-c><C-h>
-  nnoremap <buffer> <TAB> :<C-u>quit<CR>
-  inoremap <buffer><expr><CR>  pumvisible() ? "\<C-y>" : "\<CR>"
-"  "inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-"  "inoremap <buffer><expr><BS>  pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-"
-"  " Completion.
-"  "inoremap <buffer><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-  inoremap <buffer><expr><TAB>  "\<C-n>"
-"  " カーソル移動
-"  inoremap <C-k> <Up>
-"  inoremap <C-j> <Down>
-"
-"  startinsert!
-endfunction
-""autocmd CmdwinLeave * call s:leave_cmdwin()
-""function! s:leave_cmdwin()
-""  let g:neocomplcache_auto_completion_start_length = 2
-""endfunction
-
 
 if has('mac')
   let g:restart_vim_progname = "MacVim"
