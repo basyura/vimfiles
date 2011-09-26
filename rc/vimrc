@@ -769,7 +769,7 @@ else
         \ 'command' : 'csc',
         \ 'runmode' : 'simple',
         \ 'output_encode' : 'cp932:utf-8',
-        \ 'exec' : ['%c /reference:System.dll %s:gs?/?\\? > /dev/null', '"%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
+        \ 'exec' : ['%c /nologo /reference:System.dll %s:gs?/?\\? > /dev/null', '"%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
         \ 'tempfile' : '%{tempname()}.cs',
         \ }
 endif
