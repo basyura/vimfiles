@@ -11,3 +11,15 @@ prev_word   '^'
     class ${1:Class1} {
         ${2}
     }
+
+snippet     tryinvoke
+prev_word   '^'
+    public virtual bool TryInvoke(InvokeBinder binder, Object[] args, out Object result) {
+        ${1}
+    }
+
+snippet     foreach
+prev_word   '^'
+    foreach (${1:Type} ${2:val} in ${3:Collection}) {
+        ${4}
+    }

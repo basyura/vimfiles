@@ -82,3 +82,5 @@ Location
 Point
 Size
 Controls
+FileStream
+DynamicObject

@@ -532,11 +532,11 @@ let g:vimshell_interactive_cygwin_commands['irb'] = {
   \ 'kind' : 'execute',
   \ 'description' : 'git [{options}...] {command}',
 \}
-let g:vimshell_interactive_cygwin_commands['rake'] = {
-  \ 'name' : 'rake',
-  \ 'kind' : 'execute',
-  \ 'description' : 'git [{options}...] {command}',
-\}
+"let g:vimshell_interactive_cygwin_commands['rake'] = {
+  "\ 'name' : 'rake',
+  "\ 'kind' : 'execute',
+  "\ 'description' : 'git [{options}...] {command}',
+"\}
 let g:vimshell_interactive_cygwin_commands['telnet'] = {
   \ 'name' : 'telnet',
   \ 'kind' : 'execute',
@@ -981,5 +981,9 @@ endfunction
 
 command! Kwbd call <SID>Kwbd(1)
 "nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
+
+if filereadable($HOME . '/.vimrc_local_after')
+  source ~/.vimrc_local_after
+endif
 
 " vim: foldmethod=marker
