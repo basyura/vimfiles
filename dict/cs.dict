@@ -1,6 +1,6 @@
 using
-System.Console.WriteLine
-System.Collections.Generic
+Console.WriteLine
+Collections.Generic
 Console.WriteLine
 STAThread
 Main
@@ -66,8 +66,8 @@ Directory
 GetFiles(
 Text
 Peek()
-System.Text.RegularExpressions.Regex
-System.Runtime.InteropServices
+Text.RegularExpressions.Regex
+Runtime.InteropServices
 DllImport(
 CallingConvention.Winapi
 CharSet.Ansi

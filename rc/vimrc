@@ -351,7 +351,8 @@ nnoremap <C-x><C-c> :Unite rails/controller<CR>
 nnoremap <C-x><C-j> :Unite rails/view<CR>
 nnoremap <C-x><C-d> :Unite rails/db<CR>
 nnoremap <C-x><C-f> :Unite rails/config<CR>
-nnoremap <C-x> :Unite -immediately rails/
+"nnoremap <C-x> :Unite -immediately rails/
+nnoremap <C-x> :Unite rails/
 
 nnoremap Y y$
 
@@ -665,6 +666,7 @@ function! s:unite_my_settings()
   if exists(':NeoComplCacheLock')
     NeoComplCacheLock
   endif
+
   imap <buffer> jj <Plug>(unite_insert_leave)
   "imap <buffer> jj <Plug>(unite_exit)
   imap <buffer> <C-j> <Plug>(unite_exit)
