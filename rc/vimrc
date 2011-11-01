@@ -267,6 +267,7 @@ nnoremap <Space>s.  :<C-u>source $MYVIMRC<Enter>
 nnoremap <Space>g.  :<C-u>edit   $MYGVIMRC<Enter>
 noremap  <Space>gs. :<C-u>source $MYGVIMRC<Enter>
 noremap  <Space>v.  :<C-u>edit   ~/.vimshrc<Enter>
+nnoremap <Space>ss  :<C-u>Source %<Enter>
 inoremap <C-d> <Del>
 cmap <C-d> <Del>
 
