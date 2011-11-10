@@ -148,6 +148,7 @@ augroup MyGroup
   autocmd FileType twitvim  call s:twitvim_my_settings()
   autocmd FileType twitvim_say   call s:twitvim_say_my_settings()
   autocmd FileType unite_twitter call s:twitvim_say_my_settings()
+  autocmd FileType tweetvim_say  call s:twitvim_say_my_settings()
   autocmd FileType vimshell-bg  call s:bg_settings()
 
   autocmd CmdwinEnter * call s:init_cmdwin()
@@ -412,6 +413,9 @@ let neco_dic.c           = $HOME . '/.vim/dict/c.dict'
 let neco_dic.cs          = $HOME . '/.vim/dict/cs.dict'
 let neco_dic.go          = $HOME . '/.vim/dict/go.dict'
 "let neco_dic.vimshell    = $HOME . '/.vimshell/command-history'
+let neco_dic.tweetvim_say = $HOME . '/.twitvim.users' .
+                                \ ',' . $HOME . '/.twitvim.tags' .
+                                \ ',' . $HOME . '/.vim/dict/default.dict'
 let neco_dic.twitvim_say = $HOME . '/.twitvim.users' .
                             \ ',' . $HOME . '/.twitvim.tags' .
                             \ ',' . $HOME . '/.vim/dict/default.dict'
@@ -743,8 +747,8 @@ endfunction
 " Change current directory.
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
-" twitvim
-nnoremap <silent> s           :<C-u>UniteTwitterPost<CR>
+" tweetvim
+nnoremap <silent> s           :<C-u>TweetVimSay<CR>
 "nnoremap <silent> <Space>fr   :<C-u>FriendsTwitter<Enter>
 nnoremap <silent> <Space>fr   :<C-u>Unite -no-split -no-start-insert twitter/list:basyura:all<CR>
 "nnoremap <silent> <Space>re   :<C-u>RepliesTwitter<Enter>
