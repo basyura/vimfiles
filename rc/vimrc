@@ -380,7 +380,7 @@ inoremap <C-q> []<Left>
 "inoremap '' ''<Left>
 "inoremap <> <><Left>
 "inoremap  , <Space>,
-inoremap  -- =>
+"inoremap  -- =>
 
 vnoremap <C-e> <End><Left>
 vmap <Leader>c <Plug>NERDCommenterToggle
