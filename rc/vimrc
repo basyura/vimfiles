@@ -750,14 +750,8 @@ nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
 " tweetvim
 nnoremap <silent> s           :<C-u>TweetVimSay<CR>
-"nnoremap <silent> <Space>fr   :<C-u>FriendsTwitter<Enter>
-nnoremap <silent> <Space>fr   :<C-u>Unite -no-split -no-start-insert twitter/list:basyura:all<CR>
-"nnoremap <silent> <Space>re   :<C-u>RepliesTwitter<Enter>
-nnoremap <silent> <Space>re   :<C-u>Unite -no-split -no-start-insert twitter/mentions<CR>
-nnoremap <silent> <Space>tt   :<C-u>ListTwitter tottoruby<Enter>
-nnoremap <silent> <Space>nn   :<C-u>NextTwitter<Enter>
-nnoremap <silent> <Space>pp   :<C-u>BackTwitter<Enter>
-"nnoremap <Leader>u   yw:UserTwitter <C-R>+<CR>
+nnoremap <silent> <Space>re   :<C-u>TweetVimMentions<CR>
+nnoremap <silent> <Space>tt   :<C-u>TweetVimListStatuses basyura all<CR>
 
 if !exists('g:twitvim_browser_cmd')
   if has('mac')
