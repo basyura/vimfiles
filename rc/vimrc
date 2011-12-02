@@ -356,6 +356,8 @@ nnoremap <C-x><C-f> :Unite rails/config<CR>
 "nnoremap <C-x> :Unite -immediately rails/
 nnoremap <C-x> :Unite rails/
 
+nnoremap <silent> t :Unite tweetvim<CR>
+
 nnoremap Y y$
 
 
