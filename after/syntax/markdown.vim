@@ -8,7 +8,7 @@ hi StatusLine 	gui=none
 "hi PreProc      guifg=#ffffff
 "hi Folded       guifg=white
 "hi Visual       guifg=black guibg=#CAE682
-hi CursorLine   guibg=blue
+"hi CursorLine   guibg=blue
 
 hi markdownH1   guifg=orange
 hi markdownH2   guifg=orange
