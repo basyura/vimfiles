@@ -145,10 +145,7 @@ augroup MyGroup
   autocmd FileType go       call s:go_settings()
   autocmd FileType unite    call s:unite_my_settings()
   autocmd FileType scratch  call s:scratch_my_settings()
-  autocmd FileType twitvim  call s:twitvim_my_settings()
-  autocmd FileType twitvim_say   call s:twitvim_say_my_settings()
-  autocmd FileType unite_twitter call s:twitvim_say_my_settings()
-  autocmd FileType tweetvim_say  call s:twitvim_say_my_settings()
+  autocmd FileType tweetvim_say  call s:tweetvim_say_my_settings()
   autocmd FileType vimshell-bg  call s:bg_settings()
 
   autocmd CmdwinEnter * call s:init_cmdwin()
@@ -415,12 +412,10 @@ let neco_dic.c           = $HOME . '/.vim/dict/c.dict'
 let neco_dic.cs          = $HOME . '/.vim/dict/cs.dict'
 let neco_dic.go          = $HOME . '/.vim/dict/go.dict'
 "let neco_dic.vimshell    = $HOME . '/.vimshell/command-history'
-let neco_dic.tweetvim_say = $HOME . '/.twitvim.users' .
+let neco_dic.tweetvim_say = $HOME . '/.tweetvim/screen_name' .
                                 \ ',' . $HOME . '/.twitvim.tags' .
                                 \ ',' . $HOME . '/.vim/dict/default.dict'
-let neco_dic.twitvim_say = $HOME . '/.twitvim.users' .
-                            \ ',' . $HOME . '/.twitvim.tags' .
-                            \ ',' . $HOME . '/.vim/dict/default.dict'
+
 let neco_dic.unite_twitter = 
       \ $HOME . '/.unite/twitter/screen_name' .
       \ ',' . $HOME . '/.twitvim.tags' .
@@ -852,19 +847,14 @@ endfunction
 function! s:scratch_my_settings()
   AlterCommand <buffer> q :Scratch<CR>
 endfunction
-" for twitvim
-function! s:twitvim_my_settings()
-  nnoremap <buffer> <Leader>u   yw:UserTwitter <C-R>+<CR>
-  nnoremap <buffer> <C-j>   :bd!<CR>
-endfunction
-" for twitvim say
-function! s:twitvim_say_my_settings()
+" for tweetvim say
+function! s:tweetvim_say_my_settings()
   if exists(':NeoComplCacheCachingDictionary')
-    NeoComplCacheCachingDictionary
+    NeoComplCacheCachingDictionary 'tweetvim_say'
   endif
   AlterCommand <buffer> q bd!<CR>
   nnoremap <buffer> <silent> <C-j> :bd!<CR>
-  inoremap <buffer> <C-x><C-d> <ESC>:BitLy<CR>
+"  inoremap <buffer> <C-x><C-d> <ESC>:TweetVimBitly<CR>
 endfunction
 "
 function! s:lingr_messages_setting()
