@@ -990,4 +990,12 @@ if filereadable($HOME . '/.vimrc_local_after')
   source ~/.vimrc_local_after
 endif
 
+function! s:NoProxy()
+  let $http_proxy  = ""
+  let $https_proxy = ""
+  let $HTTP_PROXY  = ""
+  let $HTTPS_PROXY = ""
+endfunction
+command! NoProxy call <SID>NoProxy()
+
 " vim: foldmethod=marker
