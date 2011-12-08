@@ -329,6 +329,7 @@ nnoremap <silent><Leader><Leader>u :Unite uiki<CR>
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
+nnoremap vn :VimpleNote -l<CR>
 
 nnoremap j gj
 nnoremap gj j
