@@ -23,7 +23,7 @@ let g:vimball_home = "~/.vim"
 call altercmd#load()
 
 if &termencoding == ''
-  let &termencoding="utf-8"
+"  let &termencoding="utf-8"
 "  let &termencoding="cp932"
 endif
 
@@ -726,15 +726,21 @@ endif
 	
 command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
 function! s:ChangeCurrentDir(directory, bang)
-    if a:directory == ''
-        lcd %:p:h
-    else
-        execute 'lcd' . a:directory
-    endif
 
-    if a:bang == ''
-        pwd
-    endif
+  if &filetype == 'vimfiler'
+    execute 'lcd ' . b:vimfiler.current_dir
+    return
+  endif
+
+  if a:directory == ''
+    lcd %:p:h
+  else
+    execute 'lcd' . a:directory
+  endif
+
+  if a:bang == ''
+    pwd
+  endif
 endfunction
 
 
@@ -757,7 +763,7 @@ let g:twitvim_cert_insecure = 1
 
 silent! nmap <Leader>q :QuickRun<CR>
 let g:quickrun_config = {
-      \ '*' : {'into' : 0 , 'split' : 'below'},
+      \ '*' : {'into' : 0}
       \}
 
 
