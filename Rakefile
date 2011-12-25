@@ -38,23 +38,23 @@ task :update_github do
   Dir.glob("*") do |d|
     next unless File.directory? d
     Dir.chdir(d)
-    print "pull #{d} ...".ljust(50)
+    print "  pull #{d} ...".ljust(50)
     print "\r"
     ret = `git pull 2>&1`
     if ret.chomp == 'Already up-to-date.'
       STDOUT.flush
-      print "pull #{d} ... ok".ljust(80) + "\r"
+      print "  pull #{d} ... ok".ljust(80) + "\r"
       sleep 0.5
       STDOUT.flush
     else
       error_flg = false
       ret.each_line do |line|
         if line =~ /error/
-          puts "pull #{d} ... #{line}"
+          puts "  pull #{d} ... #{line}"
           break
         end
       end
-      print "pull #{d} ... Updated" unless error_flg
+      print "#{d} was Updated\n" unless error_flg
     end
     Dir.chdir("..")
   end
