@@ -21,9 +21,7 @@ task :clone_github do
     next if line =~ /^#/
     line.chomp!
     path = "./gitplugins/#{line.split(/\//)[-1]}".sub(/\.git/ , "")
-    if File.exist?(path)
-      puts "#{path} ... ok"
-    else
+    unless File.exist?(path)
       puts "#{path} ... no"
       Dir.chdir("gitplugins")
       `git clone #{line}`
@@ -40,12 +38,21 @@ task :update_github do
   Dir.glob("*") do |d|
     next unless File.directory? d
     Dir.chdir(d)
-    puts ""
-    puts "pull #{d} ..."
-    puts `git pull`
+    print "pull #{d} ...".ljust(50)
+    print "\r"
+    ret = `git pull`
+    if ret.chomp == 'Already up-to-date.'
+      STDOUT.flush
+      print "pull #{d} ... ok".ljust(80) + "\r"
+      sleep 0.5
+      STDOUT.flush
+    else
+      puts ret
+    end
     Dir.chdir("..")
   end
   Dir.chdir("..")
+  puts "".ljust(80)
 end
 
 # cygwin の home になってしまう
