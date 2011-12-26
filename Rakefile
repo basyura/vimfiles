@@ -50,7 +50,8 @@ task :update_github do
       error_flg = false
       ret.each_line do |line|
         if line =~ /error/
-          puts "  pull #{d} ... #{line}"
+          puts "#{d} ... #{line}"
+          error_flg = true
           break
         end
       end
