@@ -991,12 +991,12 @@ if filereadable($HOME . '/.vimrc_local_after')
   source ~/.vimrc_local_after
 endif
 
-function! s:NoProxy()
+function! s:off_proxy()
   let $http_proxy  = ""
   let $https_proxy = ""
   let $HTTP_PROXY  = ""
   let $HTTPS_PROXY = ""
 endfunction
-command! NoProxy call <SID>NoProxy()
+command! OffProxy call <SID>off_proxy()
 
 " vim: foldmethod=marker
