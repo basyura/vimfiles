@@ -653,9 +653,9 @@ call unite#set_substitute_pattern('file_mru', '[[:alnum:]]', '*\0', 100)
 call unite#set_substitute_pattern('file_mru', '[^~.]\zs/', '*/*', 20)
 call unite#set_substitute_pattern('file_mru', '/\ze[^*]', '/*', 10)
 
-call unite#set_substitute_pattern('outline', '[[:alnum:]]', '*\0', 100)
-call unite#set_substitute_pattern('outline', '[^~.]\zs/', '*/*', 20)
-call unite#set_substitute_pattern('outline', '/\ze[^*]', '/*', 10)
+"call unite#set_substitute_pattern('outline', '[[:alnum:]]', '*\0', 100)
+"call unite#set_substitute_pattern('outline', '[^~.]\zs/', '*/*', 20)
+"call unite#set_substitute_pattern('outline', '/\ze[^*]', '/*', 10)
 
 call unite#set_buffer_name_option('file', 'smartcase', 0)
 
