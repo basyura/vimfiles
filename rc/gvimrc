@@ -18,14 +18,8 @@ set clipboard+=unnamed
 " ツールバー非表示
 set guioptions-=T
 
-augroup MyGGroup
-  autocmd! MyGGroup
-  if has('mac')
-    autocmd BufEnter * call s:reload_color_scheme()
-  endif
-augroup END
 
-function! s:reload_color_scheme()
+if has('vim_starting')
   if has('win32')
     " font 
     if exists('g:my_gui_font')
@@ -35,7 +29,7 @@ function! s:reload_color_scheme()
     endif
 
     set linespace=4
-    set columns=96
+    set columns=88
   elseif has('mac')
     " フォント
     "set guifontwide=Osaka-Mono:h14
@@ -44,6 +38,12 @@ function! s:reload_color_scheme()
     set transparency=5
     " esc 時に ime off mac vim only
     set imda
+    " ウインドウ幅
+    if &columns == 80
+      set columns=95
+    endif
+    " ウインドウの高さ
+    set lines=41
     "
   elseif has('unix')
     " 行間
@@ -57,25 +57,9 @@ function! s:reload_color_scheme()
     " 高さ
     set lines=28
   endif
-endfunction
-
-" 起動時のみの処理
-if has('vim_starting')
-  " for mac
-  if has('mac')
-    " ウインドウ幅
-    if &columns == 80
-      set columns=95
-    endif
-    " ウインドウの高さ
-    set lines=41
-  " for windows
-  elseif has('win32')
-    set columns=88
-  endif
 endif
 
-call s:reload_color_scheme()
+
 " コマンドラインの高さ
 set cmdheight=1
 
@@ -109,6 +93,7 @@ hi StatusLine  gui=none
 hi txtHeader  guifg=#cae682 gui=bold
 hi txtHeader2 guifg=orange gui=underline
 hi txtBold    guifg=#cae682 gui=bold
+highlight uniteCandidateInputKeyword guifg=#cae682 gui=bold
 " ポップアップの選択中
 "hi PmenuSel guibg=magenta guifg=white
 "hi Pmenu guibg=white guifg=black

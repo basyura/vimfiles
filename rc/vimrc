@@ -358,7 +358,7 @@ nnoremap <silent> t :Unite tweetvim<CR>
 
 nnoremap Y y$
 
-nnoremap <C-i><C-i> :Restart!<CR>
+nnoremap <C-@><C-@> :Restart!<CR>
 
 nnoremap <Space>c :Cache<CR>:NeoComplCacheCachingDictionary<CR>
 
@@ -551,7 +551,7 @@ let g:vimshell_interactive_cygwin_commands['telnet'] = {
 \}
 
 function! s:vimshell_filetype_settings()
-  "imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
+  imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
   "imap <buffer><expr> <CR> (pumvisible() ? "<C-y><Tab>" : "<Plug>(vimshell_enter)")
   inoremap <buffer> <C-x> <ESC><C-w>h:on<CR>
   nnoremap <buffer> <CR> Go$<Space>
