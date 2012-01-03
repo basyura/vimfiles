@@ -660,10 +660,13 @@ call unite#set_substitute_pattern('file_mru', '/\ze[^*]', '/*', 10)
 
 call unite#set_buffer_name_option('file', 'smartcase', 0)
 
-call unite#custom_filters('buffer,buffer_tab', 
+call unite#custom_filters('buffer,buffer_tab',
       \ ['matcher_default', 'sorter_default', 'converter_erase_bufnr'])
 
-call unite#custom_filters('file', 
+call unite#custom_filters('file',
+      \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])
+
+call unite#custom_filters('file_mru',
       \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])
 
 let g:unite_source_outline_cache_dir = ''

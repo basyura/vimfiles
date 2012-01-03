@@ -90,7 +90,8 @@ hi StatusLine  gui=none
 hi txtHeader  guifg=#cae682 gui=bold
 hi txtHeader2 guifg=orange gui=underline
 hi txtBold    guifg=#cae682 gui=bold
-highlight uniteCandidateInputKeyword guifg=#cae682 gui=bold
+"highlight uniteCandidateInputKeyword guifg=#cae682 gui=bold
+highlight uniteCandidateInputKeyword guifg=orange
 " ポップアップの選択中
 "hi PmenuSel guibg=magenta guifg=white
 "hi Pmenu guibg=white guifg=black
