@@ -91,11 +91,12 @@ hi txtHeader  guifg=#cae682 gui=bold
 hi txtHeader2 guifg=orange gui=underline
 hi txtBold    guifg=#cae682 gui=bold
 "highlight uniteCandidateInputKeyword guifg=#cae682 gui=bold
-hi uniteCandidateInputKeyword guifg=orange
+"hi uniteCandidateInputKeyword guifg=orange
 hi Unite_Cursor_Line guibg=#2F434F
 "hi Unite_Cursor_Line guibg=#000000
 "hi Unite_Cursor_Line guibg=#2F4F4F
-let g:unite_cursor_line_highlight = 'Unite_Cursor_Line'
+hi Unite_Cursor_Line guibg=#00008b
+"let g:unite_cursor_line_highlight = 'Unite_Cursor_Line'
 " ポップアップの選択中
 "hi PmenuSel guibg=magenta guifg=white
 "hi Pmenu guibg=white guifg=black

@@ -663,11 +663,9 @@ call unite#set_buffer_name_option('file', 'smartcase', 0)
 call unite#custom_filters('buffer,buffer_tab',
       \ ['matcher_fuzzy', 'sorter_default', 'converter_erase_bufnr'])
 
-call unite#custom_filters('file',
+call unite#custom_filters('file,file_mru,uiki',
       \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])
 
-call unite#custom_filters('file_mru',
-      \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])
 
 let g:unite_source_outline_cache_dir = ''
 
@@ -767,7 +765,16 @@ let g:twitvim_cert_insecure = 1
 
 silent! nmap <Leader>q :QuickRun<CR>
 let g:quickrun_config = {
-      \ '*' : {'into' : 0}
+      \ '*' : {'into' : 0},
+      \ 'uiki': {
+      \   'exec'      : 'redcloth  %s',
+      \   'outputter' : 'browser',
+      \   'region': {
+      \     'first': [1, 0, 0],
+      \     'last':  [line('$'), 0, 0],
+      \     'wise': 'V',
+      \    },
+      \ },
       \}
 
 
