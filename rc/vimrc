@@ -661,7 +661,7 @@ call unite#set_substitute_pattern('file_mru', '/\ze[^*]', '/*', 10)
 call unite#set_buffer_name_option('file', 'smartcase', 0)
 
 call unite#custom_filters('buffer,buffer_tab',
-      \ ['matcher_default', 'sorter_default', 'converter_erase_bufnr'])
+      \ ['matcher_fuzzy', 'sorter_default', 'converter_erase_bufnr'])
 
 call unite#custom_filters('file',
       \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])

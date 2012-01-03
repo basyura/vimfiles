@@ -55,6 +55,12 @@ task :update_github do
           break
         end
       end
+      #if line.split("\n") != 1
+        #puts "#{d}"
+        #puts line
+      #elsif !error_flg
+        #print "#{d} was Updated\n"
+      #end
       print "#{d} was Updated\n" unless error_flg
     end
     Dir.chdir("..")
