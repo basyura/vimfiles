@@ -151,3 +151,4 @@ after_initialize
 ActiveSupport::HashWithIndifferentAccess
 mechanize
 Mechanize
+expand_path
