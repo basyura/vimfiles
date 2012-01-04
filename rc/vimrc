@@ -767,12 +767,12 @@ silent! nmap <Leader>q :QuickRun<CR>
 let g:quickrun_config = {
       \ '*' : {'into' : 0},
       \ 'uiki': {
-      \   'exec'      : 'redcloth  %s',
-      \   'outputter' : 'browser',
-      \   'region': {
+      \   'exec'      : 'ucloth %s',
+      \   'outputter' : 'browser'  ,
+      \   'region' : {
       \     'first': [1, 0, 0],
-      \     'last':  [line('$'), 0, 0],
-      \     'wise': 'V',
+      \     'last' :  [line('$'), 0, 0],
+      \     'wise' : 'V',
       \    },
       \ },
       \}
