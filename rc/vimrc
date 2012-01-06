@@ -23,7 +23,7 @@ let g:vimball_home = "~/.vim"
 call altercmd#load()
 
 if &termencoding == ''
-"  let &termencoding="utf-8"
+  let &termencoding="utf-8"
 "  let &termencoding="cp932"
 endif
 
