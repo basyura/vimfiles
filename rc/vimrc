@@ -753,6 +753,7 @@ nnoremap <silent> <Space>cd :<C-u>CD<CR>
 nnoremap <silent> s           :<C-u>TweetVimSay<CR>
 nnoremap <silent> <Space>re   :<C-u>TweetVimMentions<CR>
 nnoremap <silent> <Space>tt   :<C-u>TweetVimListStatuses basyura all<CR>
+let g:tweetvim_display_source = 1
 
 if !exists('g:twitvim_browser_cmd')
   if has('mac')
