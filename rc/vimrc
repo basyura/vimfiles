@@ -329,7 +329,6 @@ nnoremap <silent><Leader><Leader>u :Unite uiki<CR>
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
-nnoremap vn :VimpleNote -l<CR>
 nnoremap <C-]> g<C-]>
 
 nnoremap j gj
@@ -765,19 +764,33 @@ endif
 let g:twitvim_cert_insecure = 1
 
 silent! nmap <Leader>q :QuickRun<CR>
-let g:quickrun_config = {
-      \ '*' : {'into' : 0},
-      \ 'uiki': {
-      \   'exec'      : 'ucloth %s',
-      \   'outputter' : 'browser'  ,
-      \   'region' : {
-      \     'first': [1, 0, 0],
-      \     'last' :  [line('$'), 0, 0],
-      \     'wise' : 'V',
-      \    },
-      \ },
-      \}
 
+if has('mac')
+  let g:quickrun_config = {
+        \ '*' : {'into' : 0},
+        \ 'uiki': {
+        \   'exec'      : 'ucloth %s',
+        \   'outputter' : 'browser'  ,
+        \ },
+        \}
+else
+  let g:quickrun_config = {
+        \ '*' : {'into' : 0},
+        \ 'uiki': {
+        \   'exec'      : 'ucloth %s',
+        \   'outputter' : 'browser'  ,
+        \   'region' : {
+        \     'first': [1, 0, 0],
+        \     'last' :  [line('$'), 0, 0],
+        \     'wise' : 'V',
+        \    },
+        \ },
+        \}
+endif
+
+let g:quickrun_config.markdown = {
+      \ 'outputter' : 'browser',
+      \ }
 
 if has('mac')
   let g:quickrun_config['cs'] = {

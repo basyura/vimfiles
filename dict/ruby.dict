@@ -152,3 +152,4 @@ ActiveSupport::HashWithIndifferentAccess
 mechanize
 Mechanize
 expand_path
+Tempfile
