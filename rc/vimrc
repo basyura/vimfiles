@@ -789,6 +789,7 @@ else
 endif
 
 let g:quickrun_config.markdown = {
+      \ 'exec'      : 'kramdown %s',
       \ 'outputter' : 'browser',
       \ }
 
