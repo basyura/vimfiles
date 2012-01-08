@@ -578,7 +578,7 @@ function! s:vimshell_filetype_settings()
   AlterCommand <buffer> q echo 'use bd'
 
   hi VimShellPrompt guifg=#8ac6f2 gui=NONE
-  NeoComplCacheAutoCompletionLength 3
+  NeoComplCacheAutoCompletionLength 4
 endfunction
 " vim コマンド実行前処理
 function! g:vimshell_preexec(cmdline, context)
@@ -806,7 +806,7 @@ else
         \ 'runmode' : 'simple',
         \ 'output_encode' : 'cp932:utf-8',
         \ 'exec' : ['%c /nologo /reference:System.dll %s:gs?/?\\? > /dev/null', '"%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
-        \ 'tempfile' : '%{tempname()}.cs',
+        \ 'tempfile' : '{tempname()}.cs',
         \ }
 endif
 
