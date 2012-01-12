@@ -134,8 +134,8 @@ augroup MyGroup
   autocmd FileType go :setlocal shiftwidth=4
   autocmd FileType go :setlocal noexpandtab
   " for markdown
-  autocmd BufRead,BufNewFile *.mkd  setfiletype mkd
-  autocmd BufRead,BufNewFile *.md   setfiletype mkd
+  autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
+  autocmd BufRead,BufNewFile *.md   set filetype=markdown
 
 
   autocmd BufRead,BufNewFile *.go set filetype=go
