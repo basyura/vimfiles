@@ -317,6 +317,8 @@ nnoremap <silent> <C-l><C-l> :Unite outline:!  -winheight=30 -buffer-name=outlin
 nnoremap <silent> <C-x><C-x> :TabNew<CR>
 nnoremap <silent> <C-x><C-l> :tabnext<CR>
 nnoremap <silent> <C-x><C-h> :tabprevious<CR>
+nnoremap <silent> <C-f> :tabnext<CR>
+nnoremap <silent> <C-b> :tabprevious<CR>
 " エンコードを指定して開き直す
 nnoremap <Space>r   :e ++enc=
 nnoremap <C-w>; <C-w>+
