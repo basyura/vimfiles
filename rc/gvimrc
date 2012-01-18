@@ -102,3 +102,5 @@ hi Unite_Cursor_Line guibg=#00008b
 "hi Pmenu guibg=white guifg=black
 hi clear Conceal
 hi Conceal  ctermfg=7 ctermbg=8 guifg=orange
+
+hi Title gui=none guifg=orange
