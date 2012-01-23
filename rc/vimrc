@@ -702,6 +702,7 @@ function! s:unite_my_settings()
   inoremap <buffer><expr> <C-r>      unite#mappings#set_current_filters(
         \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
 	inoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
+  inoremap <silent><buffer><expr> <C-s> unite#do_action('rec_parent/async')
 
 	nmap <silent><buffer> a <Plug>(unite_insert_enter)
   "startinsert
