@@ -12,6 +12,7 @@ hi StatusLine 	gui=none
 
 hi markdownH1   guifg=orange
 hi markdownH2   guifg=orange
+hi markdownH3   guifg=#cae682
 "markdownH3     xxx links to htmlH3
 "markdownH4     xxx links to htmlH4
 "markdownH5     xxx links to htmlH5
@@ -28,7 +29,7 @@ hi markdownBold   guifg=#ff9be8
 hi markdownCode   guifg=#cae682
 "markdownEscape xxx links to Special
 "markdownHeadingRule xxx links to markdownRule
-hi markdownHeadingDelimiter guifg=orange
+hi markdownHeadingDelimiter guifg=#cae682
 "markdownLinkDelimiter xxx cleared
 "markdownUrl    xxx links to Float
 "markdownIdDeclaration xxx links to Typedef

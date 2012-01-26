@@ -61,7 +61,7 @@ task :update_github do
       #elsif !error_flg
         #print "#{d} was Updated\n"
       #end
-      print "#{d} was Updated\n" unless error_flg
+      print "updated #{d}\n" unless error_flg
     end
     Dir.chdir("..")
   end
