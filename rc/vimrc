@@ -234,9 +234,9 @@ function! s:change_last_mod_date()
 endfunction
 
 function! s:javascript_filetype_settings()
-  autocmd BufLeave     <buffer> call jslint#clear()
-  autocmd BufWritePost <buffer> call jslint#check()
-  autocmd CursorMoved  <buffer> call jslint#message()
+"  autocmd BufLeave     <buffer> call jslint#clear()
+"  autocmd BufWritePost <buffer> call jslint#check()
+"  autocmd CursorMoved  <buffer> call jslint#message()
 endfunction
 
 """"""""""""""""""""""""""""""""""
