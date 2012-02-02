@@ -39,7 +39,9 @@ let $CYGWIN = 'nodosfilewarning acl'
 "           settings             "
 """"""""""""""""""""""""""""""""""
 
-call singleton#enable()
+if has('clientserver')
+  call singleton#enable()
+endif
 
 if filereadable($HOME . '/.vimrc_local')
   source ~/.vimrc_local
