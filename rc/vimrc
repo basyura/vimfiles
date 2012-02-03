@@ -39,8 +39,10 @@ let $CYGWIN = 'nodosfilewarning acl'
 "           settings             "
 """"""""""""""""""""""""""""""""""
 
+" singleton.vim
 if has('clientserver')
   call singleton#enable()
+  let g:singleton#opener = "drop"
 endif
 
 if filereadable($HOME . '/.vimrc_local')
@@ -763,6 +765,7 @@ nnoremap <silent> s           :<C-u>TweetVimSay<CR>
 nnoremap <silent> <Space>re   :<C-u>TweetVimMentions<CR>
 nnoremap <silent> <Space>tt   :<C-u>TweetVimListStatuses basyura all<CR>
 let g:tweetvim_display_source = 1
+let g:tweetvim_original_hi = 1
 
 if !exists('g:twitvim_browser_cmd')
   if has('mac')
