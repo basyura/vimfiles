@@ -21,7 +21,7 @@ hi markdownH3   guifg=#8ac6f2
 hi markdownBlockquote guifg=#80a0ff
 "markdownListMarker xxx links to htmlTagName
 "markdownOrderedListMarker xxx links to markdownListMarker
-hi markdownCodeBlock guifg=#cae682
+"hi markdownCodeBlock guifg=#cae682
 "markdownRule   xxx links to PreProc
 "markdownLineBreak xxx cleared
 "markdownLinkText xxx links to htmlLink
