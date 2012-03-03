@@ -674,7 +674,7 @@ call unite#custom_filters('buffer,buffer_tab',
       \ ['matcher_fuzzy', 'sorter_default', 'converter_erase_bufnr'])
 
 call unite#custom_filters('file,uiki',
-      \ ['matcher_fuzzy', 'sorter_nothing', 'converter_default'])
+      \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])
 
 call unite#custom_filters('file_mru',
       \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])
