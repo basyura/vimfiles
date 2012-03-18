@@ -913,7 +913,7 @@ endfunction
 " for tweetvim say
 function! s:tweetvim_say_my_settings()
   if exists(':NeoComplCacheCachingDictionary')
-    NeoComplCacheCachingDictionary 'tweetvim_say'
+    :NeoComplCacheCachingDictionary
   endif
   AlterCommand <buffer> q bd!<CR>
   nnoremap <buffer> <silent> <C-j> :bd!<CR>
