@@ -374,6 +374,7 @@ nnoremap Y y$
 nnoremap <C-@><C-@> :Restart!<CR>
 
 nnoremap <Space>c :Cache<CR>:NeoComplCacheCachingDictionary<CR>
+inoremap <C-x><C-c> <esc>:Cache<CR>:NeoComplCacheCachingDictionary<CR>a
 
 nmap <Leader>c <Plug>NERDCommenterToggle
 " ターミナルだとなぜか起動時にインサートモードになるので
