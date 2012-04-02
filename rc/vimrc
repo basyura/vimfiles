@@ -197,7 +197,7 @@ function! s:neco_pre_cache()
     return
   endif
   :NeoComplCacheCachingBuffer
-  :NeoComplCacheCachingDictionary
+"  :NeoComplCacheCachingDictionary
 endfunction
 
 function! s:bg_settings()
@@ -477,7 +477,7 @@ let g:neocomplcache_enable_caching_message = 0
 " キー入力時にキーワード補完を行う入力数を制御する。
 let g:neocomplcache_auto_completion_start_length = 2
 " 大文字・小文字を無視するか
-let g:neocomplcache_enable_ignore_case = 1
+let g:neocomplcache_enable_ignore_case = 0
 let g:neocomplcache_enable_smart_case = 0
 if !exists('g:neocomplcache_plugin_rank')
   let g:neocomplcache_plugin_rank = {}
@@ -916,7 +916,7 @@ endfunction
 " for tweetvim say
 function! s:tweetvim_say_my_settings()
   if exists(':NeoComplCacheCachingDictionary')
-    :NeoComplCacheCachingDictionary
+"    :NeoComplCacheCachingDictionary
   endif
   AlterCommand <buffer> q bd!<CR>
   nnoremap <buffer> <silent> <C-j> :bd!<CR>
