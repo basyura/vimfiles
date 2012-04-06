@@ -176,7 +176,7 @@ augroup MyGroup
   autocmd BufLeave * call s:buf_leave()
 
   autocmd InsertEnter * call s:neco_pre_cache()
-  
+
 augroup END
 
 function! s:buf_leave()
@@ -483,6 +483,21 @@ if !exists('g:neocomplcache_plugin_rank')
   let g:neocomplcache_plugin_rank = {}
 endif
 let g:neocomplcache_plugin_rank.snippets_complete = 90
+" omni
+if !exists('g:neocomplcache_omni_functions')
+  let g:neocomplcache_omni_functions = {}
+endif
+let g:neocomplcache_omni_functions.javascript = 'jscomplete#CompleteJS'
+
+if !exists('g:neocomplcache_omni_function_list')
+  let g:neocomplcache_omni_function_list = {}
+endif
+"let g:neocomplcache_omni_function_list.javascript = 'jscomplete#CompleteJS'
+
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.javascript = '[^. \t]\.\%(\h\w*\)\?'
 "
 " ソート条件
 function! g:neocomplcache_compare_len(i1, i2)
@@ -496,10 +511,6 @@ let g:neocomplcache_compare_function = 'g:neocomplcache_compare_len'
 " ちらつき防止
 let g:neocomplcache_enable_prefetch = 1
 
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.javascript = ''
 "入力に大文字が含まれている場合は、大文字・小文字を無視しない 
 "let g:neocomplcache_enable_smart_case = 1
 " セパレータ補完
