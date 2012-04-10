@@ -141,6 +141,8 @@ augroup MyGroup
   " for markdown
   autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
   autocmd BufRead,BufNewFile *.md   set filetype=markdown
+  " for uiki
+  autocmd FileType uiki nnoremap <buffer> mq ggvG$:QuickRun<CR>
 
 
   autocmd BufRead,BufNewFile *.go set filetype=go
