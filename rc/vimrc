@@ -79,9 +79,9 @@ set incsearch
 set laststatus=0
 
 " ubuntu だと画面がちらつく。mac だと音が出ちゃう。
-if has('mac')
+"if has('mac')
   set vb t_vb=
-endif
+"endif
 
 set tabstop=2
 set shiftwidth=2
