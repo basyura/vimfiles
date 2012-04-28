@@ -96,6 +96,8 @@ set showcmd
 set virtualedit+=block
 set fileencodings=ucs-bom,utf-8,cp932,shift-jis,euc-jp
 set fileformats=unix,dos
+
+set ignorecase
 """"""""""""""""""""""""""""""""""
 "         auto command           "
 """"""""""""""""""""""""""""""""""
@@ -489,7 +491,7 @@ let g:neocomplcache_plugin_rank.snippets_complete = 90
 if !exists('g:neocomplcache_omni_functions')
   let g:neocomplcache_omni_functions = {}
 endif
-let g:neocomplcache_omni_functions.javascript = 'jscomplete#CompleteJS'
+"let g:neocomplcache_omni_functions.javascript = 'jscomplete#CompleteJS'
 
 if !exists('g:neocomplcache_omni_function_list')
   let g:neocomplcache_omni_function_list = {}
@@ -499,7 +501,7 @@ endif
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
-let g:neocomplcache_omni_patterns.javascript = '[^. \t]\.\%(\h\w*\)\?'
+"let g:neocomplcache_omni_patterns.javascript = '[^. \t]\.\%(\h\w*\)\?'
 "
 " ソート条件
 function! g:neocomplcache_compare_len(i1, i2)
@@ -683,6 +685,9 @@ let g:unite_source_file_mru_ignore_pattern = '.*Application\ Data.*\|.*デスク
 let g:unite_winheight  = 10
 let g:unite_split_rule = 'leftabove'
 
+call unite#set_profile('buffer_tab', 'ignorecase', 1)
+call unite#set_profile('file'      , 'ignorecase', 1)
+call unite#set_profile('file_mru'  , 'ignorecase', 1)
 
 "call unite#set_substitute_pattern('', '[[:alnum:]]', '*\0', 100)
 call unite#set_substitute_pattern('file', '^\~', substitute(substitute($HOME, '\\', '/', 'g'), ' ', '\\\\ ', 'g'), -200)

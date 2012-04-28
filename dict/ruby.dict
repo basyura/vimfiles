@@ -153,3 +153,5 @@ mechanize
 Mechanize
 expand_path
 Tempfile
+presence
+length
