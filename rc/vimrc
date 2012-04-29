@@ -686,10 +686,6 @@ let g:unite_source_file_mru_ignore_pattern = '.*Application\ Data.*\|.*デスク
 let g:unite_winheight  = 10
 let g:unite_split_rule = 'leftabove'
 
-call unite#set_profile('buffer_tab', 'ignorecase', 1)
-call unite#set_profile('file'      , 'ignorecase', 1)
-call unite#set_profile('file_mru'  , 'ignorecase', 1)
-
 "call unite#set_substitute_pattern('', '[[:alnum:]]', '*\0', 100)
 call unite#set_substitute_pattern('file', '^\~', substitute(substitute($HOME, '\\', '/', 'g'), ' ', '\\\\ ', 'g'), -200)
 if has('win32')
@@ -724,6 +720,10 @@ call unite#custom_filters('uiki',
 let g:unite_source_outline_cache_dir = ''
 
 call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
+
+call unite#set_profile('buffer_tab', 'ignorecase', 1)
+call unite#set_profile('file'      , 'ignorecase', 1)
+call unite#set_profile('file_mru'  , 'ignorecase', 1)
 
 function! s:unite_my_settings()
   " Overwrite settings.
