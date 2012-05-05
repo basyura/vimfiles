@@ -706,7 +706,7 @@ call unite#set_substitute_pattern('file_mru', '/\ze[^*]', '/*', 10)
 call unite#set_buffer_name_option('file', 'smartcase', 0)
 
 call unite#custom_filters('buffer,buffer_tab',
-      \ ['matcher_file_name', 'sorter_default', 'converter_erase_bufnr'])
+      \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
 
 call unite#custom_filters('file',
       \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])
@@ -724,6 +724,7 @@ call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
 call unite#set_profile('buffer_tab', 'ignorecase', 1)
 call unite#set_profile('file'      , 'ignorecase', 1)
 call unite#set_profile('file_mru'  , 'ignorecase', 1)
+"call unite#set_profile('file_mru'  , 'filters', ['converter_file_directory'])
 
 function! s:unite_my_settings()
   " Overwrite settings.
