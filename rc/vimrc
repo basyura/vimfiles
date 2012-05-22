@@ -358,7 +358,7 @@ nnoremap <silent><Leader>r :UniteResume<CR>
 nnoremap <silent>on 999<C-w>+
 nnoremap <silent><Leader><Leader>r :Unite yarm<CR>
 nnoremap <silent><Leader><Leader>w :execute ':edit! ' . g:unite_uiki_path . '/FrontPage.uiki'<CR>
-nnoremap <silent><Leader><Leader>u :Unite uiki<CR>
+nnoremap <silent><Leader>l :Unite uiki<CR>
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
@@ -670,7 +670,7 @@ let g:vimfiler_as_default_explorer = 1
 nnoremap <silent> <C-r>      :<C-u>Unite file_mru -start-insert<CR>
 nnoremap <silent> <C-n>      :<C-u>Unite buffer_tab<CR>
 nnoremap <silent> <Leader>d  :<C-u>Unite -buffer-name=file -hide-source-names file file/new<CR>
-nnoremap <silent> <Leader>l  :<C-u>Unite bookmark<CR>
+nnoremap <silent> <Leader>b  :<C-u>Unite bookmark<CR>
 nnoremap <silent> <C-t>      :<C-u>Unite tags -start-insert<CR>
 nnoremap <Leader>f  :<C-u>Unite file_rec -input=
 "nnoremap <C-x><C-f>  :<C-u>Unite file_rec -input=
@@ -715,7 +715,7 @@ call unite#custom_filters('file_mru',
       \ ['matcher_file_name', 'sorter_default', 'converter_default'])
 
 call unite#custom_filters('uiki',
-      \ ['matcher_fuzzy', 'sorter_nothing', 'converter_default'])
+      \ ['matcher_fuzzy', 'sorter_reverse', 'converter_default'])
 
 let g:unite_source_outline_cache_dir = ''
 
