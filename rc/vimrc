@@ -450,9 +450,9 @@ let neco_dic.c           = $HOME . '/.vim/dict/c.dict'
 let neco_dic.cs          = $HOME . '/.vim/dict/cs.dict'
 let neco_dic.go          = $HOME . '/.vim/dict/go.dict'
 "let neco_dic.vimshell    = $HOME . '/.vimshell/command-history'
-"let neco_dic.tweetvim_say = $HOME . '/.tweetvim/screen_name' .
-"                                \ ',' . $HOME . '/.tweetvim/tags' .
-"                                \ ',' . $HOME . '/.vim/dict/default.dict'
+let neco_dic.tweetvim_say = $HOME . '/.tweetvim/screen_name' .
+                                \ ',' . $HOME . '/.tweetvim/hash_tag' .
+                                \ ',' . $HOME . '/.vim/dict/default.dict'
 
 let neco_dic.unite_twitter = 
       \ $HOME . '/.unite/twitter/screen_name' .
