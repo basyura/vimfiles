@@ -86,7 +86,7 @@ hi VimShellPrompt guifg=#8ac6f2 gui=NONE
 hi Comment             gui=none
 hi String              gui=none
 hi StatusLine  gui=none
-hi IncSearch guifg=yellow
+hi IncSearch guifg=red guibg=white
 
 hi txtHeader  guifg=#cae682 gui=bold
 hi txtHeader2 guifg=orange gui=underline
