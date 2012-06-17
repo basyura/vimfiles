@@ -31,7 +31,7 @@ if has('vim_starting')
     set columns=88
   elseif has('mac')
     " フォント
-    "set guifontwide=Osaka-Mono:h14
+    set guifont=Osaka-Mono:h14
     " 透明度
     set transparency=5
     " esc 時に ime off mac vim only
