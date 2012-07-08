@@ -18,6 +18,8 @@ set clipboard+=unnamed
 " ツールバー非表示
 set guioptions-=T
 
+set guitablabel=%t
+
 
 if has('vim_starting')
   if has('win32')
