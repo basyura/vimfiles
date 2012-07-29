@@ -81,8 +81,8 @@ AlterCommand wq WQ
 """"""""""""""""""""""""""""""""""
 nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>:<C-u>source $MYGVIMRC<Enter>
 " カーソルオレンジ"
-hi Cursor	  guifg=bg	guibg=orange
-hi Visual		guifg=black guibg=#bde682
+hi Cursor   guifg=bg    guibg=orange
+hi Visual   guifg=black guibg=#bde682
 hi VimShellUserPrompt guifg=#95e454
 hi VimShellPrompt guifg=#8ac6f2 gui=NONE
 hi Comment             gui=none

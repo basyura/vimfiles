@@ -18,22 +18,13 @@ set runtimepath+=~/.vim/after
 
 helptags ~/.vim/gitplugins/vimdoc-ja/doc
 
-let g:vimball_home = "~/.vim"
-
 call altercmd#load()
 
 if &termencoding == ''
   let &termencoding="utf-8"
-"  let &termencoding="cp932"
 endif
 
 let mapleader = "m"
-
-""""""""""""""""""""""""""""""""""
-"             env                "
-""""""""""""""""""""""""""""""""""
-
-let $CYGWIN = 'nodosfilewarning acl'
 
 """"""""""""""""""""""""""""""""""
 "           settings             "
@@ -58,7 +49,7 @@ else
 endif
 
 set ambiwidth=double
-set nu
+set number
 set autoindent
 set iminsert=0
 set titlestring=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ \ %{getcwd()}
@@ -67,8 +58,6 @@ set linespace=4
 set antialias
 set backupdir=~/.vim/backup
 set directory=~/.vim/swp
-"オートインデント時にタブが2つ入ることを防ぐ
-set ts=4 sw=4 sts=0
 set scrolloff=5
 set wrap
 set hlsearch
@@ -85,6 +74,7 @@ endif
 
 set tabstop=2
 set shiftwidth=2
+set softtabstop=0
 set expandtab
 set noshowmatch
 set matchpairs+=<:>
@@ -102,52 +92,24 @@ set ignorecase
 "         auto command           "
 """"""""""""""""""""""""""""""""""
 augroup MyGroup
-  autocmd! MyGroup
+  autocmd!
   au BufWritePre * call s:change_last_mod_date()
   au BufNewFile,BufRead *.scala setf scala
   "set autochdir
   au BufEnter * call s:all_bufenter_setting()
-  " for ruby
-  autocmd FileType ruby  :setlocal tabstop=2
-  autocmd FileType ruby  :setlocal shiftwidth=2
-  autocmd FileType ruby  :setlocal expandtab
-  " for eruby
-  autocmd FileType eruby :setlocal tabstop=2
-  autocmd FileType eruby :setlocal shiftwidth=2
-  autocmd FileType eruby :setlocal expandtab
-  " for scala
-  autocmd FileType scala :setlocal tabstop=2
-  autocmd FileType scala :setlocal shiftwidth=2
-  autocmd FileType scala :setlocal expandtab
-  " for vim
-  autocmd FileType scala :setlocal tabstop=4
-  autocmd FileType scala :setlocal shiftwidth=4
-  autocmd FileType scala :setlocal noexpandtab
-  " for java
-  autocmd FileType java :setlocal tabstop=4
-  autocmd FileType java :setlocal shiftwidth=4
-  autocmd FileType java :setlocal noexpandtab
-  " for javascript
-  autocmd FileType javascript :setlocal tabstop=2
-  autocmd FileType javascript :setlocal shiftwidth=2
-  autocmd FileType javascript :setlocal expandtab
-  autocmd FileType javascript call s:javascript_filetype_settings()
-  " for c
-  autocmd FileType c,cpp,cs :setlocal tabstop=4
-  autocmd FileType c,cpp,cs :setlocal shiftwidth=4
-  autocmd FileType c,cpp,cs :setlocal expandtab
-  " for go
-  autocmd FileType go :setlocal tabstop=4
-  autocmd FileType go :setlocal shiftwidth=4
-  autocmd FileType go :setlocal noexpandtab
-  " for markdown
+
+  autocmd FileType ruby,eruby,scala,javascript  :setlocal tabstop=2
+  autocmd FileType ruby,eruby,scala,javascript  :setlocal shiftwidth=2
+  autocmd FileType ruby,eruby,scala,javascript  :setlocal expandtab
+
+  autocmd FileType java,c,cpp,cs :setlocal tabstop=4
+  autocmd FileType java,c,cpp,cs :setlocal shiftwidth=4
+  autocmd FileType java,c,cpp,cs :setlocal noexpandtab
+
   autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
   autocmd BufRead,BufNewFile *.md   set filetype=markdown
   " for uiki
   autocmd FileType uiki nnoremap <buffer> mq ggvG$:QuickRun<CR>
-
-
-  autocmd BufRead,BufNewFile *.go set filetype=go
 
   autocmd BufRead,BufNewFile *.ecob set filetype=cobol
 
@@ -155,43 +117,24 @@ augroup MyGroup
 
   autocmd FileType vimshell call s:vimshell_filetype_settings()
 
-  autocmd FileType go       call s:go_settings()
-  autocmd FileType unite    call s:unite_my_settings()
-  autocmd FileType scratch  call s:scratch_my_settings()
-  autocmd FileType tweetvim_say  call s:tweetvim_say_my_settings()
+  autocmd FileType unite        call s:unite_my_settings()
+  autocmd FileType scratch      call s:scratch_my_settings()
+  autocmd FileType tweetvim_say call s:tweetvim_say_my_settings()
   autocmd FileType vimshell-bg  call s:bg_settings()
 
-  autocmd CmdwinEnter * call s:init_cmdwin()
+  autocmd FileType lingr-*    :setlocal nonu
+  autocmd FileType lingr-*    :setlocal nowrap
+  autocmd FileType lingr-say  call s:lingr_say_setting()
 
-  autocmd FileType lingr-rooms    :setlocal nonu
-  autocmd FileType lingr-rooms    :setlocal nowrap
-  autocmd FileType lingr-members  :setlocal nonu
-  autocmd FileType lingr-members  :setlocal nowrap
-  autocmd FileType lingr-messages :setlocal nonu
-  autocmd FileType lingr-members  :setlocal nowrap
-  autocmd FileType lingr-messages :setlocal wrap
-  autocmd FileType lingr-messages call s:lingr_messages_setting()
-  autocmd FileType lingr-say      call s:lingr_say_setting()
-
-  autocmd FileType quickrun       call s:quickrun_setting()
-
-  autocmd BufWritePost *.go call s:go_write_post()
-
-  autocmd BufLeave * call s:buf_leave()
+  autocmd FileType quickrun    call s:quickrun_setting()
 
   autocmd InsertEnter * call s:neco_pre_cache()
 
   autocmd FileType git :setlocal foldlevel=99
 augroup END
 
-function! s:buf_leave()
-  if &filetype == 'unite'
-"    nohlsearch
-  endif
-endfunction
-
 function! s:neco_pre_cache()
-  if exists('b:neco_pre_cache') 
+  if exists('b:neco_pre_cache')
     return
   endif
   let b:neco_pre_cache = 1
@@ -202,20 +145,10 @@ function! s:neco_pre_cache()
     return
   endif
   :NeoComplCacheCachingBuffer
-"  :NeoComplCacheCachingDictionary
 endfunction
 
 function! s:bg_settings()
   AlterCommand <buffer> q bd
-endfunction
-
-function! s:go_settings()
-  inoremap <buffer> -- :=
-endfunction
-
-function! s:go_write_post()
-  :GoFmt
-  :setfiletype go
 endfunction
 
 function! s:all_bufenter_setting()
@@ -235,41 +168,15 @@ function! s:all_bufenter_setting()
   endif
 
   try
-    execute ":lcd " . substitute(expand("%:p:h")," ","\\\\ ","g")
+    execute ":lcd " . substitute(expand("%:p:h")," ",'\\ ','g')
   catch
   endtry
-endfunction
-"
-" Last Change を保存時に変更する
-"
-function! s:change_last_mod_date()
-  let lineno = line(".")
-  let colno  = col(".")
-  :1
-  let language =  v:lc_time
-  execute ':silent! language time C'
-  let time = '" Last Modified: ' . strftime("%d %b %Y")
-  " 同じだったらなにもしない
-  if !search(time , '' , 5)
-    try
-      execute '1,5s/" Last Modified:.*/' . time . '/'
-    catch
-    endtry
-  endif
-  execute ':silent! language time ' . language
-  call cursor(lineno , colno)
-endfunction
-
-function! s:javascript_filetype_settings()
-"  autocmd BufLeave     <buffer> call jslint#clear()
-"  autocmd BufWritePost <buffer> call jslint#check()
-"  autocmd CursorMoved  <buffer> call jslint#message()
 endfunction
 
 """"""""""""""""""""""""""""""""""
 "            colors              "
 """"""""""""""""""""""""""""""""""
-hi Cursor	  guifg=bg	guibg=orange
+hi Cursor  guifg=bg guibg=orange
 " lingr
 hi link lingrMessagesSpeaker Statement
 hi link lingrRoomsActive     Statement
@@ -281,21 +188,21 @@ let java_ignore_javadoc = 1
 nnoremap qq q
 nnoremap q <ESC>
 
-map <silent> <S-u> :redo<CR>
-map bn    :bnext<CR>
+nnoremap <silent> U :<C-u>redo<CR>
+"map bn    :bnext<CR>
 "ウインドウのフォーカス移動
-map  wh <C-w>h
-map  wl <C-w>l
-map  wj <C-w>j
-map  wk <C-w>k
-map gl :macaction selectNextWindow:<CR>
-map gh :macaction selectPreviousWindow:<CR>
+noremap wh <C-w>h
+noremap wl <C-w>l
+noremap wj <C-w>j
+noremap wk <C-w>k
+noremap gl :macaction selectNextWindow:<CR>
+noremap gh :macaction selectPreviousWindow:<CR>
 
 nnoremap <Space>.   :<C-u>edit   $MYVIMRC<Enter>
 nnoremap <Space>s.  :<C-u>source $MYVIMRC<Enter>
 nnoremap <Space>g.  :<C-u>edit   $MYGVIMRC<Enter>
-noremap  <Space>gs. :<C-u>source $MYGVIMRC<Enter>
-noremap  <Space>v.  :<C-u>edit   ~/.vimshrc<Enter>
+nnoremap <Space>gs. :<C-u>source $MYGVIMRC<Enter>
+nnoremap <Space>v.  :<C-u>edit   ~/.vimshrc<Enter>
 nnoremap <Space>ss  :<C-u>Source %<Enter>
 inoremap <C-d> <Del>
 cmap <C-d> <Del>
@@ -310,9 +217,9 @@ cmap <C-v> <C-R>+
 "挿入モードで Ctl + v で貼り付ける
 imap <C-v> <C-R>+
 "全て選択
-map  <C-a><C-a> ggvG$
+nmap  <C-a><C-a> ggvG$
 " gvim で q → bd をしてる用
-map <C-q><C-q><C-q> ZQ
+nmap <C-q><C-q><C-q> ZQ
 
 cmap <C-e> <End>
 cmap <C-a> <HOME>
@@ -357,25 +264,24 @@ nnoremap <silent>co :Unite -no-quit qflist<CR>
 nnoremap <silent><Leader>r :UniteResume<CR>
 nnoremap <silent>on 999<C-w>+
 nnoremap <silent><Leader><Leader>r :Unite yarm<CR>
-"nnoremap <silent><Leader><Leader>w :execute ':edit! ' . g:unite_uiki_path . '/FrontPage.uiki'<CR>
 nnoremap <silent><Leader>l :Unite -vertical -winwidth=50 -no-start-insert uiki<CR>
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
 nnoremap <C-]> g<C-]>
 
-nnoremap j gj
+nnoremap j  gj
 nnoremap gj j
-nnoremap k gk
+nnoremap k  gk
 nnoremap gk k
-nnoremap 0 g0
+nnoremap 0  g0
 nnoremap g0 0
-nnoremap $ g$
+nnoremap $  g$
 nnoremap g$ $
 
-cnoremap <C-p> <Up>
-cnoremap <Up> <C-p>
-cnoremap <C-n> <Down>
+cnoremap <C-p>  <Up>
+cnoremap <Up>   <C-p>
+cnoremap <C-n>  <Down>
 cnoremap <Down> <C-n>
 
 " for unite-rails
@@ -384,7 +290,6 @@ nnoremap <C-x><C-c> :Unite rails/controller<CR>
 nnoremap <C-x><C-j> :Unite rails/view<CR>
 nnoremap <C-x><C-d> :Unite rails/db<CR>
 nnoremap <C-x><C-f> :Unite rails/config<CR>
-"nnoremap <C-x> :Unite -immediately rails/
 nnoremap <C-x> :Unite rails/
 
 nnoremap <silent> t  :Unite tweetvim<CR>
@@ -404,20 +309,13 @@ if has('gui_running')
   nnoremap <silent> <ESC> :noh<CR>
 endif
 
-inoremap <silent><C-o> <ESC>o
+inoremap <silent> <C-o> <ESC>o
 inoremap <C-j> <ESC>
 inoremap jj <ESC>
 noremap <silent> <C-j> <ESC>:noh<CR>
 inoremap kk <ESC><S-o>
-"inoremap () ()<Left>
-"inoremap {} {}<Left>
 inoremap [[ []<Left>
 inoremap <C-q> []<Left>
-"inoremap "" ""<Left>
-"inoremap '' ''<Left>
-"inoremap <> <><Left>
-"inoremap  , <Space>,
-"inoremap  -- =>
 
 vnoremap <C-e> <End><Left>
 vmap <Leader>c <Plug>NERDCommenterToggle
@@ -428,9 +326,9 @@ cnoremap <C-j> <C-u><ESC>
 vnoremap ch :s/\t/\|_=./g<CR>
 vnoremap cb :s/\t/\|/g<CR>
 
-""""""""""""""""""""""""""""""""""
-"        neo complcache          "
-""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""
+"        neocomplcache          "
+"""""""""""""""""""""""""""""""""
 " 起動時に有効
 let g:neocomplcache_enable_at_startup = 1
 
@@ -440,21 +338,20 @@ let g:neocomplcache_snippets_dir='~/.vim/snippets'
 if !exists('g:neocomplcache_dictionary_filetype_lists')
   let g:neocomplcache_dictionary_filetype_lists = {}
 endif
-let neco_dic = g:neocomplcache_dictionary_filetype_lists
-let neco_dic.objc        = $HOME . '/.vim/dict/objc.dict'
-let neco_dic.javascript  = $HOME . '/.vim/dict/js.dict'
-let neco_dic.ruby        = $HOME . '/.vim/dict/ruby.dict'
-let neco_dic.eruby       = $HOME . '/.vim/dict/ruby.dict'
-let neco_dic.java        = $HOME . '/.vim/dict/java.dict'
-let neco_dic.c           = $HOME . '/.vim/dict/c.dict'
-let neco_dic.cs          = $HOME . '/.vim/dict/cs.dict'
-let neco_dic.go          = $HOME . '/.vim/dict/go.dict'
-"let neco_dic.vimshell    = $HOME . '/.vimshell/command-history'
-let neco_dic.tweetvim_say = $HOME . '/.tweetvim/screen_name' .
+let g:neco_dic = g:neocomplcache_dictionary_filetype_lists
+let g:neco_dic.objc        = $HOME . '/.vim/dict/objc.dict'
+let g:neco_dic.javascript  = $HOME . '/.vim/dict/js.dict'
+let g:neco_dic.ruby        = $HOME . '/.vim/dict/ruby.dict'
+let g:neco_dic.eruby       = $HOME . '/.vim/dict/ruby.dict'
+let g:neco_dic.java        = $HOME . '/.vim/dict/java.dict'
+let g:neco_dic.c           = $HOME . '/.vim/dict/c.dict'
+let g:neco_dic.cs          = $HOME . '/.vim/dict/cs.dict'
+let g:neco_dic.go          = $HOME . '/.vim/dict/go.dict'
+let g:neco_dic.tweetvim_say = $HOME . '/.tweetvim/screen_name' .
                                 \ ',' . $HOME . '/.tweetvim/hash_tag' .
                                 \ ',' . $HOME . '/.vim/dict/default.dict'
 
-let neco_dic.unite_twitter = 
+let neco_dic.unite_twitter =
       \ $HOME . '/.unite/twitter/screen_name' .
       \ ',' . $HOME . '/.twitvim.tags' .
       \ ',' . $HOME . '/.vim/dict/default.dict'
@@ -464,19 +361,17 @@ let neco_dic['lingr-say'] = $HOME . '/.lingr.dict'
 
 " 日本語をキャッシュしない
 if !exists('g:neocomplcache_keyword_patterns')
-	let g:neocomplcache_keyword_patterns = {}
+  let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 " 補完候補の数
 let g:neocomplcache_max_list = 100
-" 補完しなくなる文字数
+" 補完候補を自動的に選択
 let g:neocomplcache_enable_auto_select = 1
 " 補完しないパターン
 let g:neocomplcache_disable_caching_file_path_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
 " 自動補完しないパターン
 let g:neocomplcache_lock_buffer_name_pattern = '\.log\|\.log\.\|.*quickrun.*\|.jax\|Log.txt'
-" 自動選択しないパターン
-let g:neocomplcache_disable_auto_select_buffer_name_pattern = 'vimshell'
 " キャッシュ中に、メッセージをCommand-lineに表示しない
 let g:neocomplcache_enable_caching_message = 0
 " キー入力時にキーワード補完を行う入力数を制御する。
@@ -488,21 +383,6 @@ if !exists('g:neocomplcache_plugin_rank')
   let g:neocomplcache_plugin_rank = {}
 endif
 let g:neocomplcache_plugin_rank.snippets_complete = 90
-" omni
-if !exists('g:neocomplcache_omni_functions')
-  let g:neocomplcache_omni_functions = {}
-endif
-"let g:neocomplcache_omni_functions.javascript = 'jscomplete#CompleteJS'
-
-if !exists('g:neocomplcache_omni_function_list')
-  let g:neocomplcache_omni_function_list = {}
-endif
-"let g:neocomplcache_omni_function_list.javascript = 'jscomplete#CompleteJS'
-
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-"let g:neocomplcache_omni_patterns.javascript = '[^. \t]\.\%(\h\w*\)\?'
 "
 " ソート条件
 function! g:neocomplcache_compare_len(i1, i2)
@@ -516,10 +396,8 @@ let g:neocomplcache_compare_function = 'g:neocomplcache_compare_len'
 " ちらつき防止
 let g:neocomplcache_enable_prefetch = 1
 
-"入力に大文字が含まれている場合は、大文字・小文字を無視しない 
+"入力に大文字が含まれている場合は、大文字・小文字を無視しない
 "let g:neocomplcache_enable_smart_case = 1
-" セパレータ補完
-"let g:neocomplcache_enable_auto_delimiter = 1
 " 辞書読み込
 noremap  <Space>d. :<C-u>NeoComplCacheCachingDictionary<Enter>
 " C-kを押すと行末まで削除
@@ -538,18 +416,18 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 " snippet 補完
 "
-imap <expr><C-l> pumvisible() ? 
-      \ "\<C-y><Plug>(neocomplcache_snippets_expand)" 
+imap <expr><C-l> pumvisible() ?
+      \ "\<C-y><Plug>(neocomplcache_snippets_expand)"
       \ : "<Plug>(neocomplcache_snippets_expand)"
 imap <silent> <C-l>l <C-y><Plug>(neocomplcache_snippets_force_expand)
 smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 command! -nargs=* Nes NeoComplCacheEditSnippets <args>
 command! -nargs=* Nel NeoComplCacheLock <args>
-command! -nargs=* NSource NeoComplCachePrintSource
-command! -nargs=* NecoOff NeoComplCacheDisable
-command! -nargs=* NecoOn  NeoComplCacheEnable
-command! -nargs=* OutKeyWord  NeoComplCacheOutputKeyword
-command! -nargs=* Cache  NeoComplCacheCachingBuffer
+command! -nargs=* NSource NeoComplCachePrintSource <args>
+command! -nargs=* NecoOff NeoComplCacheDisable <args>
+command! -nargs=* NecoOn  NeoComplCacheEnable <args>
+command! -nargs=* OutKeyWord  NeoComplCacheOutputKeyword <args>
+command! -nargs=* Cache  NeoComplCacheCachingBuffer <args>
 
 """"""""""""""""""""""""""""""""""
 "            vimshell            "
@@ -598,8 +476,8 @@ let g:vimshell_interactive_cygwin_commands['telnet'] = {
 \}
 
 function! s:vimshell_filetype_settings()
-  imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "<Plug>(vimshell_enter)")
-  "imap <buffer><expr> <CR> (pumvisible() ? "<C-y><Tab>" : "<Plug>(vimshell_enter)")
+  imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "\<Plug>(vimshell_enter)")
+  inoremap <buffer> <tab> <CR>
   inoremap <buffer> <C-x> <ESC><C-w>h:on<CR>
   nnoremap <buffer> <CR> Go$<Space>
   imap <buffer> <C-x>     <ESC><C-w>h:on<CR>
@@ -608,24 +486,24 @@ function! s:vimshell_filetype_settings()
   imap <buffer> <C-o> <Plug>(vimshell_enter)
   inoremap <buffer> <C-l> <C-y>
   inoremap <buffer> <expr><silent> <C-s>  unite#sources#vimshell_history#start_complete(1)
-  "inoremap <buffer> <expr><silent> <C-s> <ESC>:Unite vimshell/history -default-action=insert -direction=below<CR>
   imap <buffer> <C-h> <Plug>(vimshell_delete_backward_char)
-  "nunmap <buffer> <C-d>
   nunm <buffer> q
- 	call vimshell#hook#set('preexec'  , ['g:vimshell_preexec'])
-	call vimshell#hook#set('postexec' , ['g:vimshell_postexec'])
+  call vimshell#hook#set('preexec'  , ['g:vimshell_preexec'])
+  call vimshell#hook#set('postexec' , ['g:vimshell_postexec'])
   call vimshell#set_execute_file('txt,vim,xml,java,jax,jsp,rb,js', 'vim')
   call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
 
-  inoremap <buffer> <silent> <C-n>  <ESC>:<C-u>Unite buffer_tab<CR>
-  inoremap <buffer> <silent> <C-r>  <ESC>:<C-u>Unite file_mru -start-insert<CR>
-  nnoremap <buffer><silent> <C-n>  :<C-u>Unite buffer_tab<CR>
+  inoremap <buffer> <silent> <C-n> <ESC>:<C-u>Unite buffer_tab<CR>
+  inoremap <buffer> <silent> <C-r> <ESC>:<C-u>Unite file_mru -start-insert<CR>
+  nnoremap <buffer> <silent> <C-n> :<C-u>Unite buffer_tab<CR>
   inoremap <C-x><C-f> <Esc>:Unite file_rec -input=
 
   AlterCommand <buffer> q echo 'use bd'
 
   hi VimShellPrompt guifg=#8ac6f2 gui=NONE
   NeoComplCacheAutoCompletionLength 4
+  NeoComplCacheLockSource syntax_complete
+  NeoComplCacheLockSource buffer_complete
 endfunction
 " vim コマンド実行前処理
 function! g:vimshell_preexec(cmdline, context)
@@ -656,7 +534,6 @@ function! s:is_vimshell_change_termencoding_cmd(cmdline)
   return len(l:args) > 0 && l:args[0] =~ g:vimshell_change_termencoding_cmd
 endfunction
 
-
 """"""""""""""""""""""""""""""""""
 "            vimfiler            "
 """"""""""""""""""""""""""""""""""
@@ -673,8 +550,6 @@ nnoremap <silent> <Leader>d  :<C-u>Unite -buffer-name=file -hide-source-names fi
 nnoremap <silent> <Leader>b  :<C-u>Unite -no-start-insert bookmark<CR>
 nnoremap <silent> <C-t>      :<C-u>Unite tags -start-insert<CR>
 nnoremap <Leader>f  :<C-u>Unite file_rec -input=
-"nnoremap <C-x><C-f>  :<C-u>Unite file_rec -input=
-"inoremap <C-x><C-f> :<C-u>Unite file_rec -input=
 
 nnoremap <silent> <Leader>u  :<C-u>Unite buffer_tab file file_mru bookmark<CR>
 
@@ -690,18 +565,14 @@ let g:unite_split_rule = 'leftabove'
 call unite#set_substitute_pattern('file', '^\~', substitute(substitute($HOME, '\\', '/', 'g'), ' ', '\\\\ ', 'g'), -200)
 if has('win32')
   call unite#set_substitute_pattern('file', '[^~.]\zs/', '*/*', 20)
-  call unite#set_substitute_pattern('file', '/\ze[^*]', '/*', 10)
+  call unite#set_substitute_pattern('file', '/\ze[^*]', '/*'  , 10)
 else
   call unite#set_substitute_pattern('file', '[[:alnum:]]', '*\0', -150)
 endif
 
 call unite#set_substitute_pattern('file_mru', '[[:alnum:]]', '*\0', 100)
-call unite#set_substitute_pattern('file_mru', '[^~.]\zs/', '*/*', 20)
-call unite#set_substitute_pattern('file_mru', '/\ze[^*]', '/*', 10)
-
-"call unite#set_substitute_pattern('outline', '[[:alnum:]]', '*\0', 100)
-"call unite#set_substitute_pattern('outline', '[^~.]\zs/', '*/*', 20)
-"call unite#set_substitute_pattern('outline', '/\ze[^*]', '/*', 10)
+call unite#set_substitute_pattern('file_mru', '[^~.]\zs/', '*/*'  , 20)
+call unite#set_substitute_pattern('file_mru', '/\ze[^*]', '/*'    , 10)
 
 call unite#set_buffer_name_option('file', 'smartcase', 0)
 
@@ -724,10 +595,7 @@ let g:unite_source_outline_cache_dir = ''
 
 call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
 
-call unite#set_profile('buffer_tab', 'ignorecase', 1)
-call unite#set_profile('file'      , 'ignorecase', 1)
-call unite#set_profile('file_mru'  , 'ignorecase', 1)
-"call unite#set_profile('file_mru'  , 'filters', ['converter_file_directory'])
+call unite#set_profile('buffer_tab,file,file_mru', 'ignorecase', 1)
 
 function! s:unite_my_settings()
   " Overwrite settings.
@@ -739,10 +607,9 @@ function! s:unite_my_settings()
   endif
 
   imap <buffer> jj <Plug>(unite_insert_leave)
-  "imap <buffer> jj <Plug>(unite_exit)
   imap <buffer> <C-j> <Plug>(unite_exit)
   imap <buffer> <ESC> <Plug>(unite_exit)
-	imap <buffer> <C-o> <Plug>(unite_insert_leave):<C-u>call unite#mappings#do_action('above')<CR>
+  imap <buffer> <C-o> <Plug>(unite_insert_leave):<C-u>call unite#mappings#do_action('above')<CR>
   inoremap <silent><buffer><expr> <C-x><C-i> unite#do_action('insert')
   imap <buffer> <C-e> <Enter>
   nmap <buffer> <C-n> <Plug>(unite_loop_cursor_down)
@@ -754,20 +621,12 @@ function! s:unite_my_settings()
   inoremap <buffer> <C-b> <Left>
   inoremap <buffer><expr> <C-r>      unite#mappings#set_current_filters(
         \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
-	inoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
+  inoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
   inoremap <silent><buffer><expr> <C-s> unite#do_action('rec_parent/async')
 
-	nmap <silent><buffer> a <Plug>(unite_insert_enter)
+  map <silent><buffer> a <Plug>(unite_insert_enter)
   "startinsert
 endfunction
-
-""""""""""""""""""""""""""""""""""
-"             go                 "
-""""""""""""""""""""""""""""""""""
-
-"let go_highlight_array_whitespace_error = 0
-"let go_highlight_space_tab_error = 0
-let go_highlight_trailing_whitespace_error = 0
 
 """"""""""""""""""""""""""""""""""
 "             misc               "
@@ -777,19 +636,19 @@ let g:hatena_user = 'basyura'
 let g:scratchBackupFile=$HOME . "/.scratch.txt"
 " ubuntu の時だけ
 if !has('mac') && !has('win32') && !has('win32unix')
-	inoremap <silent> <esc> <esc>:call ForceImeOff()<cr>
-	inoremap <silent> <C-[> <esc>:call ForceImeOff()<cr>
-	inoremap <silent> <C-c> <esc>:call ForceImeOff()<cr>
-	function! ForceImeOff()
-		let imeoff = system('xvkbd -text "\[Control]\[Shift]\[space]" > /dev/null 2>&1')
-	endfunction
+  inoremap <silent> <esc> <esc>:call ForceImeOff()<cr>
+  inoremap <silent> <C-[> <esc>:call ForceImeOff()<cr>
+  inoremap <silent> <C-c> <esc>:call ForceImeOff()<cr>
+  function! ForceImeOff()
+    let imeoff = system('xvkbd -text "\[Control]\[Shift]\[space]" > /dev/null 2>&1')
+  endfunction
 endif
-	
-command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
+
+command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>')
 function! s:ChangeCurrentDir(directory, bang)
 
   if &filetype == 'vimfiler'
-    execute 'lcd ' . b:vimfiler.current_dir
+    lcd `=b:vimfiler.current_dir`
     return
   endif
 
@@ -803,7 +662,6 @@ function! s:ChangeCurrentDir(directory, bang)
     pwd
   endif
 endfunction
-
 
 " Change current directory.
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
@@ -834,6 +692,12 @@ if has('mac')
         \   'outputter' : 'browser'  ,
         \ },
         \}
+  let g:quickrun_config['cs'] = {
+        \ 'command' : 'dmcs',
+        \ 'runmode' : 'simple',
+        \ 'exec' : ['%c %s > /dev/null', 'mono "%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
+        \ 'tempfile' : '%{tempname()}.cs',
+        \ }
 else
   let g:quickrun_config = {
         \ '*' : {'into' : 0},
@@ -847,21 +711,6 @@ else
         \    },
         \ },
         \}
-endif
-
-let g:quickrun_config.markdown = {
-      \ 'exec'      : 'kramdown %s',
-      \ 'outputter' : 'browser',
-      \ }
-
-if has('mac')
-  let g:quickrun_config['cs'] = {
-        \ 'command' : 'dmcs',
-        \ 'runmode' : 'simple',
-        \ 'exec' : ['%c %s > /dev/null', 'mono "%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
-        \ 'tempfile' : '%{tempname()}.cs',
-        \ }
-else
   let g:quickrun_config['cs'] = {
         \ 'command' : 'csc',
         \ 'runmode' : 'simple',
@@ -870,6 +719,12 @@ else
         \ 'tempfile' : '{tempname()}.cs',
         \ }
 endif
+
+let g:quickrun_config.markdown = {
+      \ 'exec'      : 'kramdown %s',
+      \ 'outputter' : 'browser',
+      \ }
+
 
 if has('win32')
   let g:quickrun_config['java'] = {
@@ -945,10 +800,7 @@ function! s:tweetvim_say_my_settings()
   nnoremap <buffer> <silent> <C-j> :bd!<CR>
 "  inoremap <buffer> <C-x><C-d> <ESC>:TweetVimBitly<CR>
 endfunction
-"
-function! s:lingr_messages_setting()
-  nmap <buffer> <silent> <Space>po <Plug>(lingr-messages-show-say-buffer)
-endfunction
+
 
 function! s:lingr_say_setting()
   nmap <buffer> <silent> <C-j> <Plug>(lingr-say-close)
@@ -999,16 +851,12 @@ function! s:tabnew()
   bd
 endfunction
 
-" http://nanasi.jp/articles/vim/kwbd_vim.html
-":command! Kwbd let kwbd_bn= bufnr("%")|enew|exe "bdel ".kwbd_bn|unlet kwbd_bn 
-
 "color for cygwin
 if has('win32unix')
-  "hi Pmenu     ctermfg=white   ctermbg=black cterm=none
-  hi Pmenu     ctermfg=LightYellow   ctermbg=black cterm=none
-  hi PmenuSel  ctermfg=232     ctermbg=magenta
-  hi Special   ctermfg=green cterm=none
-  hi PreProc   ctermfg=green cterm=none
+  hi Pmenu     ctermfg=LightYellow  ctermbg=black cterm=none
+  hi PmenuSel  ctermfg=232          ctermbg=magenta
+  hi Special   ctermfg=green        cterm=none
+  hi PreProc   ctermfg=green        cterm=none
 endif
 
 "here is a more exotic version of my original Kwbd script
@@ -1072,7 +920,6 @@ function! s:Kwbd(kwbdStage)
 endfunction
 
 command! Kwbd call <SID>Kwbd(1)
-"nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
 
 if filereadable($HOME . '/.vimrc_local_after')
   source ~/.vimrc_local_after
