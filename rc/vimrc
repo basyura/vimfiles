@@ -313,7 +313,7 @@ inoremap <silent> <C-o> <ESC>o
 inoremap <C-j> <ESC>
 inoremap jj <ESC>
 noremap <silent> <C-j> <ESC>:noh<CR>
-inoremap kk <ESC><S-o>
+inoremap kk <ESC>O
 inoremap [[ []<Left>
 inoremap <C-q> []<Left>
 
