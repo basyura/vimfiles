@@ -185,7 +185,7 @@ let java_ignore_javadoc = 1
 "             map                "
 """"""""""""""""""""""""""""""""""
 nnoremap qq q
-nnoremap q <ESC>
+nnoremap q <Nop>
 
 nnoremap <silent> U :<C-u>redo<CR>
 "map bn    :bnext<CR>
