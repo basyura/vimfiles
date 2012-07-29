@@ -93,7 +93,6 @@ set ignorecase
 """"""""""""""""""""""""""""""""""
 augroup MyGroup
   autocmd!
-  au BufWritePre * call s:change_last_mod_date()
   au BufNewFile,BufRead *.scala setf scala
   "set autochdir
   au BufEnter * call s:all_bufenter_setting()
