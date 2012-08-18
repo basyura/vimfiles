@@ -48,6 +48,7 @@ else
   let g:vimproc_dll_path = $HOME . '/.vim/proc/proc_mac.so'
 endif
 
+set textwidth=0
 set ambiwidth=double
 set number
 set autoindent
@@ -293,6 +294,7 @@ nnoremap <C-x> :Unite rails/
 
 nnoremap <silent> t  :Unite tweetvim<CR>
 nnoremap <silent> ta :TweetVimListStatuses all<CR>
+nnoremap <silent> th :TweetVimHomeTimeline<CR>
 nnoremap <silent> tm :TweetVimMentions<CR>
 
 nnoremap Y y$

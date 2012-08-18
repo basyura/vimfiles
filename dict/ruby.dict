@@ -155,3 +155,4 @@ expand_path
 Tempfile
 presence
 length
+FileUtils
