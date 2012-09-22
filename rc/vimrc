@@ -264,7 +264,7 @@ nnoremap <silent>co :Unite -no-quit qflist<CR>
 nnoremap <silent><Leader>r :UniteResume<CR>
 nnoremap <silent>on 999<C-w>+
 nnoremap <silent><Leader><Leader>r :Unite yarm<CR>
-nnoremap <silent><Leader>l :Unite -vertical -winwidth=50 -no-start-insert uiki<CR>
+nnoremap <silent><Leader>l :Unite -vertical -winwidth=50 uiki<CR>
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
