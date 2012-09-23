@@ -244,7 +244,8 @@ nnoremap <Leader>v :VimShell<CR>
 nnoremap <Leader>w :WriteToFile<CR>
 nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> :Unite 
-nnoremap <Leader>g  :VimGrep **/*.* 
+"nnoremap <Leader>g  :VimGrep **/*.* 
+nnoremap <Leader>g :Unite mygrep:.: -no-quit -no-start-insert -vertical -auto-preview<CR>
 nnoremap <Space>d :<C-u>pwd<CR>
 nnoremap <silent> <C-l> :Unite outline  -winheight=30 -buffer-name=outline<CR>
 nnoremap <silent> <C-l><C-l> :Unite outline:!  -winheight=30 -buffer-name=outline<CR>
