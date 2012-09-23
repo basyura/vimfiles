@@ -489,7 +489,7 @@ function! s:complete_slash()
 endfunction
 
 function! s:vimshell_filetype_settings()
-  inoremap <buffer><expr> <tab> pumvisible() ? "\<C-y>\<ESC>:call \<SID>complete_slash()\<CR>" : ""
+  imap <buffer><expr> <tab> pumvisible() ? "\<C-y>\<ESC>:call \<SID>complete_slash()\<CR>" : "\<Plug>(vimshell_command_complete)"
   inoremap <buffer> <C-x> <ESC><C-w>h:on<CR>
   nnoremap <buffer> <CR> Go$<Space>
   imap <buffer> <C-x>     <ESC><C-w>h:on<CR>
