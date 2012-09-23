@@ -522,7 +522,7 @@ function! s:vimshell_filetype_settings()
   AlterCommand <buffer> q echo 'use bd'
 
   hi VimShellPrompt guifg=#8ac6f2 gui=NONE
-  NeoComplCacheAutoCompletionLength 2
+  NeoComplCacheAutoCompletionLength 3
   NeoComplCacheLockSource syntax_complete
   NeoComplCacheLockSource buffer_complete
 endfunction
