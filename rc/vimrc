@@ -477,8 +477,19 @@ let g:vimshell_interactive_cygwin_commands['telnet'] = {
   \ 'description' : 'git [{options}...] {command}',
 \}
 
+
+nnoremap <silent> <Plug>(vimshell_complete_slash)  :<C-u>call s:complete_slash()<CR>
+  "nnoremap <buffer><silent> <Plug>(vimshell_enter)
+        "\ i<C-g>u<ESC>:<C-u>call vimshell#execute_current_line(0)<CR><ESC>
+function! s:complete_slash()
+  if fnamemodify(getline("."), ":t") !~ '\.'
+    call setline(line("."), getline(".") . "/")
+  endif
+  startinsert!
+endfunction
+
 function! s:vimshell_filetype_settings()
-  inoremap <buffer> <tab> <C-y>/
+  inoremap <buffer><expr> <tab> pumvisible() ? "\<C-y>\<ESC>:call \<SID>complete_slash()\<CR>" : ""
   inoremap <buffer> <C-x> <ESC><C-w>h:on<CR>
   nnoremap <buffer> <CR> Go$<Space>
   imap <buffer> <C-x>     <ESC><C-w>h:on<CR>
