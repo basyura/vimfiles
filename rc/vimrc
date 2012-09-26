@@ -134,6 +134,7 @@ augroup MyGroup
 augroup END
 
 function! s:neco_pre_cache()
+  return
   if exists('b:neco_pre_cache')
     return
   endif
