@@ -246,7 +246,7 @@ nnoremap <Leader>w :WriteToFile<CR>
 nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> :Unite 
 "nnoremap <Leader>g  :VimGrep **/*.* 
-nnoremap <Leader>g :Unite mygrep:.: -no-quit -no-start-insert -vertical -auto-preview<CR>
+nnoremap <Leader>g :Unite mygrep:.: -no-quit -no-start-insert -vertical<CR>
 nnoremap <Space>d :<C-u>pwd<CR>
 nnoremap <silent> <C-l> :Unite outline  -winheight=30 -buffer-name=outline<CR>
 nnoremap <silent> <C-l><C-l> :Unite outline:!  -winheight=30 -buffer-name=outline<CR>
@@ -489,8 +489,36 @@ function! s:complete_slash()
   startinsert!
 endfunction
 
+function! s:complete_tab()
+  let cmd = substitute(getline("."), '^' . g:vimshell_prompt, '', '')
+
+  if pumvisible()
+    call feedkeys("\<C-y>\<C-h>")
+    if cmd =~ '^cd ' && cmd !~ '/$'
+      call feedkeys("/")
+    end
+    return
+  endif
+
+  if cmd =~ '^cd ' && cmd !~ '/$'
+    let path = substitute(cmd, '^cd ', '', '')
+    if isdirectory(path)
+      for d in split(glob(path . '/*'))
+        if isdirectory(d)
+         call feedkeys("\<C-h>/")
+         return
+        endif
+      endfor
+    endif
+    call feedkeys("\<C-h>")
+    return
+  endif
+  call feedkeys("\<C-h>")
+endfunction
+
 function! s:vimshell_filetype_settings()
-  imap <buffer><expr> <tab> pumvisible() ? "\<C-y>\<ESC>:call \<SID>complete_slash()\<CR>" : "\<Plug>(vimshell_command_complete)"
+  "imap <buffer><expr> <tab> pumvisible() ? "\<C-y>\<ESC>:call \<SID>complete_slash()\<CR>" : "\<Plug>(vimshell_command_complete)"
+  imap <buffer><expr><tab> <SID>complete_tab()
   inoremap <buffer> <C-x> <ESC><C-w>h:on<CR>
   nnoremap <buffer> <CR> Go$<Space>
   imap <buffer> <C-x>     <ESC><C-w>h:on<CR>
