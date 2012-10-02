@@ -85,6 +85,7 @@ hi Cursor   guifg=bg    guibg=orange
 hi Visual   guifg=black guibg=#bde682
 hi VimShellUserPrompt guifg=#95e454
 hi VimShellPrompt guifg=#8ac6f2 gui=NONE
+hi VimShellError  guifg=#e5786d
 hi Comment             gui=none
 hi String              gui=none
 hi StatusLine  gui=none
