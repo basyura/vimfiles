@@ -11,6 +11,9 @@ filetype plugin indent on
 syntax on
 colorscheme desert
 
+" メッセージ抑止
+let $CYGWIN = 'nodosfilewarning'
+
 set runtimepath^=~/.vim/gitplugins/*
 set runtimepath+=~/.vim/plugins/*
 set runtimepath+=~/.vim
