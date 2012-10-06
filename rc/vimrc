@@ -656,12 +656,12 @@ call unite#set_profile('buffer_tab,file,file_mru,everything', 'ignorecase', 1)
 
 function! s:unite_my_settings()
   " Overwrite settings.
-  if exists(':NeoComplCacheDisableCaching')
-    NeoComplCacheDisableCaching
-  endif
-  if exists(':NeoComplCacheLock')
-    NeoComplCacheLock
-  endif
+  "if exists(':NeoComplCacheDisableCaching')
+  "  NeoComplCacheDisableCaching
+  "endif
+  "if exists(':NeoComplCacheLock')
+  "  NeoComplCacheLock
+  "endif
 
   imap <buffer> jj <Plug>(unite_insert_leave)
   imap <buffer> <C-j> <Plug>(unite_exit)
