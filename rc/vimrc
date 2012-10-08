@@ -305,7 +305,17 @@ nnoremap <silent> tm :TweetVimMentions<CR>
 
 nnoremap Y y$
 
-nnoremap <C-@><C-@> :Restart!<CR>
+nnoremap <silent> <C-@><C-@> :call <SID>restart()<CR>
+
+function! s:restart()
+  if exists(':LingrExit')
+    :LingrExit
+    set updatetime=2000
+    autocmd CursorHold * :Restart!
+  else
+    :Restart!
+  endif
+endfunction
 
 nnoremap <Space>c :Cache<CR>:NeoComplCacheCachingDictionary<CR>
 inoremap <C-x><C-c> <esc>:Cache<CR>:NeoComplCacheCachingDictionary<CR>a

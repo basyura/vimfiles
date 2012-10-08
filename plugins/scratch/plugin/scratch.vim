@@ -112,23 +112,26 @@ function! <SID>ShowScratchBuffer()
 endfunction
 
 function! s:BackupScratchBuffer()
-  if s:buffer_number != -1 && exists('g:scratchBackupFile') &&
-        \ g:scratchBackupFile != ''
-    " move to scratch buffer
-    if bufnr('%') != s:buffer_number
-      exec 'split #' . s:buffer_number
+  try
+    if s:buffer_number != -1 && exists('g:scratchBackupFile') &&
+          \ g:scratchBackupFile != ''
+      " move to scratch buffer
+      if bufnr('%') != s:buffer_number
+        exec 'split #' . s:buffer_number
+      endif
+      " Avoid writing empty scratch buffers.
+      if line('$') > 1 || getline(1) !~ '^\s*$'
+        let _cpo=&cpo
+        try
+          set cpo-=A
+          exec 'write!' g:scratchBackupFile
+        finally
+          let &cpo=_cpo
+        endtry
+      endif
     endif
-    " Avoid writing empty scratch buffers.
-    if line('$') > 1 || getline(1) !~ '^\s*$'
-      let _cpo=&cpo
-      try
-        set cpo-=A
-        exec 'write!' g:scratchBackupFile
-      finally
-        let &cpo=_cpo
-      endtry
-    endif
-  endif
+  catch
+  endtry
 endfunction
 
 " Restore cpo.
