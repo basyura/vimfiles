@@ -118,7 +118,8 @@ augroup MyGroup
 
   autocmd FileType netrw setlocal buftype=nofile bufhidden=delete
 
-  autocmd FileType vimshell call s:vimshell_filetype_settings()
+  autocmd FileType vimshell      call s:vimshell_filetype_settings()
+  autocmd FileType vimshell-less call s:vimshell_less_filetype_settings()
 
   autocmd FileType unite        call s:unite_my_settings()
   autocmd FileType scratch      call s:scratch_my_settings()
@@ -556,8 +557,14 @@ function! s:vimshell_filetype_settings()
 
   hi VimShellPrompt guifg=#8ac6f2 gui=NONE
   NeoComplCacheAutoCompletionLength 3
-  NeoComplCacheLockSource syntax_complete
-  NeoComplCacheLockSource buffer_complete
+  "NeoComplCacheLockSource syntax_complete
+  "NeoComplCacheLockSource buffer_complete
+endfunction
+"
+"
+"
+function! s:vimshell_less_filetype_settings()
+  AlterCommand <buffer> q bd
 endfunction
 " vim コマンド実行前処理
 function! g:vimshell_preexec(cmdline, context)
