@@ -738,9 +738,9 @@ nnoremap <silent> <Space>cd :<C-u>CD<CR>
 " tweetvim
 nnoremap <silent> s           :<C-u>TweetVimSay<CR>
 nnoremap <silent> <Space>re   :<C-u>TweetVimMentions<CR>
-nnoremap <silent> <Space>w    :<C-u>TweetVimHomeTimeline<CR>
+nnoremap <silent> <Space>a    :TweetVimListStatuses all<CR>
 nnoremap <silent> t  :Unite tweetvim<CR>
-nnoremap <silent> ta :TweetVimListStatuses all<CR>
+nnoremap <silent> ta :TweetVimHomeTimeline<CR>
 nnoremap <silent> th :TweetVimHomeTimeline<CR>
 nnoremap <silent> tm :TweetVimMentions<CR>
 
