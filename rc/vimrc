@@ -298,11 +298,6 @@ nnoremap <C-x><C-d> :Unite rails/db<CR>
 nnoremap <C-x><C-f> :Unite rails/config<CR>
 nnoremap <C-x> :Unite rails/
 
-nnoremap <silent> t  :Unite tweetvim<CR>
-nnoremap <silent> ta :TweetVimListStatuses all<CR>
-nnoremap <silent> th :TweetVimHomeTimeline<CR>
-nnoremap <silent> tm :TweetVimMentions<CR>
-
 nnoremap Y y$
 
 nnoremap <silent> <C-@><C-@> :call <SID>restart()<CR>
@@ -743,7 +738,12 @@ nnoremap <silent> <Space>cd :<C-u>CD<CR>
 " tweetvim
 nnoremap <silent> s           :<C-u>TweetVimSay<CR>
 nnoremap <silent> <Space>re   :<C-u>TweetVimMentions<CR>
-nnoremap <silent> <Space>tt   :<C-u>TweetVimListStatuses basyura all<CR>
+nnoremap <silent> <Space>w    :<C-u>TweetVimHomeTimeline<CR>
+nnoremap <silent> t  :Unite tweetvim<CR>
+nnoremap <silent> ta :TweetVimListStatuses all<CR>
+nnoremap <silent> th :TweetVimHomeTimeline<CR>
+nnoremap <silent> tm :TweetVimMentions<CR>
+
 let g:tweetvim_display_source = 1
 let g:tweetvim_original_hi = 1
 
