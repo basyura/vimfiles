@@ -384,10 +384,18 @@ let g:neocomplcache_enable_auto_select = 1
 let g:neocomplcache_disable_caching_file_path_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
 " 自動補完しないパターン
 let g:neocomplcache_lock_buffer_name_pattern = '\.log\|\.log\.\|.*quickrun.*\|.jax\|Log.txt'
+" text-mode
+if !exists('g:neocomplcache_text_mode_filetypes')
+  let g:neocomplcache_text_mode_filetypes = {}
+endif
+let g:neocomplcache_text_mode_filetypes.scratch      = 1
+let g:neocomplcache_text_mode_filetypes.note         = 1
+let g:neocomplcache_text_mode_filetypes.tweetvim_say = 1
 " キャッシュ中に、メッセージをCommand-lineに表示しない
 let g:neocomplcache_enable_caching_message = 0
 " キー入力時にキーワード補完を行う入力数を制御する。
 let g:neocomplcache_auto_completion_start_length = 2
+
 " 大文字・小文字を無視するか
 let g:neocomplcache_enable_ignore_case = 0
 let g:neocomplcache_enable_smart_case = 0
@@ -537,6 +545,7 @@ function! s:vimshell_filetype_settings()
   imap <buffer> <C-o> <Plug>(vimshell_enter)
   inoremap <buffer> <C-l> <C-y>
   inoremap <buffer> <expr><silent> <C-s>  unite#sources#vimshell_history#start_complete(1)
+  inoremap <buffer> <C-q> <ESC><C-w>p 
   imap <buffer> <C-h> <Plug>(vimshell_delete_backward_char)
   nunm <buffer> q
   call vimshell#hook#set('preexec'  , ['g:vimshell_preexec'])
@@ -562,8 +571,8 @@ function! s:vimshell_filetype_settings()
 
   hi VimShellPrompt guifg=#8ac6f2 gui=NONE
   NeoComplCacheAutoCompletionLength 3
-  "NeoComplCacheLockSource syntax_complete
-  "NeoComplCacheLockSource buffer_complete
+  NeoComplCacheLockSource syntax_complete
+  NeoComplCacheLockSource buffer_complete
 endfunction
 "
 "
@@ -678,8 +687,10 @@ function! s:unite_my_settings()
   imap <buffer> jj <Plug>(unite_insert_leave)
   imap <buffer> <C-j> <Plug>(unite_exit)
   imap <buffer> <ESC> <Plug>(unite_exit)
-  imap <buffer> <C-o> <Plug>(unite_insert_leave):<C-u>call unite#mappings#do_action('above')<CR>
-  inoremap <silent><buffer><expr> <C-x><C-i> unite#do_action('insert')
+  "imap <buffer> <C-o> <Plug>(unite_insert_leave):<C-u>call unite#mappings#do_action('above')<CR>
+  inoremap <buffer><expr> <C-v> unite#do_action('vsplit')
+  inoremap <buffer><expr> <C-x><C-x> unite#do_action('insert')
+	noremap <silent><buffer><expr> <C-x><C-x> unite#do_action('insert')
   imap <buffer> <C-e> <Enter>
   nmap <buffer> <C-n> <Plug>(unite_loop_cursor_down)
   nmap <buffer> <C-p> <Plug>(unite_loop_cursor_up)
@@ -744,6 +755,7 @@ nnoremap <silent> ta :TweetVimHomeTimeline<CR>
 nnoremap <silent> th :TweetVimHomeTimeline<CR>
 nnoremap <silent> tm :TweetVimMentions<CR>
 
+"let g:tweetvim_default_account = 'tottoruby'
 let g:tweetvim_display_source = 1
 let g:tweetvim_original_hi = 1
 
