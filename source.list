@@ -3,7 +3,7 @@ https://github.com/yomi322/neco-tweetvim
 https://github.com/basyura/unite-converter-file-directory.git
 https://github.com/basyura/unite-matcher-file-name.git
 https://github.com/teramako/jscomplete-vim.git
-https://github.com/Shougo/neocomplcache-snippets-complete.git
+https://github.com/Shougo/neosnippet.git
 https://github.com/thinca/vim-singleton.git
 https://github.com/basyura/TweetVim.git
 https://github.com/basyura/twibill.vim.git
@@ -41,4 +41,5 @@ https://github.com/vim-scripts/grep.vim.git
 https://github.com/vim-scripts/The-NERD-Commenter.git
 https://github.com/basyura/outline-cs.git
 https://github.com/basyura/csharp_complete.git
+https://https://github.com/sgur/unite-everything.git
 
