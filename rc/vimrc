@@ -345,7 +345,10 @@ vnoremap cb :s/\t/\|/g<CR>
 let g:neocomplcache_enable_at_startup = 1
 
 " snippet ファイルの保存先
-let g:neocomplcache_snippets_dir='~/.vim/snippets'
+if !exists("g:neosnippet#snippets_directory")
+    let g:neosnippet#snippets_directory=""
+endif
+let g:neosnippet#snippets_directory='~/.vim/snippets'
 " dictionary
 if !exists('g:neocomplcache_dictionary_filetype_lists')
   let g:neocomplcache_dictionary_filetype_lists = {}
@@ -563,7 +566,7 @@ function! s:vimshell_filetype_settings()
   imap <buffer><expr> <CR> (pumvisible() ? "<C-y>\<Plug>(vimshell_enter)" : "\<Plug>(vimshell_enter)")
   " <Cr> expands snippet!
   "imap <buffer><expr> <CR> neocomplcache#sources#snippets_complete#expandable() ?
-  "    \ "\<Plug>(neocomplcache_snippets_expand)\<Plug>(vimshell_enter)" : pumvisible() ? "<C-y>" : "\<Plug>(vimshell_enter)"
+  "    \ "\<Plug>(neosnippet#expand)\<Plug>(vimshell_enter)" : pumvisible() ? "<C-y>" : "\<Plug>(vimshell_enter)"
   "imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "\<Plug>(vimshell_enter)")
 
   AlterCommand <buffer> q echo 'use bd'
