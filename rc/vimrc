@@ -126,6 +126,7 @@ augroup MyGroup
   autocmd FileType tweetvim_say call s:tweetvim_say_my_settings()
   autocmd FileType vimshell-bg  call s:bg_settings()
 
+  autocmd FileType note       call s:note_settings()
   autocmd FileType lingr-*    :setlocal nonu
   autocmd FileType lingr-*    :setlocal nowrap
   autocmd FileType lingr-say  call s:lingr_say_setting()
@@ -136,6 +137,10 @@ augroup MyGroup
 
   autocmd FileType git :setlocal foldlevel=99
 augroup END
+
+function! s:note_settings()
+  nnoremap <buffer> <C-l> :Unite outline -vertical -winwidth=50 -no-quit -no-start-insert<CR>
+endfunction
 
 function! s:neco_pre_cache()
   return
