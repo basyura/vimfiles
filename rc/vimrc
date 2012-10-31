@@ -394,6 +394,7 @@ endif
 let g:neocomplcache_text_mode_filetypes.scratch      = 1
 let g:neocomplcache_text_mode_filetypes.note         = 1
 let g:neocomplcache_text_mode_filetypes.tweetvim_say = 1
+let g:neocomplcache_text_mode_filetypes.help         = 1
 " キャッシュ中に、メッセージをCommand-lineに表示しない
 let g:neocomplcache_enable_caching_message = 0
 " キー入力時にキーワード補完を行う入力数を制御する。
