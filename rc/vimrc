@@ -447,8 +447,8 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 " snippet 補完
 "
 imap <expr><C-l> pumvisible() ?
-      \ "\<C-y><Plug>(neosnippet_expand)"
-      \ : "<Plug>(neosnippet_expand)"
+      \ "\<C-y><Plug>(neosnippet_expand_or_jump)"
+      \ : "<Plug>(neosnippet_expand_or_jump)"
 "smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 command! -nargs=* Nes NeoSnippetEdit <args>
 command! -nargs=* Nel NeoComplCacheLock <args>
