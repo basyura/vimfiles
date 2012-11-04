@@ -905,6 +905,7 @@ endfunction
 
 function! s:lingr_say_setting()
   nmap <buffer> <silent> <C-j> <Plug>(lingr-say-close)
+  imap <buffer> <C-CR> <ESC><CR>
 endfunction
 
 function! s:quickrun_setting()
