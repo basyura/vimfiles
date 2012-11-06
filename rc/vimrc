@@ -446,9 +446,9 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 " snippet 補完
 "
-"imap <expr><C-l> pumvisible() ?
-      "\ "\<C-y><Plug>(neosnippet_expand_or_jump)"
-      "\ : "<Plug>(neosnippet_expand_or_jump)"
+imap <expr><C-l><C-l> pumvisible() ?
+      \ "\<C-y><Plug>(neosnippet_expand_or_jump)"
+      \ : "<Plug>(neosnippet_expand_or_jump)"
 "smap <expr><C-l> pumvisible() ?
       "\ "\<C-y><Plug>(neosnippet_expand_or_jump)"
       "\ : "<Plug>(neosnippet_expand_or_jump)"
