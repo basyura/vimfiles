@@ -344,6 +344,8 @@ cnoremap <C-j> <C-u><ESC>
 vnoremap ch :s/\t/\|_=./g<CR>
 vnoremap cb :s/\t/\|/g<CR>
 
+vnoremap "ayxgvx
+
 """""""""""""""""""""""""""""""""
 "        neocomplcache          "
 """""""""""""""""""""""""""""""""
