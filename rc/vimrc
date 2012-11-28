@@ -183,6 +183,10 @@ function! s:all_bufenter_setting()
   endtry
 endfunction
 
+if exists('RmVimball')
+  delcommand RmVimball
+endif
+
 """"""""""""""""""""""""""""""""""
 "            colors              "
 """"""""""""""""""""""""""""""""""
