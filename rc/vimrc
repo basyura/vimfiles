@@ -139,7 +139,7 @@ augroup MyGroup
 augroup END
 
 function! s:note_settings()
-  nnoremap <buffer> <C-l> :Unite outline -vertical -winwidth=50 -no-quit -no-start-insert<CR>
+  nnoremap <silent> <buffer> <C-l> :Unite outline -vertical -winwidth=50 -no-quit -no-start-insert<CR>
 endfunction
 
 function! s:neco_pre_cache()
@@ -347,8 +347,6 @@ cnoremap <C-j> <C-u><ESC>
 
 vnoremap ch :s/\t/\|_=./g<CR>
 vnoremap cb :s/\t/\|/g<CR>
-
-vnoremap "ayxgvx
 
 """""""""""""""""""""""""""""""""
 "        neocomplcache          "
