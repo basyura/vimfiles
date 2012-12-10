@@ -290,8 +290,10 @@ nnoremap j  gj
 nnoremap gj j
 nnoremap k  gk
 nnoremap gk k
-nnoremap 0  g0
-nnoremap g0 0
+"nnoremap 0  g0
+"nnoremap g0 0
+nnoremap 0  ^
+nnoremap ^  0
 nnoremap $  g$
 nnoremap g$ $
 
