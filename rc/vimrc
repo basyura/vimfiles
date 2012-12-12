@@ -221,6 +221,9 @@ nnoremap <Space>ss  :<C-u>Source %<Enter>
 inoremap <C-d> <Del>
 cmap <C-d> <Del>
 
+"nnoremap 0 ^
+"nnoremap ^ 0
+
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
 
@@ -290,8 +293,10 @@ nnoremap j  gj
 nnoremap gj j
 nnoremap k  gk
 nnoremap gk k
-nnoremap 0  g0
-nnoremap g0 0
+"nnoremap 0  g0
+"nnoremap g0 0
+nnoremap 0 ^
+nnoremap ^ 0
 nnoremap $  g$
 nnoremap g$ $
 
