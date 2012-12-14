@@ -294,6 +294,7 @@ nnoremap gj j
 nnoremap k  gk
 nnoremap gk k
 nnoremap 0 ^
+nnoremap 00 0
 nnoremap ^ 0
 nnoremap $  g$
 nnoremap g$ $
