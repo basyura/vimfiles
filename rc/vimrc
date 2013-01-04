@@ -288,13 +288,13 @@ nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
 nnoremap <C-]> g<C-]>
-
+nnoremap <C-w> <Home>dw
 nnoremap j  gj
 nnoremap gj j
 nnoremap k  gk
 nnoremap gk k
 nnoremap 0 ^
-nnoremap 00 0
+"nnoremap 00 0
 nnoremap ^ 0
 nnoremap $  g$
 nnoremap g$ $
