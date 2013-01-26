@@ -105,6 +105,7 @@ if g:colors_name == 'solarized'
   hi tweetvim_star             guifg=orange
   hi tweetvim_separator        guifg=gray
   hi tweetvim_separator_title  guifg=gray
+  hi tweetvim_hash_tag         guifg=purple
 
 endif
 
