@@ -3,7 +3,8 @@
 """"""""""""""""""""""""""""""""""
 
 set background=light
-colorscheme solarized
+"colorscheme solarized
+colorscheme newspaper
 
 "colorscheme wombat
 """"""""""""""""""""""""""""""""""
@@ -96,6 +97,7 @@ if g:colors_name == 'solarized'
   hi vimMap     guifg=brown
   hi vimCommand guifg=brown
   hi helpHyperTextEntry guifg=#276549
+  hi Comment    guifg=gray
 
   hi tweetvim_reply            guifg=brown
   hi tweetvim_screen_name      guifg=#2C773D
@@ -108,6 +110,28 @@ if g:colors_name == 'solarized'
   hi tweetvim_hash_tag         guifg=purple
 
 endif
+
+if g:colors_name == 'newspaper'
+  set transparency=0
+  hi Comment guifg=darkgray
+  hi helpExample guifg=darkblue
+  hi vimshellPrompt guifg=darkgreen
+  hi PmenuSel ctermfg=255 ctermbg=21 gui=bold guifg=#ffffff guibg=#716d51 
+  "hi vimMap     guifg=brown
+  "hi vimCommand guifg=brown
+  "hi helpHyperTextEntry guifg=#276549
+
+  hi tweetvim_reply            guifg=brown
+  hi tweetvim_screen_name      guifg=#2C773D
+  hi tweetvim_at_screen_name   guifg=#2C773D
+  hi tweetvim_rt_count         guifg=#FF0000
+  hi tweetvim_appendix         guifg=gray
+  hi tweetvim_star             guifg=orange
+  hi tweetvim_separator        guifg=gray
+  hi tweetvim_separator_title  guifg=gray
+  hi tweetvim_hash_tag         guifg=blue
+endi
+
 
 if g:colors_name == 'wonbat'
   " カーソルオレンジ"
