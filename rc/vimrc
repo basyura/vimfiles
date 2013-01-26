@@ -784,7 +784,7 @@ nnoremap <silent> tm :TweetVimMentions<CR>
 
 "let g:tweetvim_default_account = 'tottoruby'
 let g:tweetvim_display_source = 1
-let g:tweetvim_original_hi = 1
+let g:tweetvim_original_hi = 0
 
 if !exists('g:twitvim_browser_cmd')
   if has('mac')
