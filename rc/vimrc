@@ -265,7 +265,7 @@ nnoremap <Leader><Leader> :Unite
 nnoremap <Leader>g :Unite grep:.: -no-quit -no-start-insert -vertical -buffer-name=grep<CR>
 nnoremap <Space>d :<C-u>pwd<CR>
 "nnoremap <silent> <C-l> :Unite outline  -winheight=30 -buffer-name=outline<CR>
-nnoremap <silent> <C-l> :Unite outline  -winwidth=40 -vertical -buffer-name=outline<CR>
+nnoremap <silent> <C-l> :Unite outline  -winwidth=40 -vertical -buffer-name=outline -hide-source-names<CR>
 nnoremap <silent> <C-l><C-l> :Unite outline:!  -winheight=30 -buffer-name=outline<CR>
 nnoremap <silent> <C-x><C-x> :TabNew<CR>
 nnoremap <silent> <C-x><C-l> :tabnext<CR>
@@ -579,9 +579,9 @@ function! s:vimshell_filetype_settings()
   call vimshell#set_execute_file('txt,vim,xml,java,jax,jsp,rb,js', 'vim')
   call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
 
-  inoremap <buffer> <silent> <C-n> <ESC>:<C-u>Unite -buffer-name=buffer buffer_tab<CR>
+  inoremap <buffer> <silent> <C-n> <ESC>:<C-u>Unite -buffer-name=buffer -hide-source-names buffer_tab<CR>
   inoremap <buffer> <silent> <C-r> <ESC>:<C-u>Unite -buffer-name=file_mru file_mru -start-insert<CR>
-  nnoremap <buffer> <silent> <C-n> :<C-u>Unite -buffer-name=buffer buffer_tab<CR>
+  nnoremap <buffer> <silent> <C-n> :<C-u>Unite -buffer-name=buffer -hide-source-names buffer_tab<CR>
   " it's the default behaviour of <Cr> in vimshell's insert mode
   "imap <buffer> <S-CR> <C-]><Plug>(vimshell_enter)
   "imap <buffer> <S-CR> <C-]><Plug>(vimshell_enter)
@@ -651,11 +651,11 @@ let g:vimfiler_as_default_explorer = 1
 "             unite              "
 """"""""""""""""""""""""""""""""""
 
-nnoremap <silent> <C-r>      :<C-u>Unite -buffer-name=file_mru file_mru -start-insert<CR>
-nnoremap <silent> <C-n>      :<C-u>Unite -buffer-name=buffer buffer_tab<CR>
+nnoremap <silent> <C-r>      :<C-u>Unite -buffer-name=file_mru file_mru -start-insert -hide-source-names<CR>
+nnoremap <silent> <C-n>      :<C-u>Unite -buffer-name=buffer -hide-source-names buffer_tab<CR>
 nnoremap <silent> <Leader>d  :<C-u>Unite -buffer-name=file -hide-source-names file file/new<CR>
 nnoremap <silent> <Leader>b  :<C-u>Unite -buffer-name=bookmark -no-start-insert bookmark<CR>
-nnoremap <silent> <C-t>      :<C-u>Unite -buffer-name=tags tags -start-insert<CR>
+nnoremap <silent> <C-t>      :<C-u>Unite -buffer-name=tags tags -start-insert -hide-source-names<CR>
 nnoremap <Leader>f  :<C-u>Unite file_rec -input=
 
 nnoremap <silent> <C-s> :Unite -buffer-name=history_yank history/yank<CR>
