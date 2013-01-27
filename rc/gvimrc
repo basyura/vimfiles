@@ -89,6 +89,8 @@ AlterCommand wq WQ
 """"""""""""""""""""""""""""""""""
 nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>:<C-u>source $MYGVIMRC<Enter>
 
+hi ModeMsg guifg=bg guibg=bg
+
 if g:colors_name == 'solarized'
   hi Normal     guifg=#313131
   hi Pmenu      guifg=#FFFDD6  guibg=black
@@ -117,6 +119,7 @@ if g:colors_name == 'newspaper'
   hi helpExample guifg=darkblue
   hi vimshellPrompt guifg=darkgreen
   hi PmenuSel ctermfg=255 ctermbg=21 gui=bold guifg=#ffffff guibg=#716d51 
+  hi Error   guifg=red gui=none
   "hi vimMap     guifg=brown
   "hi vimCommand guifg=brown
   "hi helpHyperTextEntry guifg=#276549

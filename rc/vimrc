@@ -139,7 +139,7 @@ augroup MyGroup
 augroup END
 
 function! s:note_settings()
-  nnoremap <silent> <buffer> <C-l> :Unite outline -vertical -winwidth=30 -no-quit -no-start-insert<CR>
+  nnoremap <silent> <buffer> <C-l> :Unite outline -vertical -winwidth=30 -no-quit -no-start-insert -buffer-name=note<CR>
 endfunction
 
 function! s:neco_pre_cache()
@@ -262,7 +262,7 @@ nnoremap <Leader>w :WriteToFile<CR>
 nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> :Unite 
 "nnoremap <Leader>g  :VimGrep **/*.* 
-nnoremap <Leader>g :Unite grep:.: -no-quit -no-start-insert -vertical<CR>
+nnoremap <Leader>g :Unite grep:.: -no-quit -no-start-insert -vertical -buffer-name=grep<CR>
 nnoremap <Space>d :<C-u>pwd<CR>
 "nnoremap <silent> <C-l> :Unite outline  -winheight=30 -buffer-name=outline<CR>
 nnoremap <silent> <C-l> :Unite outline  -winwidth=40 -vertical -buffer-name=outline<CR>
@@ -279,12 +279,14 @@ nnoremap w; <C-w>+
 nnoremap w- <C-w>-
 nnoremap wm 100<C-w>+
 nnoremap man :Unite help<CR>
-nnoremap <silent>co :Unite -no-quit qflist<CR>
+nnoremap <silent>co :Unite -no-quit -buffer-name=qflist qflist<CR>
 nnoremap <silent><Leader>r :UniteResume<CR>
 nnoremap <silent>on 999<C-w>+
 nnoremap <silent><Leader><Leader>r :Unite yarm<CR>
 "nnoremap <silent><Leader>l :Unite -vertical -winwidth=50 uiki<CR>
-nnoremap <silent><Leader>l :Unite note<CR>
+nnoremap <silent><Leader>l  :<C-u>Unite -buffer-name=note -hide-source-names note<CR>
+
+nnoremap <silent><C-h> :Unite history/command<CR>
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
@@ -577,9 +579,9 @@ function! s:vimshell_filetype_settings()
   call vimshell#set_execute_file('txt,vim,xml,java,jax,jsp,rb,js', 'vim')
   call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
 
-  inoremap <buffer> <silent> <C-n> <ESC>:<C-u>Unite buffer_tab<CR>
-  inoremap <buffer> <silent> <C-r> <ESC>:<C-u>Unite file_mru -start-insert<CR>
-  nnoremap <buffer> <silent> <C-n> :<C-u>Unite buffer_tab<CR>
+  inoremap <buffer> <silent> <C-n> <ESC>:<C-u>Unite -buffer-name=buffer buffer_tab<CR>
+  inoremap <buffer> <silent> <C-r> <ESC>:<C-u>Unite -buffer-name=file_mru file_mru -start-insert<CR>
+  nnoremap <buffer> <silent> <C-n> :<C-u>Unite -buffer-name=buffer buffer_tab<CR>
   " it's the default behaviour of <Cr> in vimshell's insert mode
   "imap <buffer> <S-CR> <C-]><Plug>(vimshell_enter)
   "imap <buffer> <S-CR> <C-]><Plug>(vimshell_enter)
@@ -649,17 +651,15 @@ let g:vimfiler_as_default_explorer = 1
 "             unite              "
 """"""""""""""""""""""""""""""""""
 
-nnoremap <silent> <C-r>      :<C-u>Unite file_mru -start-insert<CR>
-nnoremap <silent> <C-n>      :<C-u>Unite buffer_tab<CR>
+nnoremap <silent> <C-r>      :<C-u>Unite -buffer-name=file_mru file_mru -start-insert<CR>
+nnoremap <silent> <C-n>      :<C-u>Unite -buffer-name=buffer buffer_tab<CR>
 nnoremap <silent> <Leader>d  :<C-u>Unite -buffer-name=file -hide-source-names file file/new<CR>
-nnoremap <silent> <Leader>b  :<C-u>Unite -no-start-insert bookmark<CR>
-nnoremap <silent> <C-t>      :<C-u>Unite tags -start-insert<CR>
+nnoremap <silent> <Leader>b  :<C-u>Unite -buffer-name=bookmark -no-start-insert bookmark<CR>
+nnoremap <silent> <C-t>      :<C-u>Unite -buffer-name=tags tags -start-insert<CR>
 nnoremap <Leader>f  :<C-u>Unite file_rec -input=
 
-nnoremap <silent> <Leader>u  :<C-u>Unite buffer_tab file file_mru bookmark<CR>
-
-nnoremap <silent> <C-s> :Unite history/yank<CR>
-inoremap <silent> <C-s> <Esc>:Unite history/yank<CR>
+nnoremap <silent> <C-s> :Unite -buffer-name=history_yank history/yank<CR>
+inoremap <silent> <C-s> <Esc>:Unite -buffer-name=history_yank history/yank<CR>
 
 let g:unite_source_history_yank_enable = 1
 "let g:unite_update_time = 200
@@ -723,8 +723,9 @@ function! s:unite_my_settings()
   imap <buffer> <ESC> <Plug>(unite_exit)
   "imap <buffer> <C-o> <Plug>(unite_insert_leave):<C-u>call unite#mappings#do_action('above')<CR>
   inoremap <buffer><expr> <C-v> unite#do_action('vsplit')
-  inoremap <buffer><expr> <C-x><C-x> unite#do_action('insert')
-	noremap <silent><buffer><expr> <C-x><C-x> unite#do_action('insert')
+  inoremap <buffer><expr> <C-x><C-i> unite#do_action('insert')
+  inoremap <buffer><expr> <C-y> unite#do_action('yank')
+	noremap <silent><buffer><expr> <C-x><C-i> unite#do_action('insert')
   imap <buffer> <C-e> <Enter>
   nmap <buffer> <C-n> <Plug>(unite_loop_cursor_down)
   nmap <buffer> <C-p> <Plug>(unite_loop_cursor_up)
@@ -784,7 +785,7 @@ nnoremap <silent> <Space>cd :<C-u>CD<CR>
 nnoremap <silent> s           :<C-u>TweetVimSay<CR>
 nnoremap <silent> <Space>re   :<C-u>TweetVimMentions<CR>
 nnoremap <silent> <Space>a    :TweetVimListStatuses all<CR>
-nnoremap <silent> t  :Unite tweetvim<CR>
+nnoremap <silent> t  :Unite -buffer-name=tweetvim tweetvim<CR>
 nnoremap <silent> ta :TweetVimHomeTimeline<CR>
 nnoremap <silent> th :TweetVimHomeTimeline<CR>
 nnoremap <silent> tm :TweetVimMentions<CR>
