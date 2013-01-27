@@ -139,7 +139,7 @@ augroup MyGroup
 augroup END
 
 function! s:note_settings()
-  nnoremap <silent> <buffer> <C-l> :Unite outline -vertical -winwidth=50 -no-quit -no-start-insert<CR>
+  nnoremap <silent> <buffer> <C-l> :Unite outline -vertical -winwidth=30 -no-quit -no-start-insert<CR>
 endfunction
 
 function! s:neco_pre_cache()
@@ -600,6 +600,7 @@ function! s:vimshell_filetype_settings()
 
   if g:colors_name == 'newspaper'
     hi vimshellPrompt guifg=darkgreen
+    hi vimshellError  guifg=darkgreen
   endif
 
 endfunction
