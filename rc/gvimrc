@@ -32,7 +32,8 @@ if has('vim_starting')
     if exists('g:my_gui_font')
       let &guifont=g:my_gui_font
     else
-      set guifont=MS_Gothic:h10:cSHIFTJIS
+      "set guifont=MS_Gothic:h10:cSHIFTJIS
+      set guifont=MeiryoKe_Gothic:h10:cSHIFTJIS 
     endif
 
     set columns=88
@@ -114,12 +115,15 @@ if g:colors_name == 'solarized'
 endif
 
 if g:colors_name == 'newspaper'
-  set transparency=0
-  hi Comment guifg=darkgray
+  if has('mac')
+    set transparency=0
+  endif
+  hi Comment guifg=darkgray gui=none
   hi helpExample guifg=darkblue
   hi vimshellPrompt guifg=darkgreen
-  hi PmenuSel ctermfg=255 ctermbg=21 gui=bold guifg=#ffffff guibg=#716d51 
+  hi PmenuSel ctermfg=255 ctermbg=21 gui=none guifg=#ffffff guibg=#716d51 
   hi Error   guifg=red gui=none
+  hi StatusLineNC  term=reverse ctermfg=253 ctermbg=110 gui=none guifg=#F4F4EE guibg=#99aabb  
   "hi vimMap     guifg=brown
   "hi vimCommand guifg=brown
   "hi helpHyperTextEntry guifg=#276549
