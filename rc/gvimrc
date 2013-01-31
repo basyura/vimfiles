@@ -138,6 +138,9 @@ if g:colors_name == 'newspaper'
   hi tweetvim_separator_title  guifg=gray
   hi tweetvim_hash_tag         guifg=blue
 
+  hi ModeMsg  guifg=darkgray gui=none
+  hi Question guifg=darkgray gui=none
+
   let g:vimshell_escape_colors = ['#6c6c6c', '#ff6666', '#0000ff', '#ffd30a', '#1e95fd', '#ff13ff', 'darkgreen', '#C0C0C0', '#383838', '#ff4444', '#44ff44', '#ffb30a', '#6699ff', '#f820ff', '#4ae2e2', '#ffffff']
 
 endi
