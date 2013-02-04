@@ -262,7 +262,7 @@ nnoremap <Leader>w :WriteToFile<CR>
 nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> :Unite 
 "nnoremap <Leader>g  :VimGrep **/*.* 
-nnoremap <Leader>g :Unite grep:.: -no-quit -no-start-insert -vertical -buffer-name=grep<CR>
+nnoremap <Leader>g :Unite grep:.: -no-quit -no-start-insert -direction=botright -buffer-name=grep -hide-source-names<CR>
 nnoremap <Space>d :<C-u>pwd<CR>
 "nnoremap <silent> <C-l> :Unite outline  -winheight=30 -buffer-name=outline<CR>
 nnoremap <silent> <C-l> :Unite outline  -winwidth=40 -vertical -buffer-name=outline -hide-source-names<CR>
@@ -292,10 +292,10 @@ nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
 nnoremap <C-]> g<C-]>
 nnoremap <C-w> <Home>dw
-nnoremap j  gj
-nnoremap gj j
-nnoremap k  gk
-nnoremap gk k
+nnoremap <silent> j  gj
+nnoremap <silent> gj j
+nnoremap <silent> k  gk
+nnoremap <silent> gk k
 nnoremap 0 ^
 "nnoremap 00 0
 nnoremap ^ 0
