@@ -265,7 +265,7 @@ nnoremap <Leader><Leader> :Unite
 nnoremap <Leader>g :Unite grep:.: -no-quit -no-start-insert -direction=botright -buffer-name=grep -hide-source-names<CR>
 nnoremap <Space>d :<C-u>pwd<CR>
 "nnoremap <silent> <C-l> :Unite outline  -winheight=30 -buffer-name=outline<CR>
-nnoremap <silent> <C-l> :Unite outline  -winwidth=40 -vertical -buffer-name=outline -hide-source-names<CR>
+nnoremap <silent> <C-l> :Unite outline  -winwidth=40 -buffer-name=outline -hide-source-names<CR>
 nnoremap <silent> <C-l><C-l> :Unite outline:!  -winheight=30 -buffer-name=outline<CR>
 nnoremap <silent> <C-x><C-x> :TabNew<CR>
 nnoremap <silent> <C-x><C-l> :tabnext<CR>
@@ -314,6 +314,8 @@ nnoremap <C-x><C-j> :Unite rails/view<CR>
 nnoremap <C-x><C-d> :Unite rails/db<CR>
 nnoremap <C-x><C-f> :Unite rails/config<CR>
 nnoremap <C-x> :Unite rails/
+
+inoremap <C-x><C-x> <Esc>:Unite sudden-death -winheight=4 -hide-source-names<CR>
 
 nnoremap Y y$
 
@@ -722,7 +724,7 @@ function! s:unite_my_settings()
   imap <buffer> <C-j> <Plug>(unite_exit)
   imap <buffer> <ESC> <Plug>(unite_exit)
   "imap <buffer> <C-o> <Plug>(unite_insert_leave):<C-u>call unite#mappings#do_action('above')<CR>
-  inoremap <buffer><expr> <C-v> unite#do_action('vsplit')
+  "inoremap <buffer><expr> <C-v> unite#do_action('vsplit')
   inoremap <buffer><expr> <C-x><C-i> unite#do_action('insert')
   inoremap <buffer><expr> <C-y> unite#do_action('yank')
 	noremap <silent><buffer><expr> <C-x><C-i> unite#do_action('insert')
