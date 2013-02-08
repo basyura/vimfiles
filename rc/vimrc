@@ -297,7 +297,7 @@ nnoremap <silent> j  gj
 nnoremap <silent> gj j
 nnoremap <silent> k  gk
 nnoremap <silent> gk k
-nnoremap 0 ^
+"nnoremap 0 ^
 "nnoremap 00 0
 "nnoremap ^ 0
 nnoremap $  g$
