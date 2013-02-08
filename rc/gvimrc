@@ -140,8 +140,8 @@ if g:colors_name == 'newspaper'
 
   hi ModeMsg   guifg=darkgray gui=none
   hi Question  guifg=darkgray gui=none
-  hi Search    guifg=white    guibg=red
-  hi IncSearch guifg=white    guibg=red
+  hi Search    guifg=white    guibg=#c15e78
+  hi IncSearch guifg=white    guibg=#c15e78
 
   hi note_strong guifg=red
 
