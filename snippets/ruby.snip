@@ -75,10 +75,16 @@ snippet     optparse
 abbr        OptionParser
 prev_word   '^'
     require 'optparse'
-    PConfig = Hash.new
-    opts = OptionParser.new
-    opts.on("-a"){|v| PConfig[:a] = true }
-    opts.parse!(ARGV)
+    def pcon
+      return @pcon if @pcon
+      @pcon = Hash.new
+      opts = OptionParser.new
+      opts.on("-f file"){|v| @pcon[:f] = v}
+      opts.on("--diff file"){|v| @pcon[:diff] = v}
+      opts.on("--cp"){|v| @pcon[:copy] = v}
+      opts.parse!(ARGV)
+      @pcon
+    end
 
 snippet     add_column
 abbr        add_column
