@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 require 'fileutils'
+require 'thread'
 
 task :default => "all_update"
 
@@ -35,38 +36,40 @@ task :update_github do
   puts ""
   puts ">>> pull github repositories ..."
   Dir.chdir("gitplugins")
+
+  que = Queue.new
   Dir.glob("*") do |d|
-    next unless File.directory? d
-    Dir.chdir(d)
-    print "  pull #{d} ...".ljust(50)
-    print "\r"
-    ret = `git pull 2>&1`
-    if ret.chomp == 'Already up-to-date.'
-      STDOUT.flush
-      print "  pull #{d} ... ok".ljust(80) + "\r"
-      sleep 0.5
-      STDOUT.flush
-    else
-      error_flg = false
-      ret.each_line do |line|
-        if line =~ /error/
-          puts "#{d} ... #{line}"
-          error_flg = true
-          break
+    que.push d
+  end
+
+  dir = Dir.pwd
+
+  threads = []
+ 
+  while !que.empty?
+    threads << Thread.new(que.pop) do |target|
+      repos  =  File.join(dir, target)
+      if File.directory? repos
+        Dir.chdir(repos)
+        #puts "git pull #{target}"
+        ret = `git pull 2>&1`
+        if ret.chomp != 'Already up-to-date.'
+          error_flg = false
+          ret.each_line do |line|
+            if line =~ /error/
+              puts "#{target} ... #{line}"
+              error_flg = true
+              break
+            end
+          end
+          puts "updated #{target}" unless error_flg
         end
       end
-      #if line.split("\n") != 1
-        #puts "#{d}"
-        #puts line
-      #elsif !error_flg
-        #print "#{d} was Updated\n"
-      #end
-      print "updated #{d}\n" unless error_flg
     end
-    Dir.chdir("..")
   end
-  Dir.chdir("..")
-  puts "".ljust(80)
+  threads.each do |t|
+    t.join
+  end
 end
 
 # cygwin の home になってしまう
