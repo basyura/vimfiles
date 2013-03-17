@@ -19,6 +19,8 @@ set runtimepath+=~/.vim/plugins/*
 set runtimepath+=~/.vim
 set runtimepath+=~/.vim/after
 
+set completeopt-=preview
+
 helptags ~/.vim/gitplugins/vimdoc-ja/doc
 
 call altercmd#load()
