@@ -256,6 +256,8 @@ nnoremap <C-b> <Left>
 " カウントアップ
 nnoremap <C-c> <C-a>
 
+nmap <Leader><Leader>b <Plug>(openbrowser-open)
+
 nnoremap <M-k> <C-y>
 nnoremap <M-j> <C-e>
 nnoremap <Leader>s :Scratch<CR>
