@@ -53,7 +53,7 @@ task :update_github do
         Dir.chdir(repos)
         #puts "git pull #{target}"
         ret = `git pull --ff 2>&1`
-        if ret.chomp != 'Already up-to-date.'
+        if ret.chomp != 'Already up-to-date.' && ret.chomp !~ /Current branch .*? is up to date./
           error_flg = false
           ret.each_line do |line|
             if line =~ /error/
