@@ -138,6 +138,8 @@ augroup MyGroup
   autocmd InsertEnter * call s:neco_pre_cache()
 
   autocmd FileType git :setlocal foldlevel=99
+
+  autocmd FileType svn :setlocal noswapfile
 augroup END
 
 function! s:note_settings()

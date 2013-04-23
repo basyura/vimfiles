@@ -11,7 +11,7 @@ end
 task :pull_vimfiles do
   puts ""
   puts ">>> pull vimfiles ..."
-  puts `git pull`
+  puts `git pull --ff`
 end
 
 task :clone_github do
@@ -52,7 +52,7 @@ task :update_github do
       if File.directory? repos
         Dir.chdir(repos)
         #puts "git pull #{target}"
-        ret = `git pull 2>&1`
+        ret = `git pull --ff 2>&1`
         if ret.chomp != 'Already up-to-date.'
           error_flg = false
           ret.each_line do |line|
