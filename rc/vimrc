@@ -405,7 +405,7 @@ let neco_dic['lingr-say'] = $HOME . '/.lingr.dict'
 if !exists('g:neocomplcache_keyword_patterns')
   let g:neocomplcache_keyword_patterns = {}
 endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+let g:neocomplcache_keyword_patterns._ = '\h\w*'
 " 補完候補の数
 let g:neocomplcache_max_list = 100
 " 補完候補を自動的に選択
