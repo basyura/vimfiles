@@ -705,7 +705,7 @@ call unite#custom_filters('file',
       \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])
 
 call unite#custom_filters('file_mru',
-      \ ['matcher_file_name', 'sorter_default', 'converter_default'])
+      \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
 
 call unite#custom_filters('uiki',
       \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])
