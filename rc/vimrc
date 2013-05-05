@@ -401,6 +401,9 @@ let neco_dic.hatena      = $HOME . '/.vim/dict/default.dict'
 let neco_dic.default     = $HOME . '/.vim/dict/default.dict'
 let neco_dic['lingr-say'] = $HOME . '/.lingr.dict'
 
+" sorter を変える
+call neocomplcache#custom_source('_', 'sorters', ['sorter_length'])
+
 " 日本語をキャッシュしない
 if !exists('g:neocomplcache_keyword_patterns')
   let g:neocomplcache_keyword_patterns = {}
