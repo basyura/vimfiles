@@ -151,6 +151,7 @@ if g:colors_name == 'newspaper'
 
   hi J6uil_separator        guifg=gray
   hi uniteSource__FileMru_Time guifg=#9f9f9f
+  hi uniteSource__Buffer_Time  guifg=#9f9f9f
 endi
 
 
