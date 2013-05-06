@@ -722,6 +722,24 @@ call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
 
 call unite#set_profile('buffer_tab,file,file_mru,everything', 'ignorecase', 1)
 
+
+let my_absolute_path = {
+\ 'is_selectable' : 1,
+\ }
+function! my_absolute_path.func(candidates)
+  let candidate = a:candidates[0]
+  let path      = candidate.action__directory
+  if candidate.kind == 'directory'
+    let path = fnamemodify(path . '/../', ':p')
+  else
+    let path = fnamemodify(path, ':p:h')
+  end
+  call unite#start([['file'], ['file/new']],unite#get_context())
+  call unite#mappings#narrowing(path)
+endfunction
+call unite#custom_action('file', 'absolute_path', my_absolute_path)
+unlet my_absolute_path
+
 function! s:unite_my_settings()
   " Overwrite settings.
   "if exists(':NeoComplCacheDisableCaching')
@@ -736,6 +754,7 @@ function! s:unite_my_settings()
   imap <buffer> <ESC> <Esc><Plug>(unite_all_exit)
   imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
   inoremap <buffer><expr> <C-g> unite#do_action('grep_directory')
+  inoremap <buffer><expr> <C-@> unite#do_action('absolute_path')
   "imap <buffer> <C-o> <Plug>(unite_insert_leave):<C-u>call unite#mappings#do_action('above')<CR>
   "inoremap <buffer><expr> <C-v> unite#do_action('vsplit')
   inoremap <buffer><expr> <C-x><C-i> unite#do_action('insert')
