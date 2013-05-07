@@ -732,7 +732,7 @@ function! my_absolute_path.func(candidates)
   if candidate.kind == 'directory'
     let path = fnamemodify(path . '/../', ':p')
   else
-    let path = fnamemodify(path, ':p:h')
+    let path = fnamemodify(path, ':p:h') . '/'
   end
   call unite#start([['file'], ['file/new']],unite#get_context())
   call unite#mappings#narrowing(path)
