@@ -764,12 +764,13 @@ function! s:unite_my_settings()
   nmap <buffer> <C-n> <Plug>(unite_loop_cursor_down)
   nmap <buffer> <C-p> <Plug>(unite_loop_cursor_up)
   nmap <buffer> <C-j> <Plug>(unite_exit)
+  imap <buffer> <C-r> <Plug>(unite_redraw)
   " neco 補完
   inoremap <buffer> <C-l>  <C-x><C-u><C-p><Down>
   inoremap <buffer> <C-f> <Right>
   inoremap <buffer> <C-b> <Left>
-  inoremap <buffer><expr> <C-r>      unite#mappings#set_current_filters(
-        \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
+  "inoremap <buffer><expr> <C-r>      unite#mappings#set_current_filters(
+  "      \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
   inoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
   inoremap <silent><buffer><expr> <C-s> unite#do_action('rec_parent/async')
 
