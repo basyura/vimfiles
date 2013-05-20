@@ -279,14 +279,15 @@ nnoremap <silent> <C-x><C-h> :tabprevious<CR>
 nnoremap <silent> <C-f> :tabnext<CR>
 nnoremap <silent> <C-b> :tabprevious<CR>
 " エンコードを指定して開き直す
-nnoremap <Space>r   :e ++enc=
+nnoremap <silent> <Space>r  :UniteResume<CR>
 nnoremap <C-w>; <C-w>+
 nnoremap w; <C-w>+
 nnoremap w- <C-w>-
 nnoremap wm 100<C-w>+
 nnoremap man :Unite help<CR>
 nnoremap <silent>co :Unite -no-quit -buffer-name=qflist qflist<CR>
-nnoremap <silent><Leader>r :UniteResume<CR>
+"nnoremap <silent><Leader>r :UniteResume<CR>
+nnoremap <silent><Leader>r :redraw!<CR> 
 nnoremap <silent>on 999<C-w>+
 nnoremap <silent><Leader><Leader>r :Unite yarm<CR>
 "nnoremap <silent><Leader>l :Unite -vertical -winwidth=50 uiki<CR>
