@@ -1091,5 +1091,14 @@ function! s:off_proxy()
 endfunction
 command! OffProxy call <SID>off_proxy()
 
+
+"nnoremap <Leader>g :MyGrep 
+"command! -nargs=1 MyGrep call <SID>MyGrep(<f-args>)
+"function! s:MyGrep(args)
+  "execute ':Grep -iR ' . a:args . ' .'
+  ":bd!
+  ":Unite qflist -buffer-name=grep
+"endfunction
+
 call neocomplcache#initialize()
 " vim: foldmethod=marker
