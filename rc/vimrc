@@ -371,6 +371,7 @@ vnoremap cb :s/\t/\|/g<CR>
 """""""""""""""""""""""""""""""""
 " 起動時に有効
 let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_fuzzy_completion = 0
 
 " snippet ファイルの保存先
 if !exists("g:neosnippet#snippets_directory")
@@ -405,6 +406,7 @@ let neco_dic['lingr-say'] = $HOME . '/.lingr.dict'
 " sorter を変える
 try
   call neocomplcache#custom_source('_', 'sorters', ['sorter_length'])
+  call neocomplcache#custom_source('_', 'matchers', ['matcher_head'])
 catch
   echomsg "no supported neocomplcache#custom_source"
 endtry
