@@ -742,13 +742,6 @@ call unite#custom_action('file', 'absolute_path', my_absolute_path)
 unlet my_absolute_path
 
 function! s:unite_my_settings()
-  " Overwrite settings.
-  "if exists(':NeoComplCacheDisableCaching')
-  "  NeoComplCacheDisableCaching
-  "endif
-  "if exists(':NeoComplCacheLock')
-  "  NeoComplCacheLock
-  "endif
 
   imap <buffer> jj <Plug>(unite_insert_leave)
   imap <buffer> <C-j> <Esc>c<Plug>(unite_all_exit)
@@ -756,8 +749,6 @@ function! s:unite_my_settings()
   imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
   inoremap <buffer><expr> <C-g> unite#do_action('grep_directory')
   inoremap <buffer><expr> <C-@> unite#do_action('absolute_path')
-  "imap <buffer> <C-o> <Plug>(unite_insert_leave):<C-u>call unite#mappings#do_action('above')<CR>
-  "inoremap <buffer><expr> <C-v> unite#do_action('vsplit')
   inoremap <buffer><expr> <C-x><C-i> unite#do_action('insert')
   inoremap <buffer><expr> <C-y> unite#do_action('yank')
 	noremap <silent><buffer><expr> <C-x><C-i> unite#do_action('insert')
@@ -766,16 +757,14 @@ function! s:unite_my_settings()
   nmap <buffer> <C-p> <Plug>(unite_loop_cursor_up)
   nmap <buffer> <C-j> <Plug>(unite_exit)
   imap <buffer> <C-r> <Plug>(unite_redraw)
-  " neco 補完
-  inoremap <buffer> <C-l>  <C-x><C-u><C-p><Down>
+
   inoremap <buffer> <C-f> <Right>
   inoremap <buffer> <C-b> <Left>
-  "inoremap <buffer><expr> <C-r>      unite#mappings#set_current_filters(
-  "      \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
   inoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
   inoremap <silent><buffer><expr> <C-s> unite#do_action('rec_parent/async')
 
   map <silent><buffer> a <Plug>(unite_insert_enter)
+
   "startinsert
 endfunction
 
