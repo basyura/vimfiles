@@ -403,7 +403,11 @@ let neco_dic.default     = $HOME . '/.vim/dict/default.dict'
 let neco_dic['lingr-say'] = $HOME . '/.lingr.dict'
 
 " sorter を変える
-call neocomplcache#custom_source('_', 'sorters', ['sorter_length'])
+try
+  call neocomplcache#custom_source('_', 'sorters', ['sorter_length'])
+catch
+  echomsg "no supported neocomplcache#custom_source"
+endtry
 
 " 日本語をキャッシュしない
 if !exists('g:neocomplcache_keyword_patterns')
