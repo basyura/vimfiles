@@ -54,7 +54,7 @@ if has('vim_starting')
       set columns=95
     endif
     " ウインドウの高さ
-    set lines=41
+    set lines=37
     "
   elseif has('unix')
     " 行間
