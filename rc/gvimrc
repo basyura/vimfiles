@@ -120,6 +120,9 @@ if g:colors_name == 'newspaper'
   if has('mac')
     set transparency=0
   endif
+  "hi Cursor  guifg=black    guibg=orange
+  hi Cursor  guifg=bg   guibg=#557788
+  hi CursorLine guibg=#cccfbf
   hi Comment guifg=darkgray gui=none
   hi helpExample guifg=darkblue
   hi vimshellPrompt guifg=darkgreen
@@ -130,7 +133,7 @@ if g:colors_name == 'newspaper'
   "hi vimCommand guifg=brown
   "hi helpHyperTextEntry guifg=#276549
 
-  hi tweetvim_reply            guifg=brown
+  hi tweetvim_reply            guifg=brown guibg=#d3d47a
   hi tweetvim_screen_name      guifg=#2C773D
   hi tweetvim_at_screen_name   guifg=#2C773D
   hi tweetvim_rt_count         guifg=#FF0000
