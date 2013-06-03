@@ -294,7 +294,7 @@ nnoremap <silent><Leader><Leader>r :Unite yarm<CR>
 "nnoremap <silent><Leader>l :Unite -vertical -winwidth=50 uiki<CR>
 nnoremap <silent><Leader>l  :<C-u>Unite -buffer-name=note -hide-source-names -hide-status-line note<CR>
 "nnoremap <silent><Leader>ll  :<C-u>Unite -buffer-name=note -hide-source-names -hide-status-line note/archive note<CR>
-nnoremap <C-p> :Unite rails/
+nnoremap <C-p> :Unite 
 
 nnoremap <silent><C-h> :Unite history/command<CR>
 nnoremap cn :cn<CR>
