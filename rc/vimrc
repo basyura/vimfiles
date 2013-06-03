@@ -947,7 +947,9 @@ endfunction
 
 " for tweetvim
 function! s:tweetvim_my_settings()
-  setlocal cursorline
+  if has('mac')
+    setlocal cursorline
+  endif
 endfunction
 " for tweetvim say
 function! s:tweetvim_say_my_settings()

@@ -122,7 +122,8 @@ if g:colors_name == 'newspaper'
   endif
   "hi Cursor  guifg=black    guibg=orange
   hi Cursor  guifg=bg   guibg=#557788
-  hi CursorLine guibg=#D2D2D2
+  "hi CursorLine guibg=#D2D2D2
+  hi CursorLine guibg=#cccfbf
   hi CursorLineNr guifg=#666677 guibg=#cccfbf gui=none
   hi Comment guifg=darkgray gui=none
   hi helpExample guifg=darkblue
