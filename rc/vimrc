@@ -141,6 +141,10 @@ augroup MyGroup
   autocmd FileType git :setlocal foldlevel=99
 
   autocmd FileType svn :setlocal noswapfile
+
+  if !has('gui_running')
+    autocmd InsertEnter,InsertLeave * set cursorline!
+  endif
 augroup END
 
 function! s:note_settings()
@@ -350,14 +354,12 @@ inoremap <C-x><C-c> <esc>:Cache<CR>:NeoComplCacheCachingDictionary<CR>a
 
 nmap <Leader>c <Plug>NERDCommenterToggle
 " ターミナルだとなぜか起動時にインサートモードになるので
-if has('gui_running')
-  nnoremap <silent> <ESC> :noh<CR>
-endif
 
 inoremap <silent> <C-o> <ESC>o
 inoremap <C-j> <ESC>
 inoremap jj <ESC>
 noremap <silent> <C-j> <ESC>:noh<CR>
+noremap <silent> <ESC> <ESC>:noh<CR>
 inoremap kk <ESC>O
 inoremap [[ []<Left>
 inoremap <C-q> []<Left>
@@ -690,7 +692,7 @@ nnoremap <Leader>f  :<C-u>Unite file_rec -input=
 nnoremap <silent> <C-s> :Unite -buffer-name=history_yank history/yank<CR>
 inoremap <silent> <C-s> <Esc>:Unite -buffer-name=history_yank history/yank<CR>
 
-let g:unite_source_history_yank_enable = 1
+"let g:unite_source_history_yank_enable = 1
 let g:unite_enable_start_insert = 1
 " mru
 let g:unite_source_file_mru_time_format    = ''
@@ -955,7 +957,7 @@ endfunction
 
 " for tweetvim
 function! s:tweetvim_my_settings()
-  if has('mac')
+  if has('mac') && has('gui_running')
     setlocal cursorline
   endif
 endfunction
@@ -963,6 +965,9 @@ endfunction
 function! s:tweetvim_say_my_settings()
   AlterCommand <buffer> q bd!<CR>
   nnoremap <buffer> <silent> <C-j> :bd!<CR>
+  if !has('gui_running')
+    nnoremap <buffer> <silent> <esc> :bd!<CR>
+  endif
 "  inoremap <buffer> <C-x><C-d> <ESC>:TweetVimBitly<CR>
 endfunction
 
@@ -1111,4 +1116,13 @@ command! OffProxy call <SID>off_proxy()
 if g:neocomplcache_enable_at_startup
   call neocomplcache#initialize()
 endif
+
+""""""""""""""""""""""""""
+"        color           "
+""""""""""""""""""""""""""
+
+hi tweetvim_reply ctermbg=5
+
+
+
 " vim: foldmethod=marker
