@@ -350,14 +350,12 @@ inoremap <C-x><C-c> <esc>:Cache<CR>:NeoComplCacheCachingDictionary<CR>a
 
 nmap <Leader>c <Plug>NERDCommenterToggle
 " ターミナルだとなぜか起動時にインサートモードになるので
-if has('gui_running')
-  nnoremap <silent> <ESC> :noh<CR>
-endif
 
 inoremap <silent> <C-o> <ESC>o
 inoremap <C-j> <ESC>
 inoremap jj <ESC>
 noremap <silent> <C-j> <ESC>:noh<CR>
+noremap <silent> <ESC> <ESC>:noh<CR>
 inoremap kk <ESC>O
 inoremap [[ []<Left>
 inoremap <C-q> []<Left>
@@ -1111,4 +1109,13 @@ command! OffProxy call <SID>off_proxy()
 "endfunction
 
 call neocomplcache#initialize()
+
+""""""""""""""""""""""""""
+"        color           "
+""""""""""""""""""""""""""
+
+hi tweetvim_reply ctermbg=5
+
+
+
 " vim: foldmethod=marker
