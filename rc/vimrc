@@ -947,17 +947,20 @@ endfunction
 
 " for tweetvim
 function! s:tweetvim_my_settings()
-  if has('mac')
+  if has('mac') && has('gui_running')
     setlocal cursorline
   endif
 endfunction
 " for tweetvim say
 function! s:tweetvim_say_my_settings()
   if exists(':NeoComplCacheCachingDictionary')
-"    :NeoComplCacheCachingDictionary
+"    :NeoComplCacheCachingDictionar!y
   endif
   AlterCommand <buffer> q bd!<CR>
   nnoremap <buffer> <silent> <C-j> :bd!<CR>
+  if !has('gui_running')
+    nnoremap <buffer> <silent> <esc> :bd!<CR>
+  endif
 "  inoremap <buffer> <C-x><C-d> <ESC>:TweetVimBitly<CR>
 endfunction
 
