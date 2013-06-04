@@ -141,6 +141,10 @@ augroup MyGroup
   autocmd FileType git :setlocal foldlevel=99
 
   autocmd FileType svn :setlocal noswapfile
+
+  if !has('gui_running')
+    autocmd InsertEnter,InsertLeave * set cursorline!
+  endif
 augroup END
 
 function! s:note_settings()
