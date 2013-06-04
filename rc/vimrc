@@ -159,7 +159,11 @@ function! s:neco_pre_cache()
   if bufname('%') =~ g:neocomplcache_lock_buffer_name_pattern
     return
   endif
-  :NeoComplCacheCachingBuffer
+  if get(g:, 'neocomplcache_enable_at_startup', 0)
+    :NeoComplCacheCachingBuffer
+  else
+    :NeoComplCacheDisable
+  endif
 endfunction
 
 function! s:bg_settings()
@@ -371,7 +375,11 @@ vnoremap cb :s/\t/\|/g<CR>
 "        neocomplcache          "
 """""""""""""""""""""""""""""""""
 " 起動時に有効
-let g:neocomplcache_enable_at_startup = 1
+if has('win32unix')
+  let g:neocomplcache_enable_at_startup = 0
+else
+  let g:neocomplcache_enable_at_startup = 1
+endif
 let g:neocomplcache_enable_fuzzy_completion = 0
 
 " snippet ファイルの保存先
@@ -953,9 +961,6 @@ function! s:tweetvim_my_settings()
 endfunction
 " for tweetvim say
 function! s:tweetvim_say_my_settings()
-  if exists(':NeoComplCacheCachingDictionary')
-"    :NeoComplCacheCachingDictionary
-  endif
   AlterCommand <buffer> q bd!<CR>
   nnoremap <buffer> <silent> <C-j> :bd!<CR>
 "  inoremap <buffer> <C-x><C-d> <ESC>:TweetVimBitly<CR>
@@ -1103,5 +1108,7 @@ command! OffProxy call <SID>off_proxy()
   ":Unite qflist -buffer-name=grep
 "endfunction
 
-call neocomplcache#initialize()
+if g:neocomplcache_enable_at_startup
+  call neocomplcache#initialize()
+endif
 " vim: foldmethod=marker
