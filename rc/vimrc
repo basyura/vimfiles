@@ -422,7 +422,7 @@ try
   call neocomplcache#custom_source('_', 'sorters', ['sorter_length'])
   call neocomplcache#custom_source('_', 'matchers', ['matcher_head'])
 catch
-  echomsg "no supported neocomplcache#custom_source"
+  "echo "no supported neocomplcache#custom_source"
 endtry
 
 " 日本語をキャッシュしない
