@@ -360,7 +360,7 @@ inoremap <C-j> <ESC>
 inoremap jj <ESC>
 noremap <silent> <C-j> <ESC>:noh<CR>
 " cygwin だとなぜか insert モードに入る
-if !has('win32unix')
+if has('gui_running')
   noremap <silent> <ESC> <ESC>:noh<CR>
 endif
 inoremap kk <ESC>O
