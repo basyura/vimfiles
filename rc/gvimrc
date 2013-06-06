@@ -130,7 +130,9 @@ if g:colors_name == 'newspaper'
   hi vimshellPrompt guifg=darkgreen
   hi PmenuSel ctermfg=255 ctermbg=21 gui=none guifg=#ffffff guibg=#716d51 
   hi Error   guifg=red gui=none
-  hi StatusLineNC  term=reverse ctermfg=253 ctermbg=110 gui=none guifg=#F4F4EE guibg=#99aabb  
+  "hi StatusLineNC  term=reverse ctermfg=253 ctermbg=110 gui=none guifg=#F4F4EE guibg=#99aabb  
+  hi StatusLine   guibg=#cccfbf guifg=#716d51 gui=none 
+  hi StatusLineNC guibg=#cccfbd guifg=#716d51 gui=none term=reverse ctermfg=253 ctermbg=110 
   "hi vimMap     guifg=brown
   "hi vimCommand guifg=brown
   "hi helpHyperTextEntry guifg=#276549
