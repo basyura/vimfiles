@@ -442,10 +442,10 @@ let g:neocomplcache_lock_buffer_name_pattern = '\.log\|\.log\.\|.*quickrun.*\|.j
 if !exists('g:neocomplcache_text_mode_filetypes')
   let g:neocomplcache_text_mode_filetypes = {}
 endif
-let g:neocomplcache_text_mode_filetypes.scratch      = 1
-let g:neocomplcache_text_mode_filetypes.note         = 1
-let g:neocomplcache_text_mode_filetypes.tweetvim_say = 1
-let g:neocomplcache_text_mode_filetypes.help         = 1
+"let g:neocomplcache_text_mode_filetypes.scratch      = 1
+"let g:neocomplcache_text_mode_filetypes.note         = 1
+"let g:neocomplcache_text_mode_filetypes.tweetvim_say = 1
+"let g:neocomplcache_text_mode_filetypes.help         = 1
 " キャッシュ中に、メッセージをCommand-lineに表示しない
 let g:neocomplcache_enable_caching_message = 0
 " キー入力時にキーワード補完を行う入力数を制御する。
