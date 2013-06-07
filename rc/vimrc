@@ -1125,7 +1125,8 @@ endif
 """"""""""""""""""""""""""
 
 hi tweetvim_reply ctermbg=5
-
+hi tweetvim_appendix ctermfg=darkgray
+hi PmenuSel ctermbg=darkblue ctermfg=white
 
 
 " vim: foldmethod=marker
