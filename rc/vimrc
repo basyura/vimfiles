@@ -55,7 +55,8 @@ endif
 
 set textwidth=0
 set ambiwidth=double
-set number
+"set number
+set nonu
 set autoindent
 set iminsert=0
 set titlestring=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ \ %{getcwd()}
@@ -840,6 +841,11 @@ nnoremap <silent> tm :TweetVimMentions<CR>
 "let g:tweetvim_default_account = 'tottoruby'
 let g:tweetvim_display_source = 1
 let g:tweetvim_original_hi = 0
+
+if !has('gui_running')
+  let g:tweetvim_display_source  = 0
+  let g:tweetvim_empty_separator = 1
+endif
 
 if !exists('g:twitvim_browser_cmd')
   if has('mac')
