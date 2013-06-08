@@ -112,7 +112,7 @@ augroup MyGroup
   autocmd FileType java,c,cpp,cs :setlocal shiftwidth=4
   autocmd FileType java,c,cpp,cs :setlocal noexpandtab
 
-  autocmd FileType help noexpandtab
+  autocmd FileType help :setlocal noexpandtab
 
   autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
   autocmd BufRead,BufNewFile *.md   set filetype=markdown
