@@ -14,8 +14,7 @@ if expand("%") == ".git/COMMIT_EDITMSG"
   finish
 endif
 
-"set guioptions-=rL
-set guioptions-=L
+set guioptions-=rL
 set guioptions-=m
 " ビジュアル選択(D&D他)を自動的にクリップボードへ (:help guioptions_a)
 set guioptions+=a

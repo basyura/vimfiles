@@ -36,7 +36,7 @@ let mapleader = "m"
 """"""""""""""""""""""""""""""""""
 
 " singleton.vim
-if has('clientserver')
+if has('clientserver') && !has('mac')
   call singleton#enable()
   let g:singleton#opener = "drop"
 endif
