@@ -1136,5 +1136,12 @@ hi tweetvim_reply ctermbg=5
 hi tweetvim_appendix ctermfg=darkgray
 hi PmenuSel ctermbg=darkblue ctermfg=white
 
+""""""""""""""""""""""""""
+"        after           "
+""""""""""""""""""""""""""
+
+if filereadable($HOME . '/.vimrc_local_after')
+  source ~/.vimrc_local_after
+endif
 
 " vim: foldmethod=marker
