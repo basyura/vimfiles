@@ -323,6 +323,8 @@ nnoremap <silent> gk k
 nnoremap $  g$
 nnoremap g$ $
 
+nnoremap L y$
+
 cnoremap <C-p>  <Up>
 cnoremap <Up>   <C-p>
 cnoremap <C-n>  <Down>
@@ -1135,6 +1137,8 @@ endif
 hi tweetvim_reply ctermbg=5
 hi tweetvim_appendix ctermfg=darkgray
 hi PmenuSel ctermbg=darkblue ctermfg=white
+
+hi J6uil_quotation ctermfg=gray
 
 """"""""""""""""""""""""""
 "        after           "
