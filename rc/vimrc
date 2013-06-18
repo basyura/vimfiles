@@ -832,7 +832,7 @@ endfunction
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
 " tweetvim
-nnoremap <silent> s           :<C-u>TweetVimSay<CR>
+nnoremap <silent> s           :exe ":silent TweetVimSay"<CR>
 nnoremap <silent> <Space>re   :<C-u>TweetVimMentions<CR>
 nnoremap <silent> <Space>a    :TweetVimListStatuses all<CR>
 nnoremap <silent> t  :Unite -buffer-name=tweetvim tweetvim<CR>
