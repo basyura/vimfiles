@@ -41,6 +41,19 @@ if has('clientserver') && !has('mac')
   let g:singleton#opener = "drop"
 endif
 
+" for unite
+function! s:unite_substitute(profile, pat, subst, ...)
+  call unite#set_substitute_pattern(a:profile, a:pat, a:subst, a:1)
+  return
+
+  let priority = get(a:000, 0, 0)
+  call unite#custom#profile(a:profile, 'substitute_patterns', {
+        \   'pattern': a:pat,
+        \   'subst': a:subst,
+        \   'priority': priority,
+        \ })
+endfunction
+
 if filereadable($HOME . '/.vimrc_local')
   source ~/.vimrc_local
 endif
@@ -709,18 +722,19 @@ let g:unite_source_file_mru_ignore_pattern = '.*Application\ Data.*\|.*デスク
 let g:unite_winheight  = 15
 let g:unite_split_rule = 'aboveleft'
 
-"call unite#set_substitute_pattern('', '[[:alnum:]]', '*\0', 100)
-call unite#set_substitute_pattern('file', '^\~', substitute(substitute($HOME, '\\', '/', 'g'), ' ', '\\\\ ', 'g'), -200)
+
+"call s:unite_substitute('', '[[:alnum:]]', '*\0', 100)
+call s:unite_substitute('file', '^\~', substitute(substitute($HOME, '\\', '/', 'g'), ' ', '\\\\ ', 'g'), -200)
 if has('win32')
-  call unite#set_substitute_pattern('file', '[^~.]\zs/', '*/*', 20)
-  call unite#set_substitute_pattern('file', '/\ze[^*]', '/*'  , 10)
+  call s:unite_substitute('file', '[^~.]\zs/', '*/*', 20)
+  call s:unite_substitute('file', '/\ze[^*]', '/*'  , 10)
 else
-  call unite#set_substitute_pattern('file', '[[:alnum:]]', '*\0', -150)
+  call s:unite_substitute('file', '[[:alnum:]]', '*\0', -150)
 endif
 
-call unite#set_substitute_pattern('file_mru', '[[:alnum:]]', '*\0', 100)
-call unite#set_substitute_pattern('file_mru', '[^~.]\zs/', '*/*'  , 20)
-call unite#set_substitute_pattern('file_mru', '/\ze[^*]', '/*'    , 10)
+call s:unite_substitute('file_mru', '[[:alnum:]]', '*\0', 100)
+call s:unite_substitute('file_mru', '[^~.]\zs/', '*/*'  , 20)
+call s:unite_substitute('file_mru', '/\ze[^*]', '/*'    , 10)
 
 call unite#set_buffer_name_option('file', 'smartcase', 0)
 
@@ -792,6 +806,14 @@ function! s:unite_my_settings()
 
   "startinsert
 endfunction
+
+
+let g:unite_source_alias_aliases = {
+\   "gvalue" : {
+\       "source" : "output",
+\       "args" : 'echo join(map(keys(g:),"''g:''.v:val"),"\n")'
+\   }
+\}
 
 """"""""""""""""""""""""""""""""""
 "             misc               "
