@@ -1162,6 +1162,8 @@ hi PmenuSel ctermbg=darkblue ctermfg=white
 
 hi J6uil_quotation ctermfg=gray
 
+hi Error ctermbg=0 ctermfg=red
+
 """"""""""""""""""""""""""
 "        after           "
 """"""""""""""""""""""""""
