@@ -42,11 +42,11 @@ if has('clientserver') && !has('mac')
 endif
 
 " for unite
-function! s:unite_substitute(profile, pat, subst, ...)
-  call unite#set_substitute_pattern(a:profile, a:pat, a:subst, a:1)
+function! Unite_substitute(profile, pat, subst, ...)
+  let priority = get(a:000, 0, 0)
+  call unite#set_substitute_pattern(a:profile, a:pat, a:subst, priority)
   return
 
-  let priority = get(a:000, 0, 0)
   call unite#custom#profile(a:profile, 'substitute_patterns', {
         \   'pattern': a:pat,
         \   'subst': a:subst,
@@ -724,17 +724,17 @@ let g:unite_split_rule = 'aboveleft'
 
 
 "call s:unite_substitute('', '[[:alnum:]]', '*\0', 100)
-call s:unite_substitute('file', '^\~', substitute(substitute($HOME, '\\', '/', 'g'), ' ', '\\\\ ', 'g'), -200)
+call Unite_substitute('file', '^\~', substitute(substitute($HOME, '\\', '/', 'g'), ' ', '\\\\ ', 'g'), -200)
 if has('win32')
-  call s:unite_substitute('file', '[^~.]\zs/', '*/*', 20)
-  call s:unite_substitute('file', '/\ze[^*]', '/*'  , 10)
+  call Unite_substitute('file', '[^~.]\zs/', '*/*', 20)
+  call Unite_substitute('file', '/\ze[^*]', '/*'  , 10)
 else
-  call s:unite_substitute('file', '[[:alnum:]]', '*\0', -150)
+  call Unite_substitute('file', '[[:alnum:]]', '*\0', -150)
 endif
 
-call s:unite_substitute('file_mru', '[[:alnum:]]', '*\0', 100)
-call s:unite_substitute('file_mru', '[^~.]\zs/', '*/*'  , 20)
-call s:unite_substitute('file_mru', '/\ze[^*]', '/*'    , 10)
+call Unite_substitute('file_mru', '[[:alnum:]]', '*\0', 100)
+call Unite_substitute('file_mru', '[^~.]\zs/', '*/*'  , 20)
+call Unite_substitute('file_mru', '/\ze[^*]', '/*'    , 10)
 
 call unite#set_buffer_name_option('file', 'smartcase', 0)
 
