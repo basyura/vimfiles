@@ -394,6 +394,14 @@ cnoremap <C-j> <C-u><ESC>
 vnoremap ch :s/\t/\|_=./g<CR>
 vnoremap cb :s/\t/\|/g<CR>
 
+" getchar() で挿入する文字を入力
+nmap <leader>J <Plug>(jplus-getchar)
+vmap <leader>J <Plug>(jplus-getchar)
+
+" 文字の左右にスペースを付属させる
+nmap <Space>J <Plug>(jplus-getchar-with-space)
+vmap + <Plug>(jplus-getchar-with-space)
+
 """""""""""""""""""""""""""""""""
 "        neocomplcache          "
 """""""""""""""""""""""""""""""""
@@ -1151,6 +1159,9 @@ command! OffProxy call <SID>off_proxy()
 if g:neocomplcache_enable_at_startup
   call neocomplcache#initialize()
 endif
+
+
+
 
 """"""""""""""""""""""""""
 "        color           "
