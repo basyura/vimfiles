@@ -44,9 +44,6 @@ endif
 " for unite
 function! Unite_substitute(profile, pat, subst, ...)
   let priority = get(a:000, 0, 0)
-  call unite#set_substitute_pattern(a:profile, a:pat, a:subst, priority)
-  return
-
   call unite#custom#profile(a:profile, 'substitute_patterns', {
         \   'pattern': a:pat,
         \   'subst': a:subst,
@@ -743,8 +740,6 @@ endif
 call Unite_substitute('file_mru', '[[:alnum:]]', '*\0', 100)
 call Unite_substitute('file_mru', '[^~.]\zs/', '*/*'  , 20)
 call Unite_substitute('file_mru', '/\ze[^*]', '/*'    , 10)
-
-call unite#set_buffer_name_option('file', 'smartcase', 0)
 
 call unite#custom_filters('buffer,buffer_tab',
       \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
