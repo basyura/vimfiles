@@ -44,9 +44,6 @@ endif
 " for unite
 function! Unite_substitute(profile, pat, subst, ...)
   let priority = get(a:000, 0, 0)
-  call unite#set_substitute_pattern(a:profile, a:pat, a:subst, priority)
-  return
-
   call unite#custom#profile(a:profile, 'substitute_patterns', {
         \   'pattern': a:pat,
         \   'subst': a:subst,
@@ -744,22 +741,20 @@ call Unite_substitute('file_mru', '[[:alnum:]]', '*\0', 100)
 call Unite_substitute('file_mru', '[^~.]\zs/', '*/*'  , 20)
 call Unite_substitute('file_mru', '/\ze[^*]', '/*'    , 10)
 
-call unite#set_buffer_name_option('file', 'smartcase', 0)
-
 call unite#custom_filters('buffer,buffer_tab',
       \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
 
 call unite#custom_filters('file',
-      \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])
+      \ ['matcher_fussy', 'sorter_default', 'converter_default'])
 
 call unite#custom_filters('file_mru',
       \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
 
 call unite#custom_filters('uiki',
-      \ ['matcher_fuzzy', 'sorter_default', 'converter_default'])
+      \ ['matcher_fussy', 'sorter_default', 'converter_default'])
 
 call unite#custom_filters('bookmark',
-      \ ['matcher_fuzzy', 'sorter_default', 'converter_bookmark'])
+      \ ['matcher_fussy', 'sorter_default', 'converter_bookmark'])
 
 call unite#custom_filters('everything',
       \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
@@ -769,7 +764,6 @@ let g:unite_source_outline_cache_dir = ''
 call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
 
 call unite#set_profile('buffer_tab,file,file_mru,everything', 'ignorecase', 1)
-
 
 let my_absolute_path = {
 \ 'is_selectable' : 1,
