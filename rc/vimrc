@@ -767,6 +767,7 @@ call unite#set_profile('buffer_tab,file,file_mru,everything', 'ignorecase', 1)
 
 let my_absolute_path = {
 \ 'is_selectable' : 1,
+\ 'is_quit' : 0,
 \ }
 function! my_absolute_path.func(candidates)
   let candidate = a:candidates[0]
