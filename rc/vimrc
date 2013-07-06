@@ -699,6 +699,12 @@ function! s:is_vimshell_change_termencoding_cmd(cmdline)
 endfunction
 
 """"""""""""""""""""""""""""""""""
+"        open browser            "
+""""""""""""""""""""""""""""""""""
+
+let g:openbrowser_short_message = 1
+
+""""""""""""""""""""""""""""""""""
 "            vimfiler            "
 """"""""""""""""""""""""""""""""""
 
