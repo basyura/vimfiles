@@ -750,7 +750,7 @@ call Unite_substitute('file_mru', '/\ze[^*]', '/*'    , 10)
 call unite#custom_filters('buffer,buffer_tab',
       \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
 
-call unite#custom#source('file', 'filters', ['converter_relative_word', 'matcher_fussy', 'sorter_default', 'converter_relative_abbr'])
+call unite#custom#source('file', 'matchers', 'matcher_fussy')
 
 call unite#custom_filters('file_mru',
       \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
