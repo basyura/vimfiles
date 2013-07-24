@@ -520,8 +520,8 @@ imap <expr><C-l> pumvisible() ?
 "smap <expr><C-l> pumvisible() ?
       "\ "\<C-y><Plug>(neosnippet_expand_or_jump)"
       "\ : "<Plug>(neosnippet_expand_or_jump)"
-imap <C-l><C-l> <Plug>(neosnippet_expand_or_jump)
-smap <C-l><C-l> <Plug>(neosnippet_expand_or_jump)
+imap <C-l> <Plug>(neosnippet_expand_or_jump)
+smap <C-l> <Plug>(neosnippet_expand_or_jump)
 
 "smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
 command! -nargs=* Nes NeoSnippetEdit <args>
@@ -631,9 +631,9 @@ function! s:vimshell_filetype_settings()
   inoremap <buffer> <C-q> <ESC><C-w>p 
   imap <buffer> <C-h> <Plug>(vimshell_delete_backward_char)
   nunm <buffer> q
-  call vimshell#hook#set('preexec'  , ['g:vimshell_preexec'])
-  call vimshell#hook#set('postexec' , ['g:vimshell_postexec'])
-  call vimshell#set_execute_file('txt,vim,xml,java,jax,jsp,rb,js', 'vim')
+  "call vimshell#hook#set('preexec'  , ['g:vimshell_preexec'])
+  "call vimshell#hook#set('postexec' , ['g:vimshell_postexec'])
+  "call vimshell#set_execute_file('txt,vim,xml,java,jax,jsp,rb,js', 'vim')
   call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
 
   inoremap <buffer> <silent> <C-n> <ESC>:<C-u>Unite -buffer-name=buffer -hide-source-names buffer_tab<CR>
@@ -750,8 +750,7 @@ call Unite_substitute('file_mru', '/\ze[^*]', '/*'    , 10)
 call unite#custom_filters('buffer,buffer_tab',
       \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
 
-call unite#custom_filters('file',
-      \ ['matcher_fussy', 'sorter_default', 'converter_default'])
+call unite#custom#source('file', 'filters', ['converter_relative_word', 'matcher_fussy', 'sorter_default', 'converter_relative_abbr'])
 
 call unite#custom_filters('file_mru',
       \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
