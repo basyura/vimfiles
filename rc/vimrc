@@ -237,6 +237,9 @@ nnoremap <Space>g.  :<C-u>edit   $MYGVIMRC<Enter>
 nnoremap <Space>gs. :<C-u>source $MYGVIMRC<Enter>
 nnoremap <Space>v.  :<C-u>edit   ~/.vimshrc<Enter>
 nnoremap <Space>ss  :<C-u>Source %<Enter>
+
+nnoremap <C-x><C-n> :setlocal nu!<CR>
+
 inoremap <C-d> <Del>
 cmap <C-d> <Del>
 
