@@ -121,7 +121,8 @@ if g:colors_name == 'newspaper'
     set transparency=0
   endif
   "hi Cursor  guifg=black    guibg=orange
-  hi Cursor  guifg=bg   guibg=#557788
+  "hi Cursor  guifg=bg   guibg=#557788
+  hi Cursor guibg=#Cd853f guifg=fg
   "hi CursorLine guibg=#D2D2D2
   hi CursorLine guibg=#cccfbf
   hi CursorLineNr guifg=#666677 guibg=#cccfbf gui=none
