@@ -234,7 +234,7 @@ noremap wk <C-w>k
 noremap <silent> gl :macaction selectNextWindow:<CR>
 noremap <script> gh :macaction selectPreviousWindow:<CR>
 
-nnoremap <Space>.   :<C-u>edit   $MYVIMRC<Enter>
+nnoremap <silent> <Space>.   :<C-u>silent! edit   $MYVIMRC<Enter>
 nnoremap <Space>s.  :<C-u>source $MYVIMRC<Enter>
 nnoremap <Space>g.  :<C-u>edit   $MYGVIMRC<Enter>
 nnoremap <Space>gs. :<C-u>source $MYGVIMRC<Enter>
