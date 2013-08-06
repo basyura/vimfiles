@@ -222,6 +222,9 @@ let java_ignore_javadoc = 1
 """"""""""""""""""""""""""""""""""
 "             map                "
 """"""""""""""""""""""""""""""""""
+
+nnoremap I i<Space><Left>
+
 nnoremap qq q
 nnoremap q <Nop>
 
