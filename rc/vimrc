@@ -165,7 +165,7 @@ augroup MyGroup
 augroup END
 
 function! s:note_settings()
-  nnoremap <silent> <buffer> <C-l> :Unite outline -vertical -winwidth=50 -no-quit -no-start-insert -buffer-name=outline -hide-source-names -direction=rightbelow<CR>
+  nnoremap <silent> <buffer> <C-l> :Unite outline -vertical -winwidth=50 -winheight=winheight(0) -no-quit -no-start-insert -buffer-name=outline -hide-source-names -direction=rightbelow<CR>
 endfunction
 
 
