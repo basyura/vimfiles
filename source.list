@@ -6,15 +6,12 @@ https://github.com/rhysd/clever-f.vim.git
 https://github.com/basyura/note.vim.git
 https://github.com/yomi322/unite-tweetvim.git
 https://github.com/yomi322/neco-tweetvim
-https://github.com/basyura/unite-matchers.git
 https://github.com/teramako/jscomplete-vim.git
 https://github.com/Shougo/neosnippet.git
 https://github.com/thinca/vim-singleton.git
 https://github.com/basyura/TweetVim.git
 https://github.com/basyura/twibill.vim.git
-https://github.com/basyura/unite-converter-erase-bufnr.git
 https://github.com/basyura/bitly.vim.git
-https://github.com/basyura/hatena-vim.git
 https://github.com/basyura/jslint.vim.git
 https://github.com/basyura/textile.vim.git
 https://github.com/basyura/unite-hiki.git
@@ -23,7 +20,6 @@ https://github.com/basyura/unite-yarm.git
 https://github.com/basyura/util.vim.git
 https://github.com/h1mesuke/unite-outline.git
 https://github.com/mattn/webapi-vim.git
-https://github.com/Shougo/fakecygpty.git
 https://github.com/Shougo/neocomplcache.git
 https://github.com/Shougo/unite.vim.git
 https://github.com/Shougo/vimfiler.git
