@@ -363,7 +363,7 @@ inoremap <C-x><C-c> <esc>:Cache<CR>:NeoComplCacheCachingDictionary<CR>a
 nmap <Leader>c <Plug>NERDCommenterToggle
 " ターミナルだとなぜか起動時にインサートモードになるので
 
-inoremap <C-s> <ESC>:w<CR>:echo "saved"<CR>a
+inoremap <C-s> <ESC>:w<CR>:echo "saved"<CR>
 inoremap <silent> <C-o> <ESC>o
 inoremap <C-j> <ESC>
 inoremap jj <ESC>
