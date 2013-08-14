@@ -58,7 +58,9 @@ if filereadable($HOME . '/.vimrc_local')
   source ~/.vimrc_local
 endif
 
-if has('win32')
+if has('win64')
+  let g:vimproc_dll_path = $HOME . '/.vim/proc/vimproc_win64.dll'
+elseif has('win32')
   let g:vimproc_dll_path = $HOME . '/.vim/proc/proc_win.dll'
 elseif has('win32unix')
   let g:vimproc_dll_path = $HOME . '/.vim/proc/proc_cygwin.dll'
@@ -450,7 +452,7 @@ let g:neocomplcache_keyword_patterns._ = '\h\w*'
 " 補完候補の数
 let g:neocomplcache_max_list = 100
 " 補完候補を自動的に選択
-let g:neocomplcache_enable_auto_select = 1
+"let g:neocomplcache_enable_auto_select = 1
 " 補完しないパターン
 let g:neocomplcache_disable_caching_file_path_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
 " 自動補完しないパターン
@@ -497,7 +499,7 @@ inoremap <C-k> <C-o>D
 " C-nでneocomplcache補完
 inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 " 補完候補が出ていたら確定、なければ改行
-inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
+inoremap <expr><CR>  pumvisible() ? "\<C-n>\<C-y>" : "<CR>"
 inoremap <expr><C-e> pumvisible() ? neocomplcache#close_popup() : "<End>"
 " 補完をキャンセル
 inoremap <expr><C-c>  neocomplcache#cancel_popup()
@@ -1199,7 +1201,7 @@ endif
 let g:neocomplete#enable_at_startup  = 0
 
 if g:neocomplete#enable_at_startup
-  let g:neocomplete#enable_auto_select = 1
+  "let g:neocomplete#enable_auto_select = 1
   let g:neocomplete#enable_fuzzy_completion = 0
 
   if !exists('g:neocomplete#keyword_patterns')
