@@ -421,13 +421,16 @@ function! s:initialize_neocomplete() "{{{
   inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
   inoremap <expr><CR>   pumvisible() ? "\<C-n>\<C-y>" : "<CR>"
   inoremap <expr><C-e>  pumvisible() ? neocomplete#close_popup() : "<End>"
-endfunction "}}}
+  inoremap <expr><C-c>  neocomplete#cancel_popup()
+  inoremap <expr><C-u>  neocomplete#undo_completion()
+  inoremap <expr><C-h>  neocomplete#smart_close_popup()."\<C-h>"
+endfunction
 
 if get(g:, 'neocomplete#enable_at_startup')
   call s:initialize_neocomplete()
 endif
 
-
+" }}}
 
 " ■ neocomplcache " {{{
 " 起動時に有効
@@ -1209,35 +1212,6 @@ endif
 if get(g:, 'neocomplcache_enable_at_startup', 0)
   call neocomplcache#initialize()
 endif
-
-" neocomplete {{{
-""""""""""""""""""""""""""""""""""
-"          neocomplete           "
-""""""""""""""""""""""""""""""""""
-
-let g:neocomplete#enable_at_startup  = 0
-
-if g:neocomplete#enable_at_startup
-  "let g:neocomplete#enable_auto_select = 1
-  let g:neocomplete#enable_fuzzy_completion = 0
-
-  if !exists('g:neocomplete#keyword_patterns')
-      let g:neocomplete#keyword_patterns = {}
-  endif
-  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-  inoremap <expr><CR>  pumvisible() ? neocomplete#close_popup() : "<CR>"
-  inoremap <expr><C-e> pumvisible() ? neocomplete#close_popup() : "<End>"
-  " 補完をキャンセル
-  inoremap <expr><C-c>  neocomplete#cancel_popup()
-  " 補完をアンドゥ
-  inoremap <expr><C-u>  neocomplete#undo_completion()
-
-  inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
-  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-endif
-
-"}}}
 
 " after {{{
 """"""""""""""""""""""""""
