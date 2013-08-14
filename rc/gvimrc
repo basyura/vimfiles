@@ -149,6 +149,7 @@ if g:colors_name == 'newspaper'
   hi Search    guifg=#ffffff guibg=#7B7939
   hi IncSearch guifg=#000000 guibg=#adadad
   hi VimError  guibg=#dcdda8
+  hi Pmenu     guifg=brown
 
   hi note_strong guifg=red
 

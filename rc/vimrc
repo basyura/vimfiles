@@ -255,6 +255,9 @@ cmap <C-d> <Del>
 "nnoremap 0 ^
 "nnoremap ^ 0
 
+" C-kを押すと行末まで削除
+inoremap <C-k> <C-o>D
+inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
 
@@ -395,138 +398,156 @@ vmap <leader>J <Plug>(jplus-getchar)
 nmap <Space>J <Plug>(jplus-getchar-with-space)
 vmap + <Plug>(jplus-getchar-with-space)
 
-" neocomplcache {{{
-"""""""""""""""""""""""""""""""""
-"        neocomplcache          "
-"""""""""""""""""""""""""""""""""
+function! s:initialize_neocomplete() "{{{
+	if !exists('g:neocomplete#keyword_patterns')
+	    let g:neocomplete#keyword_patterns = {}
+	endif
+	let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+	let g:neocomplete#sources#dictionary#dictionaries = {
+	    \ 'default'      : '',
+	    \ 'tweetvim_say' : $HOME . '/.tweetvim/screen_name,' .
+      \                  $HOME . '/.tweetvim/hash_tag,' .
+      \                  $HOME . '/.vim/dict/default.dict',
+	    \ }
+  
+  let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
+  let g:neocomplete#enable_ignore_case = 0
+  let g:neocomplete#enable_smart_case = 0
+
+  "call neocomplete#custom_source('_', 'sorters', ['sorter_length'])
+  call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
+
+  inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
+  inoremap <expr><CR>   pumvisible() ? "\<C-n>\<C-y>" : "<CR>"
+  inoremap <expr><C-e>  pumvisible() ? neocomplete#close_popup() : "<End>"
+endfunction "}}}
+
+if get(g:, 'neocomplete#enable_at_startup')
+  call s:initialize_neocomplete()
+endif
+
+
+
+" ■ neocomplcache " {{{
 " 起動時に有効
-if has('win32unix')
+if get(g:, 'neocomplete#enable_at_startup', 0)
+  let g:neocomplcache_enable_at_startup = 0
+elseif has('win32unix')
   let g:neocomplcache_enable_at_startup = 0
 else
   let g:neocomplcache_enable_at_startup = 1
 endif
-let g:neocomplcache_enable_fuzzy_completion = 0
 
-" snippet ファイルの保存先
-if !exists("g:neosnippet#snippets_directory")
-    let g:neosnippet#snippets_directory=""
-endif
-let g:neosnippet#snippets_directory='~/.vim/snippets'
-" dictionary
-if !exists('g:neocomplcache_dictionary_filetype_lists')
-  let g:neocomplcache_dictionary_filetype_lists = {}
-endif
-let g:neco_dic = g:neocomplcache_dictionary_filetype_lists
-let g:neco_dic.objc        = $HOME . '/.vim/dict/objc.dict'
-let g:neco_dic.javascript  = $HOME . '/.vim/dict/js.dict'
-let g:neco_dic.ruby        = $HOME . '/.vim/dict/ruby.dict'
-let g:neco_dic.eruby       = $HOME . '/.vim/dict/ruby.dict'
-let g:neco_dic.java        = $HOME . '/.vim/dict/java.dict'
-let g:neco_dic.c           = $HOME . '/.vim/dict/c.dict'
-let g:neco_dic.cs          = $HOME . '/.vim/dict/cs.dict'
-let g:neco_dic.go          = $HOME . '/.vim/dict/go.dict'
-let g:neco_dic.tweetvim_say = $HOME . '/.tweetvim/screen_name' .
-                                \ ',' . $HOME . '/.tweetvim/hash_tag' .
-                                \ ',' . $HOME . '/.vim/dict/default.dict'
 
-let neco_dic.unite_twitter =
-      \ $HOME . '/.unite/twitter/screen_name' .
-      \ ',' . $HOME . '/.twitvim.tags' .
-      \ ',' . $HOME . '/.vim/dict/default.dict'
-let neco_dic.hatena      = $HOME . '/.vim/dict/default.dict'
-let neco_dic.default     = $HOME . '/.vim/dict/default.dict'
-
-" sorter を変える
-try
-  call neocomplcache#custom_source('_', 'sorters', ['sorter_length'])
-  call neocomplcache#custom_source('_', 'matchers', ['matcher_head'])
-catch
-  "echo "no supported neocomplcache#custom_source"
-endtry
-
-" 日本語をキャッシュしない
-if !exists('g:neocomplcache_keyword_patterns')
-  let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns._ = '\h\w*'
-" 補完候補の数
-let g:neocomplcache_max_list = 100
-" 補完候補を自動的に選択
-"let g:neocomplcache_enable_auto_select = 1
-" 補完しないパターン
-let g:neocomplcache_disable_caching_file_path_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
-" 自動補完しないパターン
-let g:neocomplcache_lock_buffer_name_pattern = '\.log\|\.log\.\|.*quickrun.*\|.jax\|Log.txt'
-" text-mode
-if !exists('g:neocomplcache_text_mode_filetypes')
-  let g:neocomplcache_text_mode_filetypes = {}
-endif
-"let g:neocomplcache_text_mode_filetypes.scratch      = 1
-"let g:neocomplcache_text_mode_filetypes.note         = 1
-"let g:neocomplcache_text_mode_filetypes.tweetvim_say = 1
-"let g:neocomplcache_text_mode_filetypes.help         = 1
-" キャッシュ中に、メッセージをCommand-lineに表示しない
-let g:neocomplcache_enable_caching_message = 0
-" キー入力時にキーワード補完を行う入力数を制御する。
-let g:neocomplcache_auto_completion_start_length = 2
-
-" 大文字・小文字を無視するか
-let g:neocomplcache_enable_ignore_case = 0
-let g:neocomplcache_enable_smart_case = 0
-if !exists('g:neocomplcache_plugin_rank')
-  let g:neocomplcache_plugin_rank = {}
-endif
-let g:neocomplcache_plugin_rank.snippets_complete = 90
-"
-" ソート条件
-function! g:neocomplcache_compare_len(i1, i2)
-  let l:diff = len(a:i1.word) - len(a:i2.word)
-  if !l:diff
-    let l:diff = (a:i1.word ># a:i2.word) ? 1 : -1
+function! s:initialize_neocomplcache() " {{{
+  let g:neocomplcache_enable_fuzzy_completion = 0
+  " snippet ファイルの保存先
+  if !exists("g:neosnippet#snippets_directory")
+      let g:neosnippet#snippets_directory=""
   endif
-  return l:diff
-endfunction
-let g:neocomplcache_compare_function = 'g:neocomplcache_compare_len'
-" ちらつき防止
-let g:neocomplcache_enable_prefetch = 1
+  let g:neosnippet#snippets_directory='~/.vim/snippets'
+  " dictionary
+  if !exists('g:neocomplcache_dictionary_filetype_lists')
+    let g:neocomplcache_dictionary_filetype_lists = {}
+  endif
+  let g:neco_dic = g:neocomplcache_dictionary_filetype_lists
+  let g:neco_dic.objc        = $HOME . '/.vim/dict/objc.dict'
+  let g:neco_dic.javascript  = $HOME . '/.vim/dict/js.dict'
+  let g:neco_dic.ruby        = $HOME . '/.vim/dict/ruby.dict'
+  let g:neco_dic.eruby       = $HOME . '/.vim/dict/ruby.dict'
+  let g:neco_dic.java        = $HOME . '/.vim/dict/java.dict'
+  let g:neco_dic.c           = $HOME . '/.vim/dict/c.dict'
+  let g:neco_dic.cs          = $HOME . '/.vim/dict/cs.dict'
+  let g:neco_dic.go          = $HOME . '/.vim/dict/go.dict'
+  let g:neco_dic.tweetvim_say = $HOME . '/.tweetvim/screen_name' .
+                                  \ ',' . $HOME . '/.tweetvim/hash_tag' .
+                                  \ ',' . $HOME . '/.vim/dict/default.dict'
 
-"入力に大文字が含まれている場合は、大文字・小文字を無視しない
-"let g:neocomplcache_enable_smart_case = 1
-" 辞書読み込
-noremap  <Space>d. :<C-u>NeoComplCacheCachingDictionary<Enter>
-" C-kを押すと行末まで削除
-inoremap <C-k> <C-o>D
-" C-nでneocomplcache補完
-inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
-" 補完候補が出ていたら確定、なければ改行
-inoremap <expr><CR>  pumvisible() ? "\<C-n>\<C-y>" : "<CR>"
-inoremap <expr><C-e> pumvisible() ? neocomplcache#close_popup() : "<End>"
-" 補完をキャンセル
-inoremap <expr><C-c>  neocomplcache#cancel_popup()
-" 補完をアンドゥ
-inoremap <expr><C-u>  neocomplcache#undo_completion()
+  let neco_dic.unite_twitter =
+        \ $HOME . '/.unite/twitter/screen_name' .
+        \ ',' . $HOME . '/.twitvim.tags' .
+        \ ',' . $HOME . '/.vim/dict/default.dict'
+  let neco_dic.hatena      = $HOME . '/.vim/dict/default.dict'
+  let neco_dic.default     = $HOME . '/.vim/dict/default.dict'
 
-inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-" snippet 補完
-"
-imap <expr><C-l> pumvisible() ?
-      \ "\<C-y><Plug>(neosnippet_expand_or_jump)"
-      \ : "<Plug>(neosnippet_expand_or_jump)"
-"smap <expr><C-l> pumvisible() ?
-      "\ "\<C-y><Plug>(neosnippet_expand_or_jump)"
-      "\ : "<Plug>(neosnippet_expand_or_jump)"
-imap <C-l> <Plug>(neosnippet_expand_or_jump)
-smap <C-l> <Plug>(neosnippet_expand_or_jump)
+  " sorter を変える
+  try
+    call neocomplcache#custom_source('_', 'sorters', ['sorter_length'])
+    call neocomplcache#custom_source('_', 'matchers', ['matcher_head'])
+  catch
+    "echo "no supported neocomplcache#custom_source"
+  endtry
 
-"smap <silent> <C-l> <Plug>(neocomplcache_snippets_expand)
-command! -nargs=* Nes NeoSnippetEdit <args>
-command! -nargs=* Nel NeoComplCacheLock <args>
-command! -nargs=* NSource NeoComplCachePrintSource <args>
-command! -nargs=* NecoOff NeoComplCacheDisable <args>
-command! -nargs=* NecoOn  NeoComplCacheEnable <args>
-command! -nargs=* OutKeyWord  NeoComplCacheOutputKeyword <args>
-command! -nargs=* Cache  NeoComplCacheCachingBuffer <args>
+  " 日本語をキャッシュしない
+  if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+  endif
+  let g:neocomplcache_keyword_patterns._ = '\h\w*'
+  " 補完候補の数
+  let g:neocomplcache_max_list = 100
+  " 補完候補を自動的に選択
+  "let g:neocomplcache_enable_auto_select = 1
+  " 補完しないパターン
+  let g:neocomplcache_disable_caching_file_path_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
+  " 自動補完しないパターン
+  let g:neocomplcache_lock_buffer_name_pattern = '\.log\|\.log\.\|.*quickrun.*\|.jax\|Log.txt'
+  " text-mode
+  if !exists('g:neocomplcache_text_mode_filetypes')
+    let g:neocomplcache_text_mode_filetypes = {}
+  endif
+  "let g:neocomplcache_text_mode_filetypes.scratch      = 1
+  "let g:neocomplcache_text_mode_filetypes.note         = 1
+  "let g:neocomplcache_text_mode_filetypes.tweetvim_say = 1
+  "let g:neocomplcache_text_mode_filetypes.help         = 1
+  " キャッシュ中に、メッセージをCommand-lineに表示しない
+  let g:neocomplcache_enable_caching_message = 0
+  " キー入力時にキーワード補完を行う入力数を制御する。
+  let g:neocomplcache_auto_completion_start_length = 2
+
+  " 大文字・小文字を無視するか
+  let g:neocomplcache_enable_ignore_case = 0
+  let g:neocomplcache_enable_smart_case = 0
+  if !exists('g:neocomplcache_plugin_rank')
+    let g:neocomplcache_plugin_rank = {}
+  endif
+  let g:neocomplcache_plugin_rank.snippets_complete = 90
+  "
+  " ソート条件
+  function! g:neocomplcache_compare_len(i1, i2)
+    let l:diff = len(a:i1.word) - len(a:i2.word)
+    if !l:diff
+      let l:diff = (a:i1.word ># a:i2.word) ? 1 : -1
+    endif
+    return l:diff
+  endfunction
+  let g:neocomplcache_compare_function = 'g:neocomplcache_compare_len'
+  " ちらつき防止
+  let g:neocomplcache_enable_prefetch = 1
+
+  "入力に大文字が含まれている場合は、大文字・小文字を無視しない
+  "let g:neocomplcache_enable_smart_case = 1
+  " 辞書読み込
+  noremap  <Space>d. :<C-u>NeoComplCacheCachingDictionary<Enter>
+  " C-nでneocomplcache補完
+  inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
+  " 補完候補が出ていたら確定、なければ改行
+  inoremap <expr><CR>  pumvisible() ? "\<C-n>\<C-y>" : "<CR>"
+  inoremap <expr><C-e> pumvisible() ? neocomplcache#close_popup() : "<End>"
+  " 補完をキャンセル
+  inoremap <expr><C-c>  neocomplcache#cancel_popup()
+  " 補完をアンドゥ
+  inoremap <expr><C-u>  neocomplcache#undo_completion()
+
+  inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+
+  command! -nargs=* Nel NeoComplCacheLock <args>
+  command! -nargs=* NSource NeoComplCachePrintSource <args>
+  command! -nargs=* NecoOff NeoComplCacheDisable <args>
+  command! -nargs=* NecoOn  NeoComplCacheEnable <args>
+  command! -nargs=* OutKeyWord  NeoComplCacheOutputKeyword <args>
+  command! -nargs=* Cache  NeoComplCacheCachingBuffer <args>
+endfunction 
 
 function! s:neco_pre_cache()
   return
@@ -546,7 +567,21 @@ function! s:neco_pre_cache()
     :NeoComplCacheDisable
   endif
 endfunction
+" }}}
 
+if get(g:, 'neocomplcache_enable_at_startup', 0)
+  call s:initialize_neocomplcache()
+endif
+"}}}
+
+" ■ snippet 補完 {{{
+imap <expr><C-l> pumvisible() ?
+      \ "\<C-y><Plug>(neosnippet_expand_or_jump)"
+      \ : "<Plug>(neosnippet_expand_or_jump)"
+imap <C-l> <Plug>(neosnippet_expand_or_jump)
+smap <C-l> <Plug>(neosnippet_expand_or_jump)
+
+command! -nargs=* Nes NeoSnippetEdit <args>
 "}}}
 
 " vimshell {{{
@@ -854,8 +889,6 @@ let g:unite_source_alias_aliases = {
 """"""""""""""""""""""""""""""""""
 "             misc               "
 """"""""""""""""""""""""""""""""""
-" hatena.vim
-let g:hatena_user = 'basyura'
 let g:scratchBackupFile=$HOME . "/.scratch.txt"
 " ubuntu の時だけ
 if !has('mac') && !has('win32') && !has('win32unix')
@@ -1056,14 +1089,6 @@ function! s:scratch_my_settings()
   AlterCommand <buffer> q :Scratch<CR>
 endfunction
 
-
-command! ChangeTab call s:change_tab()
-function! s:change_tab()
-  setlocal tabstop=4
-  setlocal shiftwidth=4
-  setlocal noexpandtab
-endfunction
-
 command! CloseAll call s:close_all()
 function! s:close_all()
   let l:bufnr = 1
@@ -1090,22 +1115,17 @@ endfunction
 
 command! GoFmt execute ':VimProcBang gofmt -w %' | execute ':edit! %'
 
-command! TabNew :call s:tabnew()
-function! s:tabnew()
-  tabnew
-  Scratch
-  wincmd p
-  bd
-endfunction
 
-"color for cygwin
+"■ color for cygwin {{{
 if has('win32unix')
   hi Pmenu     ctermfg=LightYellow  ctermbg=black cterm=none
   hi PmenuSel  ctermfg=232          ctermbg=magenta
   hi Special   ctermfg=green        cterm=none
   hi PreProc   ctermfg=green        cterm=none
 endif
+" }}}
 
+" ■ Kwbd {{{
 "here is a more exotic version of my original Kwbd script
 "delete the buffer; keep windows; create a scratch buffer if no buffers left
 function! s:Kwbd(kwbdStage)
@@ -1167,11 +1187,13 @@ function! s:Kwbd(kwbdStage)
 endfunction
 
 command! Kwbd call <SID>Kwbd(1)
+" }}}
 
 if filereadable($HOME . '/.vimrc_local_after')
   source ~/.vimrc_local_after
 endif
 
+" ■ proxy {{{
 function! s:off_proxy()
   let $http_proxy  = ""
   let $https_proxy = ""
@@ -1179,16 +1201,11 @@ function! s:off_proxy()
   let $HTTPS_PROXY = ""
 endfunction
 command! OffProxy call <SID>off_proxy()
+" }}}
 
-
-"nnoremap <Leader>g :MyGrep 
-"command! -nargs=1 MyGrep call <SID>MyGrep(<f-args>)
-"function! s:MyGrep(args)
-  "execute ':Grep -iR ' . a:args . ' .'
-  ":bd!
-  ":Unite qflist -buffer-name=grep
-"endfunction
-
+if get(g:, 'neocomplete#enable_at_startup', 0)
+  call neocomplete#initialize()
+endif
 if get(g:, 'neocomplcache_enable_at_startup', 0)
   call neocomplcache#initialize()
 endif
