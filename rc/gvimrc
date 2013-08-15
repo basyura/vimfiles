@@ -1,18 +1,16 @@
-""""""""""""""""""""""""""""""""""
-"         core settings          "
-""""""""""""""""""""""""""""""""""
-
+"  core settings {{{
 set background=light
-"colorscheme solarized
 colorscheme newspaper
+" }}}
 
-"colorscheme wombat
 """"""""""""""""""""""""""""""""""
 "           settings             "
 """"""""""""""""""""""""""""""""""
 if expand("%") == ".git/COMMIT_EDITMSG"
   finish
 endif
+
+" setting {{{
 
 set guioptions-=rL
 set guioptions-=m
@@ -26,9 +24,12 @@ set guioptions-=T
 set guitablabel=%t
 
 set linespace=4
+" コマンドラインの高さ
+set cmdheight=1
 
+" }}}
 
-if has('vim_starting')
+if has('vim_starting') " {{{
   if has('win32')
     " font 
     if exists('g:my_gui_font')
@@ -68,33 +69,37 @@ if has('vim_starting')
     set lines=28
   endif
 endif
+"}}}
 
 
-" コマンドラインの高さ
-set cmdheight=1
 
 "*******************************************************
 "*                   保存・終了                        *
 "*******************************************************
 " gui の時だけ。Terminal ではやらない。
-command! -nargs=? -bang WQ  call s:WriteClose('<bang>')
+command! -nargs=? -bang WQ  call s:WriteClose('<bang>') " {{{
 function! s:WriteClose(bang)
   if a:bang == ''
     write | bd
   else
     write! | bd!
   endif
-endfunction
+endfunction "}}}
+
+" Altercommand {{{
 AlterCommand q Kwbd
 AlterCommand wq WQ
+" }}}
+
 """"""""""""""""""""""""""""""""""
 "             other              "
 """"""""""""""""""""""""""""""""""
 nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>:<C-u>source $MYGVIMRC<Enter>
 
 hi ModeMsg guifg=bg guibg=bg
+hi WarningMsg guifg=bg
 
-if g:colors_name == 'solarized'
+if g:colors_name == 'solarized' " {{{
   hi Normal     guifg=#313131
   hi Pmenu      guifg=#FFFDD6  guibg=black
   hi PmenuSel   guifg=#F0FF93  guibg=#000000
@@ -113,10 +118,11 @@ if g:colors_name == 'solarized'
   hi tweetvim_separator        guifg=gray
   hi tweetvim_separator_title  guifg=gray
   hi tweetvim_hash_tag         guifg=purple
-
 endif
 
-if g:colors_name == 'newspaper'
+"}}}
+
+if g:colors_name == 'newspaper' "{{{
   if has('mac')
     set transparency=0
   endif
@@ -161,10 +167,11 @@ if g:colors_name == 'newspaper'
   hi uniteSource__FileMru_Time guifg=#9f9f9f
   hi uniteSource__Buffer_Time  guifg=#9f9f9f
   hi uniteSource__Buffer_Name  guifg=#000000
-endi
+endif
 
+" }}}
 
-if g:colors_name == 'wonbat'
+if g:colors_name == 'wonbat' "{{{
   " カーソルオレンジ"
   hi Cursor   guifg=bg    guibg=orange
   hi Visual   guifg=black guibg=#bde682
@@ -195,3 +202,8 @@ if g:colors_name == 'wonbat'
 
   hi Title gui=none guifg=orange
 endif
+
+" }}}
+
+
+" vim: foldmethod=marker

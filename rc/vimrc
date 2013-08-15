@@ -1092,7 +1092,7 @@ function! s:scratch_my_settings()
   AlterCommand <buffer> q :Scratch<CR>
 endfunction
 
-command! CloseAll call s:close_all()
+command! CloseAll call s:close_all() "{{{
 function! s:close_all()
   let l:bufnr = 1
   while l:bufnr <= bufnr('$')
@@ -1101,9 +1101,9 @@ function! s:close_all()
     endif
     let l:bufnr += 1
   endwhile
-endfunction
+endfunction "}}}
 
-command! WriteToFile call s:write_to_file()
+command! WriteToFile call s:write_to_file() " {{{
 function! s:write_to_file()
   if &filetype == 'yarm'
     echo 'please use :w'
@@ -1114,17 +1114,17 @@ function! s:write_to_file()
     let msg = ' write to ' . bufname('%') . ' ... OK !!! '
     echohl CursorLine| echo msg | echohl None
   endtry
-endfunction
+endfunction "}}}
 
 command! GoFmt execute ':VimProcBang gofmt -w %' | execute ':edit! %'
 
-command! TabNew :call s:tabnew()
+command! TabNew :call s:tabnew() "{{{
 function! s:tabnew()
   tabnew
   Scratch
   wincmd p
   bd
-endfunction
+endfunction "}}}
 
 "■ color for cygwin {{{
 if has('win32unix')
