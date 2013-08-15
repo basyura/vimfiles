@@ -405,21 +405,21 @@ function! s:initialize_neocomplete() "{{{
 	let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 	let g:neocomplete#sources#dictionary#dictionaries = {
-	    \ 'default'      : '',
+	    \ '_'            : $HOME . '/.vim/dict/default.dict',
 	    \ 'tweetvim_say' : $HOME . '/.tweetvim/screen_name,' .
-      \                  $HOME . '/.tweetvim/hash_tag,' .
-      \                  $HOME . '/.vim/dict/default.dict',
+      \                  $HOME . '/.tweetvim/hash_tag,',
 	    \ }
   
   let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
   let g:neocomplete#enable_ignore_case = 0
   let g:neocomplete#enable_smart_case = 0
+  let g:neocomplete#enable_fuzzy_completion = 0
 
-  "call neocomplete#custom_source('_', 'sorters', ['sorter_length'])
+  call neocomplete#custom_source('_', 'sorters', ['sorter_length'])
   call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
 
   inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
-  inoremap <expr><CR>   pumvisible() ? "\<C-n>\<C-y>" : "<CR>"
+  inoremap <expr><CR>   pumvisible() ? "\<C-n>" . neocomplete#close_popup()  : "<CR>"
   inoremap <expr><C-e>  pumvisible() ? neocomplete#close_popup() : "<End>"
   inoremap <expr><C-c>  neocomplete#cancel_popup()
   inoremap <expr><C-u>  neocomplete#undo_completion()
@@ -1118,6 +1118,13 @@ endfunction
 
 command! GoFmt execute ':VimProcBang gofmt -w %' | execute ':edit! %'
 
+command! TabNew :call s:tabnew()
+function! s:tabnew()
+  tabnew
+  Scratch
+  wincmd p
+  bd
+endfunction
 
 "■ color for cygwin {{{
 if has('win32unix')
