@@ -404,19 +404,22 @@ function! s:initialize_neocomplete() "{{{
 	endif
 	let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-	let g:neocomplete#sources#dictionary#dictionaries = {
-	    \ '_'            : $HOME . '/.vim/dict/default.dict',
-	    \ 'tweetvim_say' : $HOME . '/.tweetvim/screen_name,' .
-      \                  $HOME . '/.tweetvim/hash_tag,',
-	    \ }
+	if !exists('g:neocomplete#sources#dictionary#dictionaries')
+    let g:neocomplete#sources#dictionary#dictionaries = {}
+  endif
+  let dict = g:neocomplete#sources#dictionary#dictionaries
+  "let dict._ = $HOME . '/.vim/dict/default.dict'
+  "let dict.tweetvim_say =  $HOME . '/.tweetvim/screen_name,' .
+                         "\ $HOME . '/.tweetvim/hash_tag,'
   
   let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
   let g:neocomplete#enable_ignore_case = 0
-  let g:neocomplete#enable_smart_case = 0
+  let g:neocomplete#enable_smart_case  = 1
   let g:neocomplete#enable_fuzzy_completion = 0
 
-  call neocomplete#custom_source('_', 'sorters', ['sorter_length'])
+  call neocomplete#custom_source('_', 'sorters',  ['sorter_length'])
   call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
+  call neocomplete#custom_source('necosnippet', 'rank',  200)
 
   inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
   inoremap <expr><CR>   pumvisible() ? "\<C-n>" . neocomplete#close_popup()  : "<CR>"
