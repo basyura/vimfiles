@@ -402,7 +402,7 @@ function! s:initialize_neocomplete() "{{{
 	if !exists('g:neocomplete#keyword_patterns')
 	    let g:neocomplete#keyword_patterns = {}
 	endif
-	let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+	let g:neocomplete#keyword_patterns._ = '\h\w*'
 
 	if !exists('g:neocomplete#sources#dictionary#dictionaries')
     let g:neocomplete#sources#dictionary#dictionaries = {}
