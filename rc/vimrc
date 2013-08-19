@@ -74,7 +74,7 @@ set ambiwidth=double
 set nonu
 set autoindent
 set iminsert=0
-set titlestring=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ \ %{getcwd()}
+set titlestring=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ \ %{fnamemodify(getcwd(),':~')}
 set titlelen=200
 set linespace=4
 set antialias
