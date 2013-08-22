@@ -146,12 +146,8 @@ augroup MyGroup
 
   autocmd FileType netrw setlocal buftype=nofile bufhidden=delete
 
-  autocmd FileType vimshell      call s:vimshell_filetype_settings()
-  autocmd FileType vimshell-less call s:vimshell_less_filetype_settings()
-
   autocmd FileType unite        call s:unite_my_settings()
   autocmd FileType scratch      call s:scratch_my_settings()
-  autocmd FileType vimshell-bg  call s:bg_settings()
 
   autocmd FileType note       call s:note_settings()
 
@@ -291,7 +287,6 @@ nmap <Leader><Leader>b <Plug>(openbrowser-open)
 nnoremap <M-k> <C-y>
 nnoremap <M-j> <C-e>
 nnoremap <Leader>s :Scratch<CR>
-nnoremap <Leader>v :VimShell<CR>
 nnoremap <Leader>w :WriteToFile<CR>
 nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> :Unite 
@@ -444,171 +439,6 @@ smap <C-l> <Plug>(neosnippet_expand_or_jump)
 
 command! -nargs=* Nes NeoSnippetEdit <args>
 "}}}
-
-" vimshell {{{
-""""""""""""""""""""""""""""""""""
-"            vimshell            "
-""""""""""""""""""""""""""""""""""
-
-"if has('mac')
-"  let g:vimshell_prompt = '⚡ '
-"else
-  let g:vimshell_prompt = '$ '
-"endif
-let g:vimshell_user_prompt = "printf('%s','')\ngetcwd()"
-let g:vimshell_edit_no_split = 1
-let g:vimshell_interactive_cygwin_path = 'D:/develop/dev/cygwin/bin'
-let g:vimshell_interactive_cygwin_home = 'D:/develop/dev/cygwin/home/Administrator'
-let g:vimshell_split_command = 'split'
-"let g:vimshell_split_command = "vsplit"
-" ディレクトリの補完時に/を補います
-let g:vimshell_enable_auto_slash = 1
-if !exists('g:vimshell_interactive_cygwin_commands')
-  let g:vimshell_interactive_cygwin_commands = {}
-endif
-let g:vimshell_interactive_cygwin_commands['git'] = {
-  \ 'name' : 'git',
-  \ 'kind' : 'execute',
-  \ 'description' : 'git [{options}...] {command}',
-\}
-let g:vimshell_interactive_cygwin_commands['termtter'] = {
-  \ 'name' : 'termtter',
-  \ 'kind' : 'execute',
-  \ 'description' : 'git [{options}...] {command}',
-\}
-let g:vimshell_interactive_cygwin_commands['irb'] = {
-  \ 'name' : 'irb',
-  \ 'kind' : 'execute',
-  \ 'description' : 'git [{options}...] {command}',
-\}
-"let g:vimshell_interactive_cygwin_commands['rake'] = {
-  "\ 'name' : 'rake',
-  "\ 'kind' : 'execute',
-  "\ 'description' : 'git [{options}...] {command}',
-"\}
-let g:vimshell_interactive_cygwin_commands['telnet'] = {
-  \ 'name' : 'telnet',
-  \ 'kind' : 'execute',
-  \ 'description' : 'git [{options}...] {command}',
-\}
-
-
-nnoremap <silent> <Plug>(vimshell_complete_slash)  :<C-u>call s:complete_slash()<CR>
-  "nnoremap <buffer><silent> <Plug>(vimshell_enter)
-        "\ i<C-g>u<ESC>:<C-u>call vimshell#execute_current_line(0)<CR><ESC>
-function! s:complete_slash()
-  if fnamemodify(getline("."), ":t") !~ '\.'
-    call setline(line("."), getline(".") . "/")
-  endif
-  startinsert!
-endfunction
-
-function! s:complete_tab()
-  let cmd = substitute(getline("."), '^' . g:vimshell_prompt, '', '')
-
-  if pumvisible()
-    call feedkeys("\<C-y>\<C-h>")
-    if cmd =~ '^cd ' && cmd !~ '/$'
-      call feedkeys("/")
-    end
-    return
-  endif
-
-  if cmd =~ '^cd ' && cmd !~ '/$'
-    let path = substitute(cmd, '^cd ', '', '')
-    if isdirectory(path)
-      for d in split(glob(path . '/*'))
-        if isdirectory(d)
-         call feedkeys("\<C-h>/")
-         return
-        endif
-      endfor
-    endif
-    call feedkeys("\<C-h>")
-    return
-  endif
-  call feedkeys("\<C-h>")
-endfunction
-
-function! s:vimshell_filetype_settings()
-  setlocal nonu
-  "imap <buffer><expr> <tab> pumvisible() ? "\<C-y>\<ESC>:call \<SID>complete_slash()\<CR>" : "\<Plug>(vimshell_command_complete)"
-  inoremap <buffer><expr><tab> <SID>complete_tab()
-  inoremap <buffer> <C-x> <ESC><C-w>h:on<CR>
-  nnoremap <buffer> <CR> Go$<Space>
-  imap <buffer> <C-x>     <ESC><C-w>h:on<CR>
-  inoremap <C-v> <C-R>+
-  inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-  imap <buffer> <C-o> <Plug>(vimshell_enter)
-  inoremap <buffer> <C-l> <C-y>
-  inoremap <buffer> <expr><silent> <C-s>  unite#sources#vimshell_history#start_complete(1)
-  inoremap <buffer> <C-q> <ESC><C-w>p 
-  imap <buffer> <C-h> <Plug>(vimshell_delete_backward_char)
-  nunm <buffer> q
-  "call vimshell#hook#set('preexec'  , ['g:vimshell_preexec'])
-  "call vimshell#hook#set('postexec' , ['g:vimshell_postexec'])
-  "call vimshell#set_execute_file('txt,vim,xml,java,jax,jsp,rb,js', 'vim')
-  call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
-
-  inoremap <buffer> <silent> <C-n> <ESC>:<C-u>Unite -buffer-name=buffer -hide-source-names buffer_tab<CR>
-  inoremap <buffer> <silent> <C-r> <ESC>:<C-u>Unite -buffer-name=file_mru file_mru -start-insert<CR>
-  nnoremap <buffer> <silent> <C-n> :<C-u>Unite -buffer-name=buffer -hide-source-names buffer_tab<CR>
-  " it's the default behaviour of <Cr> in vimshell's insert mode
-  "imap <buffer> <S-CR> <C-]><Plug>(vimshell_enter)
-  "imap <buffer> <S-CR> <C-]><Plug>(vimshell_enter)
-  "imap <buffer><expr> <S-CR> "<C-y>"
-  imap <buffer><expr> <S-CR> (pumvisible() ? "<C-y>" : "\<Plug>(vimshell_enter)")
-  imap <buffer><expr> <CR> (pumvisible() ? "<C-y>\<Plug>(vimshell_enter)" : "\<Plug>(vimshell_enter)")
-  " <Cr> expands snippet!
-  "    \ "\<Plug>(neosnippet#expand)\<Plug>(vimshell_enter)" : pumvisible() ? "<C-y>" : "\<Plug>(vimshell_enter)"
-  "imap <buffer><expr> <CR> (pumvisible() ? "<C-y>" : "\<Plug>(vimshell_enter)")
-
-  AlterCommand <buffer> q echo 'use bd'
-
-  hi VimShellPrompt guifg=#8ac6f2 gui=NONE
-
-  if g:colors_name == 'newspaper'
-    hi vimshellPrompt guifg=darkgreen
-    hi vimshellError  guifg=darkgreen
-  endif
-
-endfunction
-"
-"
-"
-function! s:vimshell_less_filetype_settings()
-  AlterCommand <buffer> q bd
-endfunction
-" vim コマンド実行前処理
-function! g:vimshell_preexec(cmdline, context)
-  " 改行する
-  if a:cmdline =~ "^vim .*"
-    " ホントは色付のユーザプロンプトを出したい
-    call append(g:vimshell_prompt , "")
-    call append(g:vimshell_prompt , vimshell#get_prompt())
-    execute "normal G"
-  endif
-  if s:is_vimshell_change_termencoding_cmd(a:cmdline)
-    set termencoding=cp932
-  endif
-  return a:cmdline
-endfunction
-" vim コマンド実行後
-function! g:vimshell_postexec(cmdline, context)
-  if s:is_vimshell_change_termencoding_cmd(a:cmdline)
-    set termencoding=utf-8
-  endif
-endfunction
-
-function! s:is_vimshell_change_termencoding_cmd(cmdline)
-  if !exists('g:vimshell_change_termencoding_cmd')
-    return 0
-  endif
-  let l:args = vimproc#parser#split_args(a:cmdline)
-  return len(l:args) > 0 && l:args[0] =~ g:vimshell_change_termencoding_cmd
-endfunction
-
-" }}}
 
 " open browser {{{
 """"""""""""""""""""""""""""""""""
