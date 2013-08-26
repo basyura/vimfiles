@@ -887,6 +887,20 @@ if filereadable($HOME . '/.vimrc_local_after')
   source ~/.vimrc_local_after
 endif
 
+inoremap <silent><C-x><C-s> <Esc>:call <SID>toggle_status()<CR>a
+nnoremap <silent><C-x><C-s> :call <SID>toggle_status()<CR>
+
+function! s:toggle_status()
+  if &laststatus == 2 
+    let &laststatus = 0
+  else
+    let &laststatus = 2
+    if winheight('$') < 3
+      execute '2 wincmd _'
+    endif
+  endif
+endfunction
+
 " ■ proxy {{{
 function! s:off_proxy()
   let $http_proxy  = ""
