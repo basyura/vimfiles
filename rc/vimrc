@@ -895,8 +895,8 @@ function! s:toggle_status()
     let &laststatus = 0
   else
     let &laststatus = 2
-    if winheight('$') < 3
-      execute '2 wincmd _'
+    if winheight('%') < 3
+      execute '3 wincmd _'
     endif
   endif
 endfunction
