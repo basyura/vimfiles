@@ -23,7 +23,7 @@ set guioptions-=T
 
 set guitablabel=%t
 
-set linespace=4
+set linespace=5
 " コマンドラインの高さ
 set cmdheight=1
 
