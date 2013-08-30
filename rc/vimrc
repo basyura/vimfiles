@@ -76,7 +76,7 @@ set autoindent
 set iminsert=0
 set titlestring=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ \ %{fnamemodify(getcwd(),':~')}
 set titlelen=200
-set linespace=4
+set linespace=5
 set antialias
 set backupdir=~/.vim/backup
 set directory=~/.vim/swp
