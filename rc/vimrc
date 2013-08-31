@@ -252,8 +252,10 @@ cmap <C-d> <Del>
 " C-kを押すと行末まで削除
 inoremap <C-k> <C-o>D
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
-inoremap <C-u> <C-g>u<C-u>
+inoremap <C-u> <C-g>u<C-o>u
+inoremap <C-@> <C-o>:redo<CR>
 inoremap <C-w> <C-g>u<C-w>
+inoremap <C-p> <C-o>
 
 nnoremap gc `[v`]
 
@@ -416,7 +418,7 @@ function! s:initialize_neocomplete() "{{{
   inoremap <expr><CR>   pumvisible() ? "\<C-n>" . neocomplete#close_popup()  : "<CR>"
   inoremap <expr><C-e>  pumvisible() ? neocomplete#close_popup() : "<End>"
   inoremap <expr><C-c>  neocomplete#cancel_popup()
-  inoremap <expr><C-u>  neocomplete#undo_completion()
+  "inoremap <expr><C-u>  neocomplete#undo_completion()
   inoremap <expr><C-h>  neocomplete#smart_close_popup()."\<C-h>"
 endfunction
 
