@@ -286,6 +286,9 @@ nnoremap <C-c> <C-a>
 
 nmap <Leader><Leader>b <Plug>(openbrowser-open)
 
+"置換
+nnoremap <Leader><Leader>r :1,$ s///gc<left><left><left><left>
+
 nnoremap <M-k> <C-y>
 nnoremap <M-j> <C-e>
 nnoremap <Leader>s :Scratch<CR>
@@ -314,7 +317,6 @@ nnoremap <silent>co :Unite -no-quit -buffer-name=qflist qflist<CR>
 "nnoremap <silent><Leader>r :UniteResume<CR>
 nnoremap <silent><Leader>r :redraw!<CR> 
 nnoremap <silent>on 999<C-w>+
-nnoremap <silent><Leader><Leader>r :Unite yarm<CR>
 "nnoremap <silent><Leader>l :Unite -vertical -winwidth=50 uiki<CR>
 nnoremap <silent><Leader>l  :<C-u>Unite -buffer-name=note -hide-source-names -hide-status-line note<CR>
 "nnoremap <silent><Leader>ll  :<C-u>Unite -buffer-name=note -hide-source-names -hide-status-line note/archive note<CR>
