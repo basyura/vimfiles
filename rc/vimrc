@@ -633,6 +633,13 @@ nnoremap <silent> tm :TweetVimMentions<CR>
 "let g:tweetvim_default_account = 'tottoruby'
 let g:tweetvim_display_source = 1
 let g:tweetvim_original_hi = 0
+let g:tweetvim_filters = ['advanced']
+
+let g:tweetvim_advanced_filter = {}
+function! g:tweetvim_advanced_filter.executor(tweet)
+    return a:tweet.user.screen_name == 'rails_rt_ja'
+endfunction
+
 
 if !has('gui_running')
   let g:tweetvim_display_source  = 0
