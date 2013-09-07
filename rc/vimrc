@@ -215,6 +215,7 @@ let java_ignore_javadoc = 1
 
 "}}}
 
+"map {{{
 """"""""""""""""""""""""""""""""""
 "             map                "
 """"""""""""""""""""""""""""""""""
@@ -392,6 +393,8 @@ vmap <leader>J <Plug>(jplus-getchar)
 nmap <Space>J <Plug>(jplus-getchar-with-space)
 vmap + <Plug>(jplus-getchar-with-space)
 
+"}}}
+
 function! s:initialize_neocomplete() "{{{
   let g:neocomplete#enable_at_startup= 1
 	if !exists('g:neocomplete#keyword_patterns')
@@ -429,8 +432,6 @@ if !has('win32unix')
   call s:initialize_neocomplete()
   call neocomplete#initialize()
 endif
-
-" }}}
 
 "}}}
 
@@ -576,6 +577,13 @@ let g:unite_source_alias_aliases = {
 \}
 
 "}}}
+
+" rails {{{
+command! RailsMode call s:rails_mode()
+function! s:rails_mode()
+  nnoremap <C-p> :Unite rails/
+endfunction
+" }}}
 
 """"""""""""""""""""""""""""""""""
 "             misc               "
