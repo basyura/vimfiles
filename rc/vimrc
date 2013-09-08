@@ -215,6 +215,7 @@ let java_ignore_javadoc = 1
 
 "}}}
 
+"map {{{
 """"""""""""""""""""""""""""""""""
 "             map                "
 """"""""""""""""""""""""""""""""""
@@ -392,6 +393,8 @@ vmap <leader>J <Plug>(jplus-getchar)
 nmap <Space>J <Plug>(jplus-getchar-with-space)
 vmap + <Plug>(jplus-getchar-with-space)
 
+"}}}
+
 function! s:initialize_neocomplete() "{{{
   let g:neocomplete#enable_at_startup= 1
 	if !exists('g:neocomplete#keyword_patterns')
@@ -429,8 +432,6 @@ if !has('win32unix')
   call s:initialize_neocomplete()
   call neocomplete#initialize()
 endif
-
-" }}}
 
 "}}}
 
@@ -577,6 +578,13 @@ let g:unite_source_alias_aliases = {
 
 "}}}
 
+" rails {{{
+command! RailsMode call s:rails_mode()
+function! s:rails_mode()
+  nnoremap <C-p> :Unite rails/
+endfunction
+" }}}
+
 """"""""""""""""""""""""""""""""""
 "             misc               "
 """"""""""""""""""""""""""""""""""
@@ -633,6 +641,16 @@ nnoremap <silent> tm :TweetVimMentions<CR>
 "let g:tweetvim_default_account = 'tottoruby'
 let g:tweetvim_display_source = 1
 let g:tweetvim_original_hi = 0
+let g:tweetvim_filters = ['advanced']
+
+let g:tweetvim_advanced_filter = {}
+function! g:tweetvim_advanced_filter.executor(tweet)
+  if !has_key(a:tweet, 'user')
+    return 1
+  endif
+  return a:tweet.user.screen_name == 'rails_rt_ja'
+endfunction
+
 
 if !has('gui_running')
   let g:tweetvim_display_source  = 0
