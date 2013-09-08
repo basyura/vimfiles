@@ -736,6 +736,7 @@ function! s:rmine_my_settings()
   hi rmine_issues_separator_title guifg=gray
   hi rmine_issues_separator guifg=gray
   hi rmine_issue_priority_6 guifg=red
+  hi rmine_issue_status_3 guifg=white guibg=#675220
 endfunction
 
 
