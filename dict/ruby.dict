@@ -1,4 +1,5 @@
-&nbsp;
+private
+default
 ActionView::Helpers::SanitizeHelper
 ActionView::Helpers::TextHelper
 ActiveAXS::Base

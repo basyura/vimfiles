@@ -3,3 +3,5 @@ describe
 text_field
 text_area
 submit
+image_tag
+link_to

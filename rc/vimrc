@@ -285,6 +285,8 @@ nnoremap <C-b> <Left>
 " カウントアップ
 nnoremap <C-c> <C-a>
 
+nnoremap cc cw
+
 nmap <Leader><Leader>b <Plug>(openbrowser-open)
 
 "置換
@@ -406,6 +408,7 @@ function! s:initialize_neocomplete() "{{{
     let g:neocomplete#sources#dictionary#dictionaries = {}
   endif
   let dict = g:neocomplete#sources#dictionary#dictionaries
+  let dict.ruby = $HOME . '/.vim/dict/ruby.dict'
   "let dict._ = $HOME . '/.vim/dict/default.dict'
   "let dict.tweetvim_say =  $HOME . '/.tweetvim/screen_name,' .
                          "\ $HOME . '/.tweetvim/hash_tag,'
@@ -436,6 +439,7 @@ endif
 "}}}
 
 " ■ snippet 補完 {{{
+let g:neosnippet#snippets_directory = '~/.vim/snippets'
 imap <expr><C-l> pumvisible() ?
       \ "\<C-y><Plug>(neosnippet_expand_or_jump)"
       \ : "<Plug>(neosnippet_expand_or_jump)"
