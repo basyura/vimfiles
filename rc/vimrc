@@ -591,6 +591,7 @@ function! s:rails_mode()
 endfunction
 " }}}
 
+" misc {{{
 """"""""""""""""""""""""""""""""""
 "             misc               "
 """"""""""""""""""""""""""""""""""
@@ -626,7 +627,7 @@ endfunction
 
 " Change current directory.
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
-
+" }}}
 
 " tweetvim {{{
 """"""""""""""""""""""""""""""
@@ -772,7 +773,6 @@ function! FullScreen()
   set lines=43
 endfunction
 
-
 " カーソル位置の highlight グループを取得する．
 command! -nargs=0 GetHighlightingGroup echo 'hi<' . synIDattr(synID(line('.'),col('.'),1),'name') . '> trans<' . synIDattr(synID(line('.'),col('.'),0),'name') . '> lo<' . synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name') . '>'
 
@@ -791,12 +791,6 @@ function! s:vimrc_local(loc)
 "  endfor
   let &l:tags=findfile('.tags' , '.;')
 "  let &tags=findfile('.tags' , '.;')
-endfunction
-
-"http://vim-users.jp/2010/03/hack130/
-command! -complete=file -nargs=+ VimGrep  call s:grep([<f-args>])
-function! s:grep(args)
-  execute 'vimgrep' '/'.a:args[-1].'/' join(a:args[:-2]) | :Unite qflist
 endfunction
 
 if has('mac')
