@@ -655,7 +655,16 @@ function! g:tweetvim_advanced_filter.executor(tweet)
   if !has_key(a:tweet, 'user')
     return 1
   endif
-  return a:tweet.user.screen_name == 'rails_rt_ja'
+  
+  if a:tweet.user.screen_name == 'rails_rt_ja'
+    return 1
+  endif
+
+  if a:tweet.text =~ '^デイリー こで'
+    return 1
+  endif
+
+  return 0
 endfunction
 
 
