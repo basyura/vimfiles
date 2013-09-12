@@ -420,12 +420,18 @@ function! s:initialize_neocomplete() "{{{
 
   call neocomplete#custom_source('_', 'sorters',  ['sorter_length'])
   call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
-  call neocomplete#custom_source('necosnippet', 'rank',  200)
+  call neocomplete#custom_source('neosnippet', 'rank',  400)
 
   call neocomplete#custom_source('include', 'rank', 1)
 
+  if has('patch22')
+    let g:neocomplete#enable_auto_select = 1
+    inoremap <expr><CR>   pumvisible() ? neocomplete#close_popup()  : "<CR>"
+  else
+    inoremap <expr><CR>   pumvisible() ? "\<C-n>" . neocomplete#close_popup()  : "<CR>"
+  endif
+
   inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
-  inoremap <expr><CR>   pumvisible() ? "\<C-n>" . neocomplete#close_popup()  : "<CR>"
   inoremap <expr><C-e>  pumvisible() ? neocomplete#close_popup() : "<End>"
   inoremap <expr><C-c>  neocomplete#cancel_popup()
   "inoremap <expr><C-u>  neocomplete#undo_completion()
