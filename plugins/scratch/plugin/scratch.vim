@@ -98,6 +98,7 @@ function! <SID>ShowScratchBuffer()
     else
       exec buffer_win.'wincmd w'
     endif
+    return
   endif
   " Do setup always, just in case.
   setlocal buftype=nofile
