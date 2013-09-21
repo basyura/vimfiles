@@ -71,7 +71,7 @@ endif
 set textwidth=0
 set ambiwidth=double
 "set number
-set nonu
+set nu
 set autoindent
 set iminsert=0
 set titlestring=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ \ %{fnamemodify(getcwd(),':~')}
@@ -416,10 +416,10 @@ function! s:initialize_neocomplete() "{{{
   let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
   let g:neocomplete#enable_ignore_case = 0
   let g:neocomplete#enable_smart_case  = 1
-  let g:neocomplete#enable_fuzzy_completion = 0
+  let g:neocomplete#enable_fuzzy_completion = 1
 
   call neocomplete#custom_source('_', 'sorters',  ['sorter_length'])
-  call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
+  "call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
   call neocomplete#custom_source('neosnippet', 'rank',  400)
 
   call neocomplete#custom_source('include', 'rank', 1)
