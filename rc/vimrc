@@ -247,8 +247,8 @@ nnoremap <C-x><C-n> :setlocal nu!<CR>
 inoremap <C-d> <Del>
 cmap <C-d> <Del>
 
-"nnoremap 0 ^
-"nnoremap ^ 0
+nnoremap 0 ^
+nnoremap ^ 0
 
 " C-kを押すと行末まで削除
 inoremap <C-k> <C-o>D
@@ -416,10 +416,10 @@ function! s:initialize_neocomplete() "{{{
   let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
   let g:neocomplete#enable_ignore_case = 0
   let g:neocomplete#enable_smart_case  = 1
-  let g:neocomplete#enable_fuzzy_completion = 1
+  let g:neocomplete#enable_fuzzy_completion = 0
 
   call neocomplete#custom_source('_', 'sorters',  ['sorter_length'])
-  "call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
+  call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
   call neocomplete#custom_source('neosnippet', 'rank',  400)
 
   call neocomplete#custom_source('include', 'rank', 1)
