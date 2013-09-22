@@ -1,4 +1,4 @@
-" scratch.vim
+" scratch.vim {{{
 " Author: Abhilash Koneri (abhilash_koneri at hotmail dot com)
 " Improved By: Hari Krishna Dara (hari_vim at yahoo dot com)
 " Last Change: 25-Feb-2004 @ 09:48
@@ -32,6 +32,7 @@
 " The ones defined below are not very ergonomic!
 "----------------------------------------------------------------------
 "Standard Inteface:  <F8> to make a new ScratchBuffer, <F8>-again to hide one
+"}}}
 
 if exists('loaded_scratch')
   finish
@@ -43,21 +44,21 @@ let loaded_scratch = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-if (! exists("no_plugin_maps") || ! no_plugin_maps) &&
-      \ (! exists("no_scratch_maps") || ! no_scratch_maps)
-  if !hasmapto('<Plug>ShowScratchBuffer',"n")
-    nmap <unique> <silent> <F8> <Plug>ShowScratchBuffer
-  endif
-  if !hasmapto('<Plug>InsShowScratchBuffer',"i")
-    imap <unique> <silent> <F8> <Plug>InsShowScratchBuffer
-  endif
-endif
+"if (! exists("no_plugin_maps") || ! no_plugin_maps) &&
+      "\ (! exists("no_scratch_maps") || ! no_scratch_maps)
+  "if !hasmapto('<Plug>ShowScratchBuffer',"n")
+    "nmap <unique> <silent> <F8> <Plug>ShowScratchBuffer
+  "endif
+  "if !hasmapto('<Plug>InsShowScratchBuffer',"i")
+    "imap <unique> <silent> <F8> <Plug>InsShowScratchBuffer
+  "endif
+"endif
 
 " User Overrideable Plugin Interface
-nmap <script> <silent> <Plug>ShowScratchBuffer
-      \ :silent call <SID>ShowScratchBuffer()<cr>
-imap <script> <silent> <Plug>InsShowScratchBuffer
-      \ <c-o>:silent call <SID>ShowScratchBuffer()<cr>
+"nmap <script> <silent> <Plug>ShowScratchBuffer
+      "\ :silent call <SID>ShowScratchBuffer()<cr>
+"imap <script> <silent> <Plug>InsShowScratchBuffer
+      "\ <c-o>:silent call <SID>ShowScratchBuffer()<cr>
 
 command! -nargs=0 Scratch :call <SID>ShowScratchBuffer()
 
@@ -69,7 +70,7 @@ aug ScratchBackup
   au VimLeavePre * :call <SID>BackupScratchBuffer()
 aug END
 
-let s:SCRATCH_BUFFER_NAME="[Scratch]"
+let s:SCRATCH_BUFFER_NAME="[scratch]"
 if !exists('s:buffer_number') " Supports reloading.
   let s:buffer_number = -1
 endif
@@ -108,14 +109,13 @@ function! <SID>ShowScratchBuffer()
   setlocal noro
   setfiletype scratch
   nmap <buffer> <silent> <Plug>ShowScratchBuffer :hide<cr>
-  imap <buffer> <silent> <Plug>InsShowScratchBuffer <c-o>:hide<cr>
+  "imap <buffer> <silent> <Plug>InsShowScratchBuffer <c-o>:hide<cr>
   command! -buffer -nargs=0 Scratch :hide
 endfunction
 
 function! s:BackupScratchBuffer()
   try
-    if s:buffer_number != -1 && exists('g:scratchBackupFile') &&
-          \ g:scratchBackupFile != ''
+    if s:buffer_number != -1 && exists('g:scratchBackupFile') && g:scratchBackupFile != ''
       " move to scratch buffer
       if bufnr('%') != s:buffer_number
         exec 'split #' . s:buffer_number
@@ -139,4 +139,4 @@ endfunction
 let &cpo = s:save_cpo
 unlet s:save_cpo
 
-" vim6: sw=2 et
+" vim: foldmethod=marker
