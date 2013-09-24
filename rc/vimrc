@@ -682,6 +682,7 @@ endif
 augroup mygroup-tweetvim
   autocmd!
   autocmd FileType tweetvim_say call s:tweetvim_say_my_settings()
+  autocmd FileType tweetvim setlocal nonu
 augroup END
 " for tweetvim say
 function! s:tweetvim_say_my_settings()
