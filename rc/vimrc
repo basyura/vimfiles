@@ -124,7 +124,8 @@ set ignorecase
 """"""""""""""""""""""""""""""""""
 augroup MyGroup
   autocmd!
-  au BufWritePost * call s:delete_history_on_write()
+  au BufWritePost * call s:delete_history()
+  au BufDelete * call s:delete_history()
   au BufNewFile,BufRead *.scala setf scala
   "set autochdir
   au BufEnter * call s:all_bufenter_setting()
@@ -162,8 +163,8 @@ augroup MyGroup
   endif
 augroup END
 
-function! s:delete_history_on_write()
-  call histdel(":", 'w\|bd\|WQ\|Scratch\|q\|ls\|CloseAll')
+function! s:delete_history()
+  call histdel(":", 'w\|bd\|WQ\|Scratch\|q\|ls\|close')
 endfunction
 
 function! s:note_settings()
@@ -415,6 +416,7 @@ function! s:initialize_neocomplete() "{{{
   endif
   let dict = g:neocomplete#sources#dictionary#dictionaries
   let dict.ruby = $HOME . '/.vim/dict/ruby.dict'
+  let dict.cs   = $HOME . '/.vim/dict/cs.dict'
   "let dict._ = $HOME . '/.vim/dict/default.dict'
   "let dict.tweetvim_say =  $HOME . '/.tweetvim/screen_name,' .
                          "\ $HOME . '/.tweetvim/hash_tag,'
@@ -946,7 +948,6 @@ function! s:Kwbd(kwbdStage)
       endif
     endif
   endif
-  call histdel(":", "Kwbd")
 endfunction
 
 command! Kwbd call <SID>Kwbd(1)
