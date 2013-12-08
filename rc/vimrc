@@ -3,7 +3,7 @@
 "         core settings          "
 """"""""""""""""""""""""""""""""""
 
-if expand("%") == ".git/COMMIT_EDITMSG"
+if expand("%") == ".git/COMMIT_EDITMSG" || &filetype == 'gitcommit'
   finish
 endif
 
@@ -332,7 +332,7 @@ nnoremap <silent><Leader>l  :<C-u>Unite -buffer-name=note -hide-source-names -hi
 "nnoremap <silent><Leader>ll  :<C-u>Unite -buffer-name=note -hide-source-names -hide-status-line note/archive note<CR>
 nnoremap <C-p> :Unite 
 
-nnoremap <silent><C-h> :Unite history/command<CR>
+nnoremap <silent><C-h> :Unite -hide-source-names history/command histeric<CR>
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
