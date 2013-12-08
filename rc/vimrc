@@ -164,7 +164,8 @@ augroup MyGroup
 augroup END
 
 function! s:delete_history()
-  call histdel(":", 'w\|bd\|WQ\|Scratch\|q\|ls\|close')
+  "call histdel(":", 'w\|bd\|WQ\|Scratch\|q\|ls\|close')
+  call histdel(":", 'Kwbd\|history\|wq')
 endfunction
 
 function! s:note_settings()
@@ -332,7 +333,8 @@ nnoremap <silent><Leader>l  :<C-u>Unite -buffer-name=note -hide-source-names -hi
 "nnoremap <silent><Leader>ll  :<C-u>Unite -buffer-name=note -hide-source-names -hide-status-line note/archive note<CR>
 nnoremap <C-p> :Unite 
 
-nnoremap <silent><C-h> :Unite -hide-source-names history/command histeric<CR>
+"nnoremap <silent><C-h> :Unite -hide-source-names history/command histeric<CR>
+nnoremap <silent><C-h> :Unite -hide-source-names  histeric<CR>
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
