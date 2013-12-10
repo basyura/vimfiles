@@ -165,7 +165,7 @@ augroup END
 
 function! s:delete_history()
   "call histdel(":", 'w\|bd\|WQ\|Scratch\|q\|ls\|close')
-  call histdel(":", '^Kwbd$\|^history$\|^wq$\|^bd$\|^w$')
+  call histdel(":", '^Kwbd$\|^history$\|^wq$\|^bd$\|^w$\|^enew$\|^q$')
 endfunction
 
 function! s:note_settings()
