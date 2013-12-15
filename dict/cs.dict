@@ -87,3 +87,5 @@ FileStream
 DynamicObject
 TryGetValue(
 IsNullOrEmpty(
+CodeDomProvider
+CompilerInfo
