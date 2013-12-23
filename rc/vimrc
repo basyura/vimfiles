@@ -79,6 +79,7 @@ set titlelen=200
 set linespace=5
 set antialias
 set backupdir=~/.vim/backup
+set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim/swp
 set scrolloff=5
 set wrap
