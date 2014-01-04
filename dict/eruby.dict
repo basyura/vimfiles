@@ -5,3 +5,4 @@ text_area
 submit
 image_tag
 link_to
+yield

@@ -90,3 +90,13 @@ snippet     add_column
 abbr        add_column
 prev_word   '^'
     add_column ${1:table} , ${2:column} , ${3:type}
+
+snippet     describe
+  describe '${1}' do
+    ${2}
+  end
+
+snippet     it
+    it "should ${1}" do
+    ${2}
+    end
