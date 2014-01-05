@@ -10,6 +10,7 @@ abbr        <% %>
     <% ${1} %>
 
 snippet     link_to
+options     word
 prev_word   "href=\""
 abbr        link_to "name" , path
     <%= link_to "${1:name}" , ${2:path} %>
@@ -24,3 +25,19 @@ snippet     text_field
 
 snippet     submit_tag
     <%= submit_tag '${1:name}' %>
+
+snippet     ul
+    <ul>
+      ${1}
+    </ul>
+
+snippet     li
+    <li>${1}</li>
+
+snippet     a
+options     word
+    <a href="${1}">${2}</a>
+
+snippet     render
+options     word
+    <%= render '${1}' %>

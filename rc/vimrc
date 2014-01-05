@@ -684,6 +684,10 @@ function! g:tweetvim_advanced_filter.executor(tweet)
     return 1
   endif
 
+  if has_key(a:tweet, 'retweeted_status') && a:tweet.retweeted_status.user.screen_name == 'takapon_jp'
+    return 1
+  endif
+
   if a:tweet.text =~ '^デイリー こで'
     return 1
   endif
