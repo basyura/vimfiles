@@ -226,3 +226,4 @@ UIAlertView
 deselectRowAtIndexPath
 have_title
 have_content
+uniqueness

@@ -428,10 +428,10 @@ function! s:initialize_neocomplete() "{{{
   let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
   let g:neocomplete#enable_ignore_case = 0
   "let g:neocomplete#enable_smart_case  = 1
-  let g:neocomplete#enable_fuzzy_completion = 0
+  let g:neocomplete#enable_fuzzy_completion = 1
 
   call neocomplete#custom_source('_', 'sorters',  ['sorter_length'])
-  call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
+  "call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
   call neocomplete#custom_source('neosnippet', 'rank',  400)
 
   call neocomplete#custom_source('include', 'rank', 1)
@@ -684,7 +684,7 @@ function! g:tweetvim_advanced_filter.executor(tweet)
     return 1
   endif
 
-  if has_key(a:tweet, 'retweeted_status') && a:tweet.retweeted_status.user.screen_name == 'takapon_jp'
+  if a:tweet.user.screen_name == 'takapon_jp' && has_key(a:tweet, 'retweeted_status')
     return 1
   endif
 
@@ -748,6 +748,10 @@ if has('mac')
 "        \ 'exec' : ['%c %s > /dev/null', 'mono "%S:p:r:gs?/?\\?.exe" %a', ':call delete("%S:p:r.exe")'],
 "        \ 'tempfile' : '%{tempname()}.cs',
 "        \ }
+
+ let g:quickrun_config['cs'] = {
+    \   'exec': ['%c -sdk:4.5 %o -out:%s:p:r.exe %s', 'mono %s:p:r.exe %a'],
+    \ }
 else
   let g:quickrun_config = {
         \ '*' : {'into' : 0},
