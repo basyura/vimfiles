@@ -2,6 +2,7 @@
 
 require 'fileutils'
 require 'thread'
+require 'rbconfig'
 
 task :default => "all_update"
 
@@ -44,33 +45,22 @@ task :update_github do
 
   dir = Dir.pwd
 
-  threads = []
- 
-  while !que.empty?
-    threads << Thread.new(que.pop) do |target|
-      repos  =  File.join(dir, target)
-      if File.directory? repos
-        Dir.chdir(repos)
-        #puts "git pull #{target}"
-        ret = `git pull --ff 2>&1`
-        if ret.chomp != 'Already up-to-date.' && ret.chomp !~ /Current branch .*? is up to date./
-          error_flg = false
-          ret.each_line do |line|
-            if line =~ /error/
-              puts "#{target} ... #{line}"
-              error_flg = true
-              break
-            end
-          end
-          puts "updated #{target}" unless error_flg
-        end
-      end
+  if RbConfig::CONFIG["target_os"].downcase == 'cygwin'
+    puts "update one by one..."
+    while !que.empty?
+      update(dir, que.pop, true)
+    end
+  else
+    threads = []
+    while !que.empty?
+      threads << Thread.new(que.pop) {|target| update(dir, target) }
+    end
+    threads.each do |t|
+      t.join
     end
   end
-  threads.each do |t|
-    t.join
-  end
 end
+
 
 # cygwin の home になってしまう
 task :clear_cache do
@@ -80,4 +70,25 @@ task :clear_cache do
   puts "cd #{Dir.pwd}"
   puts list
   FileUtils.rm(list , {:force => true})
+end
+
+private
+def update(dir, target, verbose=false)
+  repos  =  File.join(dir, target)
+  if File.directory? repos
+    Dir.chdir(repos)
+    puts "git pull #{target}" if verbose
+    ret = `git pull --ff 2>&1`
+    if ret.chomp != 'Already up-to-date.' && ret.chomp !~ /Current branch .*? is up to date./
+      error_flg = false
+      ret.each_line do |line|
+        if line =~ /error/
+          puts "#{target} ... #{line}"
+          error_flg = true
+          break
+        end
+      end
+      puts "updated #{target}" unless error_flg
+    end
+  end
 end
