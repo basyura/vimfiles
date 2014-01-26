@@ -170,6 +170,7 @@ validate_on_create
 validate_on_update
 errors
 add_column
+add_index
 remove_column
 strftime
 javascript_include_tag
@@ -227,3 +228,8 @@ deselectRowAtIndexPath
 have_title
 have_content
 uniqueness
+include
+SessionsHelper
+be_blank 
+before_create
+Digest::SHA1.hexdigest
