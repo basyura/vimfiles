@@ -6,3 +6,4 @@ submit
 image_tag
 link_to
 yield
+pluralize
