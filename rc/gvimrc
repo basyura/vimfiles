@@ -205,5 +205,7 @@ endif
 
 " }}}
 
-
+if filereadable($HOME . '/.gvimrc_local_after')
+  source ~/.gvimrc_local_after
+endif
 " vim: foldmethod=marker
