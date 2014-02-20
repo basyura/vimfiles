@@ -1,5 +1,5 @@
 " tab_mode or buffer mode
-let g:tab_mode = 0
+let g:tab_mode = 1
 
 "core settings{{{
 """"""""""""""""""""""""""""""""""
@@ -247,7 +247,7 @@ noremap <silent> gl :macaction selectNextWindow:<CR>
 noremap <script> gh :macaction selectPreviousWindow:<CR>
 
 if g:tab_mode
-  nnoremap <silent> <Space>.   :<C-u>silent! tab drop $MYVIMRC
+  nnoremap <silent> <Space>.   :<C-u>silent! tab drop $MYVIMRC<CR>
 else
   nnoremap <silent> <Space>.   :<C-u>silent! edit   $MYVIMRC<Enter>
 endif
