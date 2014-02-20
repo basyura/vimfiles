@@ -1,3 +1,6 @@
+" tab_mode or buffer mode
+let g:tab_mode = 0
+
 "core settings{{{
 """"""""""""""""""""""""""""""""""
 "         core settings          "
@@ -6,7 +9,6 @@
 if expand("%") == ".git/COMMIT_EDITMSG" || &filetype == 'gitcommit'
   finish
 endif
-
 
 filetype plugin indent on
 syntax on
@@ -91,7 +93,7 @@ set incsearch
 set laststatus=0
 set history=1000
 "set statusline=%3l%3p%%\ \|\ %<%t\ %m%=%c\|%R%Y%{'\|'.(&fenc!=''?&fenc:&enc).'\|'.&ff}
-set statusline=%3l%4p%%\ \|\ %<%t\ %m\ %r%=%c\|%Y
+set statusline=%3l%4p%%\ \|\ %<%t\ %m\ %r%=%{fnamemodify(getcwd(),':~')}\ \|\ %c\ \|\ %Y\ 
 
 " ubuntu だと画面がちらつく。mac だと音が出ちゃう。
 if has('mac')
@@ -244,7 +246,12 @@ noremap wk <C-w>k
 noremap <silent> gl :macaction selectNextWindow:<CR>
 noremap <script> gh :macaction selectPreviousWindow:<CR>
 
-nnoremap <silent> <Space>.   :<C-u>silent! edit   $MYVIMRC<Enter>
+if g:tab_mode
+  nnoremap <silent> <Space>.   :<C-u>silent! tab drop $MYVIMRC
+else
+  nnoremap <silent> <Space>.   :<C-u>silent! edit   $MYVIMRC<Enter>
+endif
+
 nnoremap <Space>s.  :<C-u>source $MYVIMRC<Enter>
 nnoremap <Space>g.  :<C-u>edit   $MYGVIMRC<Enter>
 nnoremap <Space>gs. :<C-u>source $MYGVIMRC<Enter>
@@ -373,6 +380,9 @@ nnoremap Y y$
 
 nnoremap <silent> <C-@><C-@> :Restart!<CR>
 
+nnoremap ) :tabmove +1<CR>
+nnoremap ( :tabmove -1<CR>
+
 nmap <Leader>c <Plug>NERDCommenterToggle
 " ターミナルだとなぜか起動時にインサートモードになるので
 
@@ -428,10 +438,10 @@ function! s:initialize_neocomplete() "{{{
   let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
   let g:neocomplete#enable_ignore_case = 0
   "let g:neocomplete#enable_smart_case  = 1
-  let g:neocomplete#enable_fuzzy_completion = 1
+  let g:neocomplete#enable_fuzzy_completion = 0
 
   call neocomplete#custom_source('_', 'sorters',  ['sorter_length'])
-  "call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
+  call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
   call neocomplete#custom_source('neosnippet', 'rank',  400)
 
   call neocomplete#custom_source('include', 'rank', 1)
@@ -494,7 +504,11 @@ let g:vimfiler_as_default_explorer = 1
 """"""""""""""""""""""""""""""""""
 
 nnoremap <silent> <C-r>      :<C-u>Unite -buffer-name=file_mru file_mru -start-insert -hide-source-names<CR>
-nnoremap <silent> <C-n>      :<C-u>Unite -buffer-name=buffer -hide-source-names buffer_tab<CR>
+if g:tab_mode
+  nnoremap <silent> <C-n>      :<C-u>Unite -buffer-name=buffer -hide-source-names tab:no-current<CR>
+else
+  nnoremap <silent> <C-n>      :<C-u>Unite -buffer-name=buffer -hide-source-names buffer_tab<CR>
+endif
 nnoremap <silent> <Leader>d  :<C-u>Unite -buffer-name=files -hide-source-names file file/new<CR>
 nnoremap <silent> <Leader>b  :<C-u>Unite -buffer-name=bookmark -no-start-insert bookmark<CR>
 nnoremap <silent> <C-t>      :<C-u>Unite -buffer-name=tags tags -start-insert -hide-source-names<CR>
@@ -525,8 +539,8 @@ call Unite_substitute('file_mru', '[[:alnum:]]', '*\0', 100)
 call Unite_substitute('file_mru', '[^~.]\zs/', '*/*'  , 20)
 call Unite_substitute('file_mru', '/\ze[^*]', '/*'    , 10)
 
-call unite#custom_filters('buffer,buffer_tab',
-      \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
+call unite#custom_filters('buffer,buffer_tab,tab',
+      \ ['matcher_file_name', 'sorter_default', 'converter_file_directory_tab'])
 
 call unite#custom#source('file', 'matchers', 'matcher_fussy')
 
@@ -551,6 +565,11 @@ call unite#custom_filters('hateblo-list',
 let g:unite_source_outline_cache_dir = ''
 
 call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
+
+if g:tab_mode
+  call unite#custom_default_action('file'    , 'tabdrop')
+  call unite#custom_default_action('file_rec', 'tabdrop')
+endif
 
 call unite#set_profile('buffer_tab,file,file_mru,everything', 'ignorecase', 1)
 

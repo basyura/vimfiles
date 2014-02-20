@@ -87,7 +87,11 @@ function! s:WriteClose(bang)
 endfunction "}}}
 
 " Altercommand {{{
-AlterCommand q Kwbd
+if g:tab_mode
+  AlterCommand q  tabclose
+else
+  AlterCommand q  Kwbd
+endif
 AlterCommand wq WQ
 " }}}
 
