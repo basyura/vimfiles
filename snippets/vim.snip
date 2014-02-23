@@ -1,3 +1,8 @@
+snippet     func
+      function! s:${1}
+        ${2}
+      endfunction
+
 snippet     augroup
       augroup ${1}
         autocmd!
@@ -20,12 +25,12 @@ snippet unite-source
         \ 'is_listed'      : 0,
         \ }
 
-  " { 
+  " {
   "   "word" : word,
   "   "abbr" : abbr,
   " }
   function! s:source.gather_candidates(args, context)
-  
+    
   endfunction
   "
   let s:source.action_table.execute = {'description' : '${3}'}
