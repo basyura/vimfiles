@@ -31,3 +31,13 @@ hi Title gui=none guifg=orange
 " tweetvim
 hi tweetvim_separator_title guifg=#5f5f5f
 hi tweetvim_separator       guifg=#414141
+
+"note
+hi noteH1               guifg=orange
+hi noteH2               guifg=orange
+hi noteH3               guifg=orange
+hi noteHeadingRule      guifg=orange
+hi noteHeadingDelimiter guifg=orange
+hi note_strong          guifg=magenta
+hi noteCodeBlock        guifg=#cae682
+hi noteCode             guifg=#cae682
