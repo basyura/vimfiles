@@ -249,9 +249,10 @@ vmap + <Plug>(jplus-getchar-with-space)
 
 "}}}
 
+execute "source " . expand('~/.vim/rc/plugin/vimproc.rc.vim')
 
 for rc in glob('~/.vim/rc/plugin/*', 1, 1)
-  execute "source " . rc
+  execute "source " . expand(rc)
 endfor
 
 

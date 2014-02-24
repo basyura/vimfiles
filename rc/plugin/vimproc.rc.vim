@@ -1,6 +1,6 @@
 
 if has('win64')
-  let g:vimproc_dll_path = $HOME . '/.vim/proc/vimproc_win64.dll'
+  let g:vimproc_dll_path = expand($HOME . '/.vim/proc/vimproc_win64.dll')
 elseif has('win32')
   let g:vimproc_dll_path = $HOME . '/.vim/proc/proc_win.dll'
 elseif has('win32unix')
