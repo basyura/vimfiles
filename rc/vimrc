@@ -208,6 +208,7 @@ nnoremap <C-x> :Unite rails/
 inoremap <C-x><C-x> <Esc>:Unite sudden-death -winheight=4 -hide-source-names<CR>
 
 nnoremap Y y$
+vnoremap Y "*y
 
 nnoremap <silent> <C-@><C-@> :Restart!<CR>
 
