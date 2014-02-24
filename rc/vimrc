@@ -11,7 +11,7 @@ endif
 
 filetype plugin indent on
 syntax on
-colorscheme desert
+colorscheme wombat
 
 " メッセージ抑止
 let $CYGWIN = 'nodosfilewarning'

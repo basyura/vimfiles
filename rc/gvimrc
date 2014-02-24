@@ -1,5 +1,6 @@
 set background=light
-colorscheme wombat
+
+execute 'colorscheme ' . get(g:, 'my_color_scheme', 'wombat')
 
 """"""""""""""""""""""""""""""""""
 "           settings             "
