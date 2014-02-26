@@ -10,6 +10,12 @@ function! s:newspaper()
   source $MYGVIMRC
 endfunction
 
+command! Desert call s:desert()
+function! s:desert()
+  let g:my_color_scheme = 'desert'
+  source $MYGVIMRC
+endfunction
+
 
 " rails
 command! RailsMode call s:rails_mode()

@@ -65,7 +65,10 @@ nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>:<C-u>source $MYGVIMRC<Enter>
 hi ModeMsg guifg=bg guibg=bg
 hi WarningMsg guifg=bg
 
-execute 'source ~/.vim/rc/highlight/' . g:colors_name . '.vim'
+if filereadable(expand('~/.vim/rc/highlight/' . g:colors_name . '.vim'))
+  execute 'source ~/.vim/rc/highlight/' . g:colors_name . '.vim'
+endif
+
 
 if filereadable($HOME . '/.gvimrc_local_after')
   source ~/.gvimrc_local_after
