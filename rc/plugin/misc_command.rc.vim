@@ -3,6 +3,13 @@ if exists('RmVimball')
   delcommand RmVimball
 endif
 
+" change to newspaper colorscheme
+command! NewsPaper call s:newspaper()
+function! s:newspaper()
+  let g:my_color_scheme = 'newspaper'
+  source $MYGVIMRC
+endfunction
+
 
 " rails
 command! RailsMode call s:rails_mode()

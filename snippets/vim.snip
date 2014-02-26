@@ -9,6 +9,13 @@ snippet     augroup
         ${2}
       augroup END
 
+snippet command
+abbr command call function
+options head
+    command! ${1:#:command_name} call ${2:#:func_name}
+
+
+
 snippet unite-source
   let s:save_cpo = &cpo
   set cpo&vim
