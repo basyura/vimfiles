@@ -16,6 +16,12 @@ function! s:desert()
   source $MYGVIMRC
 endfunction
 
+command! Wombat call s:wombat()
+function! s:wombat()
+  let g:my_color_scheme = 'wombat'
+  source $MYGVIMRC
+endfunction
+
 
 " rails
 command! RailsMode call s:rails_mode()
