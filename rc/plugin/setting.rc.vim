@@ -22,7 +22,7 @@ set incsearch
 set laststatus=0
 set history=1000
 "set statusline=%3l%3p%%\ \|\ %<%t\ %m%=%c\|%R%Y%{'\|'.(&fenc!=''?&fenc:&enc).'\|'.&ff}
-set statusline=%3l%4p%%\ \|\ %<%t\ %m\ %r%=%{fnamemodify(getcwd(),':~')}\ \|\ %c\ \|\ %Y\ 
+set statusline=%3l%4p%%\ \|\ %<%t\ %m\ %r%=%{fnamemodify(getcwd(),':~')}\ \|\ %3c\ \|\ %Y\ 
 
 " ubuntu だと画面がちらつく。mac だと音が出ちゃう。
 if has('mac')
