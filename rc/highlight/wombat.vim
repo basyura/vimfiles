@@ -14,16 +14,11 @@ hi Search term=reverse ctermfg=0 ctermbg=14 guifg=Black guibg=#EAE49D
 hi txtHeader  guifg=#cae682 gui=bold
 hi txtHeader2 guifg=orange gui=underline
 hi txtBold    guifg=#cae682 gui=bold
-"highlight uniteCandidateInputKeyword guifg=#cae682 gui=bold
-"hi uniteCandidateInputKeyword guifg=orange
-hi Unite_Cursor_Line guibg=#2F434F
-"hi Unite_Cursor_Line guibg=#000000
-"hi Unite_Cursor_Line guibg=#2F4F4F
+
+" unite
 hi Unite_Cursor_Line guibg=#00008b
-"let g:unite_cursor_line_highlight = 'Unite_Cursor_Line'
-" ポップアップの選択中
-"hi PmenuSel guibg=magenta guifg=white
-"hi Pmenu guibg=white guifg=black
+hi uniteSource__FileMru_Time guifg=darkgray
+
 hi clear Conceal
 hi Conceal  ctermfg=7 ctermbg=8 guifg=orange
 
@@ -41,3 +36,7 @@ hi noteHeadingDelimiter guifg=orange
 hi note_strong          guifg=magenta
 hi noteCodeBlock        guifg=#cae682
 hi noteCode             guifg=#cae682
+
+if has('win32')
+  hi Normal guifg=#ffffff
+endif
