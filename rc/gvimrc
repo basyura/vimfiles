@@ -62,7 +62,6 @@ AlterCommand wq WQ
 """"""""""""""""""""""""""""""""""
 nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>:<C-u>source $MYGVIMRC<Enter>
 
-hi ModeMsg guifg=bg guibg=bg
 hi WarningMsg guifg=bg
 
 if filereadable(expand('~/.vim/rc/highlight/' . g:colors_name . '.vim'))

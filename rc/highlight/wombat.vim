@@ -10,6 +10,7 @@ hi String              gui=none
 hi StatusLine  gui=none
 hi IncSearch guifg=red guibg=white
 hi Search term=reverse ctermfg=0 ctermbg=14 guifg=Black guibg=#EAE49D
+hi ModeMsg gui=none guifg=gray
 
 hi txtHeader  guifg=#cae682 gui=bold
 hi txtHeader2 guifg=orange gui=underline
