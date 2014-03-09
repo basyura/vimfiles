@@ -233,3 +233,7 @@ SessionsHelper
 be_blank 
 before_create
 Digest::SHA1.hexdigest
+has_key?
+include?
+key?
+member?

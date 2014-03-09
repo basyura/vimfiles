@@ -108,3 +108,14 @@ snippet     def
 snippet     strftime
 options     word
     strftime("%Y/%m/%d %H:%M:%S")
+
+snippet     open
+options     word
+    open(${1:path}, &:read)
+
+snippet     each_line
+options     word
+    each_line do |line|
+      ${1}
+    end
+    
