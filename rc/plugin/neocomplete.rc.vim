@@ -10,8 +10,9 @@ function! s:initialize_neocomplete()
     let g:neocomplete#sources#dictionary#dictionaries = {}
   endif
   let dict = g:neocomplete#sources#dictionary#dictionaries
-  let dict.ruby = $HOME . '/.vim/dict/ruby.dict'
-  let dict.cs   = $HOME . '/.vim/dict/cs.dict'
+  let dict.ruby   = $HOME . '/.vim/dict/ruby.dict'
+  let dict.cs     = $HOME . '/.vim/dict/cs.dict'
+  let dict.elixir = $HOME . '/.vim/dict/elixir.dict'
   "let dict._ = $HOME . '/.vim/dict/default.dict'
   "let dict.tweetvim_say =  $HOME . '/.tweetvim/screen_name,' .
                          "\ $HOME . '/.tweetvim/hash_tag,'

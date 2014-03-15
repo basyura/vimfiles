@@ -36,6 +36,8 @@ augroup MyGroup
 
   autocmd FileType svn :setlocal noswapfile
 
+  autocmd BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+
   if !has('gui_running')
     autocmd InsertEnter,InsertLeave * set cursorline!
   endif
