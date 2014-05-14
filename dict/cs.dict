@@ -89,3 +89,4 @@ TryGetValue(
 IsNullOrEmpty(
 CodeDomProvider
 CompilerInfo
+Stopwatch
