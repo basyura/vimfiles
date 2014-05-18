@@ -25,6 +25,7 @@ set noswapfile
 "set statusline=%3l%3p%%\ \|\ %<%t\ %m%=%c\|%R%Y%{'\|'.(&fenc!=''?&fenc:&enc).'\|'.&ff}
 set statusline=%3l%4p%%\ \|\ %<%t\ %m\ %r%=%{fnamemodify(getcwd(),':~')}\ \|\ %3c\ \|\ %Y\ 
 
+
 " ubuntu だと画面がちらつく。mac だと音が出ちゃう。
 if has('mac')
   "set vb t_vb=
@@ -48,3 +49,7 @@ set fileencodings=ucs-bom,utf-8,cp932,shift-jis,euc-jp
 set fileformats=unix,dos
 
 set ignorecase
+
+" menu を無効
+let did_install_default_menus = 1
+let did_install_syntax_menu = 1
