@@ -34,6 +34,9 @@ hi IncSearch guifg=#000000 guibg=#adadad
 hi VimError  guibg=#dcdda8
 hi Pmenu     guifg=brown
 
+hi noteH1 guifg=brown
+hi noteHeadingRule guifg=brown
+hi noteHeadingDelimiter guifg=brown
 hi note_strong guifg=red
 
 let g:vimshell_escape_colors = ['#6c6c6c', '#ff6666', '#0000ff', '#a22727', '#1e95fd', '#ff13ff', 'darkgreen', '#C0C0C0', '#383838', '#ff4444', '#44ff44', '#ffb30a', '#6699ff', '#f820ff', '#4ae2e2', '#ffffff']
