@@ -2,5 +2,4 @@
 "        open browser            "
 """"""""""""""""""""""""""""""""""
 
-let g:openbrowser_short_message = 1
-
+let g:openbrowser_format_message = "opening ... {done ? 'done! ({command})' : ''}"
