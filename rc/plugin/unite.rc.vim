@@ -54,14 +54,14 @@ call unite#custom_filters('file_mru',
 call unite#custom_filters('uiki',
       \ ['matcher_fussy', 'sorter_default', 'converter_default'])
 
-call unite#custom_filters('bookmark',
-      \ ['matcher_fussy', 'sorter_default', 'converter_bookmark'])
+"call unite#custom_filters('bookmark',
+      "\ ['matcher_fussy', 'sorter_default', 'converter_bookmark'])
 
-call unite#custom_filters('everything',
+call unite#custom_filters('everything,everything/async',
       \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
 
 call unite#custom_filters('history/command',
-      \ ['matcher_fussy', 'sorter_default', 'converter_bookmark'])
+      \ ['matcher_fussy', 'sorter_default', 'converter_default'])
 
 call unite#custom_filters('hateblo-list',
       \ ['matcher_fussy', 'sorter_default', 'converter_hateblo'])
