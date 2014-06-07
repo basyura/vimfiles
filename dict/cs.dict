@@ -92,3 +92,5 @@ CompilerInfo
 Stopwatch
 Int32.MaxValue
 Int64.MaxValue
+Parallel
+ElapsedMilliseconds
