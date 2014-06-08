@@ -279,7 +279,7 @@ nnoremap <silent> <Space>cd :<C-u>CD<CR>
 " Load settings for each location.
 augroup vimrc-local
   autocmd!
-  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+  autocmd BufEnter * call s:vimrc_local(expand('<afile>:p:h'))
 augroup END
 
 command! FindTags call s:vimrc_local(expand('<afile>:p:h'))

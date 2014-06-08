@@ -21,7 +21,7 @@ let g:tweetvim_filters = ['advanced']
 let g:tweetvim_advanced_filter = {}
 function! g:tweetvim_advanced_filter.executor(tweet)
   if !has_key(a:tweet, 'user')
-    return 1
+    return 0
   endif
   
   if a:tweet.user.screen_name == 'rails_rt_ja'

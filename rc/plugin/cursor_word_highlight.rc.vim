@@ -5,7 +5,7 @@ let g:enable_highlight_cursor_word = 1
 
 augroup highlight-cursor-word
     autocmd!
-    autocmd CursorHold  * call s:hl_cword()
+    "autocmd CursorHold  * call s:hl_cword()
     autocmd InsertLeave * call s:hl_cword()
     " カーソル移動が重くなったと感じるようであれば
     " CursorMoved ではなくて
