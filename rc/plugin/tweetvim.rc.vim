@@ -49,7 +49,13 @@ augroup mygroup-tweetvim
   autocmd!
   autocmd FileType tweetvim_say call s:tweetvim_say_my_settings()
   autocmd FileType tweetvim setlocal nonu
+  autocmd FileType tweetvim call s:tweetvim_settings()
 augroup END
+
+function! s:tweetvim_settings()
+  nnoremap  <buffer><silent> O :call <SID>open_up_tweet()<cr>
+endfunction
+
 " for tweetvim say
 function! s:tweetvim_say_my_settings()
   AlterCommand <buffer> q bd!<CR>
@@ -60,5 +66,10 @@ function! s:tweetvim_say_my_settings()
 "  inoremap <buffer> <C-x><C-d> <ESC>:TweetVimBitly<CR>
 endfunction
 
-
+function! s:open_up_tweet()
+ call tweetvim#action#cursor_up#execute({})
+ let tweet = b:tweetvim_status_cache[line(".")]
+ call tweetvim#action#open_links#execute(tweet)
+ call tweetvim#action#cursor_down#execute({})
+endfunction
 
