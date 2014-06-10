@@ -19,6 +19,18 @@ nnoremap <silent> <C-t>      :<C-u>Unite -buffer-name=tags tags -start-insert -h
 nnoremap <Leader>f  :<C-u>Unite file_rec -input=
 
 nnoremap <silent> <C-s> :Unite -buffer-name=history_yank history/yank<CR>
+nnoremap <Leader><Leader> :Unite 
+nnoremap <Leader>g :Unite grep:.: -no-quit -no-start-insert -direction=botright -buffer-name=grep -hide-source-names -keep-focus<CR>
+nnoremap <silent> <Leader>e :Unite everything/async<CR>
+nnoremap <silent> <C-l> :Unite outline  -winwidth=40 -buffer-name=outline -hide-source-names<CR>
+nnoremap <silent> <C-l><C-l> :Unite outline:!  -winheight=30 -buffer-name=outline<CR>
+nnoremap <silent> <Space>r  :UniteResume<CR>
+nnoremap man :Unite help<CR>
+nnoremap <silent>co :Unite -no-quit -buffer-name=qflist qflist<CR>
+nnoremap <silent><Leader>l  :<C-u>Unite -buffer-name=note -hide-source-names -hide-status-line note<CR>
+nnoremap <C-p> :Unite 
+nnoremap <silent><C-h> :Unite -hide-source-names history/command<CR>
+inoremap <C-x><C-x> <Esc>:Unite sudden-death -winheight=4 -hide-source-names<CR>
 
 "let g:unite_source_history_yank_enable = 1
 let g:unite_enable_start_insert = 1

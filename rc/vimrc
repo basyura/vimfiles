@@ -145,38 +145,19 @@ nnoremap <M-j> <C-e>
 nnoremap <Leader>s :Scratch<CR>
 nnoremap <Leader>w :WriteToFile<CR>
 nnoremap <silent> <Leader>o :on<CR>
-nnoremap <Leader><Leader> :Unite 
-"nnoremap <Leader>g  :VimGrep **/*.* 
-nnoremap <Leader>g :Unite grep:.: -no-quit -no-start-insert -direction=botright -buffer-name=grep -hide-source-names -keep-focus<CR>
-nnoremap <silent> <Leader>e :Unite everything/async<CR>
 nnoremap <Space>d :<C-u>pwd<CR>
-"nnoremap <silent> <C-l> :Unite outline  -winheight=30 -buffer-name=outline<CR>
-nnoremap <silent> <C-l> :Unite outline  -winwidth=40 -buffer-name=outline -hide-source-names<CR>
-nnoremap <silent> <C-l><C-l> :Unite outline:!  -winheight=30 -buffer-name=outline<CR>
+
 nnoremap <silent> <C-x><C-x> :TabNew<CR>
 nnoremap <silent> <C-x><C-l> :tabnext<CR>
 nnoremap <silent> <C-x><C-h> :tabprevious<CR>
 nnoremap <silent> <C-f> :tabnext<CR>
 nnoremap <silent> <C-b> :tabprevious<CR>
-" エンコードを指定して開き直す
-nnoremap <silent> <Space>r  :UniteResume<CR>
 nnoremap <C-w>; <C-w>+
 nnoremap w; <C-w>+
 nnoremap w- <C-w>-
 nnoremap wm 100<C-w>+
-nnoremap man :Unite help<CR>
-nnoremap <silent>co :Unite -no-quit -buffer-name=qflist qflist<CR>
-"nnoremap <silent><Leader>r :UniteResume<CR>
 nnoremap <silent><Leader>r :redraw!<CR> 
 nnoremap <silent>on 999<C-w>+
-"nnoremap <silent><Leader>l :Unite -vertical -winwidth=50 uiki<CR>
-nnoremap <silent><Leader>l  :<C-u>Unite -buffer-name=note -hide-source-names -hide-status-line note<CR>
-"nnoremap <silent><Leader>ll  :<C-u>Unite -buffer-name=note -hide-source-names -hide-status-line note/archive note<CR>
-nnoremap <C-p> :Unite 
-
-nnoremap <silent><C-h> :Unite -hide-source-names history/command<CR>
-"nnoremap <silent><C-h> :Unite -hide-source-names history/command histeric<CR>
-"nnoremap <silent><C-h> :Unite -hide-source-names  histeric<CR>
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap wp <C-w>p
@@ -207,7 +188,6 @@ nnoremap <C-x><C-d> :Unite rails/db<CR>
 nnoremap <C-x><C-f> :Unite rails/config<CR>
 nnoremap <C-x> :Unite rails/
 
-inoremap <C-x><C-x> <Esc>:Unite sudden-death -winheight=4 -hide-source-names<CR>
 
 nnoremap Y y$
 vnoremap Y "*y
