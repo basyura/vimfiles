@@ -147,7 +147,7 @@ nnoremap <Leader>w :WriteToFile<CR>
 nnoremap <silent> <Leader>o :on<CR>
 nnoremap <Leader><Leader> :Unite 
 "nnoremap <Leader>g  :VimGrep **/*.* 
-nnoremap <Leader>g :Unite grep:.: -no-quit -no-start-insert -direction=botright -buffer-name=grep -hide-source-names<CR>
+nnoremap <Leader>g :Unite grep:.: -no-quit -no-start-insert -direction=botright -buffer-name=grep -hide-source-names -keep-focus<CR>
 nnoremap <silent> <Leader>e :Unite everything/async<CR>
 nnoremap <Space>d :<C-u>pwd<CR>
 "nnoremap <silent> <C-l> :Unite outline  -winheight=30 -buffer-name=outline<CR>
