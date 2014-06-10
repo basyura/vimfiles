@@ -31,24 +31,27 @@ function! s:hl_clear()
 endfunction
 
 function! s:hl_cword()
-    let word = expand("<cword>")
-    if word == "" || word =~ '^if$\|^endif$\|^get$\|^unlet$\|^let$\|return\|call\|filter\|split\|function\|autocmd\|augroup\|empty\|expand\|silent\|^for$\|endfor'
-      return
-    endif
-    if get(b:, "highlight_cursor_word", "") ==# word
-        return
-    endif
+  if &filetype == 'unite'
+    return
+  endif
+  let word = expand("<cword>")
+  if word == "" || word =~ '^if$\|^endif$\|^get$\|^unlet$\|^let$\|return\|call\|filter\|split\|function\|autocmd\|augroup\|empty\|expand\|silent\|^for$\|endfor'
+    return
+  endif
+  if get(b:, "highlight_cursor_word", "") ==# word
+    return
+  endif
 
-    call s:hl_clear()
-    if !g:enable_highlight_cursor_word
-        return
-    endif
+  call s:hl_clear()
+  if !g:enable_highlight_cursor_word
+    return
+  endif
 
-    if !empty(filter(split(word, '\zs'), "strlen(v:val) > 1"))
-        return
-    endif
+  if !empty(filter(split(word, '\zs'), "strlen(v:val) > 1"))
+    return
+  endif
 
-    let pattern = printf("\\<%s\\>", expand("<cword>"))
-    silent! let b:highlight_cursor_word_id = matchadd("CursorWord", pattern)
-    let b:highlight_cursor_word = word
+  let pattern = printf("\\<%s\\>", expand("<cword>"))
+  silent! let b:highlight_cursor_word_id = matchadd("CursorWord", pattern)
+  let b:highlight_cursor_word = word
 endfunction
