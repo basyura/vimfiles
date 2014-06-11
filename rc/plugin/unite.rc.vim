@@ -69,7 +69,7 @@ call unite#custom_filters('uiki',
       \ ['matcher_fussy', 'sorter_default', 'converter_default'])
 
 call unite#custom_filters('everything,everything/async,file_rec/async',
-      \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
+      \ ['matcher_file_name', 'sorter_default', 'converter_file_directory_tab'])
 
 call unite#custom_filters('history/command',
       \ ['matcher_fussy', 'sorter_default', 'converter_default'])
@@ -78,6 +78,7 @@ call unite#custom_filters('hateblo-list',
       \ ['matcher_fussy', 'sorter_default', 'converter_hateblo'])
 
 let g:unite_source_outline_cache_dir = ''
+let g:unite_source_everything_limit = 300
 
 call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
 
