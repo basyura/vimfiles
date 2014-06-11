@@ -41,6 +41,8 @@ let g:unite_source_file_mru_ignore_pattern = '.*Application\ Data.*\|.*デスク
 let g:unite_winheight  = 10
 let g:unite_split_rule = 'aboveleft'
 
+call unite#custom#source('file_rec/async', 'ignore_pattern', '\.dll$\|\.pdb$\|\.suo$\|\.png$\|\/Debug\/\|\/obj\/\|\/bin\/')
+
 
 "call s:unite_substitute('', '[[:alnum:]]', '*\0', 100)
 call Unite_substitute('file', '^\~', substitute(substitute($HOME, '\\', '/', 'g'), ' ', '\\\\ ', 'g'), -200)
@@ -66,10 +68,7 @@ call unite#custom_filters('file_mru',
 call unite#custom_filters('uiki',
       \ ['matcher_fussy', 'sorter_default', 'converter_default'])
 
-"call unite#custom_filters('bookmark',
-      "\ ['matcher_fussy', 'sorter_default', 'converter_bookmark'])
-
-call unite#custom_filters('everything,everything/async',
+call unite#custom_filters('everything,everything/async,file_rec/async',
       \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
 
 call unite#custom_filters('history/command',
