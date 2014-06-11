@@ -21,7 +21,13 @@ nnoremap <Leader>f  :<C-u>Unite file_rec -input=
 nnoremap <silent> <C-s> :Unite -buffer-name=history_yank history/yank<CR>
 nnoremap <Leader><Leader> :Unite 
 nnoremap <Leader>g :Unite grep:.: -no-quit -no-start-insert -direction=botright -buffer-name=grep -hide-source-names -keep-focus<CR>
-nnoremap <silent> <Leader>e :Unite everything/async<CR>
+
+if has('mac')
+  nnoremap <silent> <Leader>e :Unite mdfind -buffer-name=mdfind<CR>
+else
+  nnoremap <silent> <Leader>e :Unite everything/async<CR>
+endif
+
 nnoremap <silent> <C-l> :Unite outline  -winwidth=40 -buffer-name=outline -hide-source-names<CR>
 nnoremap <silent> <C-l><C-l> :Unite outline:!  -winheight=30 -buffer-name=outline<CR>
 nnoremap <silent> <Space>r  :UniteResume<CR>
@@ -68,7 +74,7 @@ call unite#custom_filters('file_mru',
 call unite#custom_filters('uiki',
       \ ['matcher_fussy', 'sorter_default', 'converter_default'])
 
-call unite#custom_filters('everything,everything/async,file_rec/async',
+call unite#custom_filters('everything,everything/async,file_rec/async,mdfind',
       \ ['matcher_file_name', 'sorter_default', 'converter_file_directory_tab'])
 
 call unite#custom_filters('history/command',
@@ -88,6 +94,7 @@ if g:tab_mode
 endif
 
 call unite#set_profile('buffer_tab,file,file_mru,everything', 'ignorecase', 1)
+call unite#custom#profile('mdfind', 'required_pattern_length', 8)
 
 let my_absolute_path = {
 \ 'is_selectable' : 1,
@@ -128,6 +135,7 @@ function! s:unite_my_settings()
   inoremap <buffer> <C-b> <Left>
   inoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
   inoremap <silent><buffer><expr> <C-s> unite#do_action('rec_parent/async')
+  inoremap <silent><buffer><expr> <C-s> unite#do_action('mdfind')
 
   map <silent><buffer> a <Plug>(unite_insert_enter)
 
