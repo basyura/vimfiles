@@ -35,6 +35,7 @@ augroup MyGroup
   autocmd FileType git :setlocal foldlevel=99
 
   autocmd FileType svn :setlocal noswapfile
+  autocmd WinLeave * :call s:subm()
 
   autocmd BufRead,BufNewFile *.ex,*.exs set filetype=elixir
 
@@ -42,6 +43,19 @@ augroup MyGroup
     autocmd InsertEnter,InsertLeave * set cursorline!
   endif
 augroup END
+
+function! s:subm()
+  if &filetype != 'git'
+    return
+  endif
+  if &modifiable
+    return
+  endif
+  setlocal modifiable
+  silent! 1,$ s///g
+  silent! 1,$ s/﻿//g
+  setlocal nomodifiable
+endfunction
 
 function! s:delete_history()
   "call histdel(":", 'w\|bd\|WQ\|Scratch\|q\|ls\|close')

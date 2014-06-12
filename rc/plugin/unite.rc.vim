@@ -47,6 +47,8 @@ let g:unite_source_file_mru_ignore_pattern = '.*Application\ Data.*\|.*デスク
 let g:unite_winheight  = 10
 let g:unite_split_rule = 'aboveleft'
 
+let g:unite_source_everything_ignore_pattern = '\%(^\|/\)\.\.\?$\|\~$\|\.\%(git\|hg\|svn\)\|\.\%(o\|exe\|dll\|bak\|DS_Store\|pyc\|zwc\|sw[po]\)$\|\.xls$\|\.xlsx$\|\.zip$\|\.bmp$'
+
 call unite#custom#source('file_rec/async', 'ignore_pattern', '\.dll$\|\.pdb$\|\.suo$\|\.png$\|\/Debug\/\|\/obj\/\|\/bin\/')
 
 
