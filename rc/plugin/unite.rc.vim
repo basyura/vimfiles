@@ -20,7 +20,19 @@ nnoremap <Leader>f  :<C-u>Unite file_rec -input=
 
 nnoremap <silent> <C-s> :Unite -buffer-name=history_yank history/yank<CR>
 nnoremap <Leader><Leader> :Unite 
-nnoremap <Leader>g :Unite grep:.: -no-quit -no-start-insert -direction=botright -buffer-name=grep -hide-source-names -keep-focus<CR>
+nnoremap <silent> <Leader>g :call <SID>grep()<CR>
+
+function! s:grep()
+  let word = input(' word : ')
+  if word == ''
+    redraw!
+    return
+  endif
+  execute ':Unite grep:.::' . word . ' -no-quit -no-start-insert -direction=botright -buffer-name=grep -hide-source-names -keep-focus'
+  let @/ = word
+  set hlsearch
+  :0
+endfunction
 
 if has('mac')
   nnoremap <silent> <Leader>e :Unite mdfind -buffer-name=mdfind<CR>
