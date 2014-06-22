@@ -183,7 +183,7 @@ cnoremap <Down> <C-n>
 " for unite-rails
 nnoremap <C-x><C-m> :Unite rails/model<CR>
 nnoremap <C-x><C-c> :Unite rails/controller<CR>
-nnoremap <C-x><C-j> :Unite rails/view<CR>
+nnoremap <C-x><C-v> :Unite rails/view<CR>
 nnoremap <C-x><C-d> :Unite rails/db<CR>
 nnoremap <C-x><C-f> :Unite rails/config<CR>
 nnoremap <C-x> :Unite rails/

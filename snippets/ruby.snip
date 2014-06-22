@@ -118,4 +118,24 @@ options     word
     each_line do |line|
       ${1}
     end
-    
+
+snippet     inib
+options     word
+abbr        alloc.initWithNibName
+    initWithNibName(${1:nil}, bundle: ${2:nil})
+
+snippet     iroot
+options     word
+abbr        alloc.initWithRootViewController
+    initWithRootViewController(${1:controller})
+
+snippet     iframe
+options     word
+    initWithFrame(${1:CGRectZero})
+
+snippet     viewDidLoad
+  def viewDidLoad
+    super
+
+    ${1}
+  end

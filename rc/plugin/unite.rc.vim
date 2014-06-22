@@ -91,7 +91,7 @@ call unite#custom_filters('uiki',
 call unite#custom_filters('everything,everything/async,file_rec/async,mdfind',
       \ ['matcher_file_name', 'sorter_default', 'converter_file_directory_tab'])
 
-call unite#custom_filters('history/command',
+call unite#custom_filters('history/command,outline',
       \ ['matcher_fussy', 'sorter_default', 'converter_default'])
 
 call unite#custom_filters('hateblo-list',

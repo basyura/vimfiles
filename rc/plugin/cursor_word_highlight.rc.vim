@@ -35,7 +35,7 @@ function! s:hl_cword()
     return
   endif
   let word = expand("<cword>")
-  if word == "" || word =~ '^if$\|^endif$\|^get$\|^unlet$\|^let$\|return\|call\|filter\|split\|function\|autocmd\|augroup\|empty\|expand\|silent\|^for$\|endfor'
+  if word == "" || word =~ '^if$\|^end$\|^else$\|^endif$\|^get$\|^unlet$\|^let$\|return\|call\|filter\|split\|function\|autocmd\|augroup\|empty\|expand\|silent\|^for$\|endfor'
     return
   endif
   if get(b:, "highlight_cursor_word", "") ==# word
