@@ -283,3 +283,4 @@ completion
 borderStyle 
 textAlignment 
 UITextAlignmentCenter
+to_sym
