@@ -24,7 +24,9 @@ function! s:initialize_neocomplete()
   call neocomplete#custom_source('_', 'sorters',  ['sorter_length'])
   call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
 
-  let g:neocomplete#enable_fuzzy_completion = 0
+  if !exists('g:neocomplete#enable_fuzzy_completion')
+    let  g:neocomplete#enable_fuzzy_completion = 0
+  endif
   if g:neocomplete#enable_fuzzy_completion
     call neocomplete#custom_source('_', 'matchers', ['matcher_fuzzy'])
   endif

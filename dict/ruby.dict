@@ -269,6 +269,7 @@ height
 autoresizingMask
 UIViewAutoresizingFlexibleBottomMargin
 UIViewAutoresizingFlexibleTopMargin
+UIViewAutoresizingFlexibleHeight
 @window
 setTitle
 setTitleColor
@@ -284,3 +285,10 @@ borderStyle
 textAlignment 
 UITextAlignmentCenter
 to_sym
+NSUserDefaults.standardUserDefaults
+NSKeyedUnarchiver.unarchiveObjectWithData
+NSKeyedUnarchiver.unarchiveObjectWithData
+UITableViewCellStyleDefault
+navigationController.pushViewController
+accessoryType
+UITableViewCellAccessoryDisclosureIndicator
