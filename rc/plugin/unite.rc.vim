@@ -45,7 +45,7 @@ nnoremap <silent> <C-l><C-l> :Unite outline:!  -winheight=30 -buffer-name=outlin
 nnoremap <silent> <Space>r  :UniteResume<CR>
 nnoremap man :Unite help<CR>
 nnoremap <silent>co :Unite -no-quit -buffer-name=qflist qflist<CR>
-nnoremap <silent><Leader>l  :<C-u>Unite -buffer-name=note -hide-source-names -hide-status-line note<CR>
+nnoremap <silent><Leader>l  :<C-u>Unite -buffer-name=note -hide-source-names note<CR>
 nnoremap <C-p> :Unite 
 nnoremap <silent><C-h> :Unite -hide-source-names history/command<CR>
 inoremap <C-x><C-x> <Esc>:Unite sudden-death -winheight=4 -hide-source-names<CR>
