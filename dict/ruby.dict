@@ -198,6 +198,7 @@ UIBarButtonItem.alloc.initWithTitle
 UIBarButtonItemStyleBordered
 UIColor.blueColor
 UIColor.redColor
+UIColor.whiteColor
 UILabel
 UINavigationController.alloc.initWithRootViewController
 UIScreen.mainScreen.bounds
@@ -246,6 +247,7 @@ key?
 member?
 CGRect
 UIControlStateNormal
+UIControlStateDisabled
 forControlEvents:UIControlEventTouchUpInside
 UIButton.buttonWithType
 UIButtonTypeRoundedRect
@@ -301,3 +303,9 @@ reloadData
 deleteRowsAtIndexPaths
 withRowAnimation
 UITableViewRowAnimationFade
+sizeToFit
+self.view.backgroundColor
+self.view.frame.size.width
+self.view.frame.size.height
+self.view.addSubview
+center.y
