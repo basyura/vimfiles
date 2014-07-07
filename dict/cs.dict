@@ -1,7 +1,6 @@
 using
-Console.WriteLine
+Console.WriteLine(
 Collections.Generic
-Console.WriteLine
 STAThread
 Main
 DateTime.Now
