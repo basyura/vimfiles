@@ -199,6 +199,7 @@ UIBarButtonItemStyleBordered
 UIColor.blueColor
 UIColor.redColor
 UIColor.whiteColor
+UIColor.lightGrayColor
 UILabel
 UINavigationController.alloc.initWithRootViewController
 UIScreen.mainScreen.bounds
@@ -309,3 +310,6 @@ self.view.frame.size.width
 self.view.frame.size.height
 self.view.addSubview
 center.y
+UITextBorderStyleRoundedRect
+UIControlContentVerticalAlignmentCenter
+UITableViewStylePlain
