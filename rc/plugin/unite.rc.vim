@@ -18,7 +18,30 @@ nnoremap <silent> <Leader>b  :<C-u>Unite -buffer-name=bookmark -no-start-insert 
 nnoremap <silent> <C-t>      :<C-u>Unite -buffer-name=tags tags -start-insert -hide-source-names<CR>
 nnoremap <Leader>f  :<C-u>Unite file_rec -input=
 
-nnoremap <silent> <C-s> :Unite -buffer-name=history_yank history/yank<CR>
+let g:yankround_use_region_hl = 1
+"nmap <C-s> <Plug>(yankround-next)
+vmap <C-s> <Plug>(yankround-p)
+"vmap <C-s> :<C-u>exe yankround#init('p')<Bar>call yankround#activate()<CR>
+nmap <expr><C-s> yankround#is_active() ? "\<Plug>(yankround-prev)" : "<SID>(my_yankround)"
+nnoremap <silent> <SID>(my_yankround) :Unite -buffer-name=history_yank yankround<CR>
+"nmap <C-S> <Plug>(yankround-next)
+inoremap <silent> <C-s> <Esc>:Unite -buffer-name=history_yank yankround<CR>
+nnoremap <C-l> :call <SID>outline_or_snippet_jump()<CR>
+
+function! s:outline_or_snippet_jump()
+  if neosnippet#jumpable()
+    "normal! 0
+    "startinsert
+    let cmd = neosnippet#mappings#jump_or_expand_impl()
+    let cmd = substitute(cmd, "\<Esc>", '', 'g')
+    let cmd = substitute(cmd, "\<CR>",  '', 'g')
+    execute cmd
+    return
+  endif
+  :Unite outline  -winwidth=40 -buffer-name=outline -hide-source-names
+endfunction
+
+
 nnoremap <Leader><Leader> :Unite 
 nnoremap <silent> <Leader>g :call <SID>grep()<CR>
 
@@ -40,7 +63,6 @@ else
   nnoremap <silent> <Leader>e :Unite everything/async<CR>
 endif
 
-nnoremap <silent> <C-l> :Unite outline  -winwidth=40 -buffer-name=outline -hide-source-names<CR>
 nnoremap <silent> <C-l><C-l> :Unite outline:!  -winheight=30 -buffer-name=outline<CR>
 nnoremap <silent> <Space>r  :UniteResume<CR>
 nnoremap man :Unite help<CR>

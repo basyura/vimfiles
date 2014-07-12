@@ -47,3 +47,5 @@ hi J6uil_quotation guifg=#557788
 hi uniteSource__FileMru_Time guifg=#9f9f9f
 hi uniteSource__Buffer_Time  guifg=#9f9f9f
 hi uniteSource__Buffer_Name  guifg=#000000
+
+"hi YankRoundRegion  guibg=#dcdda8

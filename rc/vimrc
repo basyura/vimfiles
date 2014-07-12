@@ -63,6 +63,10 @@ endif
 "             map                "
 """"""""""""""""""""""""""""""""""
 
+nmap p <Plug>(yankround-p)
+imap <C-v> <C-R>+
+cmap <C-v> <C-R>+
+
 nnoremap I i<Space><Left>
 
 nnoremap qq q
@@ -108,10 +112,6 @@ inoremap <C-p> <C-o>
 
 nnoremap gc `[v`]
 
-"コマンドモードで Ctl + v で貼り付ける
-cmap <C-v> <C-R>+
-"挿入モードで Ctl + v で貼り付ける
-imap <C-v> <C-R>+
 "全て選択
 nmap  <C-a><C-a> ggvG$
 " gvim で q → bd をしてる用
