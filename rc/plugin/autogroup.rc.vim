@@ -96,3 +96,9 @@ endfunction
 function! s:scratch_my_settings()
   AlterCommand <buffer> q :Scratch<CR>
 endfunction
+
+"augroup HighlightTrailingSpaces
+  "autocmd!
+  "autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guifg=blue ctermbg=LightRed gui=underline
+  "autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
+"augroup END

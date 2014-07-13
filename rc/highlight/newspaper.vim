@@ -48,4 +48,4 @@ hi uniteSource__FileMru_Time guifg=#9f9f9f
 hi uniteSource__Buffer_Time  guifg=#9f9f9f
 hi uniteSource__Buffer_Name  guifg=#000000
 
-"hi YankRoundRegion  guibg=#dcdda8
+hi YankRoundRegion  guibg=#C7D358

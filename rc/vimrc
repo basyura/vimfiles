@@ -64,6 +64,7 @@ endif
 """"""""""""""""""""""""""""""""""
 
 nmap p <Plug>(yankround-p)
+vmap p <Plug>(yankround-p)
 imap <C-v> <C-R>+
 cmap <C-v> <C-R>+
 
@@ -81,6 +82,7 @@ noremap wj <C-w>j
 noremap wk <C-w>k
 noremap <silent> gl :macaction selectNextWindow:<CR>
 noremap <script> gh :macaction selectPreviousWindow:<CR>
+vnoremap v $h
 
 if g:tab_mode
   nnoremap <silent> <Space>.   :<C-u>silent! tab drop $MYVIMRC<CR>

@@ -313,3 +313,4 @@ center.y
 UITextBorderStyleRoundedRect
 UIControlContentVerticalAlignmentCenter
 UITableViewStylePlain
+@window.rootViewController.wantsFullScreenLayout
