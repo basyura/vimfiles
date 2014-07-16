@@ -88,8 +88,9 @@ TryGetValue(
 IsNullOrEmpty(
 CodeDomProvider
 CompilerInfo
-Stopwatch
+Stopwatch.StartNew()
 Int32.MaxValue
 Int64.MaxValue
 Parallel
 ElapsedMilliseconds
+Elaped
