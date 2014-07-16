@@ -48,4 +48,8 @@ hi uniteSource__FileMru_Time guifg=#9f9f9f
 hi uniteSource__Buffer_Time  guifg=#9f9f9f
 hi uniteSource__Buffer_Name  guifg=#000000
 
-hi YankRoundRegion  guibg=#C7D358
+if has('win32')
+  hi YankRoundRegion  guibg=#DCDDA8
+else
+  hi YankRoundRegion  guibg=#C7D358
+endif
