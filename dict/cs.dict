@@ -93,4 +93,4 @@ Int32.MaxValue
 Int64.MaxValue
 Parallel
 ElapsedMilliseconds
-Elaped
+Elapsed
