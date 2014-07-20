@@ -43,7 +43,8 @@ endfunction
 
 
 nnoremap <Leader><Leader> :Unite 
-nnoremap <silent> <Leader>g :call <SID>grep()<CR>
+"nnoremap <silent> <Leader>g :call <SID>grep()<CR>
+nnoremap <silent> <Leader>g :Unite grep:.:: -no-quit -no-start-insert -direction=botright -buffer-name=grep -hide-source-names -keep-focus<CR>
 
 function! s:grep()
   let word = input(' word : ')
