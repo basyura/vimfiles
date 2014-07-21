@@ -203,9 +203,11 @@ UIColor.lightGrayColor
 UILabel
 UINavigationController.alloc.initWithRootViewController
 UIScreen.mainScreen.bounds
+UIScreen.mainScreen.applicationFrame
 UITabBarController
 UITabBarController
 UITableView
+UITableViewController
 alloc.initWithFrame
 alloc.initWithTitle
 UIView.alloc.initWithFrame
@@ -309,8 +311,11 @@ self.view.backgroundColor
 self.view.frame.size.width
 self.view.frame.size.height
 self.view.addSubview
+view.addSubview
+view.bounds
 center.y
 UITextBorderStyleRoundedRect
 UIControlContentVerticalAlignmentCenter
 UITableViewStylePlain
 @window.rootViewController.wantsFullScreenLayout
+reuseIdentifier

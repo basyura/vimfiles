@@ -136,3 +136,21 @@ snippet     viewDidLoad
 
     ${1}
   end
+
+snippet     def_tableview
+abbr        define tableView's methods
+
+  def tableView(tableView, numberOfRowsInSection: section)
+    ${0:row count}
+  end
+
+  def tableView(tableView, cellForRowAtIndexPath: indexPath)
+    @reuseIdentifier ||= "CELL_IDENTIFIER"
+    cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier) || begin
+      UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: @reuseIdentifier)
+    end
+
+    cell.textLabel.text = ${2:label}
+    cell
+  end
+end

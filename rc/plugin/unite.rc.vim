@@ -132,6 +132,11 @@ endif
 
 call unite#set_profile('buffer_tab,file,file_mru,everything', 'ignorecase', 1)
 call unite#custom#profile('mdfind', 'required_pattern_length', 8)
+call unite#custom#profile('default', 'context', {
+\   'prompt_direction': 'top',
+\   'prompt-visible'  : 1,
+\   'start_insert'    : 1,
+\ })
 
 let my_absolute_path = {
 \ 'is_selectable' : 1,
