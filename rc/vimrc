@@ -169,6 +169,7 @@ nnoremap <silent> j  gj
 nnoremap <silent> gj j
 nnoremap <silent> k  gk
 nnoremap <silent> gk k
+nnoremap <Leader>p o<esc>p
 "nnoremap 0 ^
 "nnoremap 00 0
 "nnoremap ^ 0
@@ -190,6 +191,7 @@ nnoremap <C-x><C-d> :Unite rails/db<CR>
 nnoremap <C-x><C-f> :Unite rails/config<CR>
 nnoremap <C-x> :Unite rails/
 
+nnoremap <Space>d :Dash!<CR>
 
 nnoremap Y y$
 vnoremap Y "*y
