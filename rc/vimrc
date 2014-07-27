@@ -76,10 +76,11 @@ nnoremap q <Nop>
 nnoremap <silent> U :<C-u>redo<CR>
 "map bn    :bnext<CR>
 "ウインドウのフォーカス移動
-"noremap wh <C-w>h
-"noremap wl <C-w>l
-"noremap wj <C-w>j
-"noremap wk <C-w>k
+noremap wh <C-w>h
+noremap wl <C-w>l
+noremap wj <C-w>j
+noremap wk <C-w>k
+noremap wp <C-w>p
 noremap <silent> gl :macaction selectNextWindow:<CR>
 noremap <script> gh :macaction selectPreviousWindow:<CR>
 vnoremap v $h
@@ -184,7 +185,7 @@ nnoremap <silent>w :call <SID>clever_move("w")<CR>
 nnoremap <silent>b :call <SID>clever_move("b")<CR>
 nnoremap <silent>e :call <SID>clever_move("e")<CR>
 
-let s:no_clever_pattern = '\.\|(\|)\|!\|:\|]\|=\|<\|>\|"\|\$' ."\\|'"
+let s:no_clever_pattern = '\.\|(\|)\|!\|:\|]\|[\|=\|<\|>\|"\|\$\|/\|-\|,' ."\\|'"
 
 function! s:clever_move(word)
   execute "normal! " . a:word

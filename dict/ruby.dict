@@ -204,6 +204,7 @@ UIColor.lightGrayColor
 UIColor.scrollViewTexturedBackgroundColor
 UIColor.greenColor
 UIColor.clearColor
+UIColor.underPageBackgroundColor
 UIFont.fontWithName(
 UILabel
 UINavigationController.alloc.initWithRootViewController(
@@ -226,10 +227,11 @@ initWithNibName(
 makeKeyAndVisible
 navigationItem.setRightBarButtonItem(
 navigationItem.setLeftBarButtonItem(
+navigationItem.titleView
 purpleColor
 rightBarButtonItem
 rootViewController
-viewControllers 
+viewControllers
 whiteColor
 clearColor
 textColor
@@ -238,7 +240,7 @@ UITableViewCell.alloc.initWithStyle(
 textLabel
 cellForRowAtIndexPath
 numberOfRowsInSection
-dataSource 
+dataSource
 delegate
 didSelectRowAtIndexPath
 addButtonWithTitle
@@ -248,7 +250,7 @@ have_content
 uniqueness
 include
 SessionsHelper
-be_blank 
+be_blank
 before_create
 Digest::SHA1.hexdigest
 has_key?
@@ -275,7 +277,7 @@ enablesReturnKeyAutomatically
 returnKeyType
 UIReturnKeyDone
 UITextAutocapitalizationTypeNone
-autocapitalizationType 
+autocapitalizationType
 textFieldShouldReturn
 otherButtonTitles
 cancelButtonTitle
@@ -285,7 +287,7 @@ viewDidLoad
 frame
 size
 width
-height 
+height
 autoresizingMask
 UIViewAutoresizingFlexibleBottomMargin
 UIViewAutoresizingFlexibleTopMargin
@@ -305,8 +307,8 @@ UITabBarSystemItemTopRated
 tabBarItem.setFinishedSelectedImage(
 target
 completion
-borderStyle 
-textAlignment 
+borderStyle
+textAlignment
 UITextAlignmentCenter
 to_sym
 NSUserDefaults.standardUserDefaults
@@ -368,3 +370,16 @@ lineBreakMode
 UILineBreakModeWordWrap
 numberOfLines
 UIImageView.alloc.initWithImage(
+UIImagePickerController.alloc.init
+UIImagePickerController.isSourceTypeAvailable(
+UIImagePickerControllerSourceTypeCamera
+UIImagePickerControllerSourceTypePhotoLibrary
+presentModalViewController
+dismissModalViewControllerAnimated
+removeFromSuperview
+numberOfButtons
+alertViewStyle
+UIAlertViewStylePlainTextInput
+CLLocationManager.locationServicesEnabled
+desiredAccuracy = KCLLocationAccurracyKilometer
+startUpdatingLocation

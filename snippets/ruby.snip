@@ -159,3 +159,9 @@ snippet      setFinishedSelectedImage
 options      word
 abbr         setFinishedSelectedImage
     setFinishedSelectedImage(UIImage.imageNamed('${1}'), withFinishedUnselectedImage: UIImage.imageNamed('${2}'))
+    
+
+snippet      imagePickerController
+  def imagePickerController(picker, didFinishPickingImage: image, editingInfo: info)
+    ${1}
+  end
