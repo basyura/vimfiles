@@ -194,6 +194,7 @@ AppDelegate
 CGPointMake(
 CGRectMake(
 CGRectZero
+alloc.init
 UIBarButtonItem.alloc.initWithTitle(
 UIBarButtonItemStyleBordered
 UIColor.blueColor
@@ -201,6 +202,9 @@ UIColor.redColor
 UIColor.whiteColor
 UIColor.lightGrayColor
 UIColor.scrollViewTexturedBackgroundColor
+UIColor.greenColor
+UIColor.clearColor
+UIFont.fontWithName(
 UILabel
 UINavigationController.alloc.initWithRootViewController(
 UIScreen.mainScreen.bounds
@@ -209,8 +213,10 @@ UITabBarController
 UITabBarController
 UITableView
 UITableViewController
+UISwitch
 alloc.initWithFrame(
 alloc.initWithTitle(
+alloc.initWithStyle(
 UIView.alloc.initWithFrame(
 UIWindow.alloc.initWithFrame(
 addSubview
@@ -252,9 +258,15 @@ member?
 CGRect
 UIControlStateNormal
 UIControlStateDisabled
+UIControlStateSelected
+UIControlStateHighlighted
 forControlEvents:UIControlEventTouchUpInside
+UIControlEventValueChanged
+UIControlEventTouchDown
 UIButton.buttonWithType
 UIButtonTypeRoundedRect
+UIPickerView
+UISlider
 forState
 UIView.animateWithDuration
 UITextField
@@ -286,6 +298,7 @@ initWithColor(
 animated
 bundle
 tabBarItem.image
+tabBarItem.title
 UITabBarItem.alloc.initWithTabBarSystemItem(
 UITabBarSystemItemSearch
 UITabBarSystemItemTopRated
@@ -317,6 +330,7 @@ self.view.addSubview
 frame.size.width
 frame.size.heightview.addSubview
 view.bounds
+view.addSubview
 center.y
 UITextBorderStyleRoundedRect
 UIControlContentVerticalAlignmentCenter
@@ -345,3 +359,12 @@ application.setStatusBarStyle(
 UIStatusBarStyleBlackOpaque
 UIStatusBarStyleBlackTranslucent
 UIStatusBarStyleDefault
+minimumValue
+maximumValue
+numberOfComponentsInPickerView
+pickerView
+numberOfRowsInComponent
+lineBreakMode
+UILineBreakModeWordWrap
+numberOfLines
+UIImageView.alloc.initWithImage(

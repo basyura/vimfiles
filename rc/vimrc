@@ -76,10 +76,10 @@ nnoremap q <Nop>
 nnoremap <silent> U :<C-u>redo<CR>
 "map bn    :bnext<CR>
 "ウインドウのフォーカス移動
-noremap wh <C-w>h
-noremap wl <C-w>l
-noremap wj <C-w>j
-noremap wk <C-w>k
+"noremap wh <C-w>h
+"noremap wl <C-w>l
+"noremap wj <C-w>j
+"noremap wk <C-w>k
 noremap <silent> gl :macaction selectNextWindow:<CR>
 noremap <script> gh :macaction selectPreviousWindow:<CR>
 vnoremap v $h
@@ -154,22 +154,45 @@ nnoremap <silent> <C-x><C-l> :tabnext<CR>
 nnoremap <silent> <C-x><C-h> :tabprevious<CR>
 nnoremap <silent> <C-f> :tabnext<CR>
 nnoremap <silent> <C-b> :tabprevious<CR>
-nnoremap <C-w>; <C-w>+
-nnoremap w; <C-w>+
-nnoremap w- <C-w>-
-nnoremap wm 100<C-w>+
+"nnoremap <C-w>; <C-w>+
+"nnoremap w; <C-w>+
+"nnoremap w- <C-w>-
+"nnoremap wm 100<C-w>+
 nnoremap <silent><Leader>r :redraw!<CR> 
 nnoremap <silent>on 999<C-w>+
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
-nnoremap wp <C-w>p
 nnoremap <C-]> g<C-]>
-nnoremap <C-w> <Home>dw
+"nnoremap <C-w> <Home>dw
 nnoremap <silent> j  gj
 nnoremap <silent> gj j
 nnoremap <silent> k  gk
 nnoremap <silent> gk k
-nnoremap <Leader>p o<esc>p
+nnoremap <Space>p :call <SID>clever_p()<CR>
+
+function! s:clever_p()
+  let text = getreg("\"")
+  if text =~ "\n$"
+    normal! p
+  else
+    call append(".", text)
+    normal j$
+  endif
+endfunction
+
+nnoremap <silent>w :call <SID>clever_move("w")<CR>
+nnoremap <silent>b :call <SID>clever_move("b")<CR>
+nnoremap <silent>e :call <SID>clever_move("e")<CR>
+
+let s:no_clever_pattern = '\.\|(\|)\|!\|:\|]\|=\|<\|>\|"\|\$' ."\\|'"
+
+function! s:clever_move(word)
+  execute "normal! " . a:word
+  let chr =getline('.')[col('.') -1]
+  if  chr =~ s:no_clever_pattern || chr == ''
+    call s:clever_move(a:word)
+  endif
+endfunction
 "nnoremap 0 ^
 "nnoremap 00 0
 "nnoremap ^ 0

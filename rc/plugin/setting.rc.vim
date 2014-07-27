@@ -22,7 +22,9 @@ set incsearch
 set laststatus=0
 set history=1000
 set noswapfile
-set breakindent
+if has('patch300')
+  set breakindent
+endif
 set noundofile
 "set statusline=%3l%3p%%\ \|\ %<%t\ %m%=%c\|%R%Y%{'\|'.(&fenc!=''?&fenc:&enc).'\|'.&ff}
 set statusline=%3l%4p%%\ \|\ %<%t\ %m\ %r%=%{fnamemodify(getcwd(),':~')}\ \|\ %3c\ \|\ %Y\ 
