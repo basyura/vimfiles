@@ -381,5 +381,6 @@ numberOfButtons
 alertViewStyle
 UIAlertViewStylePlainTextInput
 CLLocationManager.locationServicesEnabled
-desiredAccuracy = KCLLocationAccurracyKilometer
+desiredAccuracy
+KCLLocationAccuracyKilometer
 startUpdatingLocation

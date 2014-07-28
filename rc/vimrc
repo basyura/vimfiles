@@ -81,6 +81,7 @@ noremap wl <C-w>l
 noremap wj <C-w>j
 noremap wk <C-w>k
 noremap wp <C-w>p
+nnoremap <Space>v :vsplit<CR>
 noremap <silent> gl :macaction selectNextWindow:<CR>
 noremap <script> gh :macaction selectPreviousWindow:<CR>
 vnoremap v $h
