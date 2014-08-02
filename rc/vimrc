@@ -186,7 +186,7 @@ nnoremap <silent>w :call <SID>clever_move("w")<CR>
 nnoremap <silent>b :call <SID>clever_move("b")<CR>
 nnoremap <silent>e :call <SID>clever_move("e")<CR>
 
-let s:no_clever_pattern = '\.\|(\|)\|!\|:\|]\|[\|=\|<\|>\|"\|\$\|/\|-\|,' ."\\|'"
+let s:no_clever_pattern = '\.\|(\|)\|!\|:\|]\|[\|<\|>\|"\|\$\|/\|-\|,' ."\\|'"
 
 function! s:clever_move(word)
   execute "normal! " . a:word

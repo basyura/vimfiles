@@ -165,3 +165,11 @@ snippet      imagePickerController
   def imagePickerController(picker, didFinishPickingImage: image, editingInfo: info)
     ${1}
   end
+
+snippet      alert
+    alert_box = UIAlertView.alloc.initWithTitle(${1}, 
+                                                message: message, 
+                                                delegate: nil, 
+                                                cancelButtonTitle: "ok", 
+                                                otherButtonTitles: nil)
+    alert_box.show
