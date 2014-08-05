@@ -53,3 +53,6 @@ if has('win32')
 else
   hi YankRoundRegion  guibg=#C7D358
 endif
+
+"clever-f
+hi CleverFChar guibg=darkgreen guifg=white
