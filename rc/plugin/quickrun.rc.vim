@@ -1,7 +1,13 @@
 " quickrun
 "
 "
-silent! nmap <Leader>q :QuickRun<CR>
+silent! nmap <Leader>q :call <SID>_quickrun()<CR>
+
+function! s:_quickrun()
+  set noshellslash 
+  :QuickRun
+  set shellslash
+endfunction
 
 augroup mygroup-quickrun
   autocmd!
