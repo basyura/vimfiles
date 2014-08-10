@@ -195,6 +195,7 @@ CGPointMake(
 CGRectMake(
 CGRectZero
 alloc.init
+.alloc.initWithKey(
 UIBarButtonItem.alloc.initWithTitle(
 UIBarButtonItem.alloc.initWithBarButtonSystemItem(
 UIBarButtonSystemItemAdd
@@ -317,6 +318,7 @@ to_sym
 NSUserDefaults.standardUserDefaults
 NSKeyedUnarchiver.unarchiveObjectWithData
 navigationController.pushViewController
+navigationController.popViewControllerAnimated(true)
 accessoryType
 UITableViewCellAccessoryDisclosureIndicator
 editingStyleForRowAtIndexPath
@@ -410,3 +412,9 @@ NSManagedObjectModel
 addPersistentStoreWithType
 @window.makeKeyAndVisible
 UITableViewStyleGrouped
+NSSortDescriptor
+NSFetchRequest
+NSEntityDescription.entityForName
+NSEntityDescription.insertNewObjectForEntityForName
+NSSortDescriptor
+UITableViewCellSelectionStyleNone

@@ -19,16 +19,42 @@ set smartindent
 set timeout timeoutlen=300 ttimeoutlen=200
 set shellslash
 set incsearch
-set laststatus=0
+set laststatus=2
 set history=1000
 set noswapfile
+set cursorline
 if has('patch300')
   set breakindent
 endif
 set noundofile
 "set statusline=%3l%3p%%\ \|\ %<%t\ %m%=%c\|%R%Y%{'\|'.(&fenc!=''?&fenc:&enc).'\|'.&ff}
-set statusline=%3l%4p%%\ \|\ %<%t\ %m\ %r%=%{fnamemodify(getcwd(),':~')}\ \|\ %3c\ \|\ %Y\ 
+set statusline=%3l%4p%%\ \|\ %t\ %<\ %m\ %r%=%{MyStatusPath()}\ \|\ %3c\ \|\ %Y\ 
 
+function! MyStatusPath()
+  if exists('b:my_status_path')
+    "return b:my_status_path
+  endif
+  let path  = expand("%:p:h")
+  let gpath = finddir('.git', path . ';.;')
+
+  if gpath == ''
+    let gpath = findfile('Rakefile', path . ';')
+  endif
+
+  if gpath == ''
+    let b:my_status_path = fnamemodify(path, ':~:h')
+    return b:my_status_path
+  endif
+
+  if gpath == '.git'
+    let b:my_status_path = fnamemodify(path, ':t')
+  else
+    let gpath = fnamemodify(gpath, ':h:h') . '/'
+    let b:my_status_path = substitute(path, gpath, '', '')
+  endif
+
+  return b:my_status_path
+endfunction
 
 " ubuntu だと画面がちらつく。mac だと音が出ちゃう。
 if has('mac')
