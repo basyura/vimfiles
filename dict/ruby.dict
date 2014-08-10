@@ -288,6 +288,7 @@ cancelButtonTitle
 UIAlertView
 UIViewController
 viewDidLoad
+viewWillAppear
 frame
 size
 width
@@ -418,3 +419,4 @@ NSEntityDescription.entityForName
 NSEntityDescription.insertNewObjectForEntityForName
 NSSortDescriptor
 UITableViewCellSelectionStyleNone
+canEditRowAtIndexPath

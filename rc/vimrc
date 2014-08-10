@@ -120,6 +120,7 @@ nnoremap gc `[v`]
 nmap  <C-a><C-a> ggvG$
 " gvim で q → bd をしてる用
 nmap <C-q><C-q><C-q> ZQ
+nmap <silent> ,l <plug><inside-motion>
 
 cmap <C-e> <End>
 cmap <C-a> <HOME>
