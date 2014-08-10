@@ -382,7 +382,7 @@ UIImagePickerController.isSourceTypeAvailable(
 UIImagePickerControllerSourceTypeCamera
 UIImagePickerControllerSourceTypePhotoLibrary
 presentModalViewController
-dismissModalViewControllerAnimated
+self.dismissModalViewControllerAnimated
 removeFromSuperview
 numberOfButtons
 alertViewStyle
@@ -420,3 +420,10 @@ NSEntityDescription.insertNewObjectForEntityForName
 NSSortDescriptor
 UITableViewCellSelectionStyleNone
 canEditRowAtIndexPath
+ABPeoplePickerNavigationController
+presentModalViewController(
+shouldContinueAfterSelectingPerson
+ABRecordCopyValue(
+KABPersonFirstNameProperty
+KABPersonPhoneProperty
+ABMultiValueCopyValueAtIndex

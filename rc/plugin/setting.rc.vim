@@ -46,7 +46,7 @@ function! MyStatusPath()
     return b:my_status_path
   endif
 
-  if gpath == '.git'
+  if gpath == '.git' || gpath == 'Rakefile'
     let b:my_status_path = fnamemodify(path, ':t')
   else
     let gpath = fnamemodify(gpath, ':h:h') . '/'
