@@ -57,6 +57,7 @@ endfunction
 
 " for tweetvim say
 function! s:tweetvim_say_my_settings()
+  setlocal nocursorline
   AlterCommand <buffer> q bd!<CR>
   nnoremap <buffer> <silent> <C-j> :bd!<CR>
   if !has('gui_running')
