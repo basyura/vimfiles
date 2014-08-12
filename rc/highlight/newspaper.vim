@@ -7,8 +7,8 @@ endif
 "hi Cursor  guifg=bg   guibg=#557788
 hi Cursor guibg=#Cd853f guifg=fg
 "hi CursorLine guibg=#D2D2D2
-hi CursorLine guibg=#cccfbf
-hi CursorLineNr guifg=#666677 guibg=#cccfbf gui=none
+hi CursorLine guibg=#cccfbf gui=none
+hi CursorLineNr guifg=#666677 guibg=#cccfbf
 hi Comment guifg=darkgray gui=none
 hi helpExample guifg=darkblue
 hi vimshellPrompt guifg=darkgreen

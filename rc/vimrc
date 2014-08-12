@@ -326,4 +326,6 @@ if filereadable($HOME . '/.vimrc_local_after')
 endif
 
 
+hi CursorLine cterm=none ctermbg=darkblue
+
 " vim: foldmethod=marker

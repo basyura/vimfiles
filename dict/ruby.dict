@@ -195,8 +195,7 @@ CGPointMake(
 CGRectMake(
 CGRectZero
 alloc.init
-.alloc.initWithKey(
-.alloc.initWithType(
+alloc.initWithKey(
 UIBarButtonItem.alloc.initWithTitle(
 UIBarButtonItem.alloc.initWithBarButtonSystemItem(
 UIBarButtonSystemItemAdd
@@ -270,7 +269,7 @@ UIControlStateHighlighted
 forControlEvents:UIControlEventTouchUpInside
 UIControlEventValueChanged
 UIControlEventTouchDown
-UIButton.buttonWithType
+UIButton.buttonWithType(
 UIButtonTypeRoundedRect
 UIPickerView
 UISlider
@@ -430,3 +429,5 @@ KABPersonFirstNameProperty
 KABPersonPhoneProperty
 ABMultiValueCopyValueAtIndex
 UIBarButtonItemStylePlain
+UIWebView
+NSURLRequest.requestWithURL(url)
