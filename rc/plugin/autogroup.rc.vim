@@ -13,9 +13,12 @@ augroup MyGroup
   autocmd FileType ruby,eruby,scala,javascript  :setlocal shiftwidth=2
   autocmd FileType ruby,eruby,scala,javascript  :setlocal expandtab
 
-  autocmd FileType java,c,cpp,cs :setlocal tabstop=4
-  autocmd FileType java,c,cpp,cs :setlocal shiftwidth=4
-  autocmd FileType java,c,cpp,cs :setlocal noexpandtab
+  autocmd FileType java,c,cpp :setlocal tabstop=4
+  autocmd FileType java,c,cpp :setlocal shiftwidth=4
+  autocmd FileType java,c,cpp :setlocal noexpandtab
+
+  autocmd FileType cs :setlocal tabstop=4
+  autocmd FileType cs :setlocal shiftwidth=4
 
   autocmd FileType help :setlocal noexpandtab
 

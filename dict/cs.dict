@@ -1,9 +1,10 @@
 using
 Console.WriteLine(
+Console.ReadKey()
 Collections.Generic
 STAThread
 Main
-DateTime.Now
+DateTime.Now.ToString(
 Hashtable
 Object
 Dictionary
@@ -94,3 +95,11 @@ Int64.MaxValue
 Parallel
 ElapsedMilliseconds
 Elapsed
+Thread.CurrentThread.ManagedThreadId
+Random 
+Task.Factory.StartNew(
+Interlocked.Increment(
+Task.WaitAll(
+SignalAndWait()
+ContinueWith(
+InvalidOperationException
