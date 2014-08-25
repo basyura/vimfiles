@@ -96,6 +96,7 @@ Parallel
 ElapsedMilliseconds
 Elapsed
 Thread.CurrentThread.ManagedThreadId
+Thread.Sleep(
 Random 
 Task.Factory.StartNew(
 Interlocked.Increment(
@@ -103,3 +104,5 @@ Task.WaitAll(
 SignalAndWait()
 ContinueWith(
 InvalidOperationException
+Parallel.For(
+Enumerable.Range(
