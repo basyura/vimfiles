@@ -176,8 +176,11 @@ function! s:unite_my_settings()
   inoremap <buffer> <C-f> <Right>
   inoremap <buffer> <C-b> <Left>
   inoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
-  inoremap <silent><buffer><expr> <C-s> unite#do_action('rec_parent/async')
-  inoremap <silent><buffer><expr> <C-s> unite#do_action('mdfind')
+  if has('mac')
+    inoremap <silent><buffer><expr> <C-s> unite#do_action('mdfind')
+  else
+    inoremap <silent><buffer><expr> <C-s> unite#do_action('rec_parent/async')
+  endif
 
   map <silent><buffer> a <Plug>(unite_insert_enter)
 
