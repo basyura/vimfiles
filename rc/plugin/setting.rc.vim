@@ -38,6 +38,8 @@ function! MyStatusPath()
   let path  = expand("%:p:h")
   let gpath = finddir('.git', path . ';.;')
 
+  let path =  substitute(path, '^C:', '', 0)
+
   if gpath == ''
     let gpath = findfile('Rakefile', path . ';')
   endif
