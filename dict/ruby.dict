@@ -43,7 +43,6 @@ Module
 Object
 Proc
 Sequel
-Time
 active_axs
 ancestors
 assert_equal
@@ -431,3 +430,4 @@ ABMultiValueCopyValueAtIndex
 UIBarButtonItemStylePlain
 UIWebView
 NSURLRequest.requestWithURL(url)
+Time.now
