@@ -1,6 +1,8 @@
 private
 default
 File.join
+File.basename
+File.dirname
 File::APPEND
 File::BINARY
 File::CREAT
