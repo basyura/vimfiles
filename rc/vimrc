@@ -185,7 +185,7 @@ endfunction
 
 nnoremap <silent>w :call <SID>clever_move("w")<CR>
 nnoremap <silent>b :call <SID>clever_move("b")<CR>
-nnoremap <silent>e :call <SID>clever_move("e")<CR>
+"nnoremap <silent>e :call <SID>clever_move("e")<CR>
 
 let s:no_clever_pattern = '\.\|(\|)\|!\|:\|]\|[\|<\|>\|"\|\$\|/\|-\|,' ."\\|'"
 

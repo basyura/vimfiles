@@ -1,21 +1,38 @@
 " necocomplete 
 function! s:initialize_neocomplete()
   let g:neocomplete#enable_at_startup= 1
+
   if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
   endif
-  let g:neocomplete#keyword_patterns._ = '\h\w*'
-
   if !exists('g:neocomplete#sources#dictionary#dictionaries')
     let g:neocomplete#sources#dictionary#dictionaries = {}
   endif
+  if !exists('g:neocomplete#sources#omni#functions')
+    let g:neocomplete#sources#omni#functions = {}
+  endif
+  if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+  endif
+  if !exists('g:neocomplete#enable_fuzzy_completion')
+    let  g:neocomplete#enable_fuzzy_completion = 0
+  endif
+
+
+
+  let g:neocomplete#keyword_patterns._ = '\h\w*'
+
   let dict = g:neocomplete#sources#dictionary#dictionaries
   let dict.ruby   = $HOME . '/.vim/dict/ruby.dict'
   let dict.cs     = $HOME . '/.vim/dict/cs.dict'
   let dict.elixir = $HOME . '/.vim/dict/elixir.dict'
-  "let dict._ = $HOME . '/.vim/dict/default.dict'
-  "let dict.tweetvim_say =  $HOME . '/.tweetvim/screen_name,' .
-                         "\ $HOME . '/.tweetvim/hash_tag,'
+
+  if get(g:, 'use_monster', 0)
+    let g:neocomplete#sources#omni#functions.ruby = 'monster#omnifunc'
+    let g:monster#completion#rcodetools#backend = "async_rct_complete"
+  endif
+
+  let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
   
   let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
   let g:neocomplete#enable_ignore_case = 0
@@ -24,9 +41,6 @@ function! s:initialize_neocomplete()
   call neocomplete#custom_source('_', 'sorters',  ['sorter_length'])
   call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
 
-  if !exists('g:neocomplete#enable_fuzzy_completion')
-    let  g:neocomplete#enable_fuzzy_completion = 0
-  endif
   if g:neocomplete#enable_fuzzy_completion
     call neocomplete#custom_source('_', 'matchers', ['matcher_fuzzy'])
   endif
