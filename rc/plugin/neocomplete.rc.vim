@@ -62,6 +62,8 @@ function! s:initialize_neocomplete()
   inoremap <expr><C-c>  neocomplete#cancel_popup()
   "inoremap <expr><C-u>  neocomplete#undo_completion()
   inoremap <expr><C-h>  neocomplete#smart_close_popup()."\<C-h>"
+
+  command! -nargs=? -complete=file -bar MakeBufferCache call neocomplete#sources#buffer#make_cache(<q-args>)
 endfunction
 
 

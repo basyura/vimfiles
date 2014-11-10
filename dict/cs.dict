@@ -1,4 +1,6 @@
 using
+MemoryStream
+BinaryFormatter 
 Console.WriteLine(
 Console.ReadKey()
 Collections.Generic
@@ -107,3 +109,4 @@ InvalidOperationException
 Parallel.For(
 Enumerable.Range(
 EndsWith(
+Guid.NewGuid()
