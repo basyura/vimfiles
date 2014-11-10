@@ -122,6 +122,7 @@ call unite#custom_filters('hateblo-list',
 
 let g:unite_source_outline_cache_dir = ''
 let g:unite_source_everything_limit = 300
+let g:unite_source_everything_async_minimum_length = 3
 
 call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
 

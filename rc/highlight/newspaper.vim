@@ -55,4 +55,4 @@ else
 endif
 
 "clever-f
-hi CleverFChar guibg=darkgreen guifg=white
+hi CleverFChar guibg=#dcdda8 guifg=#9e3224
