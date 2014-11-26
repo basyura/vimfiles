@@ -174,6 +174,7 @@ function! s:unite_my_settings()
   nmap <buffer> <C-j> <Plug>(unite_exit)
   imap <buffer> <C-r> <Plug>(unite_redraw)
 
+  inoremap <buffer> <C-v> <C-r>0
   inoremap <buffer> <C-f> <Right>
   inoremap <buffer> <C-b> <Left>
   inoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
