@@ -167,6 +167,7 @@ function! s:unite_my_settings()
   inoremap <buffer><expr> <C-@> unite#do_action('absolute_path')
   inoremap <buffer><expr> <C-x><C-i> unite#do_action('insert')
   inoremap <buffer><expr> <C-y> unite#do_action('yank')
+  inoremap <silent><buffer> <C-a> <Esc>:call <SID>move_head()<CR>
 	noremap <silent><buffer><expr> <C-x><C-i> unite#do_action('insert')
   imap <buffer> <C-e> <Enter>
   nmap <buffer> <C-n> <Plug>(unite_loop_cursor_down)
@@ -189,6 +190,20 @@ function! s:unite_my_settings()
   "startinsert
 endfunction
 
+function! s:move_head()
+  set modifiable
+  if line(".") == 1
+    if getline(1) != '> '
+      normal! 0ll
+      startinsert
+    else
+      startinsert!
+    end
+  else
+    :0
+    startinsert!
+  end
+endfunction
 
 let g:unite_source_alias_aliases = {
 \   "gvalue" : {
