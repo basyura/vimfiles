@@ -17,14 +17,17 @@ function! s:initialize_neocomplete()
   if !exists('g:neocomplete#enable_fuzzy_completion')
     let  g:neocomplete#enable_fuzzy_completion = 0
   endif
-
-
+  if !exists('g:neocomplete#sources#member#prefix_patterns')
+    let  g:neocomplete#sources#member#prefix_patterns = {}
+  endif
 
   let g:neocomplete#keyword_patterns._ = '\h\w*'
+  let g:neocomplete#sources#member#prefix_patterns.go = '\.'
 
   let dict = g:neocomplete#sources#dictionary#dictionaries
   let dict.ruby   = $HOME . '/.vim/dict/ruby.dict'
   let dict.cs     = $HOME . '/.vim/dict/cs.dict'
+  let dict.go     = $HOME . '/.vim/dict/go.dict'
   let dict.elixir = $HOME . '/.vim/dict/elixir.dict'
 
   if get(g:, 'use_monster', 0)
