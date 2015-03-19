@@ -14,4 +14,5 @@ function! s:vimfiler_setting()
   nmap <buffer> l <Plug>(vimfiler_smart_l):CD<CR>
   nmap <buffer> h <Plug>(vimfiler_smart_h):CD<CR>
   nmap <buffer>	e <Plug>(vimfiler_edit_file)
+  nmap <buffer> x <Plug>(vimfiler_execute_system_associated)
 endfunction
