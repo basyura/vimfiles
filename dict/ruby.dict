@@ -279,7 +279,6 @@ UIView.animateWithDuration
 UITextField
 UITextBorderStyleRoundedRect
 enablesReturnKeyAutomatically
-returnKeyType
 UIReturnKeyDone
 UITextAutocapitalizationTypeNone
 autocapitalizationType
