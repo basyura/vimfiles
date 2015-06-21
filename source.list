@@ -1,3 +1,8 @@
+https://github.com/basyura/unite-matchers.git
+https://github.com/basyura/unite-filters.git
+https://github.com/basyura/unite-mdfind.git
+https://github.com/Shougo/neocomplete.vim.git
+https://github.com/Shougo/vimproc.vim.git
 https://github.com/haya14busa/vim-asterisk.git
 https://github.com/LeafCage/yankround.vim.git
 https://github.com/Shougo/neomru.vim.git
@@ -21,7 +26,7 @@ https://github.com/basyura/unite-yarm.git
 https://github.com/basyura/util.vim.git
 https://github.com/Shougo/unite-outline.git
 https://github.com/mattn/webapi-vim.git
-https://github.com/Shougo/unite.vim.git
+https://github.com/basyura/unite.vim.git
 https://github.com/Shougo/vimfiler.git
 https://github.com/Shougo/vimshell.git
 https://github.com/soh335/unite-qflist.git
