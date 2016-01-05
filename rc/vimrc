@@ -99,6 +99,7 @@ nnoremap <Space>v.  :<C-u>edit   ~/.vimshrc<Enter>
 nnoremap <Space>ss  :<C-u>Source %<Enter>
 
 nnoremap <C-x><C-n> :setlocal nu!<CR>
+nnoremap en :enew<CR>
 
 inoremap <C-d> <Del>
 cmap <C-d> <Del>

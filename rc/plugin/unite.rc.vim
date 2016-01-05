@@ -77,7 +77,7 @@ inoremap <C-x><C-x> <Esc>:Unite sudden-death -winheight=4 -hide-source-names<CR>
 let g:unite_enable_start_insert = 1
 " mru
 let g:unite_source_file_mru_time_format    = ''
-let g:unite_source_file_mru_ignore_pattern = '.*Application\ Data.*\|.*デスクトップ.*\|.*Local/Temp/.*\|\[quickrun output\]\|.*Local Settings/Temp/.*\|fugitive://\|\.git\|/private/var'
+let g:unite_source_file_mru_ignore_pattern = '.*Application\ Data.*\|.*デスクトップ.*\|.*Local/Temp/.*\|\[quickrun output\]\|.*Local Settings/Temp/.*\|fugitive://\|\.git\|/private/var\|^\/\/.*'
 " unite ウインドウの高さ
 let g:unite_winheight  = 10
 let g:unite_split_rule = 'aboveleft'
@@ -106,7 +106,7 @@ call unite#custom_filters('buffer,buffer_tab,tab',
 call unite#custom#source('file', 'matchers', 'matcher_fussy')
 
 call unite#custom_filters('file_mru',
-      \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
+      \ ['matcher_file_name', 'sorter_default', 'converter_default'])
 
 call unite#custom_filters('uiki',
       \ ['matcher_fussy', 'sorter_default', 'converter_default'])
