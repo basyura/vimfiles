@@ -1,23 +1,21 @@
 snippet     s
 options     word
-prev_word   '^'
 abbr        ''
-    '${1}'
+    '${0}'
 
 snippet     w
 options     word
-prev_word   '^'
 abbr        ""
-  "${1}"
+  "${0}"
 
 snippet     {
 options     word
   {
-    ${1}
+    ${0}
   }
 
 snippet  pre
-  <pre><code class="${1}">
-  ${2}
+  <pre><code class="${0}">
+  ${1}
   </code></pre>
 
