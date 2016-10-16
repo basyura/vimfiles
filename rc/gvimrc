@@ -11,6 +11,7 @@ endif
 
 " setting {{{
 
+set guicursor=a:blinkon0
 set guioptions-=rL
 set guioptions-=m
 " ビジュアル選択(D&D他)を自動的にクリップボードへ (:help guioptions_a)
