@@ -1,4 +1,5 @@
 
+set belloff=all
 set textwidth=0
 set ambiwidth=double
 "set number
