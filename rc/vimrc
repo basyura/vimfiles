@@ -20,7 +20,8 @@ set runtimepath+=~/.vim/plugins/*
 set runtimepath+=~/.vim
 set runtimepath+=~/.vim/after
 
-colorscheme wombat
+set background=light
+colorscheme default
 
 set completeopt-=preview
 
@@ -326,8 +327,10 @@ if filereadable($HOME . '/.vimrc_local_after')
   source ~/.vimrc_local_after
 endif
 
+if filereadable(expand('~/.vim/rc/highlight/' . g:colors_name . '.vim'))
+  execute 'source ~/.vim/rc/highlight/' . g:colors_name . '.vim'
+endif
 
-hi CursorLine cterm=none ctermbg=darkblue
 hi Pmenu      guifg=#FFFDD6  guibg=black ctermfg=0 ctermbg=8
 hi PmenuSel   guifg=#F0FF93  guibg=#000000 ctermfg=15 ctermbg=8
 

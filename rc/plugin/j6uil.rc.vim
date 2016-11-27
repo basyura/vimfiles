@@ -6,7 +6,7 @@ augroup MyGroup-j6uil
   autocmd FileType J6uil          call s:j6uil_settings()
   autocmd FileType J6uil_rooms    call s:j6uil_other_settings()
   autocmd FileType J6uil_members  call s:j6uil_other_settings()
-  colorscheme desert
+  "colorscheme desert
 augroup END
 
 function! s:j6uil_settings()
