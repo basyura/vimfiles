@@ -14,6 +14,8 @@ nnoremap <silent> tm :TweetVimMentions<CR>
 
 
 "let g:tweetvim_default_account = 'tottoruby'
+let g:tweetvim_async_post = 1
+let g:twibill_use_job = 1
 let g:tweetvim_display_source = 1
 let g:tweetvim_original_hi = 0
 let g:tweetvim_filters = ['advanced']

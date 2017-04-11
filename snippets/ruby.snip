@@ -120,64 +120,13 @@ options     word
       ${1}
     end
 
-snippet     inib
-options     word
-abbr        alloc.initWithNibName
-    initWithNibName(${1:nil}, bundle: ${2:nil})
-
-snippet     iroot
-options     word
-abbr        alloc.initWithRootViewController
-    initWithRootViewController(${1:controller})
-
-snippet     iframe
-options     word
-    initWithFrame(${1:CGRectZero})
-
-snippet     viewDidLoad
-  def viewDidLoad
-    super
-
+snippet dov
+options word
+  do |v|
     ${1}
   end
 
-snippet     def_tableview
-abbr        define tableView's methods
 
-  def tableView(tableView, numberOfRowsInSection: section)
-    ${0:row count}
-  end
-
-  def tableView(tableView, cellForRowAtIndexPath: indexPath)
-    @reuseIdentifier ||= "CELL_IDENTIFIER"
-    cell = tableView.dequeueReusableCellWithIdentifier(@reuseIdentifier) || begin
-      UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: @reuseIdentifier)
-    end
-
-    cell.textLabel.text = ${2:label}
-    cell
-  end
-
-
-snippet      setFinishedSelectedImage
-options      word
-abbr         setFinishedSelectedImage
-    setFinishedSelectedImage(UIImage.imageNamed('${1}'), withFinishedUnselectedImage: UIImage.imageNamed('${2}'))
-    
-
-snippet      imagePickerController
-  def imagePickerController(picker, didFinishPickingImage: image, editingInfo: info)
-    ${1}
-  end
-
-snippet      alert
-    alert_box = UIAlertView.alloc.initWithTitle(${1}, 
-                                                message: message, 
-                                                delegate: nil, 
-                                                cancelButtonTitle: "ok", 
-                                                otherButtonTitles: nil)
-    alert_box.show
-
-snippet      mapl
-options      word
-  map {|${1:v}| ${2} }
+snippet doh
+options word
+  {|v| ${0} }

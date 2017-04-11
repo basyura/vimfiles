@@ -32,3 +32,18 @@ prev_word   '^'
     func main() {
         ${1}
     }
+
+snippet fm
+options     word
+abbr        fmt.Println
+    fmt.Println(${0})
+
+snippet ok
+options word
+abbr err == nil
+  err == nil 
+
+snippet ng
+options word
+abbr err != nil
+  err != nil 

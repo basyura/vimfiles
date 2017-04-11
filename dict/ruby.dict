@@ -59,7 +59,6 @@ class_eval
 const_missing
 constants
 debugger
-downcase
 define_method
 each_line
 each_pair

@@ -72,8 +72,6 @@ function! s:write_to_file()
   endtry
 endfunction "}}}
 
-command! GoFmt execute ':VimProcBang gofmt -w %' | execute ':edit! %'
-
 command! TabNew :call s:tabnew() "{{{
 function! s:tabnew()
   tabnew

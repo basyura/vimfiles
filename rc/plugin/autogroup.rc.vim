@@ -17,6 +17,8 @@ augroup MyGroup
   autocmd FileType java,c,cpp :setlocal shiftwidth=4
   autocmd FileType java,c,cpp :setlocal noexpandtab
 
+  autocmd FileType go call s:go_setting()
+
   autocmd FileType cs :setlocal tabstop=4
   autocmd FileType cs :setlocal shiftwidth=4
 
@@ -58,6 +60,14 @@ function! s:subm()
   silent! 1,$ s///g
   silent! 1,$ s/﻿//g
   setlocal nomodifiable
+endfunction
+
+
+function! s:go_setting()
+  setlocal tabstop=4
+  setlocal shiftwidth=4
+  setlocal expandtab
+  inoremap <buffer> :: := 
 endfunction
 
 function! s:delete_history()
