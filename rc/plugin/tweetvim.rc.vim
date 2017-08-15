@@ -20,27 +20,6 @@ let g:tweetvim_display_source = 1
 let g:tweetvim_original_hi = 0
 let g:tweetvim_filters = ['advanced']
 
-let g:tweetvim_advanced_filter = {}
-function! g:tweetvim_advanced_filter.executor(tweet)
-  if !has_key(a:tweet, 'user')
-    return 0
-  endif
-  
-  if a:tweet.user.screen_name == 'rails_rt_ja'
-    return 1
-  endif
-
-  if a:tweet.user.screen_name == 'takapon_jp' && has_key(a:tweet, 'retweeted_status')
-    return 1
-  endif
-
-  if a:tweet.text =~ '^デイリー こで'
-    return 1
-  endif
-
-  return 0
-endfunction
-
 
 if !has('gui_running')
   let g:tweetvim_display_source  = 0

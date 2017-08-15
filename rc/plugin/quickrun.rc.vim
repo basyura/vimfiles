@@ -34,7 +34,7 @@ if has('mac')
 "        \ }
 
  let g:quickrun_config['cs'] = {
-    \   'exec': ['%c -sdk:4.5 %o -out:%s:p:r.exe %s', 'mono %s:p:r.exe %a'],
+    \   'exec': ['%c %o -out:%s:p:r.exe %s', 'mono %s:p:r.exe %a'],
     \ }
 else
   let g:quickrun_config = {

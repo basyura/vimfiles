@@ -47,3 +47,11 @@ snippet ng
 options word
 abbr err != nil
   err != nil 
+
+
+snippet cmd
+options word
+	out, err := exec.Command(${1}).Output()
+	if err != nil {
+    ${2}
+	}
