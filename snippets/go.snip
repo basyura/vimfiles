@@ -3,10 +3,13 @@ snippet     s
 prev_word   '^'
     "${0}"
 
+snippet array
+    []${1:type}{${2}}
+
 snippet     for
 abbr        for () {}
-    for ${1:i} := 0; $1 < ${2}; $1++ {
-        ${0}
+    for ${1:i}, ${2:s} := range ${3:v} {
+        ${4}
     }
 
 snippet     interface
