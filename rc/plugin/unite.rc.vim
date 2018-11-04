@@ -218,10 +218,4 @@ let g:unite_source_alias_aliases = {
 
 function! s:md_settings()
   nnoremap <buffer> <C-l> :Unite outline -vertical -no-quit -winwidth=30 -no-start-insert -no-focus -wrap<CR>
-  " markdown
-  "hi markdownListMarker guifg=#ca444f
-  "hi markdownBlockquote guifg=#ca444f
-  hi markdownListMarker guifg=brown
-  hi markdownBlockquote guifg=brown
-  hi markdownCodeDelimiter guifg=brown
 endfunction

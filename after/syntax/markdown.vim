@@ -7,8 +7,10 @@ if g:colors_name == 'solarized' || g:colors_name == 'newspaper'
   hi markdownH2                guifg=brown
   hi markdownH3                guifg=brown
   hi markdownRule              guifg=brown
-  hi markdownListMarker        guifg=blue
   hi markdownHeadingDelimiter  guifg=brown
+  hi markdownListMarker        guifg=brown
+  hi markdownBlockquote        guifg=brown
+  hi markdownCodeDelimiter     guifg=brown
   finish
 endif
 
