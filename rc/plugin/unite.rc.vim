@@ -1,10 +1,10 @@
 """"""""""""""""""""""""""""""""""
 "             unite              "
 """"""""""""""""""""""""""""""""""
-
 augroup MyGroup-unite
   autocmd!
   autocmd FileType unite  call s:unite_my_settings()
+  autocmd FileType markdown call s:md_settings()
 augroup END
 
 nnoremap <silent> <C-r>      :<C-u>Unite -buffer-name=file_mru file_mru -start-insert -hide-source-names<CR>
@@ -45,6 +45,9 @@ endfunction
 nnoremap <Leader><Leader> :Unite 
 "nnoremap <silent> <Leader>g :call <SID>grep()<CR>
 nnoremap <silent> <Leader>g :Unite grep:.:: -no-quit -no-start-insert -direction=botright -buffer-name=grep -hide-source-names -keep-focus<CR>
+let g:unite_source_grep_command = 'jvgrep'
+let g:unite_source_grep_default_opts = '-r --no-color'
+let g:unite_source_grep_recursive_opt = '-R'
 
 function! s:grep()
   let word = input(' word : ')
@@ -212,3 +215,13 @@ let g:unite_source_alias_aliases = {
 \   }
 \}
 
+
+function! s:md_settings()
+  nnoremap <buffer> <C-l> :Unite outline -vertical -no-quit -winwidth=30 -no-start-insert -no-focus -wrap<CR>
+  " markdown
+  "hi markdownListMarker guifg=#ca444f
+  "hi markdownBlockquote guifg=#ca444f
+  hi markdownListMarker guifg=brown
+  hi markdownBlockquote guifg=brown
+  hi markdownCodeDelimiter guifg=brown
+endfunction
