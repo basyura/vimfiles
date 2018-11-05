@@ -11,6 +11,7 @@ if g:colors_name == 'solarized' || g:colors_name == 'newspaper'
   hi markdownListMarker        guifg=brown
   hi markdownBlockquote        guifg=brown
   hi markdownCodeDelimiter     guifg=brown
+  hi markdownItalic            gui=none
   finish
 endif
 

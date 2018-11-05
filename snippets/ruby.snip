@@ -130,3 +130,11 @@ options word
 snippet doh
 options word
   {|v| ${0} }
+
+snippet read
+options word
+  File.read(${1}, encoding: "cp932:utf-8").each_line do |line|
+    ${2}
+  end
+
+

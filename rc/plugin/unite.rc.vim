@@ -217,5 +217,5 @@ let g:unite_source_alias_aliases = {
 
 
 function! s:md_settings()
-  nnoremap <buffer> <C-l> :Unite outline -vertical -no-quit -winwidth=30 -no-start-insert -no-focus -wrap<CR>
+  nnoremap <silent> <buffer> <C-l> :Unite outline -vertical -direction=rightb -no-quit -winwidth=30 -no-start-insert -no-focus -wrap<CR>
 endfunction
