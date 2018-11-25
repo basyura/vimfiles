@@ -62,3 +62,22 @@ options word
 snippet df
 options word
   "2006/01/02/15:04:05.000"
+
+
+snippet getFilePaths
+  func getFilePaths(baseDir string) []string {
+    files, err := ioutil.ReadDir(baseDir)
+   
+    if err != nil {
+      fmt.Println("read error :", baseDir)
+      os.Exit(1)
+    }
+   
+    var paths []string
+    for _, file := range files {
+      path := filepath.Join(baseDir, file.Name())
+      paths = append(paths, path)
+    }
+   
+    return paths
+  }
