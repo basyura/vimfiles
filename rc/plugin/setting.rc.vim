@@ -30,7 +30,7 @@ endif
 set noundofile
 "set statusline=%3l%3p%%\ \|\ %<%t\ %m%=%c\|%R%Y%{'\|'.(&fenc!=''?&fenc:&enc).'\|'.&ff}
 "set statusline=%3l%4p%%\ \|\ %t\ %<\ %m\ %r%=%{MyStatusPath()}\ \|\ %3c\ \|\ %Y\ 
-set statusline=\ %t\ %<\ %m\ %r%=%{MyStatusPath()}\ \|\ %Y\ \|\ %3c\ \|\%3p%%\ 
+set statusline=\ %t\ %<\ %m\ %r%=%{MyStatusPath()}\ \|\ %Y\ \|\ %3c,%3l\ \|\%3p%%\ 
 
 function! MyStatusPath()
   if exists('b:my_status_path')

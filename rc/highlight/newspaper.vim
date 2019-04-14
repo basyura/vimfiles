@@ -14,6 +14,7 @@ hi helpExample guifg=darkblue
 hi vimshellPrompt guifg=darkgreen
 hi PmenuSel ctermfg=255 ctermbg=21 gui=none guifg=#ffffff guibg=#716d51 
 hi Error   guifg=red gui=none
+hi FoldColumn guibg=bg
 "hi StatusLine   guibg=#cccfbf guifg=#716d51 gui=none 
 "hi StatusLineNC guibg=#cccfbd guifg=#716d51 gui=none term=reverse ctermfg=253 ctermbg=110 
 
