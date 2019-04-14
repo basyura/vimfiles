@@ -39,7 +39,7 @@ function! s:initialize_neocomplete()
   let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\'
   
   let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
-  let g:neocomplete#enable_ignore_case = 0
+  let g:neocomplete#enable_ignore_case = 1
   "let g:neocomplete#enable_smart_case  = 1
 
   call neocomplete#custom_source('_', 'sorters',  ['sorter_length'])
@@ -76,6 +76,7 @@ function! s:fuzzy_match()
   let g:neocomplete#enable_fuzzy_completion = 1
 endfunction
 
+  let g:neocomplete#enable_fuzzy_completion = 1
 if !has('win32unix')
   call s:initialize_neocomplete()
   call neocomplete#initialize()

@@ -82,7 +82,7 @@ let g:unite_enable_start_insert = 1
 let g:unite_source_file_mru_time_format    = ''
 let g:unite_source_file_mru_ignore_pattern = '.*Application\ Data.*\|.*デスクトップ.*\|.*Local/Temp/.*\|\[quickrun output\]\|.*Local Settings/Temp/.*\|fugitive://\|\.git\|/private/var\|^\/\/.*'
 " unite ウインドウの高さ
-let g:unite_winheight  = 10
+let g:unite_winheight  = 15
 let g:unite_split_rule = 'aboveleft'
 
 let g:unite_source_everything_ignore_pattern = '\%(^\|/\)\.\.\?$\|\~$\|\.\%(git\|hg\|svn\)\|\.\%(o\|exe\|dll\|bak\|DS_Store\|pyc\|zwc\|sw[po]\)$\|\.xls$\|\.xlsx$\|\.zip$\|\.bmp$'
