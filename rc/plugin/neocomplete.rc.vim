@@ -23,6 +23,7 @@ function! s:initialize_neocomplete()
 
   let g:neocomplete#keyword_patterns._ = '\h\w*'
   let g:neocomplete#sources#member#prefix_patterns.go = '\.'
+  let g:neocomplete#sources#member#prefix_patterns.rust = '\.'
 
   let dict = g:neocomplete#sources#dictionary#dictionaries
   let dict.ruby   = $HOME . '/.vim/dict/ruby.dict'
@@ -76,7 +77,7 @@ function! s:fuzzy_match()
   let g:neocomplete#enable_fuzzy_completion = 1
 endfunction
 
-  let g:neocomplete#enable_fuzzy_completion = 1
+"let g:neocomplete#enable_fuzzy_completion = 1
 if !has('win32unix')
   call s:initialize_neocomplete()
   call neocomplete#initialize()
