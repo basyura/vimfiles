@@ -1,0 +1,19 @@
+
+snippet     main
+  fn main() {
+    ${0}
+  }
+
+snippet     print
+abbr        println!("{}", s);
+  println!("{}", ${0});
+
+
+snippet     assert
+  assert_eq!(${0});
+
+snippet     format
+options      word
+  format!("{${1}}", ${2})
+
+

@@ -1,3 +1,4 @@
+let g:rustfmt_autosave = 1
 
 augroup MyRustGroup
   autocmd!
