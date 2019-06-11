@@ -20,27 +20,35 @@ function! s:initialize_neocomplete()
   if !exists('g:neocomplete#sources#member#prefix_patterns')
     let  g:neocomplete#sources#member#prefix_patterns = {}
   endif
+  if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+  endif
 
   let g:neocomplete#keyword_patterns._ = '\h\w*'
   let g:neocomplete#sources#member#prefix_patterns.go = '\.'
-  let g:neocomplete#sources#member#prefix_patterns.rust = '\.'
+  "let g:neocomplete#sources#member#prefix_patterns.rust = '\.'
 
   let dict = g:neocomplete#sources#dictionary#dictionaries
   let dict.ruby   = $HOME . '/.vim/dict/ruby.dict'
   let dict.cs     = $HOME . '/.vim/dict/cs.dict'
   let dict.go     = $HOME . '/.vim/dict/go.dict'
   let dict.elixir = $HOME . '/.vim/dict/elixir.dict'
+  let dict.rust   = $HOME . '/.vim/dict/rust.dict'
 
   if get(g:, 'use_monster', 0)
     let g:neocomplete#sources#omni#functions.ruby = 'monster#omnifunc'
     let g:monster#completion#rcodetools#backend = "async_rct_complete"
   endif
 
+  "let g:neocomplete#sources#omni#functions.rust = 'racer#RacerComplete'
+
   "let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
   let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\'
+  "let g:neocomplete#force_omni_input_patterns.rust = '[^. *\t]\.\w*\|\h\w*::'
+
   
   let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
-  let g:neocomplete#enable_ignore_case = 1
+  let g:neocomplete#enable_ignore_case = 0
   "let g:neocomplete#enable_smart_case  = 1
 
   call neocomplete#custom_source('_', 'sorters',  ['sorter_length'])
@@ -77,7 +85,7 @@ function! s:fuzzy_match()
   let g:neocomplete#enable_fuzzy_completion = 1
 endfunction
 
-"let g:neocomplete#enable_fuzzy_completion = 1
+let g:neocomplete#enable_fuzzy_completion = 1
 if !has('win32unix')
   call s:initialize_neocomplete()
   call neocomplete#initialize()

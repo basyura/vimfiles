@@ -1,4 +1,5 @@
 let g:rustfmt_autosave = 1
+let g:racer_insert_paren = 1
 
 augroup MyRustGroup
   autocmd!
