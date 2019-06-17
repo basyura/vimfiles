@@ -8,7 +8,7 @@ else
 "set transparency=5
 endif
 " esc 時に ime off mac vim only
-set imda
+"set imda
 " ウインドウ幅
 if &columns == 80
   set columns=95

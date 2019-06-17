@@ -26,7 +26,6 @@ function! s:initialize_neocomplete()
 
   let g:neocomplete#keyword_patterns._ = '\h\w*'
   let g:neocomplete#sources#member#prefix_patterns.go = '\.'
-  "let g:neocomplete#sources#member#prefix_patterns.rust = '\.'
 
   let dict = g:neocomplete#sources#dictionary#dictionaries
   let dict.ruby   = $HOME . '/.vim/dict/ruby.dict'
@@ -42,7 +41,6 @@ function! s:initialize_neocomplete()
 
   "let g:neocomplete#sources#omni#functions.rust = 'racer#RacerComplete'
 
-  "let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
   let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\'
   "let g:neocomplete#force_omni_input_patterns.rust = '[^. *\t]\.\w*\|\h\w*::'
 

@@ -36,10 +36,10 @@ prev_word   '^'
         ${1}
     }
 
-snippet fm
+snippet print
 options     word
 abbr        fmt.Println
-    fmt.Println(${0})
+    fmt.Println("${0}")
 
 snippet ok
 options word
@@ -81,3 +81,22 @@ snippet getFilePaths
    
     return paths
   }
+
+snippet open
+    // ファイルオープン
+    fp, err := os.Open(filename)
+    if err != nil {
+        // エラー処理
+    }
+    defer fp.Close()
+ 
+    scanner := bufio.NewScanner(fp)
+ 
+    for scanner.Scan() {
+        // ここで一行ずつ処理
+        fmt.Println(scanner.Text())
+    }
+ 
+    if err = scanner.Err(); err != nil {
+        // エラー処理
+    }
