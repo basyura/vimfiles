@@ -83,20 +83,23 @@ snippet getFilePaths
   }
 
 snippet open
-    // ファイルオープン
-    fp, err := os.Open(filename)
+    fp, err := os.Open(${1:filename})
     if err != nil {
-        // エラー処理
+      ${2}
     }
     defer fp.Close()
  
     scanner := bufio.NewScanner(fp)
- 
     for scanner.Scan() {
-        // ここで一行ずつ処理
-        fmt.Println(scanner.Text())
+        ${3}fmt.Println(scanner.Text())
     }
  
     if err = scanner.Err(); err != nil {
         // エラー処理
+    }
+
+snippet excel
+    excel, err := xlsx.OpenFile(${1:filename})
+    if err != nil {
+      ${2}
     }
