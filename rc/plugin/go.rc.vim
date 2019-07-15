@@ -37,4 +37,6 @@ function! s:settings()
   nnoremap gb :GoBuild<CR>
   nmap <silent> gd :LspDefinition<CR>
   nmap <silent> K :LspHover<CR>
+  " どこかで上書きされる？
+  hi SignColumn guibg=#cccfbf
 endfunction
