@@ -12,7 +12,9 @@ if executable('gopls')
   augroup END
 endif
 
-
+let go_def_mapping_enabled = 0
+let go_doc_keywordprg_enabled = 0
+let go_textobj_enabled = 0
 "let g:go_fmt_autosave = 0
 "let g:go_gocode_unimported_packages = 1
 
@@ -32,8 +34,9 @@ augroup MyGroup-go
 augroup END
 
 function! s:settings()
-  "nnoremap gi :GoImports<CR>
-  nnoremap gi :GoFmt<CR>
+  nnoremap gi :GoImports<CR>
+  nnoremap gp :GoImport 
+  "nnoremap gi :GoFmt<CR>
   nnoremap gb :GoBuild<CR>
   nmap <silent> gd :LspDefinition<CR>
   nmap <silent> K :LspHover<CR>

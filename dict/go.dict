@@ -1,4 +1,5 @@
 continue
+string
 bufio.NewWriter(
 cmd.StderrPipe()
 cmd.StdinPipe()
