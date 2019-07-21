@@ -18,8 +18,6 @@ let go_textobj_enabled = 0
 "let g:go_fmt_autosave = 0
 "let g:go_gocode_unimported_packages = 1
 
-
-
 command! GoFmt call s:gofmt()
 
 function! s:gofmt()
