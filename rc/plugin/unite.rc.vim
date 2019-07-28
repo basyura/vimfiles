@@ -123,6 +123,9 @@ call unite#custom_filters('history/command,outline',
 call unite#custom_filters('hateblo-list',
       \ ['matcher_fussy', 'sorter_default', 'converter_hateblo'])
 
+call unite#custom_filters('go/import',
+      \ ['matcher_file_name', 'sorter_go_imports', 'converter_default'])
+
 let g:unite_source_outline_cache_dir = ''
 let g:unite_source_everything_limit = 300
 let g:unite_source_everything_async_minimum_length = 3

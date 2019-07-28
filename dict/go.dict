@@ -1,4 +1,5 @@
 continue
+range
 string
 bufio.NewWriter(
 cmd.StderrPipe()
@@ -42,3 +43,4 @@ os.Chdir(
 strings.Contains(
 strconv.Itoa
 xlsx.OpenFile(
+wg.Done()

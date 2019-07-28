@@ -33,7 +33,7 @@ augroup END
 
 function! s:settings()
   nnoremap gi :GoImports<CR>
-  nnoremap gp :GoImport 
+  nnoremap gp :Unite go/import<CR>
   "nnoremap gi :GoFmt<CR>
   nnoremap gb :GoBuild<CR>
   nmap <silent> gd :LspDefinition<CR>
