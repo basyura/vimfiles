@@ -37,6 +37,7 @@ function! s:settings()
   "nnoremap gi :GoFmt<CR>
   nnoremap gb :GoBuild<CR>
   nmap <silent> gd :LspDefinition<CR>
+  nnoremap <silent> <C-k> :LspDefinition<CR>
   nmap <silent> K :LspHover<CR>
   " どこかで上書きされる？
   hi SignColumn guibg=#cccfbf
