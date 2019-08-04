@@ -45,7 +45,7 @@ function! s:initialize_neocomplete()
   "let g:neocomplete#force_omni_input_patterns.rust = '[^. *\t]\.\w*\|\h\w*::'
 
   
-  let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
+  let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt\|\.tsv'
   let g:neocomplete#enable_ignore_case = 0
   "let g:neocomplete#enable_smart_case  = 1
 

@@ -39,6 +39,7 @@ function! s:settings()
   nmap <silent> gd :LspDefinition<CR>
   nnoremap <silent> <C-k> :LspDefinition<CR>
   nmap <silent> K :LspHover<CR>
+  nnoremap <Leader>r :LspRename<CR>
   " どこかで上書きされる？
   hi SignColumn guibg=#cccfbf
 endfunction
