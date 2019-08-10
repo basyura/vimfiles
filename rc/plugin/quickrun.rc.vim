@@ -70,3 +70,12 @@ if has('win32')
         \ }
 endif
 
+
+let g:quickrun_config.go = {
+      \   'command': 'go',
+      \   'exec': '%c run *.go %a',
+      \   'tempfile': '%{tempname()}.go',
+      \   'hook/output_encode/encoding': 'utf-8',
+      \   'hook/cd/directory': '%S:p:h',
+      \ }
+
