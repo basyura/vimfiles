@@ -129,7 +129,7 @@ cmap <C-a> <HOME>
 cmap <C-f> <Right>
 cmap <C-b> <Left>
 imap <C-e> <End>
-imap <C-a> <ESC>^i
+imap <C-a> <ESC>0i
 imap <C-f> <Right>
 imap <C-b> <Left>
 

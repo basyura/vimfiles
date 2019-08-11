@@ -103,3 +103,13 @@ snippet excel
     if err != nil {
       ${2}
     }
+
+snippet d
+options word
+  2006/01/02 15:04:05.000
+
+
+snippet sort
+	sort.Slice(${1:values}, func(i, j int) bool {
+		return $1[i].${2:value}< $1[j].$2
+	})

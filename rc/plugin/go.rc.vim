@@ -36,6 +36,8 @@ function! s:settings()
   nnoremap gp :Unite go/import<CR>
   "nnoremap gi :GoFmt<CR>
   nnoremap gb :GoBuild<CR>
+  nnoremap <C-x><C-b> :GoBuild<CR>
+  nnoremap <C-x><C-i> :GoImports<CR>
   nmap <silent> gd :LspDefinition<CR>
   nnoremap <silent> <C-k> :LspDefinition<CR>
   nmap <silent> K :LspHover<CR>

@@ -46,8 +46,8 @@ function! s:initialize_neocomplete()
 
   
   let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt\|\.tsv'
-  let g:neocomplete#enable_ignore_case = 0
-  "let g:neocomplete#enable_smart_case  = 1
+  let g:neocomplete#enable_ignore_case = 1
+  let g:neocomplete#enable_smart_case  = 1
 
   call neocomplete#custom_source('_', 'sorters',  ['sorter_length'])
   call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
