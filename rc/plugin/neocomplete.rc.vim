@@ -43,6 +43,7 @@ function! s:initialize_neocomplete()
 
   let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\'
   "let g:neocomplete#force_omni_input_patterns.rust = '[^. *\t]\.\w*\|\h\w*::'
+  let g:neocomplete#force_omni_input_patterns.go = '[^.[:digit:] *\t]\.\w*'
 
   
   let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt\|\.tsv'
