@@ -32,16 +32,12 @@ augroup MyGroup-go
 augroup END
 
 function! s:settings()
+  call Apply_lsp_common_settings()
+
   nnoremap gi :GoImports<CR>
   nnoremap gp :Unite go/import<CR>
   "nnoremap gi :GoFmt<CR>
   nnoremap gb :GoBuild<CR>
   nnoremap <C-x><C-b> :GoBuild<CR>
   nnoremap <C-x><C-i> :GoImports<CR>
-  nmap <silent> gd :LspDefinition<CR>
-  nnoremap <silent> <C-k> :LspDefinition<CR>
-  nmap <silent> K :LspHover<CR>
-  nnoremap <Leader>r :LspRename<CR>
-  " どこかで上書きされる？
-  hi SignColumn guibg=#cccfbf
 endfunction

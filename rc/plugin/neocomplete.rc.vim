@@ -34,16 +34,11 @@ function! s:initialize_neocomplete()
   let dict.elixir = $HOME . '/.vim/dict/elixir.dict'
   let dict.rust   = $HOME . '/.vim/dict/rust.dict'
 
-  if get(g:, 'use_monster', 0)
-    let g:neocomplete#sources#omni#functions.ruby = 'monster#omnifunc'
-    let g:monster#completion#rcodetools#backend = "async_rct_complete"
-  endif
-
-  "let g:neocomplete#sources#omni#functions.rust = 'racer#RacerComplete'
-
-  let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\'
+  "let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\'
+  "let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\'
   "let g:neocomplete#force_omni_input_patterns.rust = '[^. *\t]\.\w*\|\h\w*::'
   let g:neocomplete#force_omni_input_patterns.go = '[^.[:digit:] *\t]\.\w*'
+  let g:neocomplete#force_omni_input_patterns.ruby = '[^.[:digit:] *\t]\.\w*'
 
   
   let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt\|\.tsv'

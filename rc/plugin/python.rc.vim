@@ -12,10 +12,5 @@ augroup MyPythonLsp
 augroup END
 
 function! s:configure_lsp() abort
-  setlocal omnifunc=lsp#complete
-
-  nmap <silent> gd :LspDefinition<CR>
-  nnoremap <silent> <C-k> :LspDefinition<CR>
-  nmap <silent> K :LspHover<CR>
-  nnoremap <Leader>r :LspRename<CR>
+  call Apply_lsp_common_settings()
 endfunction
