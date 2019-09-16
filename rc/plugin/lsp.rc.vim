@@ -1,6 +1,6 @@
 
 let g:lsp_preview_doubletap = 0
-let g:lsp_diagnostics_enabled = 0
+"let g:lsp_diagnostics_enabled = 0
 
 function! Apply_lsp_common_settings()
   setlocal omnifunc=lsp#complete
