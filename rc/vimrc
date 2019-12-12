@@ -64,8 +64,6 @@ endif
 "             map                "
 """"""""""""""""""""""""""""""""""
 
-nmap p <Plug>(yankround-p)
-vmap p <Plug>(yankround-p)
 imap <C-v> <C-R>+
 cmap <C-v> <C-R>+
 
