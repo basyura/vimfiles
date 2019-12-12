@@ -8,7 +8,6 @@ https://github.com/Shougo/neomru.vim.git
 https://github.com/rhysd/tweetvim-advanced-filter.git
 https://github.com/osyo-manga/vim-jplus.git
 https://github.com/basyura/neco-sorter-length.git
-https://github.com/basyura/J6uil.vim.git
 https://github.com/vim-scripts/newspaper.vim.git
 https://github.com/rhysd/clever-f.vim.git
 https://github.com/basyura/note.vim.git
@@ -18,7 +17,6 @@ https://github.com/thinca/vim-singleton.git
 https://github.com/basyura/TweetVim.git
 https://github.com/basyura/twibill.vim.git
 https://github.com/basyura/bitly.vim.git
-https://github.com/basyura/textile.vim.git
 https://github.com/basyura/util.vim.git
 https://github.com/Shougo/unite-outline.git
 https://github.com/mattn/webapi-vim.git
@@ -27,7 +25,6 @@ https://github.com/Shougo/vimfiler.git
 https://github.com/soh335/unite-qflist.git
 https://github.com/thinca/vim-quickrun.git
 https://github.com/thinca/vim-unite-history.git
-https://github.com/tpope/vim-rails.git
 https://github.com/tyru/open-browser.vim.git
 https://github.com/tyru/restart.vim.git
 https://github.com/tyru/vim-altercmd.git
@@ -37,4 +34,8 @@ https://github.com/vim-scripts/The-NERD-Commenter.git
 https://github.com/basyura/outline-cs.git
 https://github.com/basyura/csharp_complete.git
 https://github.com/sgur/unite-everything.git
+https://github.com/basyura/unite-converter-file-directory
+https://github.com/basyura/unite-matchers.git
+https://github.com/prabirshrestha/async.vim.git
+https://github.com/prabirshrestha/vim-lsp.git
 
