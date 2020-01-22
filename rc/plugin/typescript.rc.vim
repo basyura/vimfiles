@@ -18,5 +18,5 @@ endif
 function! s:settings()
   call Apply_lsp_common_settings()
 
-  nnoremap <C-x><C-b> :LspDocumentDiagnostics<CR>
+  nnoremap <buffer> <C-x><C-b> :LspDocumentDiagnostics<CR>
 endfunction

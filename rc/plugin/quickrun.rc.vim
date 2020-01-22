@@ -79,3 +79,12 @@ let g:quickrun_config.go = {
       \   'hook/cd/directory': '%S:p:h',
       \ }
 
+"https://yanor.net/wiki/?Vim/%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/vim-quickrun/TypeScript%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E5%A4%89%E6%9B%B4
+let g:quickrun_config['typescript'] = { 'type' : 'typescript/tsc' }
+let g:quickrun_config['typescript/tsc'] = {
+\   'command': 'tsc',
+\   'exec': ['%c --target es5 --module commonjs --lib dom,es2015 %o %s', 'node %s:r.js'],
+\   'tempfile': '%{tempname()}.ts',
+\   'hook/sweep/files': ['%S:p:r.js'],
+\ }
+

@@ -34,10 +34,9 @@ augroup END
 function! s:settings()
   call Apply_lsp_common_settings()
 
-  nnoremap gi :GoImports<CR>
-  nnoremap gp :Unite go/import<CR>
-  "nnoremap gi :GoFmt<CR>
-  nnoremap gb :GoBuild<CR>
-  nnoremap <C-x><C-b> :GoBuild<CR>
-  nnoremap <C-x><C-i> :GoImports<CR>
+  nnoremap <buffer> gi :GoImports<CR>
+  nnoremap <buffer> gp :Unite go/import<CR>
+  nnoremap <buffer> gb :GoBuild<CR>
+  nnoremap <buffer> <C-x><C-b> :GoBuild<CR>
+  nnoremap <buffer> <C-x><C-i> :GoImports<CR>
 endfunction
