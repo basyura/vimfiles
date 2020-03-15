@@ -46,7 +46,8 @@ function! MyStatusPath()
   endif
 
   if gpath == ''
-    let b:my_status_path = fnamemodify(path, ':~:h')
+    "let b:my_status_path = fnamemodify(path, ':~:h')
+    let b:my_status_path = fnamemodify(path, ':~')
     return b:my_status_path
   endif
 
