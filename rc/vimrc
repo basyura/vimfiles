@@ -173,6 +173,8 @@ nnoremap <silent> k  gk
 nnoremap <silent> gk k
 nnoremap <Space>p :call <SID>clever_p()<CR>
 
+nnoremap <nowait> yw yw
+
 function! s:clever_p()
   let text = getreg("\"")
   if text =~ "\n$"
