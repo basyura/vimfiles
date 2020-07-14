@@ -26,6 +26,12 @@ if has('mac')
         \   'outputter' : 'browser'  ,
         \ },
         \}
+  let g:quickrun_config.json = {
+    \ 'outputter/buffer/filetype': 'json',
+    \ 'command': 'jq',
+    \ 'cmdopt': '.',
+    \ 'exec': 'cat %s | %c %o',
+    \ }
 "  let g:quickrun_config['cs'] = {
 "        \ 'command' : 'dmcs',
 "        \ 'runmode' : 'simple',

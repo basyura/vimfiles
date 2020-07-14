@@ -25,7 +25,8 @@ function! s:initialize_neocomplete()
   endif
 
   let g:neocomplete#keyword_patterns._ = '\h\w*'
-  let g:neocomplete#sources#member#prefix_patterns.go = '\.'
+  "let g:neocomplete#sources#member#prefix_patterns.go = '\.'
+  let g:neocomplete#sources#member#prefix_patterns.javascript = '\.'
 
   let dict = g:neocomplete#sources#dictionary#dictionaries
   let dict.ruby   = $HOME . '/.vim/dict/ruby.dict'
@@ -33,21 +34,25 @@ function! s:initialize_neocomplete()
   let dict.go     = $HOME . '/.vim/dict/go.dict'
   let dict.elixir = $HOME . '/.vim/dict/elixir.dict'
   let dict.rust   = $HOME . '/.vim/dict/rust.dict'
+  let dict.js     = $HOME . '/.vim/dict/js.dict'
 
   "let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\'
   "let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\'
   "let g:neocomplete#force_omni_input_patterns.rust = '[^. *\t]\.\w*\|\h\w*::'
   let g:neocomplete#force_omni_input_patterns.go = '[^.[:digit:] *\t]\.\w*'
+  "let g:neocomplete#force_omni_input_patterns.go = '[^.[:digit:] *\t]\.[a-zA-Z]\{3,}'
   let g:neocomplete#force_omni_input_patterns.ruby = '[^.[:digit:] *\t]\.\w*'
   let g:neocomplete#force_omni_input_patterns.python = '[^.[:digit:] *\t]\.\w*'
-  let g:neocomplete#force_omni_input_patterns.typescript = '[^.[:digit:] *\t]\.\w*'
+  "let g:neocomplete#force_omni_input_patterns.typescript = '[^.[:digit:] *\t]\.\w*'
   let g:neocomplete#force_omni_input_patterns.typescriptreact = '[^.[:digit:] *\t]\.\w*'
   let g:neocomplete#force_omni_input_patterns.javascript = '[^.[:digit:] *\t]\.\w*'
 
   
   let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt\|\.tsv'
   let g:neocomplete#enable_ignore_case = 1
-  let g:neocomplete#enable_smart_case  = 1
+  let g:neocomplete#enable_smart_case  = 0
+  let g:neocomplete#auto_completion_start_length = 2
+  let g:neocomplete#auto_complete_delay = 100
 
   call neocomplete#custom_source('_', 'sorters',  ['sorter_length'])
   call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
@@ -88,4 +93,4 @@ if !has('win32unix')
   call s:initialize_neocomplete()
   call neocomplete#initialize()
 endif
-
+let g:neocomplete#enable_at_startup = 0

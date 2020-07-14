@@ -6,7 +6,7 @@ if executable('typescript-language-server')
         \ 'name': 'typescript-language-server',
         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.git/'))},
-        \ 'whitelist': ['javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx', 'typescriptreact'],
+        \ 'whitelist': ['javascript.jsx', 'javascriptreact', 'typescript', 'typescript.tsx', 'typescriptreact', 'javascript'],
         \ })
 
     autocmd FileType typescript,typescriptreact,javascript,javascriptreact setlocal omnifunc=lsp#complete
