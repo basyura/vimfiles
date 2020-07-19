@@ -20,10 +20,13 @@ function! s:autofomrat_disabled()
 endfunction
 function! s:format()
   if s:auto_format
-    PrettierAsync
+    let lnum = line(".")
+    keepjumps Prettier
+    keepjumps exe "normal " . lnum . "G"
+    execute "normal m'"
   end
 endfunction
 augroup JsPrettier
  au!
- autocmd BufWritePre * call s:format()
+ autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx call s:format()
 augroup END
