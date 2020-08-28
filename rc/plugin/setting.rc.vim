@@ -86,3 +86,9 @@ set fileformats=unix,dos
 set ignorecase
 
 nnoremap <Leader>p :Prettier<enter>:w<enter>
+
+
+augroup redraw_group
+  autocmd!
+  autocmd BufLeave set redrawtime=2000
+augroup END

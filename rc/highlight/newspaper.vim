@@ -9,7 +9,8 @@ hi Cursor guibg=#Cd853f guifg=fg
 "hi CursorLine guibg=#D2D2D2
 hi CursorLine guibg=#cccfbf gui=none
 hi CursorLineNr guifg=#666677 guibg=#cccfbf gui=none
-hi Comment guifg=darkgray gui=none
+"hi Comment guifg=darkgray gui=none
+hi Comment guifg=darkgreen gui=none
 hi helpExample guifg=darkblue
 hi vimshellPrompt guifg=darkgreen
 hi PmenuSel ctermfg=255 ctermbg=21 gui=none guifg=#ffffff guibg=#716d51 

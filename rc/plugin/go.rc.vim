@@ -12,6 +12,7 @@ if executable('gopls')
   augroup END
 endif
 
+
 let go_def_mapping_enabled = 0
 let go_doc_keywordprg_enabled = 0
 let go_textobj_enabled = 0
@@ -39,4 +40,10 @@ function! s:settings()
   nnoremap <buffer> gb :GoBuild<CR>
   nnoremap <buffer> <C-x><C-b> :GoBuild<CR>
   nnoremap <buffer> <C-x><C-i> :GoImports<CR>
+
+
+  setlocal tabstop=4
+  setlocal shiftwidth=4
+  setlocal expandtab
+  inoremap <buffer> :: := 
 endfunction

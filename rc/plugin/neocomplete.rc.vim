@@ -35,6 +35,7 @@ function! s:initialize_neocomplete()
   let dict.elixir = $HOME . '/.vim/dict/elixir.dict'
   let dict.rust   = $HOME . '/.vim/dict/rust.dict'
   let dict.js     = $HOME . '/.vim/dict/js.dict'
+  let dict.r      = $HOME . '/.vim/dict/r.dict'
 
   "let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\'
   "let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\'
@@ -46,13 +47,17 @@ function! s:initialize_neocomplete()
   "let g:neocomplete#force_omni_input_patterns.typescript = '[^.[:digit:] *\t]\.\w*'
   let g:neocomplete#force_omni_input_patterns.typescriptreact = '[^.[:digit:] *\t]\.\w*'
   let g:neocomplete#force_omni_input_patterns.javascript = '[^.[:digit:] *\t]\.\w*'
+  let g:neocomplete#force_omni_input_patterns.r = '[^.[:digit:] *\t]\.\w*'
 
   
   let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt\|\.tsv'
   let g:neocomplete#enable_ignore_case = 1
   let g:neocomplete#enable_smart_case  = 0
   let g:neocomplete#auto_completion_start_length = 2
-  let g:neocomplete#auto_complete_delay = 100
+  let g:neocomplete#auto_complete_delay_settings = {
+        \"javascript" : 100,
+        \"typescript" : 100,
+        \}
 
   call neocomplete#custom_source('_', 'sorters',  ['sorter_length'])
   call neocomplete#custom_source('_', 'matchers', ['matcher_head'])

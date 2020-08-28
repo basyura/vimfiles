@@ -94,3 +94,11 @@ let g:quickrun_config['typescript/tsc'] = {
 \   'hook/sweep/files': ['%S:p:r.js'],
 \ }
 
+
+
+let g:quickrun_config['r'] =  {
+\   'command': 'R',
+\   'exec': '%c %o --no-save --slave %a < %s',
+\   'hook/open': 'Rplots.pdf',
+\ }
+
