@@ -102,3 +102,12 @@ let g:quickrun_config['r'] =  {
 \   'hook/open': 'Rplots.pdf',
 \ }
 
+let g:quickrun_config['python'] = {
+      \ 'hook/eval/template': 'print(%s)',
+      \   'hook/open': 'Py.png',
+      \ }
+
+
+
+
+
