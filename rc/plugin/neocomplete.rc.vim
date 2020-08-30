@@ -36,13 +36,14 @@ function! s:initialize_neocomplete()
   let dict.rust   = $HOME . '/.vim/dict/rust.dict'
   let dict.js     = $HOME . '/.vim/dict/js.dict'
   let dict.r      = $HOME . '/.vim/dict/r.dict'
+  let dict.python = $HOME . '/.vim/dict/python.dict'
 
   "let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\'
   "let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\'
   "let g:neocomplete#force_omni_input_patterns.rust = '[^. *\t]\.\w*\|\h\w*::'
   let g:neocomplete#force_omni_input_patterns.go = '[^.[:digit:] *\t]\.\w*'
   "let g:neocomplete#force_omni_input_patterns.go = '[^.[:digit:] *\t]\.[a-zA-Z]\{3,}'
-  let g:neocomplete#force_omni_input_patterns.ruby = '[^.[:digit:] *\t]\.\w*'
+  let g:neocomplete#force_omni_input_patterns.ruby   = '[^.[:digit:] *\t]\.\w*'
   let g:neocomplete#force_omni_input_patterns.python = '[^.[:digit:] *\t]\.\w*'
   "let g:neocomplete#force_omni_input_patterns.typescript = '[^.[:digit:] *\t]\.\w*'
   let g:neocomplete#force_omni_input_patterns.typescriptreact = '[^.[:digit:] *\t]\.\w*'
@@ -57,6 +58,7 @@ function! s:initialize_neocomplete()
   let g:neocomplete#auto_complete_delay_settings = {
         \"javascript" : 100,
         \"typescript" : 100,
+        \"python"     : 100,
         \}
 
   call neocomplete#custom_source('_', 'sorters',  ['sorter_length'])
