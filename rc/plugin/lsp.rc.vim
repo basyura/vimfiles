@@ -7,12 +7,14 @@ let g:lsp_documentation_float=0
 
 function! Apply_lsp_common_settings()
   setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
 
   nnoremap <buffer> gd :LspDefinition<CR>
   nnoremap <buffer> <C-k> :LspDefinition<CR>
   nnoremap <buffer> K :LspHover<CR>
   nnoremap <buffer> <Leader>r :LspRename<CR>
   nnoremap <buffer> <C-x><C-f> :LspDocumentFormat<CR>
+  nnoremap <buffer> <C-x><C-d> :LspDocumentDiagnostics<CR>
 
   " どこかで上書きされる？
   hi SignColumn guibg=#cccfbf
