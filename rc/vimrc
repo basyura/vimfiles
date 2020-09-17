@@ -229,7 +229,7 @@ nnoremap <silent> <C-@><C-@> :Restart!<CR>
 nnoremap ) :tabmove +1<CR>
 nnoremap ( :tabmove -1<CR>
 
-nmap <Leader>c <Plug>NERDCommenterToggle
+nmap <Leader>c vv<Plug>Commentary
 " ターミナルだとなぜか起動時にインサートモードになるので
 
 inoremap <C-s> <ESC>:w<CR>:echo "saved"<CR>
@@ -246,7 +246,7 @@ inoremap [[ []<Left>
 inoremap <C-q> []<Left>
 
 vnoremap <C-e> <End><Left>
-vmap <Leader>c <Plug>NERDCommenterToggle
+vmap <Leader>c <Plug>Commentary
 vmap <C-b> :Batch<CR>
 
 cnoremap <C-j> <C-u><ESC>
