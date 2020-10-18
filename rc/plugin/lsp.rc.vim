@@ -14,8 +14,13 @@ function! Apply_lsp_common_settings()
   nnoremap <buffer> K :LspHover<CR>
   nnoremap <buffer> <Leader>r :LspRename<CR>
   nnoremap <buffer> <C-x><C-f> :LspDocumentFormat<CR>
-  nnoremap <buffer> <C-x><C-d> :LspDocumentDiagnostics<CR>
+  nnoremap <buffer> <C-x><C-x> :call <SID>invokeDocumentDiagnostics()<CR>
 
   " どこかで上書きされる？
   hi SignColumn guibg=#cccfbf
+endfunction
+
+function! s:invokeDocumentDiagnostics()
+  call lsp#ui#vim#diagnostics#document_diagnostics()
+  normal wp
 endfunction
