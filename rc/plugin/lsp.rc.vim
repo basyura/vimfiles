@@ -17,7 +17,11 @@ function! Apply_lsp_common_settings()
   nnoremap <buffer> <C-x><C-x> :call <SID>invokeDocumentDiagnostics()<CR>
 
   " どこかで上書きされる？
-  hi SignColumn guibg=#cccfbf
+  if g:colors_name == "newspaper"
+    hi SignColumn guibg=#cccfbf
+  else
+    hi SignColumn guibg=black
+  endif
 endfunction
 
 function! s:invokeDocumentDiagnostics()

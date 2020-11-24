@@ -1,7 +1,7 @@
 " starting for mac
 
 " フォント
-set guifont=Osaka-Mono:h14
+set guifont=Osaka-Mono:h16
 " 透明度
 if g:colors_name == 'solarized'
 else
