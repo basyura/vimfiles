@@ -5,6 +5,7 @@ augroup MyGroup-unite
   autocmd!
   autocmd FileType unite  call s:unite_my_settings()
   autocmd FileType markdown call s:md_settings()
+  autocmd BufNewFile,BufRead,BufWritePost * set redrawtime=2000
 augroup END
 
 nnoremap <silent> <C-r>      :<C-u>Unite -buffer-name=file_mru file_mru -start-insert -hide-source-names<CR>
