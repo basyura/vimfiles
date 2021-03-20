@@ -111,3 +111,22 @@ snippet sort
 
 snippet append
   ${1:list} = append($1, ${2:value})
+
+
+snippet map
+abbr map[Type]Type
+	map[${1:string}]${0:int}
+
+snippet meth
+abbr func (self Type) Method(...) [error] { ... }
+regexp /^meth/
+	func (${1:self} ${2:Type}) ${3:Do}(${4}) ${5:error }{
+		${0}
+	}
+
+snippet defr
+	defer func() {
+    ${0}
+	}()
+
+
