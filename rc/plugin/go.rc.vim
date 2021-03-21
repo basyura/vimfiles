@@ -51,15 +51,15 @@ function! s:settings()
 endfunction
 
 function! s:gobuild() 
-  call s:reset_lsp()
   let res = system("go build")
   if res == "" 
-    let s:timer = timer_start(200, {t ->
+    let s:timer = timer_start(500, {t ->
           \ execute('echo "build success"', '')},
           \ {'repeat': 1})
   else 
     echo res
   endif
+  call s:reset_lsp()
 endfunction
 
 function! s:reset_lsp()
