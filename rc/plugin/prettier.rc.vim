@@ -29,5 +29,5 @@ function! s:format()
 endfunction
 augroup JsPrettier
  au!
- autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.less,*.css call s:format()
+ autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.less,*.css,*.vue call s:format()
 augroup END

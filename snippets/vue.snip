@@ -1,0 +1,12 @@
+snippet axios
+prev_word '^'
+  let params = {};
+  axios
+    .get("${1}", { params })
+    .then((res) => {
+      // res.data
+    })
+    .catch(function (err) {
+      console.log(err);
+      alert(err);
+    });

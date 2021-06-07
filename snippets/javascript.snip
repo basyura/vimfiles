@@ -109,7 +109,7 @@ options word
 
 snippet axios
 prev_word '^'
-  params = {};
+  let params = {};
   axios
     .get("${1}", { params })
     .then((res) => {
@@ -119,3 +119,7 @@ prev_word '^'
       console.log(err);
       alert(err);
     });
+
+snippet log
+prev_word '^'
+  console.log(${0})

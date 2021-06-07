@@ -15,6 +15,7 @@ function! Apply_lsp_common_settings()
   nnoremap <buffer> <Leader>r :LspRename<CR>
   nnoremap <buffer> <C-x><C-f> :LspDocumentFormat<CR>
   nnoremap <buffer> <C-x><C-d> :LspDocumentDiagnostic<CR>
+  nnoremap <buffer> <C-x><C-l> :LspNextError<CR>
 
   " どこかで上書きされる？
   if g:colors_name == "newspaper"
@@ -24,3 +25,6 @@ function! Apply_lsp_common_settings()
   endif
 endfunction
 
+augroup LspCommonGroup
+  autocmd FileType vue  call Apply_lsp_common_settings()
+augroup END
