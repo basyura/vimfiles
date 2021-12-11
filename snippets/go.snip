@@ -80,7 +80,7 @@ snippet getFilePaths
 snippet open
     fp, err := os.Open(${1:filename})
     if err != nil {
-      ${2}
+      return err
     }
     defer fp.Close()
  
@@ -129,4 +129,7 @@ snippet defr
     ${0}
 	}()
 
-
+snippet err
+  if err != nil {
+    return ${1}err
+  }
