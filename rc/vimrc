@@ -10,68 +10,68 @@ filetype plugin indent on
 syntax on
 
 call plug#begin('~/.vim/plugged')
+"{{{
+  " theme
+  Plug 'vim-scripts/newspaper.vim'
+  Plug 'vim-scripts/Wombat'
 
-" theme
-Plug 'vim-scripts/newspaper.vim'
-Plug 'vim-scripts/Wombat'
+  " base
+  Plug 'Shougo/vimproc'
+  Plug 'mattn/webapi-vim'
+  Plug 'tyru/vim-altercmd'
+  Plug 'vim-jp/vimdoc-ja'
 
-" base
-Plug 'Shougo/vimproc'
-Plug 'mattn/webapi-vim'
-Plug 'tyru/vim-altercmd'
-Plug 'vim-jp/vimdoc-ja'
+  " twitter
+  Plug 'basyura/TweetVim'
+  Plug 'basyura/twibill.vim'
+  Plug 'rhysd/tweetvim-advanced-filter'
 
-" twitter
-Plug 'basyura/TweetVim'
-Plug 'basyura/twibill.vim'
-Plug 'rhysd/tweetvim-advanced-filter'
+  " unite
+  Plug 'basyura/unite-converter-file-directory'
+  Plug 'basyura/unite-filters'
+  Plug 'basyura/unite-matchers'
+  Plug 'basyura/unite-mdfind'
+  Plug 'basyura/unite-outline'
+  Plug 'basyura/unite.vim'
+  Plug 'rhysd/unite-go-import.vim'
+  Plug 'soh335/unite-qflist'
+  Plug 'supermomonga/unite-sudden-death'
+  Plug 'thinca/vim-unite-history'
+  Plug 'ujihisa/unite-colorscheme'
 
-" unite
-Plug 'basyura/unite-converter-file-directory'
-Plug 'basyura/unite-filters'
-Plug 'basyura/unite-matchers'
-Plug 'basyura/unite-mdfind'
-Plug 'basyura/unite-outline'
-Plug 'basyura/unite.vim'
-Plug 'rhysd/unite-go-import.vim'
-Plug 'soh335/unite-qflist'
-Plug 'supermomonga/unite-sudden-death'
-Plug 'thinca/vim-unite-history'
-Plug 'ujihisa/unite-colorscheme'
+  " util
+  Plug 'Shougo/neomru.vim'
+  Plug 'Shougo/neosnippet.vim'
+  Plug 'Shougo/vimfiler'
+  Plug 'basyura/util.vim'
+  Plug 'haya14busa/vim-asterisk'
+  Plug 'rhysd/clever-f.vim'
+  Plug 'thinca/vim-fontzoom'
+  Plug 'thinca/vim-quickrun'
+  Plug 'thinca/vim-singleton'
+  Plug 'tpope/vim-commentary'
+  Plug 'tyru/open-browser.vim'
+  Plug 'tyru/restart.vim', { 'commit': 'f416e484' }
+  Plug 'vim-scripts/copypath.vim'
 
-" util
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/vimfiler'
-Plug 'basyura/util.vim'
-Plug 'haya14busa/vim-asterisk'
-Plug 'rhysd/clever-f.vim'
-Plug 'thinca/vim-fontzoom'
-Plug 'thinca/vim-quickrun'
-Plug 'thinca/vim-singleton'
-Plug 'tpope/vim-commentary'
-Plug 'tyru/open-browser.vim'
-Plug 'tyru/restart.vim', { 'commit': 'f416e484' }
-Plug 'vim-scripts/copypath.vim'
+  " complete/lsp
+  Plug 'mattn/vim-lsp-settings'
+  Plug 'prabirshrestha/async.vim'
+  Plug 'prabirshrestha/asyncomplete-buffer.vim'
+  Plug 'prabirshrestha/asyncomplete-file.vim'
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
+  Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/vim-lsp'
 
-" complete/lsp
-Plug 'mattn/vim-lsp-settings'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete-buffer.vim'
-Plug 'prabirshrestha/asyncomplete-file.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/vim-lsp'
+  " dev
+  Plug 'mattn/vim-goimports'
+  Plug 'prettier/vim-prettier'
 
-" dev
-Plug 'mattn/vim-goimports'
-Plug 'prettier/vim-prettier'
-
+"}}}
 call plug#end()
 
-set background=light
 colorscheme default
-
+set background=light
 set completeopt-=preview
 
 helptags ~/.vim/plugged/vimdoc-ja/doc
@@ -84,18 +84,17 @@ endif
 
 let mapleader = "m"
 
-""""""""""""""""""""""""""""""""""
-"           settings             "
-""""""""""""""""""""""""""""""""""
-
-if filereadable($HOME . '/.vimrc_local')
-  source ~/.vimrc_local
-endif
-
 "map {{{
 """"""""""""""""""""""""""""""""""
 "             map                "
 """"""""""""""""""""""""""""""""""
+
+nnoremap <silent> <Space>.  :<C-u>silent! edit   $MYVIMRC<Enter>
+nnoremap <Space>s.  :<C-u>source $MYVIMRC<Enter>
+nnoremap <Space>g.  :<C-u>edit   $MYGVIMRC<Enter>
+nnoremap <Space>gs. :<C-u>source $MYGVIMRC<Enter>
+nnoremap <Space>v.  :<C-u>edit   ~/.vimshrc<Enter>
+nnoremap <Space>ss  :<C-u>Source %<Enter>
 
 imap <C-v> <C-R>+
 cmap <C-v> <C-R>+
@@ -106,7 +105,7 @@ nnoremap qq q
 nnoremap q <Nop>
 
 nnoremap <silent> U :<C-u>redo<CR>
-"map bn    :bnext<CR>
+
 "ウインドウのフォーカス移動
 noremap wh <C-w>h
 noremap wl <C-w>l
@@ -116,17 +115,7 @@ noremap wp <C-w>p
 nnoremap <Space>v :vsplit<CR>
 noremap <silent> gl :macaction selectNextWindow:<CR>
 noremap <script> gh :macaction selectPreviousWindow:<CR>
-vnoremap v $h
 
-nnoremap <silent> <Space>.   :<C-u>silent! edit   $MYVIMRC<Enter>
-
-nnoremap <Space>s.  :<C-u>source $MYVIMRC<Enter>
-nnoremap <Space>g.  :<C-u>edit   $MYGVIMRC<Enter>
-nnoremap <Space>gs. :<C-u>source $MYGVIMRC<Enter>
-nnoremap <Space>v.  :<C-u>edit   ~/.vimshrc<Enter>
-nnoremap <Space>ss  :<C-u>Source %<Enter>
-
-nnoremap <C-x><C-n> :setlocal nu!<CR>
 nnoremap en :enew<CR>
 
 inoremap <C-d> <Del>
@@ -149,7 +138,6 @@ nnoremap gc `[v`]
 nmap  <C-a><C-a> ggvG$
 " gvim で q → bd をしてる用
 nmap <C-q><C-q><C-q> ZQ
-nmap <silent> ,l <plug><inside-motion>
 
 cmap <C-e> <End>
 cmap <C-a> <HOME>
@@ -169,33 +157,21 @@ nnoremap <C-c> <C-a>
 
 nnoremap cc cw
 
-nmap <Leader><Leader>b <Plug>(openbrowser-open)
-
-"置換
-nnoremap <Leader><Leader>r :1,$ s///gc<left><left><left><left>
-
 nnoremap <M-k> <C-y>
 nnoremap <M-j> <C-e>
-nnoremap <Leader>s :Scratch<CR>
 nnoremap <Leader>w :WriteToFile<CR>
 nnoremap <silent> <Leader>o :on<CR>
-nnoremap <Space>d :<C-u>pwd<CR>
 
 nnoremap <silent> <C-x><C-x> :TabNew<CR>
 nnoremap <silent> <C-x><C-l> :tabnext<CR>
 nnoremap <silent> <C-x><C-h> :tabprevious<CR>
 nnoremap <silent> <C-f> :tabnext<CR>
 nnoremap <silent> <C-b> :tabprevious<CR>
-"nnoremap <C-w>; <C-w>+
-"nnoremap w; <C-w>+
-"nnoremap w- <C-w>-
-"nnoremap wm 100<C-w>+
 nnoremap <silent><Leader>r :redraw!<CR> 
 nnoremap <silent>on 999<C-w>+
 nnoremap cn :cn<CR>
 nnoremap cp :cp<CR>
 nnoremap <C-]> g<C-]>
-"nnoremap <C-w> <Home>dw
 nnoremap <silent> j  gj
 nnoremap <silent> gj j
 nnoremap <silent> k  gk
@@ -204,60 +180,27 @@ nnoremap <Space>p :call <SID>clever_p()<CR>
 
 nnoremap <nowait> yw yw
 
-function! s:clever_p()
-  let text = getreg("\"")
-  if text =~ "\n$"
-    normal! p
-  else
-    call append(".", text)
-    normal j$
-  endif
-endfunction
 
 nnoremap <silent>w :call <SID>clever_move("w")<CR>
 nnoremap <silent>b :call <SID>clever_move("b")<CR>
-"nnoremap <silent>e :call <SID>clever_move("e")<CR>
 
-let s:no_clever_pattern = '\.\|(\|)\|!\|:\|]\|[\|<\|>\|"\|\$\|/\|-\|,' ."\\|'"
-
-function! s:clever_move(word)
-  execute "normal! " . a:word
-  let chr =getline('.')[col('.') -1]
-  if  chr =~ s:no_clever_pattern || chr == ''
-    call s:clever_move(a:word)
-  endif
-endfunction
 
 nnoremap $  g$
 nnoremap g$ $
-
 nnoremap L y$
-
-cnoremap <C-p>  <Up>
-cnoremap <Up>   <C-p>
-cnoremap <C-n>  <Down>
-cnoremap <Down> <C-n>
-
-" for unite-rails
-nnoremap <C-x><C-m> :Unite rails/model<CR>
-nnoremap <C-x><C-c> :Unite rails/controller<CR>
-nnoremap <C-x><C-v> :Unite rails/view<CR>
-nnoremap <C-x><C-d> :Unite rails/db<CR>
-nnoremap <C-x><C-f> :Unite rails/config<CR>
-nnoremap <C-x> :Unite rails/
-
-nnoremap <Space>d :Dash!<CR>
-
 nnoremap Y y$
 vnoremap Y "*y
+vnoremap v $h
 
 nnoremap <silent> <C-@><C-@> :Restart!<CR>
+" Change current directory.
+nnoremap <silent> <Space>cd :<C-u>CD<CR>
+
 
 nnoremap ) :tabmove +1<CR>
 nnoremap ( :tabmove -1<CR>
 
 nmap <Leader>c vv<Plug>Commentary
-" ターミナルだとなぜか起動時にインサートモードになるので
 
 inoremap <C-s> <ESC>:w<CR>:echo "saved"<CR>
 inoremap <silent> <C-o> <ESC>o
@@ -276,34 +219,27 @@ vnoremap <C-e> <End><Left>
 vmap <Leader>c <Plug>Commentary
 vmap <C-b> :Batch<CR>
 
+cnoremap <C-p>  <Up>
+cnoremap <Up>   <C-p>
+cnoremap <C-n>  <Down>
+cnoremap <Down> <C-n>
 cnoremap <C-j> <C-u><ESC>
 
-vnoremap ch :s/\t/\|_=./g<CR>
-vnoremap cb :s/\t/\|/g<CR>
-
-" getchar() で挿入する文字を入力
-nmap <leader>J <Plug>(jplus-getchar)
-vmap <leader>J <Plug>(jplus-getchar)
-
-" 文字の左右にスペースを付属させる
-nmap <Space>J <Plug>(jplus-getchar-with-space)
-vmap + <Plug>(jplus-getchar-with-space)
-
 "}}}
+
+""""""""""""""""""""""""""""""""""
+"        load settings           "
+""""""""""""""""""""""""""""""""""
+
+if filereadable($HOME . '/.vimrc_local')
+  source ~/.vimrc_local
+endif
 
 execute "source " . expand('~/.vim/rc/plugin/vimproc.rc.vim')
 
 for rc in glob('~/.vim/rc/plugin/*', 1, 1)
   execute "source " . expand(rc)
 endfor
-
-
-""""""""""""""""""""""""""""""""""
-"             misc               "
-""""""""""""""""""""""""""""""""""
-
-" Change current directory.
-nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
 if filereadable($HOME . '/.vimrc_local_after')
   source ~/.vimrc_local_after
@@ -313,7 +249,34 @@ if filereadable(expand('~/.vim/rc/highlight/' . g:colors_name . '.vim'))
   execute 'source ~/.vim/rc/highlight/' . g:colors_name . '.vim'
 endif
 
-hi Pmenu      guifg=#FFFDD6  guibg=black ctermfg=0 ctermbg=8
-hi PmenuSel   guifg=#F0FF93  guibg=#000000 ctermfg=15 ctermbg=8
+""""""""""""""""""""""""""""""""""
+"          highlight             "
+""""""""""""""""""""""""""""""""""
+
+hi Pmenu    guifg=#FFFDD6  guibg=black   ctermfg=0  ctermbg=8
+hi PmenuSel guifg=#F0FF93  guibg=#000000 ctermfg=15 ctermbg=8
+
+""""""""""""""""""""""""""""""""""
+"          functions             "
+""""""""""""""""""""""""""""""""""
+function! s:clever_p()
+  let text = getreg("\"")
+  if text =~ "\n$"
+    normal! p
+  else
+    call append(".", text)
+    normal j$
+  endif
+endfunction
+
+let s:no_clever_pattern = '\.\|(\|)\|!\|:\|]\|[\|<\|>\|"\|\$\|/\|-\|,' ."\\|'"
+
+function! s:clever_move(word)
+  execute "normal! " . a:word
+  let chr =getline('.')[col('.') -1]
+  if  chr =~ s:no_clever_pattern || chr == ''
+    call s:clever_move(a:word)
+  endif
+endfunction
 
 " vim: foldmethod=marker

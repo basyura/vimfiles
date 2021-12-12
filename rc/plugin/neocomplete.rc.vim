@@ -1,3 +1,8 @@
+
+if !has_key(g:plugs, 'neocomplete')
+  finish
+end
+
 " necocomplete 
 function! s:initialize_neocomplete()
   let g:neocomplete#enable_at_startup= 1
