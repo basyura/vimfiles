@@ -22,7 +22,7 @@ let g:tweetvim_display_source = 1
 let g:tweetvim_original_hi = 0
 let g:tweetvim_filters = ['advanced']
 let g:tweetvim_open_say_cmd = 'below split'
-let g:tweetvim_display_icon = 1
+let g:tweetvim_display_icon = 0
 
 
 if !has('gui_running')
