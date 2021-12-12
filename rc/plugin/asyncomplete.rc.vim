@@ -1,4 +1,8 @@
 
+if !has_key(g:plugs, 'asyncomplete.vim')
+  finish
+end
+
 inoremap <expr> <cr> pumvisible() ? <SID>decide() : "\<cr>"
 
 function! s:decide()
@@ -30,6 +34,59 @@ function! s:to_pair()
 
   return {'min_chars': s:min_chars, 'popup_delay': s:popup_delay}
 endfunction
+
+
+let s:before = {'len': 0, 'word': ''}
+function! s:my_asyncomplete_preprocessor(options, matches) abort
+  let l:visited = {}
+  let l:items = []
+  for [l:source_name, l:matches] in items(a:matches)
+    let l:startcol = l:matches['startcol']
+    let l:base = a:options['typed'][l:startcol - 1:]
+    for l:item in l:matches['items']
+      for l:item in matchfuzzypos(l:matches['items'], l:base, {'key':'word'})[0]
+        if has_key(l:visited, l:item.word)
+          continue
+        end
+        call add(l:items, s:strip_pair_characters(l:base, l:item))
+        let l:visited[l:item.word] = 1
+      endfor
+    endfor
+  endfor
+
+  if len(l:items) == 0
+    call asyncomplete#preprocess_complete(a:options, l:items)
+    let s:before = {'len': 0, 'word': ''}
+    return
+  end
+
+  if s:before.len != len(l:items) && s:before.word != l:items[0].word
+    call asyncomplete#preprocess_complete(a:options, l:items)
+  endif
+
+  let s:before = {'len': len(l:items), "word": l:items[0].word}
+endfunction
+
+let s:pair = {
+\  '"':  '"',
+\  '''':  '''',
+\}
+function! s:strip_pair_characters(base, item) abort
+  " Strip pair characters. If pre-typed text is '"', candidates
+  " should have '"' suffix.
+  let l:item = a:item
+  if has_key(s:pair, a:base[0])
+    let [l:lhs, l:rhs, l:str] = [a:base[0], s:pair[a:base[0]], l:item['word']]
+    if len(l:str) > 1 && l:str[0] ==# l:lhs && l:str[-1:] ==# l:rhs
+      let l:item = extend({}, l:item)
+      let l:item['word'] = l:str[:-2]
+    endif
+  endif
+  return l:item
+endfunction
+
+let g:asyncomplete_preprocessor = [function('s:my_asyncomplete_preprocessor')]
+
 
 
 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({

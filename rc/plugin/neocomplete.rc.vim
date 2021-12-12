@@ -1,5 +1,5 @@
 
-if !has_key(g:plugs, 'neocomplete')
+if !has_key(g:plugs, 'neocomplete.vim')
   finish
 end
 
@@ -102,6 +102,6 @@ endfunction
 
 let g:neocomplete#enable_fuzzy_completion = 1
 if !has('win32unix')
-  " call s:initialize_neocomplete()
-  " call neocomplete#initialize()
+  call s:initialize_neocomplete()
+  call neocomplete#initialize()
 endif

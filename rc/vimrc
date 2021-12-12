@@ -54,15 +54,19 @@ call plug#begin('~/.vim/plugged')
   Plug 'tyru/restart.vim', { 'commit': 'f416e484' }
   Plug 'vim-scripts/copypath.vim'
 
-  " complete/lsp
+  " lsp
   Plug 'mattn/vim-lsp-settings'
+  Plug 'prabirshrestha/vim-lsp'
   Plug 'prabirshrestha/async.vim'
+
+  " complete
   Plug 'prabirshrestha/asyncomplete-buffer.vim'
   Plug 'prabirshrestha/asyncomplete-file.vim'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
   Plug 'prabirshrestha/asyncomplete.vim'
-  Plug 'prabirshrestha/vim-lsp'
+
+  " Plug 'basyura/neocomplete.vim'
 
   " dev
   Plug 'mattn/vim-goimports'
