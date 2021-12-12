@@ -5,8 +5,32 @@ function! s:decide()
   return "\<C-n>\<C-c>a"
 endfunction
 
-let g:asyncomplete_popup_delay = 100
-let g:asyncomplete_min_chars = 1
+let s:min_chars = 2
+let s:popup_delay = 200
+
+augroup MyAllAsyncompleteStting
+  autocmd!
+  autocmd BufEnter *  call s:all_settings()
+augroup END
+
+let s:settings = {
+      \ 'html' : {'min_chars': 2, 'popup_delay': 50},
+      \}
+
+function! s:all_settings()
+  let pair = s:to_pair()
+  let g:asyncomplete_min_chars = pair['min_chars']
+  let g:asyncomplete_popup_delay = pair['popup_delay']
+endfunction
+
+function! s:to_pair()
+  if has_key(s:settings, &filetype)
+    return s:settings[&filetype]
+  end
+
+  return {'min_chars': s:min_chars, 'popup_delay': s:popup_delay}
+endfunction
+
 
 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
       \ 'name': 'buffer',
@@ -29,6 +53,7 @@ call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_opt
       \ 'name': 'neosnippet',
       \ 'allowlist': ['*'],
       \ 'blocklist': [],
+      \ 'priority': 100,
       \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
       \ }))
 
