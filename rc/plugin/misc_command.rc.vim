@@ -75,9 +75,9 @@ endfunction "}}}
 command! TabNew :call s:tabnew() "{{{
 function! s:tabnew()
   tabnew
-  Scratch
-  wincmd p
-  bd
+  " Scratch
+  " wincmd p
+  " bd
 endfunction "}}}
 
 " ■ proxy
