@@ -1,4 +1,5 @@
 
+let g:lsp_log_file = ""
 let g:lsp_preview_doubletap = 0
 "let g:lsp_diagnostics_enabled = 0
 

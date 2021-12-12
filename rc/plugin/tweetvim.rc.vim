@@ -11,7 +11,9 @@ nnoremap <silent> ta :TweetVimHomeTimeline<CR>
 nnoremap <silent> th :TweetVimHomeTimeline<CR>
 nnoremap <silent> tm :TweetVimMentions<CR>
 
-
+command! Mentions     :call tweetvim#timeline('mentions')
+command! -nargs=1 -complete=custom,tweetvim#complete#screen_name UserTimeline :call tweetvim#timeline('user_timeline', <f-args>)
+command! -nargs=1 -complete=custom,tweetvim#complete#search SearchTweets :call tweetvim#timeline('search', <f-args>)
 
 "let g:tweetvim_default_account = 'tottoruby'
 let g:tweetvim_async_post = 1
@@ -19,6 +21,8 @@ let g:twibill_use_job = 1
 let g:tweetvim_display_source = 1
 let g:tweetvim_original_hi = 0
 let g:tweetvim_filters = ['advanced']
+let g:tweetvim_open_say_cmd = 'below split'
+let g:tweetvim_display_icon = 1
 
 
 if !has('gui_running')

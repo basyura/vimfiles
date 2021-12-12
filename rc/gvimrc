@@ -51,11 +51,7 @@ function! s:WriteClose(bang)
   endif
 endfunction
 
-if g:tab_mode
-  AlterCommand q  tabclose
-else
-  AlterCommand q  Kwbd
-endif
+AlterCommand q  Kwbd
 AlterCommand wq WQ
 
 """"""""""""""""""""""""""""""""""

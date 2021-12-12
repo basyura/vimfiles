@@ -1,6 +1,19 @@
 """"""""""""""""""""""""""""""""""
 "             unite              "
 """"""""""""""""""""""""""""""""""
+
+let g:unite_update_time = 50
+
+function! Unite_substitute(profile, pat, subst, ...)
+  let priority = get(a:000, 0, 0)
+  call unite#custom#profile(a:profile, 'substitute_patterns', {
+        \   'pattern': a:pat,
+        \   'subst': a:subst,
+        \   'priority': priority,
+        \ })
+endfunction
+
+
 augroup MyGroup-unite
   autocmd!
   autocmd FileType unite  call s:unite_my_settings()
@@ -9,24 +22,12 @@ augroup MyGroup-unite
 augroup END
 
 nnoremap <silent> <C-r>      :<C-u>Unite -buffer-name=file_mru file_mru -start-insert -hide-source-names<CR>
-if g:tab_mode
-  nnoremap <silent> <C-n>      :<C-u>Unite -buffer-name=buffer -hide-source-names tab:no-current<CR>
-else
-  nnoremap <silent> <C-n>      :<C-u>Unite -buffer-name=buffer -hide-source-names buffer_tab<CR>
-endif
+nnoremap <silent> <C-n>      :<C-u>Unite -buffer-name=buffer -hide-source-names buffer_tab<CR>
 nnoremap <silent> <Leader>d  :<C-u>Unite -buffer-name=files -hide-source-names file file/new<CR>
 nnoremap <silent> <Leader>b  :<C-u>Unite -buffer-name=bookmark -no-start-insert bookmark<CR>
 nnoremap <silent> <C-t>      :<C-u>Unite -buffer-name=tags tags -start-insert -hide-source-names<CR>
 nnoremap <Leader>f  :<C-u>Unite file_rec -input=
 
-"let g:yankround_use_region_hl = 1
-"nmap <C-s> <Plug>(yankround-next)
-"vmap <C-s> <Plug>(yankround-p)
-"vmap <C-s> :<C-u>exe yankround#init('p')<Bar>call yankround#activate()<CR>
-"nmap <expr><C-s> yankround#is_active() ? "\<Plug>(yankround-prev)" : "<SID>(my_yankround)"
-"nnoremap <silent> <SID>(my_yankround) :Unite -buffer-name=history_yank yankround<CR>
-"nmap <C-S> <Plug>(yankround-next)
-"inoremap <silent> <C-s> <Esc>:Unite -buffer-name=history_yank yankround<CR>
 nnoremap <C-l> :call <SID>outline_or_snippet_jump()<CR>
 
 function! s:outline_or_snippet_jump()
@@ -44,7 +45,6 @@ endfunction
 
 
 nnoremap <Leader><Leader> :Unite 
-"nnoremap <silent> <Leader>g :call <SID>grep()<CR>
 nnoremap <silent> <Leader>g :Unite grep:.:: -no-quit -no-start-insert -direction=botright -buffer-name=grep -hide-source-names -keep-focus<CR>
 let g:unite_source_grep_command = 'jvgrep'
 let g:unite_source_grep_default_opts = '-r --no-color'
@@ -104,6 +104,19 @@ call Unite_substitute('file_mru', '[[:alnum:]]', '*\0', 100)
 call Unite_substitute('file_mru', '[^~.]\zs/', '*/*'  , 20)
 call Unite_substitute('file_mru', '/\ze[^*]', '/*'    , 10)
 
+
+
+call Unite_substitute('files', '^rc'   , '~/.vim/rc/plugin')
+call Unite_substitute('files', '^dp'   , '~/Desktop', 0)
+call Unite_substitute('files', '^dl'   , '~/Downloads', 0)
+call Unite_substitute('files', '^repos', '~/repos', 0)
+call unite#custom#substitute('files', '^gp', '~/.vim/plugged')
+let g:unite_source_file_mru_limit = 300
+
+call unite#sources#outline#alias('typescriptreact', 'javascript')
+call unite#sources#outline#alias('typescript', 'javascript')
+
+
 call unite#custom_filters('buffer,buffer_tab,tab',
       \ ['matcher_file_name', 'sorter_default', 'converter_file_directory_tab'])
 
@@ -132,11 +145,6 @@ let g:unite_source_everything_limit = 300
 let g:unite_source_everything_async_minimum_length = 3
 
 call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
-
-if g:tab_mode
-  call unite#custom_default_action('file'    , 'tabdrop')
-  call unite#custom_default_action('file_rec', 'tabdrop')
-endif
 
 call unite#set_profile('buffer_tab,file,file_mru,everything', 'ignorecase', 1)
 call unite#custom#profile('mdfind', 'required_pattern_length', 8)

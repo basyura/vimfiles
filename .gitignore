@@ -13,3 +13,5 @@ backup/*
 .tags
 gvim.exe.stackdump
 view
+bk
+plugged/*

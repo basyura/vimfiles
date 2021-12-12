@@ -1,6 +1,3 @@
-" tab_mode or buffer mode
-let g:tab_mode = 0
-
 """"""""""""""""""""""""""""""""""
 "         core settings          "
 """"""""""""""""""""""""""""""""""
@@ -12,20 +9,72 @@ endif
 filetype plugin indent on
 syntax on
 
-" メッセージ抑止
-let $CYGWIN = 'nodosfilewarning'
+call plug#begin('~/.vim/plugged')
 
-set runtimepath^=~/.vim/gitplugins/*
-set runtimepath+=~/.vim/plugins/*
-set runtimepath+=~/.vim
-set runtimepath+=~/.vim/after
+" theme
+Plug 'vim-scripts/newspaper.vim'
+Plug 'vim-scripts/Wombat'
+
+" base
+Plug 'Shougo/vimproc'
+Plug 'mattn/webapi-vim'
+Plug 'tyru/vim-altercmd'
+Plug 'vim-jp/vimdoc-ja'
+
+" twitter
+Plug 'basyura/TweetVim'
+Plug 'basyura/twibill.vim'
+Plug 'rhysd/tweetvim-advanced-filter'
+
+" unite
+Plug 'basyura/unite-converter-file-directory'
+Plug 'basyura/unite-filters'
+Plug 'basyura/unite-matchers'
+Plug 'basyura/unite-mdfind'
+Plug 'basyura/unite-outline'
+Plug 'basyura/unite.vim'
+Plug 'rhysd/unite-go-import.vim'
+Plug 'soh335/unite-qflist'
+Plug 'supermomonga/unite-sudden-death'
+Plug 'thinca/vim-unite-history'
+Plug 'ujihisa/unite-colorscheme'
+
+" util
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/vimfiler'
+Plug 'basyura/util.vim'
+Plug 'haya14busa/vim-asterisk'
+Plug 'rhysd/clever-f.vim'
+Plug 'thinca/vim-fontzoom'
+Plug 'thinca/vim-quickrun'
+Plug 'thinca/vim-singleton'
+Plug 'tpope/vim-commentary'
+Plug 'tyru/open-browser.vim'
+Plug 'tyru/restart.vim', { 'commit': 'f416e484' }
+Plug 'vim-scripts/copypath.vim'
+
+" complete/lsp
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete-buffer.vim'
+Plug 'prabirshrestha/asyncomplete-file.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/vim-lsp'
+
+" dev
+Plug 'mattn/vim-goimports'
+Plug 'prettier/vim-prettier'
+
+call plug#end()
 
 set background=light
 colorscheme default
 
 set completeopt-=preview
 
-helptags ~/.vim/gitplugins/vimdoc-ja/doc
+helptags ~/.vim/plugged/vimdoc-ja/doc
 
 call altercmd#load()
 
@@ -38,22 +87,6 @@ let mapleader = "m"
 """"""""""""""""""""""""""""""""""
 "           settings             "
 """"""""""""""""""""""""""""""""""
-
-" singleton.vim
-if has('clientserver') && !has('mac')
-  call singleton#enable()
-  let g:singleton#opener = "drop"
-endif
-
-" for unite
-function! Unite_substitute(profile, pat, subst, ...)
-  let priority = get(a:000, 0, 0)
-  call unite#custom#profile(a:profile, 'substitute_patterns', {
-        \   'pattern': a:pat,
-        \   'subst': a:subst,
-        \   'priority': priority,
-        \ })
-endfunction
 
 if filereadable($HOME . '/.vimrc_local')
   source ~/.vimrc_local
@@ -85,11 +118,7 @@ noremap <silent> gl :macaction selectNextWindow:<CR>
 noremap <script> gh :macaction selectPreviousWindow:<CR>
 vnoremap v $h
 
-if g:tab_mode
-  nnoremap <silent> <Space>.   :<C-u>silent! tab drop $MYVIMRC<CR>
-else
-  nnoremap <silent> <Space>.   :<C-u>silent! edit   $MYVIMRC<Enter>
-endif
+nnoremap <silent> <Space>.   :<C-u>silent! edit   $MYVIMRC<Enter>
 
 nnoremap <Space>s.  :<C-u>source $MYVIMRC<Enter>
 nnoremap <Space>g.  :<C-u>edit   $MYGVIMRC<Enter>
@@ -198,9 +227,7 @@ function! s:clever_move(word)
     call s:clever_move(a:word)
   endif
 endfunction
-"nnoremap 0 ^
-"nnoremap 00 0
-"nnoremap ^ 0
+
 nnoremap $  g$
 nnoremap g$ $
 
@@ -274,54 +301,9 @@ endfor
 """"""""""""""""""""""""""""""""""
 "             misc               "
 """"""""""""""""""""""""""""""""""
-let g:scratchBackupFile=$HOME . "/.scratch.txt"
-" ubuntu の時だけ
-if !has('mac') && !has('win32') && !has('win32unix')
-  inoremap <silent> <esc> <esc>:call ForceImeOff()<cr>
-  inoremap <silent> <C-[> <esc>:call ForceImeOff()<cr>
-  inoremap <silent> <C-c> <esc>:call ForceImeOff()<cr>
-  function! ForceImeOff()
-    let imeoff = system('xvkbd -text "\[Control]\[Shift]\[space]" > /dev/null 2>&1')
-  endfunction
-endif
 
 " Change current directory.
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
-
-" Load settings for each location.
-augroup vimrc-local
-  autocmd!
-  autocmd BufEnter * call s:vimrc_local(expand('<afile>:p:h'))
-augroup END
-
-command! FindTags call s:vimrc_local(expand('<afile>:p:h'))
-function! s:vimrc_local(loc)
-  let &l:tags=findfile('.tags' , '.;')
-endfunction
-
-if has('mac')
-  let g:restart_vim_progname = "MacVim"
-end
-
-if filereadable($HOME . '/.vimrc_local_after')
-  source ~/.vimrc_local_after
-endif
-
-inoremap <silent><C-x><C-s> <Esc>:call <SID>toggle_status()<CR>a
-nnoremap <silent><C-x><C-s> :call <SID>toggle_status()<CR>
-
-function! s:toggle_status()
-  if &laststatus == 2 
-    let &laststatus = 0
-  else
-    let &laststatus = 2
-    if winheight('%') < 3
-      execute '3 wincmd _'
-    endif
-  endif
-endfunction
-
-
 
 if filereadable($HOME . '/.vimrc_local_after')
   source ~/.vimrc_local_after
