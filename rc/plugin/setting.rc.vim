@@ -75,7 +75,7 @@ set noshowmatch
 set matchpairs+=<:>
 set shortmess=atTWIoO
 set complete=.
-set pumheight=10
+set pumheight=5
 set showcmd
 set noshowmode
 " 矩形選択中は行末にテキストがなくてもカーソルを行末以降に移動させることができる

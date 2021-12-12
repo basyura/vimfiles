@@ -7,11 +7,11 @@ augroup MyRubyLsp
  autocmd!
  if executable('solargraph')
    " gem install solargraph
-   au User lsp_setup call lsp#register_server({
-         \ 'name': 'solargraph',
-         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-         \ 'whitelist': ['ruby'],
-         \ })
+   " au User lsp_setup call lsp#register_server({
+   "       \ 'name': 'solargraph',
+   "       \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+   "       \ 'whitelist': ['ruby'],
+   "       \ })
 
 "          \ 'initialization_options': {"diagnostics": "true"},
 
