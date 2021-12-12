@@ -1,4 +1,7 @@
 
+set background=light
+set completeopt-=preview
+
 set belloff=all
 set textwidth=0
 set ambiwidth=double
