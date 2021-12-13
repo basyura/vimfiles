@@ -30,7 +30,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'basyura/unite-converter-file-directory'
   Plug 'basyura/unite-filters'
   Plug 'basyura/unite-matchers'
-  Plug 'basyura/unite-mdfind'
   Plug 'basyura/unite-outline'
   Plug 'basyura/unite.vim'
   Plug 'rhysd/unite-go-import.vim'
@@ -38,6 +37,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'supermomonga/unite-sudden-death'
   Plug 'thinca/vim-unite-history'
   Plug 'ujihisa/unite-colorscheme'
+  if has("win32")
+    Plug 'sgur/unite-everything'
+  else
+    Plug 'basyura/unite-mdfind'
+  endif
 
   " util
   Plug 'Shougo/neomru.vim'
