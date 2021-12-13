@@ -44,17 +44,15 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
   for [l:source_name, l:matches] in items(a:matches)
     let l:startcol = l:matches['startcol']
     let l:base = a:options['typed'][l:startcol - 1:]
-    for l:item in l:matches['items']
-      try
-        for l:item in matchfuzzypos(l:matches['items'], l:base, {'key':'word'})[0]
-          if has_key(l:visited, l:item.word)
-            continue
-          end
-          call add(l:items, s:strip_pair_characters(l:base, l:item))
-          let l:visited[l:item.word] = 1
-        endfor
-      catch
-      endtry
+    if l:base == ""
+      continue
+    endif
+    for l:item in matchfuzzypos(l:matches['items'], l:base, {'key':'word'})[0]
+      if has_key(l:visited, l:item.word)
+        continue
+      end
+      call add(l:items, s:strip_pair_characters(l:base, l:item))
+      let l:visited[l:item.word] = 1
     endfor
   endfor
 
