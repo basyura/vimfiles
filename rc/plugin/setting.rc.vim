@@ -1,6 +1,7 @@
 
 set background=light
 set completeopt-=preview
+set shortmess+=c
 
 set belloff=all
 set textwidth=0

@@ -5,21 +5,22 @@ end
 
 inoremap <expr> <cr> pumvisible() ? <SID>decide() : "\<cr>"
 
+let s:min_chars = 2
+let s:popup_delay = 200
+let s:settings = {
+      \ 'go'   : {'min_chars': 0, 'popup_delay': 50},
+      \ 'html' : {'min_chars': 2, 'popup_delay': 50},
+      \}
+
+
 function! s:decide()
   return "\<C-n>\<C-c>a"
 endfunction
-
-let s:min_chars = 2
-let s:popup_delay = 200
 
 augroup MyAllAsyncompleteStting
   autocmd!
   autocmd BufEnter *  call s:all_settings()
 augroup END
-
-let s:settings = {
-      \ 'html' : {'min_chars': 2, 'popup_delay': 50},
-      \}
 
 function! s:all_settings()
   let pair = s:to_pair()
@@ -35,22 +36,25 @@ function! s:to_pair()
   return {'min_chars': s:min_chars, 'popup_delay': s:popup_delay}
 endfunction
 
-
 let s:before = {'len': 0, 'word': ''}
 function! s:my_asyncomplete_preprocessor(options, matches) abort
   let l:visited = {}
   let l:items = []
+
   for [l:source_name, l:matches] in items(a:matches)
     let l:startcol = l:matches['startcol']
     let l:base = a:options['typed'][l:startcol - 1:]
     for l:item in l:matches['items']
-      for l:item in matchfuzzypos(l:matches['items'], l:base, {'key':'word'})[0]
-        if has_key(l:visited, l:item.word)
-          continue
-        end
-        call add(l:items, s:strip_pair_characters(l:base, l:item))
-        let l:visited[l:item.word] = 1
-      endfor
+      try
+        for l:item in matchfuzzypos(l:matches['items'], l:base, {'key':'word'})[0]
+          if has_key(l:visited, l:item.word)
+            continue
+          end
+          call add(l:items, s:strip_pair_characters(l:base, l:item))
+          let l:visited[l:item.word] = 1
+        endfor
+      catch
+      endtry
     endfor
   endfor
 
