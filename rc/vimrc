@@ -78,6 +78,7 @@ call plug#end()
 colorscheme default
 set background=light
 set completeopt-=preview
+let g:colors_name = "newspaper"
 
 helptags ~/.vim/plugged/vimdoc-ja/doc
 
