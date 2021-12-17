@@ -57,7 +57,9 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
   endfor
 
   if len(l:items) == 0
-    call asyncomplete#preprocess_complete(a:options, l:items)
+    if s:before.len != 0
+      call asyncomplete#preprocess_complete(a:options, l:items)
+    endif
     let s:before = {'len': 0, 'word': ''}
     return
   end
