@@ -77,13 +77,13 @@ if has('win32')
 endif
 
 
-let g:quickrun_config.go = {
-      \   'command': 'go',
-      \   'exec': '%c run *.go %a',
-      \   'tempfile': '%{tempname()}.go',
-      \   'hook/output_encode/encoding': 'utf-8',
-      \   'hook/cd/directory': '%S:p:h',
-      \ }
+" let g:quickrun_config.go = {
+"       \   'command': 'go',
+"       \   'exec': '%c run *.go %a',
+"       \   'tempfile': '%{tempname()}.go',
+"       \   'hook/output_encode/encoding': 'utf-8',
+"       \   'hook/cd/directory': '%S:p:h',
+"       \ }
 
 "https://yanor.net/wiki/?Vim/%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/vim-quickrun/TypeScript%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E5%A4%89%E6%9B%B4
 let g:quickrun_config['typescript'] = { 'type' : 'typescript/tsc' }
