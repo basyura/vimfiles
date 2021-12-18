@@ -1,7 +1,5 @@
 
 set background=light
-set completeopt-=preview
-set shortmess+=c
 
 set belloff=all
 set textwidth=0
@@ -77,8 +75,9 @@ set softtabstop=0
 set expandtab
 set noshowmatch
 set matchpairs+=<:>
-set shortmess=atTWIoO
+set shortmess=atTWIoOc
 set complete=.
+set completeopt-=preview
 set pumheight=3
 set showcmd
 set noshowmode

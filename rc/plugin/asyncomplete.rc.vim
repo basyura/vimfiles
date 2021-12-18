@@ -46,55 +46,54 @@ endfunction
 
 let s:before = {'len': 0, 'word': ''}
 function! s:my_asyncomplete_preprocessor(options, matches) abort
-  let l:visited = {}
-  let l:items = []
+  let visited = {}
+  let targets = []
 
-  for [l:source_name, l:matches] in items(a:matches)
-    let l:startcol = l:matches['startcol']
-    let l:base = a:options['typed'][l:startcol - 1:]
-    if l:base == ""
+  for [source_name, matches] in items(a:matches)
+    let startcol = matches['startcol']
+    let base = a:options['typed'][startcol - 1:]
+    if base == ""
       continue
     endif
 
     let matcher = s:get_matcher()
     if matcher == 'fuzzy'
-      " fuzzy
-      for l:item in matchfuzzypos(l:matches['items'], l:base, {'key':'word'})[0]
-        if has_key(l:visited, l:item.word)
+      for item in matchfuzzypos(matches['items'], base, {'key':'word'})[0]
+        if has_key(visited, item.word)
           continue
         end
-        call add(l:items, s:strip_pair_characters(l:base, l:item))
-        let l:visited[l:item.word] = 1
+        call add(targets, s:strip_pair_characters(base, item))
+        let visited[item.word] = 1
       endfor
     else 
       " start with
-      for v in matches['items']
-        if has_key(l:visited, v.word)
+      for item in matches['items']
+        if has_key(visited, item.word)
           continue
         end
-        let reg = "^" . l:base
-        if v.word =~? reg
-          call add(l:items, s:strip_pair_characters(l:base, v))
-          let l:visited[v.word] = 1
+        let reg = "^" . base
+        if item.word =~? reg
+          call add(targets, s:strip_pair_characters(base, item))
+          let visited[item.word] = 1
         endif
       endfor
     endif
 
   endfor
 
-  if len(l:items) == 0
+  if len(targets) == 0
     if s:before.len != 0
-      call asyncomplete#preprocess_complete(a:options, l:items)
+      call asyncomplete#preprocess_complete(a:options, targets)
     endif
     let s:before = {'len': 0, 'word': ''}
     return
   end
 
-  if s:before.len != len(l:items) && s:before.word != l:items[0].word
-    call asyncomplete#preprocess_complete(a:options, l:items)
+  if s:before.len != len(targets) && s:before.word != targets[0].word
+    call asyncomplete#preprocess_complete(a:options, targets)
   endif
 
-  let s:before = {'len': len(l:items), "word": l:items[0].word}
+  let s:before = {'len': len(targets), "word": targets[0].word}
 endfunction
 
 let s:pair = {
