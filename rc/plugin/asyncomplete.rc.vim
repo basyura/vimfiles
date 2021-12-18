@@ -5,15 +5,18 @@ end
 
 inoremap <expr> <cr> pumvisible() ? <SID>decide() : "\<cr>"
 
-let s:min_chars = 2
-let s:popup_delay = 200
+let s:default_min_chars   = 2
+let s:default_popup_delay = 200
+let s:default_matcher     = 'start_with'
 let s:settings = {
-      \ 'go'   : {'min_chars': 0, 'popup_delay': 50},
-      \ 'html' : {'min_chars': 2, 'popup_delay': 50},
+      \ 'go'   : {'min_chars': 0, 'popup_delay': 100 },
+      \ 'html' : {'min_chars': 2, 'popup_delay': 50, 'matcher': 'fuzzy'},
       \}
 
-
 function! s:decide()
+  if asyncomplete#menu_selected()
+    return "\<C-y>"
+  endif
   return "\<C-n>\<C-c>a"
 endfunction
 
@@ -33,7 +36,12 @@ function! s:to_pair()
     return s:settings[&filetype]
   end
 
-  return {'min_chars': s:min_chars, 'popup_delay': s:popup_delay}
+  return {'min_chars': s:default_min_chars, 'popup_delay': s:default_popup_delay}
+endfunction
+
+function! s:get_matcher()
+  let setting = get(s:settings, &filetype, {})
+  return get(setting, 'matcher', s:default_matcher)
 endfunction
 
 let s:before = {'len': 0, 'word': ''}
@@ -47,13 +55,31 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
     if l:base == ""
       continue
     endif
-    for l:item in matchfuzzypos(l:matches['items'], l:base, {'key':'word'})[0]
-      if has_key(l:visited, l:item.word)
-        continue
-      end
-      call add(l:items, s:strip_pair_characters(l:base, l:item))
-      let l:visited[l:item.word] = 1
-    endfor
+
+    let matcher = s:get_matcher()
+    if matcher == 'fuzzy'
+      " fuzzy
+      for l:item in matchfuzzypos(l:matches['items'], l:base, {'key':'word'})[0]
+        if has_key(l:visited, l:item.word)
+          continue
+        end
+        call add(l:items, s:strip_pair_characters(l:base, l:item))
+        let l:visited[l:item.word] = 1
+      endfor
+    else 
+      " start with
+      for v in matches['items']
+        if has_key(l:visited, v.word)
+          continue
+        end
+        let reg = "^" . l:base
+        if v.word =~? reg
+          call add(l:items, s:strip_pair_characters(l:base, v))
+          let l:visited[v.word] = 1
+        endif
+      endfor
+    endif
+
   endfor
 
   if len(l:items) == 0
@@ -72,9 +98,9 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
 endfunction
 
 let s:pair = {
-\  '"':  '"',
-\  '''':  '''',
-\}
+      \  '"':  '"',
+      \  '''':  '''',
+      \}
 function! s:strip_pair_characters(base, item) abort
   " Strip pair characters. If pre-typed text is '"', candidates
   " should have '"' suffix.
@@ -95,7 +121,7 @@ let g:asyncomplete_preprocessor = [function('s:my_asyncomplete_preprocessor')]
 
 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
       \ 'name': 'buffer',
-      \ 'allowlist': ['ruby', 'html'],
+      \ 'allowlist': ['*'],
       \ 'blocklist': [],
       \ 'completor': function('asyncomplete#sources#buffer#completor'),
       \ 'config': {

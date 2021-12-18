@@ -73,6 +73,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
   Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/asyncomplete-necovim.vim'
+  Plug 'Shougo/neco-vim'
 
   " Plug 'basyura/neocomplete.vim'
 
