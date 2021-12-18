@@ -142,5 +142,3 @@ call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_opt
       \ 'priority': 100,
       \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
       \ }))
-
-
