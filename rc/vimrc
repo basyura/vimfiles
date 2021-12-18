@@ -83,10 +83,12 @@ call plug#begin('~/.vim/plugged')
 "}}}
 call plug#end()
 
-colorscheme default
-set background=light
-set completeopt-=preview
-let g:colors_name = "newspaper"
+set background=dark
+let g:my_colorscheme = "default"
+if has("gui_running")
+  let g:my_colorscheme = "newspaper"
+endif
+execute 'colorscheme ' . g:my_colorscheme
 
 helptags ~/.vim/plugged/vimdoc-ja/doc
 
@@ -259,8 +261,8 @@ if filereadable($HOME . '/.vimrc_local_after')
   source ~/.vimrc_local_after
 endif
 
-if filereadable(expand('~/.vim/rc/highlight/' . g:colors_name . '.vim'))
-  execute 'source ~/.vim/rc/highlight/' . g:colors_name . '.vim'
+if filereadable(expand('~/.vim/rc/highlight/' . g:my_colorscheme. '.vim'))
+  execute 'source ~/.vim/rc/highlight/' . g:my_colorscheme . '.vim'
 endif
 
 """"""""""""""""""""""""""""""""""
