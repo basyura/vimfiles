@@ -5,7 +5,7 @@ end
 
 inoremap <expr> <cr> pumvisible() ? <SID>decide() : "\<cr>"
 
-let s:default_min_chars   = 2
+let s:default_min_chars   = 0
 let s:default_popup_delay = 200
 let s:default_matcher     = 'start_with'
 let s:settings = {
@@ -57,7 +57,7 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
     endif
 
     let matcher = s:get_matcher()
-    if matcher == 'fuzzy'
+    if source_name == 'file' || matcher == 'fuzzy'
       for item in matchfuzzypos(matches['items'], base, {'key':'word'})[0]
         if has_key(visited, item.word)
           continue
@@ -72,10 +72,16 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
           continue
         end
         let reg = "^" . base
+        try
         if item.word =~? reg
           call add(targets, s:strip_pair_characters(base, item))
           let visited[item.word] = 1
         endif
+      catch
+        echom source_name
+        echom item
+        echom v:exception
+      endtry
       endfor
     endif
 
