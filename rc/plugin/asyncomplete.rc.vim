@@ -100,14 +100,20 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
 
   if len(targets) == 0
     if s:before_comp != ''
-      call asyncomplete#preprocess_complete(a:options, targets)
+      call s:invoke_complete(a:options, targets)
     endif
   elseif s:before_comp != comp
-    call asyncomplete#preprocess_complete(a:options, targets)
+      call s:invoke_complete(a:options, targets)
   endif
 
   let s:before_comp = comp
 endfunction
+
+function! s:invoke_complete(options, targets)
+  call asyncomplete#preprocess_complete(a:options, a:targets)
+  echo ""
+endfunction
+
 
 function! s:toKeys(matches)
   let keys = []
