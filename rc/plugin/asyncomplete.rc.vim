@@ -62,9 +62,8 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
     endif
 
     let matcher = s:get_matcher()
-    let res = { 'targets': [], 'visited': {} }
     if key.source_name == 'file' || matcher == 'fuzzy'
-      let res = s:complete_fuzzy(matches, base, targets, visited)
+      let res = s:complete_fuzzy(matches, base, targets, visited, max_len)
     else 
       let res = s:complete_start_with(matches, base, targets, visited, max_len)
     endif
@@ -89,7 +88,7 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
   let s:before_comp = comp
 endfunction
 
-function! s:complete_fuzzy(matches, base, targets,  visited)
+function! s:complete_fuzzy(matches, base, targets,  visited, max_len)
   let targets = a:targets
   let visited = a:visited
   for item in matchfuzzypos(a:matches['items'], a:base, {'key':'word'})[0]
@@ -98,7 +97,7 @@ function! s:complete_fuzzy(matches, base, targets,  visited)
     end
     call add(targets, s:strip_pair_characters(a:base, item))
     let visited[item.word] = 1
-    if len(targets) >= max_len
+    if len(targets) >= a:max_len
       break
     endif
   endfor
@@ -178,7 +177,7 @@ let g:asyncomplete_preprocessor = [function('s:my_asyncomplete_preprocessor')]
 
 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
       \ 'name': 'buffer',
-      \ 'allowlist': ['*'],
+      \ 'allowlist': ['html'],
       \ 'blocklist': [],
       \ 'priority': 300,
       \ 'completor': function('asyncomplete#sources#buffer#completor'),
