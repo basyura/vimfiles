@@ -13,17 +13,17 @@ let s:settings = {
       \ 'html' : {'min_chars': 2, 'popup_delay': 50, 'matcher': 'fuzzy'},
       \}
 
+augroup MyAllAsyncompleteStting
+  autocmd!
+  autocmd BufEnter *  call s:all_settings()
+augroup END
+
 function! s:decide()
   if asyncomplete#menu_selected()
     return "\<C-y>"
   endif
   return "\<C-n>\<C-c>a"
 endfunction
-
-augroup MyAllAsyncompleteStting
-  autocmd!
-  autocmd BufEnter *  call s:all_settings()
-augroup END
 
 function! s:all_settings()
   let pair = s:to_pair()
@@ -35,7 +35,6 @@ function! s:to_pair()
   if has_key(s:settings, &filetype)
     return s:settings[&filetype]
   end
-
   return {'min_chars': s:default_min_chars, 'popup_delay': s:default_popup_delay}
 endfunction
 
@@ -63,55 +62,81 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
     endif
 
     let matcher = s:get_matcher()
+    let res = { 'targets': [], 'visited': {} }
     if key.source_name == 'file' || matcher == 'fuzzy'
-      for item in matchfuzzypos(matches['items'], base, {'key':'word'})[0]
-        if has_key(visited, item.word)
-          continue
-        end
-        call add(targets, s:strip_pair_characters(base, item))
-        let visited[item.word] = 1
-        if len(targets) >= max_len
-          break
-        endif
-      endfor
+      let res = s:complete_fuzzy(matches, base, targets, visited)
     else 
-      " start with
-      for item in matches['items']
-        if has_key(visited, item.word)
-          continue
-        end
-        let reg = "^" . base
-        if item.word =~? reg
-          call add(targets, s:strip_pair_characters(base, item))
-          let visited[item.word] = 1
-          if len(targets) >= max_len
-            break
-          endif
-        endif
-      endfor
+      let res = s:complete_start_with(matches, base, targets, visited, max_len)
     endif
+
+    let targets = res.targets
+    let visited = res.visited
   endfor
 
-  " let s = join(map(copy(targets), 'v:val.word'), '|')
-  let comp = ''
-  for v in targets
-    let comp .= v.word . '|'
-  endfor
-
-  if len(targets) == 0
-    if s:before_comp != ''
-      call s:invoke_complete(a:options, targets)
-    endif
-  elseif s:before_comp != comp
-      call s:invoke_complete(a:options, targets)
+  let comp = s:toCompKey(targets)
+  if s:before_comp != comp
+    call s:invoke_complete(a:options, targets)
   endif
 
+  " if len(targets) == 0
+  "   if s:before_comp != ''
+  "     call s:invoke_complete(a:options, targets)
+  "   endif
+  " elseif s:before_comp != comp
+  "     call s:invoke_complete(a:options, targets)
+  " endif
+
   let s:before_comp = comp
+endfunction
+
+function! s:complete_fuzzy(matches, base, targets,  visited)
+  let targets = a:targets
+  let visited = a:visited
+  for item in matchfuzzypos(a:matches['items'], a:base, {'key':'word'})[0]
+    if has_key(visited, item.word)
+      continue
+    end
+    call add(targets, s:strip_pair_characters(a:base, item))
+    let visited[item.word] = 1
+    if len(targets) >= max_len
+      break
+    endif
+  endfor
+
+  return { 'targets': targets, 'visited': visited }
+endfunction
+
+function! s:complete_start_with(matches, base, targets, visited, max_len)
+  let targets = a:targets
+  let visited = a:visited
+  for item in a:matches['items']
+    if has_key(visited, item.word)
+      continue
+    end
+    let reg = "^" . a:base
+    if item.word =~? reg
+      call add(targets, s:strip_pair_characters(a:base, item))
+      let visited[item.word] = 1
+      if len(targets) >= a:max_len
+        break
+      endif
+    endif
+  endfor
+
+  return { 'targets': targets, 'visited': visited }
 endfunction
 
 function! s:invoke_complete(options, targets)
   call asyncomplete#preprocess_complete(a:options, a:targets)
   echo ""
+endfunction
+
+function! s:toCompKey(targets)
+  let s = ''
+  for v in a:targets
+    let s .= v.word . '|'
+  endfor
+  return s
 endfunction
 
 
