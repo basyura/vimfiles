@@ -5,8 +5,8 @@ end
 
 inoremap <expr> <cr> pumvisible() ? <SID>decide() : "\<cr>"
 
-let s:default_min_chars   = 0
-let s:default_popup_delay = 200
+let s:default_min_chars   = 2
+let s:default_popup_delay = 100
 let s:default_matcher     = 'start_with'
 let s:settings = {
       \ 'go'   : {'min_chars': 0, 'popup_delay': 100 },
@@ -44,12 +44,18 @@ function! s:get_matcher()
   return get(setting, 'matcher', s:default_matcher)
 endfunction
 
-let s:before = {'len': 0, 'word': ''}
+let s:before_comp = ''
 function! s:my_asyncomplete_preprocessor(options, matches) abort
   let visited = {}
   let targets = []
+  let max_len = 5
 
-  for [source_name, matches] in items(a:matches)
+  for key in s:toKeys(a:matches)
+    let matches = a:matches[key.source_name]
+    if len(targets) >= max_len
+      break
+    endif
+
     let startcol = matches['startcol']
     let base = a:options['typed'][startcol - 1:]
     if base == ""
@@ -57,13 +63,16 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
     endif
 
     let matcher = s:get_matcher()
-    if source_name == 'file' || matcher == 'fuzzy'
+    if key.source_name == 'file' || matcher == 'fuzzy'
       for item in matchfuzzypos(matches['items'], base, {'key':'word'})[0]
         if has_key(visited, item.word)
           continue
         end
         call add(targets, s:strip_pair_characters(base, item))
         let visited[item.word] = 1
+        if len(targets) >= max_len
+          break
+        endif
       endfor
     else 
       " start with
@@ -72,34 +81,46 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
           continue
         end
         let reg = "^" . base
-        try
         if item.word =~? reg
           call add(targets, s:strip_pair_characters(base, item))
           let visited[item.word] = 1
+          if len(targets) >= max_len
+            break
+          endif
         endif
-      catch
-        echom source_name
-        echom item
-        echom v:exception
-      endtry
       endfor
     endif
+  endfor
 
+  " let s = join(map(copy(targets), 'v:val.word'), '|')
+  let comp = ''
+  for v in targets
+    let comp .= v.word . '|'
   endfor
 
   if len(targets) == 0
-    if s:before.len != 0
+    if s:before_comp != ''
       call asyncomplete#preprocess_complete(a:options, targets)
     endif
-    let s:before = {'len': 0, 'word': ''}
-    return
-  end
-
-  if s:before.len != len(targets) && s:before.word != targets[0].word
+  elseif s:before_comp != comp
     call asyncomplete#preprocess_complete(a:options, targets)
   endif
 
-  let s:before = {'len': len(targets), "word": targets[0].word}
+  let s:before_comp = comp
+endfunction
+
+function! s:toKeys(matches)
+  let keys = []
+  for key in keys(a:matches)
+     let source = asyncomplete#get_source_info(key)
+     let priority = 0
+     if has_key(source, 'priority')
+       let priority = source.priority
+     endif
+     call add(keys, {'source_name': key, 'priority': priority})
+  endfor
+  let keys = sort(keys, {a, b -> a.priority - b.priority})
+  return keys
 endfunction
 
 let s:pair = {
@@ -128,6 +149,7 @@ call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options
       \ 'name': 'buffer',
       \ 'allowlist': ['*'],
       \ 'blocklist': [],
+      \ 'priority': 300,
       \ 'completor': function('asyncomplete#sources#buffer#completor'),
       \ 'config': {
         \    'max_buffer_size': 5000000,
@@ -137,7 +159,7 @@ call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options
 call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
       \ 'name': 'file',
       \ 'allowlist': ['*'],
-      \ 'priority': 10,
+      \ 'priority': 200,
       \ 'completor': function('asyncomplete#sources#file#completor')
       \ }))
 

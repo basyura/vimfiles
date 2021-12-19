@@ -45,4 +45,12 @@ snippet unite-source
 
   endfunction
 
-  let &cpo = s:save_cpo
+snippet main
+  function! s:main()
+    echo 'hello'${1}
+  endfunction
+
+  call s:main()
+
+
+
