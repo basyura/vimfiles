@@ -47,7 +47,7 @@ endfunction
 nnoremap <Leader><Leader> :Unite 
 nnoremap <silent> <Leader>g :Unite grep:.:: -no-quit -no-start-insert -direction=botright -buffer-name=grep -hide-source-names -keep-focus<CR>
 let g:unite_source_grep_command = 'jvgrep'
-let g:unite_source_grep_default_opts = '-r --no-color'
+let g:unite_source_grep_default_opts = '-r --no-color -I'
 let g:unite_source_grep_recursive_opt = '-R'
 
 function! s:grep()
