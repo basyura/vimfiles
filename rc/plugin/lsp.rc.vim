@@ -27,5 +27,6 @@ function! Apply_lsp_common_settings()
 endfunction
 
 augroup LspCommonGroup
-  autocmd FileType vue  call Apply_lsp_common_settings()
+  au!
+  autocmd FileType vue call Apply_lsp_common_settings()
 augroup END
