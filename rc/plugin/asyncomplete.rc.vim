@@ -7,7 +7,7 @@ inoremap <expr> <cr> pumvisible() ? <SID>decide() : "\<cr>"
 
 let s:default_min_chars   = 0
 let s:default_popup_delay = 100
-let s:default_matcher     = 'start_with'
+let s:default_matcher     = 'starts_with'
 let s:settings = {
       \ 'go'   : {'min_chars': 0, 'popup_delay': 100 },
       \ 'html' : {'min_chars': 0, 'popup_delay': 50, 'matcher': 'fuzzy'},
@@ -38,93 +38,93 @@ function! s:to_pair()
   return {'min_chars': s:default_min_chars, 'popup_delay': s:default_popup_delay}
 endfunction
 
-function! s:get_matcher()
+function! s:get_matcher(options, key)
+  if a:key.source_name == 'file' || stridx(a:options.base, "~") >= 0
+    return 'fuzzy'
+  endif
+
   let setting = get(s:settings, &filetype, {})
-  return get(setting, 'matcher', s:default_matcher)
+  let matcher = get(setting, 'matcher', s:default_matcher)
+  return matcher
 endfunction
 
 let s:before_comp = ''
 function! s:my_asyncomplete_preprocessor(options, matches) abort
-  let visited = {}
-  let targets = []
-  let max_len = 5
+
+  let context = {
+        \ "options": a:options,
+        \ "max_len": 5,
+        \ "candidates": [],
+        \ "visited": {},
+        \}
 
   for key in s:toKeys(a:matches)
-    if len(targets) >= max_len
+    if len(context.candidates) >= context.max_len
       break
     endif
 
-    let matches = a:matches[key.source_name]
-    let base    = a:options.base
-
-    let matcher = s:get_matcher()
-    if base != "" && (key.source_name == 'file' || matcher == 'fuzzy')
-      let res = s:complete_fuzzy(matches, base, targets, visited, max_len)
+    let matcher = s:get_matcher(a:options, key)
+    echom key.source_name . ' ' . matcher
+    if matcher == 'fuzzy'
+      let candidates = s:gather_fuzzy(context, a:matches[key.source_name])
     else 
-      let res = s:complete_start_with(matches, base, targets, visited, max_len)
+      let candidates = s:gather_starts_with(context, a:matches[key.source_name])
     endif
-
-    let targets = res.targets
-    let visited = res.visited
+    let context.candidates += candidates
   endfor
 
-  let comp = s:toCompKey(targets)
+  let comp = s:toCompKey(context.candidates)
   if s:before_comp != comp
-    call s:invoke_complete(a:options, targets)
+    call s:invoke_complete(a:options, context.candidates)
   endif
 
   let s:before_comp = comp
 endfunction
 
-function! s:complete_fuzzy(matches, base, targets, visited, max_len) abort
-  if a:base == ""
-    return s:merge(a:targets, [])
+function! s:gather_fuzzy(context, matches) abort
+  if a:context.options.base == ""
+    return []
   endif
 
   let appendix = []
-  let visited = a:visited
-  let items = matchfuzzypos(a:matches['items'], a:base, {'key':'word'})[0]
+  let items = matchfuzzypos(a:matches['items'], a:context.options.base, {'key':'word'})[0]
   for item in items
-    if has_key(visited, item.word)
+    if has_key(a:context.visited, item.word)
       continue
     end
-    call add(appendix, s:strip_pair_characters(a:base, item))
-    let visited[item.word] = 1
-    if len(a:targets) + len(appendix) >= a:max_len
+    call add(appendix, s:strip_pair_characters(a:context.options.base, item))
+    let a:context.visited[item.word] = 1
+    if len(a:context.candidates) + len(appendix) >= a:context.max_len
       break
     endif
   endfor
 
-  return s:merge(a:targets, appendix, visited)
+  return s:sort(appendix)
 endfunction
 
-function! s:complete_start_with(matches, base, targets, visited, max_len)
+function! s:gather_starts_with(context, matches)
   let appendix = []
-  let visited = a:visited
   for item in a:matches['items']
-    if has_key(visited, item.word)
+    if has_key(a:context.visited, item.word)
       continue
     end
-    let reg = "^" . a:base
+    let reg = "^" . a:context.options.base
     if item.word =~? reg
-      call add(appendix, s:strip_pair_characters(a:base, item))
-      let visited[item.word] = 1
-      if len(a:targets) + len(appendix) >= a:max_len
+      call add(appendix, s:strip_pair_characters(a:context.options.base, item))
+      let a:context.visited[item.word] = 1
+      if len(a:context.candidates) + len(appendix) >= a:context.max_len
         break
       endif
     endif
   endfor
 
-  return s:merge(a:targets, appendix, visited)
+  return s:sort(appendix)
 endfunction
 
-function! s:merge(targets, appendix, visited)
-  let targets = a:targets
+function! s:sort(appendix)
   let appendix = a:appendix
   call sort(appendix, {a,b -> len(a.word) > len(b.word)})
-  let targets = a:targets + appendix
-
-  return { 'targets': targets, 'visited': a:visited }
+  return appendix
 endfunction
 
 function! s:invoke_complete(options, targets)
