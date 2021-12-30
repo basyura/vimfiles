@@ -115,6 +115,7 @@ nnoremap <Space>ss  :<C-u>Source %<Enter>
 imap <C-v> <C-R>+
 cmap <C-v> <C-R>+
 
+nnoremap <Esc> <Esc>:noh<CR>
 nnoremap I i<Space><Left>
 
 nnoremap qq q

@@ -5,12 +5,12 @@ end
 
 inoremap <expr> <cr> pumvisible() ? <SID>decide() : "\<cr>"
 
-let s:default_min_chars   = 2
+let s:default_min_chars   = 0
 let s:default_popup_delay = 100
 let s:default_matcher     = 'start_with'
 let s:settings = {
       \ 'go'   : {'min_chars': 0, 'popup_delay': 100 },
-      \ 'html' : {'min_chars': 2, 'popup_delay': 50, 'matcher': 'fuzzy'},
+      \ 'html' : {'min_chars': 0, 'popup_delay': 50, 'matcher': 'fuzzy'},
       \}
 
 augroup MyAllAsyncompleteStting
@@ -50,19 +50,15 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
   let max_len = 5
 
   for key in s:toKeys(a:matches)
-    let matches = a:matches[key.source_name]
     if len(targets) >= max_len
       break
     endif
 
-    let startcol = matches['startcol']
-    let base = a:options['typed'][startcol - 1:]
-    if base == ""
-      continue
-    endif
+    let matches = a:matches[key.source_name]
+    let base    = a:options.base
 
     let matcher = s:get_matcher()
-    if key.source_name == 'file' || matcher == 'fuzzy'
+    if base != "" && (key.source_name == 'file' || matcher == 'fuzzy')
       let res = s:complete_fuzzy(matches, base, targets, visited, max_len)
     else 
       let res = s:complete_start_with(matches, base, targets, visited, max_len)
@@ -77,36 +73,33 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
     call s:invoke_complete(a:options, targets)
   endif
 
-  " if len(targets) == 0
-  "   if s:before_comp != ''
-  "     call s:invoke_complete(a:options, targets)
-  "   endif
-  " elseif s:before_comp != comp
-  "     call s:invoke_complete(a:options, targets)
-  " endif
-
   let s:before_comp = comp
 endfunction
 
-function! s:complete_fuzzy(matches, base, targets,  visited, max_len)
-  let targets = a:targets
+function! s:complete_fuzzy(matches, base, targets, visited, max_len) abort
+  if a:base == ""
+    return s:merge(a:targets, [])
+  endif
+
+  let appendix = []
   let visited = a:visited
-  for item in matchfuzzypos(a:matches['items'], a:base, {'key':'word'})[0]
+  let items = matchfuzzypos(a:matches['items'], a:base, {'key':'word'})[0]
+  for item in items
     if has_key(visited, item.word)
       continue
     end
-    call add(targets, s:strip_pair_characters(a:base, item))
+    call add(appendix, s:strip_pair_characters(a:base, item))
     let visited[item.word] = 1
-    if len(targets) >= a:max_len
+    if len(a:targets) + len(appendix) >= a:max_len
       break
     endif
   endfor
 
-  return { 'targets': targets, 'visited': visited }
+  return s:merge(a:targets, appendix, visited)
 endfunction
 
 function! s:complete_start_with(matches, base, targets, visited, max_len)
-  let targets = a:targets
+  let appendix = []
   let visited = a:visited
   for item in a:matches['items']
     if has_key(visited, item.word)
@@ -114,15 +107,24 @@ function! s:complete_start_with(matches, base, targets, visited, max_len)
     end
     let reg = "^" . a:base
     if item.word =~? reg
-      call add(targets, s:strip_pair_characters(a:base, item))
+      call add(appendix, s:strip_pair_characters(a:base, item))
       let visited[item.word] = 1
-      if len(targets) >= a:max_len
+      if len(a:targets) + len(appendix) >= a:max_len
         break
       endif
     endif
   endfor
 
-  return { 'targets': targets, 'visited': visited }
+  return s:merge(a:targets, appendix, visited)
+endfunction
+
+function! s:merge(targets, appendix, visited)
+  let targets = a:targets
+  let appendix = a:appendix
+  call sort(appendix, {a,b -> len(a.word) > len(b.word)})
+  let targets = a:targets + appendix
+
+  return { 'targets': targets, 'visited': a:visited }
 endfunction
 
 function! s:invoke_complete(options, targets)
@@ -189,7 +191,7 @@ call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options
 call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
       \ 'name': 'file',
       \ 'allowlist': ['*'],
-      \ 'priority': 200,
+      \ 'priority': 300,
       \ 'completor': function('asyncomplete#sources#file#completor')
       \ }))
 
@@ -200,3 +202,8 @@ call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_opt
       \ 'priority': 100,
       \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
       \ }))
+
+
+function! s:log(msg)
+  " call webapi#http#post("localhost:5678", {"log": a:msg})
+endfunction
