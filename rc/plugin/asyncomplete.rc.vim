@@ -39,10 +39,6 @@ function! s:to_pair()
 endfunction
 
 function! s:get_matcher(options, key)
-  if a:key.source_name == 'file' || stridx(a:options.base, "~") >= 0
-    return 'fuzzy'
-  endif
-
   let setting = get(s:settings, &filetype, {})
   let matcher = get(setting, 'matcher', s:default_matcher)
   return matcher
@@ -64,7 +60,6 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
     endif
 
     let matcher = s:get_matcher(a:options, key)
-    echom key.source_name . ' ' . matcher
     if matcher == 'fuzzy'
       let candidates = s:gather_fuzzy(context, a:matches[key.source_name])
     else 
@@ -108,7 +103,7 @@ function! s:gather_starts_with(context, matches)
     if has_key(a:context.visited, item.word)
       continue
     end
-    let reg = "^" . a:context.options.base
+    let reg = "^" . escape(a:context.options.base, '~')
     if item.word =~? reg
       call add(appendix, s:strip_pair_characters(a:context.options.base, item))
       let a:context.visited[item.word] = 1
