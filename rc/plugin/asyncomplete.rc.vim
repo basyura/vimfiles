@@ -19,8 +19,17 @@ augroup MyAllAsyncompleteStting
 augroup END
 
 function! s:decide()
+  " Already item is selected.
   if asyncomplete#menu_selected()
     return "\<C-y>"
+  endif
+
+  " Select first item.
+  let item = complete_info().items[0]
+  " Complete '(' if item's kind id function.
+  let kind = get(item, 'kind', '')
+  if kind == 'function' || kind == 'method'
+    return "\<C-n>\<C-c>a("
   endif
   return "\<C-n>\<C-c>a"
 endfunction
@@ -54,6 +63,7 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
         \ "visited": {},
         \}
 
+  " key : priority, source_name
   for key in s:toKeys(a:matches)
     if len(context.candidates) >= context.max_len
       break
@@ -61,9 +71,9 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
 
     let matcher = s:get_matcher(a:options, key)
     if matcher == 'fuzzy'
-      let candidates = s:gather_fuzzy(context, a:matches[key.source_name])
+      let candidates = s:gather_fuzzy(context, key.source_name, a:matches[key.source_name])
     else 
-      let candidates = s:gather_starts_with(context, a:matches[key.source_name])
+      let candidates = s:gather_starts_with(context, key.source_name, a:matches[key.source_name])
     endif
     let context.candidates += candidates
   endfor
@@ -76,7 +86,7 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
   let s:before_comp = comp
 endfunction
 
-function! s:gather_fuzzy(context, matches) abort
+function! s:gather_fuzzy(context, source_name, matches) abort
   if a:context.options.base == ""
     return []
   endif
@@ -97,14 +107,18 @@ function! s:gather_fuzzy(context, matches) abort
   return s:sort(appendix)
 endfunction
 
-function! s:gather_starts_with(context, matches)
+function! s:gather_starts_with(context, source_name, matches)
   let appendix = []
+  " item
+  "  {'word': 'Initialize', 'abbr': 'Initialize', 'user_data': '{"vim-lsp/key":"119"}', 'kind': 'function', 'empty': 1, 'dup': 1, 'icase': 1}
+  "  {'word': 'Instance().Core', 'abbr': 'Instance().Core', 'user_data': '{"vim-lsp/key":"111"}', 'kind': 'field', 'empty': 1, 'dup': 1, 'icase': 1}
   for item in a:matches['items']
-    if has_key(a:context.visited, item.word)
+    let word = item.word
+    if has_key(a:context.visited, word)
       continue
     end
     let reg = "^" . escape(a:context.options.base, '~')
-    if item.word =~? reg
+    if word =~? reg
       call add(appendix, s:strip_pair_characters(a:context.options.base, item))
       let a:context.visited[item.word] = 1
       if len(a:context.candidates) + len(appendix) >= a:context.max_len
