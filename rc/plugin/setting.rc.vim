@@ -88,6 +88,7 @@ set fileencodings=ucs-bom,utf-8,cp932,shift-jis,euc-jp
 set fileformats=unix,dos
 
 set ignorecase
+set termwinkey=<C-l>
 
 nnoremap <Leader>p :Prettier<enter>:w<enter>
 
