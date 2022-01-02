@@ -29,7 +29,7 @@ function! s:decide()
   " Complete '(' if item's kind id function.
   let kind = get(item, 'kind', '')
   if kind == 'function' || kind == 'method'
-    return "\<C-n>\<C-c>a("
+    return "\<C-n>\<C-c>a()\<Left>"
   endif
   return "\<C-n>\<C-c>a"
 endfunction
