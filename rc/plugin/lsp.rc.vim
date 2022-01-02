@@ -23,6 +23,10 @@ function! Apply_lsp_common_settings()
 	inoremap <buffer> <expr><C-n> <SID>lsp_scroll(+2, "\<Down>")
   inoremap <buffer> <expr><C-c> <SID>close_popup()
 
+  " to skip plugin's keybinding
+  map <silent> <buffer> <C-0> <Plug>(lsp-float-close)
+
+
   " どこかで上書きされる？
   if g:colors_name == "newspaper"
     hi SignColumn guibg=#cccfbf
