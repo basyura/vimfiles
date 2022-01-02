@@ -131,9 +131,7 @@ function! s:gather_starts_with(context, source_name, matches)
 endfunction
 
 function! s:sort(appendix)
-  let appendix = a:appendix
-  call sort(appendix, {a,b -> len(a.word) > len(b.word)})
-  return appendix
+  return sort(a:appendix, {a,b -> len(a.word) - len(b.word)})
 endfunction
 
 function! s:invoke_complete(options, targets)
