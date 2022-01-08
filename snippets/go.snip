@@ -133,3 +133,16 @@ snippet err
   if err != nil {
     return ${1}err
   }
+
+snippet ef
+  fmt.Errorf("${1}\n%w", err)
+
+snippet readsjis
+	fp, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer fp.Close()
+
+	reader := transform.NewReader(fp, japanese.ShiftJIS.NewDecoder())
+	bytes, err := io.ReadAll(reader)
