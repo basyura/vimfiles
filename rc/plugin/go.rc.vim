@@ -1,24 +1,8 @@
 
-if executable('gopls')
-  augroup LspGo
-    au!
-  "   autocmd User lsp_setup call lsp#register_server({
-  "       \ 'name': 'go-lang',
-  "       \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-  "       \ 'whitelist': ['go'],
-  "       \ })
-    autocmd FileType go setlocal omnifunc=lsp#complete
-    autocmd FileType go setlocal signcolumn=yes
-  augroup END
-endif
-
-
 let go_def_mapping_enabled = 0
 let go_doc_keywordprg_enabled = 0
 let go_textobj_enabled = 0
 let g:lsp_document_code_action_signs_enabled=0
-"let g:go_fmt_autosave = 0
-"let g:go_gocode_unimported_packages = 1
 
 command! GoFmt call s:gofmt()
 
@@ -34,15 +18,12 @@ augroup MyGroup-go
 augroup END
 
 function! s:settings()
-  call Apply_lsp_common_settings()
-
   nnoremap <buffer> gi :GoImport 
   nnoremap <buffer> gp :Unite go/import<CR>
   nnoremap <buffer> gb :GoBuild<CR>
   nnoremap <buffer><silent> <C-x><C-b> :call <SID>gobuild()<CR>
   nnoremap <buffer> <C-x><C-i> :GoImport
   nnoremap <buffer> <C-x><C-x> :call <SID>reset_lsp()<CR>
-
 
   setlocal tabstop=4
   setlocal shiftwidth=4

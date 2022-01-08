@@ -8,6 +8,10 @@ let g:lsp_preview_max_height = 2
 let g:lsp_documentation_float=0
 
 function! Apply_lsp_common_settings()
+  call s:on_lsp_buffer_enabled()
+endfunction
+
+function! s:on_lsp_buffer_enabled()
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
 
@@ -58,5 +62,5 @@ endfunction
 
 augroup LspCommonGroup
   au!
-  autocmd FileType vue call Apply_lsp_common_settings()
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
