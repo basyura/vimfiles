@@ -5,9 +5,6 @@ augroup MyRLsp
 augroup END
 
 function! s:configure_lsp() abort
-  setlocal signcolumn=yes
-  setlocal completefunc=lsp#complete
-  call Apply_lsp_common_settings()
   inoremap <buffer> -- <- 
   augroup MyRLspAUTO
     autocmd BufWritePre <buffer> LspDocumentFormatSync
