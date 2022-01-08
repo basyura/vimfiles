@@ -24,7 +24,7 @@ function! Apply_lsp_common_settings()
   inoremap <buffer> <expr><C-c> <SID>close_popup()
 
   " to skip plugin's keybinding
-  map <silent> <buffer> <C-0> <Plug>(lsp-float-close)
+  map <silent> <buffer> <C-c> <Plug>(lsp-float-close)
 
 
   " どこかで上書きされる？

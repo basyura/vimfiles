@@ -78,12 +78,12 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
     let context.candidates += candidates
   endfor
 
-  let comp = s:toCompKey(context.candidates)
-  if s:before_comp != comp
+  " let comp = s:toCompKey(context.candidates)
+  " if s:before_comp != comp
     call s:invoke_complete(a:options, context.candidates)
-  endif
+  " endif
 
-  let s:before_comp = comp
+  " let s:before_comp = comp
 endfunction
 
 function! s:gather_fuzzy(context, source_name, matches) abort
@@ -186,8 +186,8 @@ let g:asyncomplete_preprocessor = [function('s:my_asyncomplete_preprocessor')]
 
 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
       \ 'name': 'buffer',
-      \ 'allowlist': ['html'],
-      \ 'blocklist': [],
+      \ 'allowlist': ['html','zsh'],
+      \ 'blocklist': ['unite'],
       \ 'priority': 300,
       \ 'completor': function('asyncomplete#sources#buffer#completor'),
       \ 'config': {
@@ -198,6 +198,7 @@ call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options
 call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
       \ 'name': 'file',
       \ 'allowlist': ['*'],
+      \ 'blocklist': ['unite'],
       \ 'priority': 300,
       \ 'completor': function('asyncomplete#sources#file#completor')
       \ }))
@@ -205,7 +206,7 @@ call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
 call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
       \ 'name': 'neosnippet',
       \ 'allowlist': ['*'],
-      \ 'blocklist': [],
+      \ 'blocklist': ['unite'],
       \ 'priority': 100,
       \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
       \ }))
