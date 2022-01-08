@@ -12,7 +12,7 @@ function! Apply_lsp_common_settings()
   setlocal signcolumn=yes
 
   nnoremap <buffer> gd :LspDefinition<CR>
-  nnoremap <buffer> <C-k> :LspDefinition<CR>
+  nnoremap <buffer> <C-k> :call <SID>lsp_definition()<CR>
   nnoremap <buffer> K :LspHover<CR>
   nnoremap <buffer> <Leader>r :LspRename<CR>
   nnoremap <buffer> <C-x><C-f> :LspDocumentFormat<CR>
@@ -33,6 +33,11 @@ function! Apply_lsp_common_settings()
   else
     hi SignColumn guibg=black
   endif
+endfunction
+
+function! s:lsp_definition()
+  :call feedkeys("\<C-c>")
+  :LspDefinition
 endfunction
 
 function! s:lsp_scroll(count, key)
