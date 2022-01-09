@@ -21,17 +21,26 @@ augroup END
 function! s:decide()
   " Already item is selected.
   if asyncomplete#menu_selected()
+    if s:is_method(v:completed_item)
+      return "\<C-y>()\<Left>"
+    endif
     return "\<C-y>"
   endif
 
   " Select first item.
-  let item = complete_info().items[0]
   " Complete '(' if item's kind id function.
-  let kind = get(item, 'kind', '')
-  if kind == 'function' || kind == 'method'
+  if s:is_method(complete_info().items[0])
     return "\<C-n>\<C-c>a()\<Left>"
   endif
   return "\<C-n>\<C-c>a"
+endfunction
+
+function! s:is_method(item)
+  let kind = get(a:item, 'kind', '')
+  if kind == 'function' || kind == 'method'
+    return 1
+  endif
+  return 0
 endfunction
 
 function! s:all_settings()
