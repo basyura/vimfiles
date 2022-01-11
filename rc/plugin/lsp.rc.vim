@@ -41,9 +41,12 @@ function! s:lsp_definition()
   :LspDefinition
 endfunction
 
+let s:vs_vim_window = vital#lsp#import('VS.Vim.Window')
 function! s:lsp_scroll(count, key)
-  let w = vital#lsp#import('VS.Vim.Window')
-  let list = w.find({ winid -> w.is_floating(winid)})
+  if pumvisible()
+    return key
+  endif
+  let list = s:vs_vim_window.find({ winid -> s:vs_vim_window.is_floating(winid)})
   if len(list) != 0
     return lsp#scroll(a:count)
   end
