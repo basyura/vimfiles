@@ -115,11 +115,11 @@ endfunction
 
 function! s:gather_starts_with(state, source_name, options, match)
 
-  let flg = 1
+  let flg = 0
   " if a:source_name == "asyncomplete_lsp_gopls"
-  if a:source_name == "asyncomplete_lsp_typescript-language-server"
-    let flg = 1
-  endif
+  "if a:source_name == "asyncomplete_lsp_typescript-language-server"
+  "  let flg = 1
+  "endif
 
   let appendix = []
   let comp_prefix = a:options.typed[a:options.startcol-1:a:match.startcol-2]
