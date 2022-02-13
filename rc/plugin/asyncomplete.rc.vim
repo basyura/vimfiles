@@ -115,18 +115,22 @@ endfunction
 
 function! s:gather_starts_with(state, source_name, options, match)
 
-  let flg = 0
+  let isDebug = 0 "{{{
   " if a:source_name == "asyncomplete_lsp_gopls"
   "if a:source_name == "asyncomplete_lsp_typescript-language-server"
-  "  let flg = 1
+  "  let isDebug = 1
   "endif
+  "}}}
 
+  " a:options.base を見て補完候補を見れば良かったのだけど、
+  " file が動くとそうでもなくなる考慮を追加
+  " file は補完対象が無い場合に asyncomplete#complete を呼ばないようにして回避
   let appendix = []
   let comp_prefix = a:options.typed[a:options.startcol-1:a:match.startcol-2]
   let comp_word = a:options.typed[a:match.startcol-1:a:options.col]
   let reg = "^" . escape(comp_word, '~')
 
-  if flg
+  if isDebug "{{{
     call s:log("\n## " . a:source_name . " : ---------------------")
     call s:log("┌─ options")
     call s:log("typed    : [" . a:options.typed  . "]")
@@ -140,7 +144,7 @@ function! s:gather_starts_with(state, source_name, options, match)
     call s:log("ctx.typed : " . a:match.ctx.typed)
     call s:log("ctx.col   : " . a:match.ctx.col . " → [" . a:options.typed[a:match.ctx.col:])
     call s:log("startcol  : " . a:match.startcol. " → [" . a:options.typed[a:match.startcol:])
-  end
+  end "}}}
 
   if comp_word == ""
     return []
@@ -153,23 +157,22 @@ function! s:gather_starts_with(state, source_name, options, match)
     end
 
     if word =~? reg
-      if a:options.typed != a:options.base
-        let item = json_decode(json_encode(item))
-        let item.word = comp_prefix . item.word
-      end
+      " neosnippet の word が重複していくのでコピーするようにしたが file を見直したら発生しなくなった {{{
+      " おかしな場所で補完されるようになったので comp_prefix をつけたが file を略
+      "if a:options.typed != a:options.base
+      "  let item = json_decode(json_encode(item))
+      "  let item.word = comp_prefix . item.word
+      "end}}}
 
-      " let l:startcol = a:match['startcol']
-      " let l:base = a:options['typed'][l:startcol - 1:]
-      " let item = s:strip_pair_characters(l:base, l:item)
-
-      if flg
+      if isDebug "{{{
         if  a:options.typed != a:options.base
           call s:log("→ " . word . " → " . item.word . " <copied>")
           call s:log("→ " . json_encode(item))
         else
           call s:log("→ " . word . " → " . item.word)
         end
-      end
+      end "}}}
+
       call add(appendix, item)
       let a:state.visited[item.word] = 1
       if len(a:state.items) + len(appendix) >= a:state.max_len
@@ -270,3 +273,5 @@ function! s:log(msg)
     silent! echon a:msg . "\n"
   redir END
 endfunction
+
+" vim: foldmethod=marker
