@@ -69,10 +69,10 @@ call plug#begin('~/.vim/plugged')
 
   " complete
   Plug 'prabirshrestha/asyncomplete-buffer.vim'
-  Plug 'prabirshrestha/asyncomplete-file.vim'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
   Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'basyura/asyncomplete-file.vim'
 
   " Plug 'basyura/neocomplete.vim'
 
