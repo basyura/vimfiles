@@ -2,6 +2,8 @@ if !has_key(g:plugs, 'asyncomplete.vim')
   finish
 end
 
+let s:use_my_processor = 1
+
 inoremap <expr> <cr> pumvisible() ? <SID>decide() : "\<cr>"
 
 let s:default_min_chars   = 0
@@ -159,10 +161,10 @@ function! s:gather_starts_with(state, source_name, options, match)
     if word =~? reg
       " neosnippet の word が重複していくのでコピーするようにしたが file を見直したら発生しなくなった {{{
       " おかしな場所で補完されるようになったので comp_prefix をつけたが file を略
-      "if a:options.typed != a:options.base
-      "  let item = json_decode(json_encode(item))
-      "  let item.word = comp_prefix . item.word
-      "end}}}
+      if a:options.typed != a:options.base
+        " let item = json_decode(json_encode(item))
+        let item.word = comp_prefix . item.word
+      end "}}}
 
       if isDebug "{{{
         if  a:options.typed != a:options.base
@@ -234,7 +236,9 @@ function! s:strip_pair_characters(base, item) abort
   return l:item
 endfunction
 
-let g:asyncomplete_preprocessor = [function('s:my_asyncomplete_preprocessor')]
+if s:use_my_processor
+  let g:asyncomplete_preprocessor = [function('s:my_asyncomplete_preprocessor')]
+endif
 
 
 
