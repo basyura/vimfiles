@@ -10,7 +10,6 @@ endfunction
 
 function! s:on_lsp_buffer_enabled()
   setlocal omnifunc=lsp#complete
-  setlocal signcolumn=yes
 
   nnoremap <buffer> gd :LspDefinition<CR>
   nnoremap <buffer> <C-k> :call <SID>lsp_definition()<CR>

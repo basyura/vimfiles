@@ -174,6 +174,8 @@ unlet my_absolute_path
 
 function! s:unite_my_settings()
 
+  setlocal signcolumn=no
+
   imap <buffer> jj <Plug>(unite_insert_leave)
   imap <buffer> <C-j> <Esc>c<Plug>(unite_all_exit)
   imap <buffer> <ESC> <Esc><Plug>(unite_all_exit)
