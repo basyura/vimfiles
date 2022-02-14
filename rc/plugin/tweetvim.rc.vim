@@ -34,6 +34,7 @@ augroup mygroup-tweetvim
   autocmd!
   autocmd FileType tweetvim_say call s:tweetvim_say_my_settings()
   autocmd FileType tweetvim setlocal nonu
+  autocmd FileType tweetvim setlocal signcolumn=no
 augroup END
 
 function! s:tweetvim_settings()
