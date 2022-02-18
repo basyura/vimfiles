@@ -10,7 +10,7 @@ let s:default_min_chars   = 0
 let s:default_popup_delay = 100
 let s:default_matcher     = 'starts_with'
 let s:settings = {
-      \ 'go'   : {'min_chars': 0, 'popup_delay': 100 },
+      \ 'go'   : {'min_chars': 0, 'popup_delay': 50 },
       \ 'html' : {'min_chars': 0, 'popup_delay': 50, 'matcher': 'fuzzy'},
       \}
 
@@ -63,7 +63,7 @@ function! s:get_matcher(options, key)
   return matcher
 endfunction
 
-let s:before_comp = ''
+let b:before_comp = ''
 function! s:my_asyncomplete_preprocessor(options, matches) abort
 
   let state = {
@@ -87,10 +87,14 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
     let state.items += items
   endfor
 
-
-  call s:invoke_complete(a:options, state.items)
-
-  " let s:before_comp = comp
+  let comp = ""
+  for item in state.items
+    let comp .= item.word . "_"
+  endfor
+  if get(b:, "before_comp", "") != comp
+    call s:invoke_complete(a:options, state.items)
+  end
+  let b:before_comp = comp
 endfunction
 
 function! s:gather_fuzzy(state, source_name, options, match) abort
@@ -159,12 +163,12 @@ function! s:gather_starts_with(state, source_name, options, match)
     end
 
     if word =~? reg
-      " neosnippet の word が重複していくのでコピーするようにしたが file を見直したら発生しなくなった {{{
+      " neosnippet の word が重複していくのでコピーするようにしたが file を見直したら発生しなくなった
       " おかしな場所で補完されるようになったので comp_prefix をつけたが file を略
       if a:options.typed != a:options.base
         " let item = json_decode(json_encode(item))
         let item.word = comp_prefix . item.word
-      end "}}}
+      end
 
       if isDebug "{{{
         if  a:options.typed != a:options.base
