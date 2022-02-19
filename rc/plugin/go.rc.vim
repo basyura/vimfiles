@@ -23,7 +23,7 @@ function! s:settings()
   nnoremap <buffer> gb :GoBuild<CR>
   nnoremap <buffer><silent> <C-x><C-b> :call <SID>gobuild()<CR>
   nnoremap <buffer> <C-x><C-i> :GoImport
-  nnoremap <buffer> <C-x><C-x> :call <SID>reset_lsp()<CR>
+  " nnoremap <buffer> <C-x><C-x> :call <SID>reset_lsp()<CR>
 
   setlocal tabstop=4
   setlocal shiftwidth=4
@@ -40,15 +40,16 @@ function! s:gobuild()
   else 
     echo res
   endif
-  call s:reset_lsp()
+  " call s:reset_lsp()
+  :ResetLsp
 endfunction
 
-function! s:reset_lsp()
-  " echo "reset lsp"
-  try
-    call lsp#stop_server("gopls")
-    call timer_start(300, { t -> execute(":edit %")})
-  catch 
-    echomsg 'error occurred:' . v:exception
-  endtry
-endfunction
+" function! s:reset_lsp()
+"   " echo "reset lsp"
+"   try
+"     call lsp#stop_server("gopls")
+"     call timer_start(300, { t -> execute(":edit %")})
+"   catch 
+"     echomsg 'error occurred:' . v:exception
+"   endtry
+" endfunction

@@ -182,7 +182,7 @@ nnoremap <M-j> <C-e>
 nnoremap <Leader>w :WriteToFile<CR>
 nnoremap <silent> <Leader>o :on<CR>
 
-nnoremap <silent> <C-x><C-x> :TabNew<CR>
+nnoremap <silent> <C-x><C-n> :TabNew<CR>
 nnoremap <silent> <C-x><C-l> :tabnext<CR>
 nnoremap <silent> <C-x><C-h> :tabprevious<CR>
 nnoremap <silent> <C-f> :tabnext<CR>

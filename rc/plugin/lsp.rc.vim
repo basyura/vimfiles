@@ -4,6 +4,8 @@ let g:lsp_preview_doubletap = 0
 let g:lsp_preview_max_height = 2
 "let g:lsp_diagnostics_enabled = 0
 
+command! ResetLsp call s:reset_lsp()
+
 function! Apply_lsp_common_settings()
   call s:on_lsp_buffer_enabled()
 endfunction
@@ -18,6 +20,7 @@ function! s:on_lsp_buffer_enabled()
   nnoremap <buffer> <C-x><C-f> :LspDocumentFormat<CR>
   nnoremap <buffer> <C-x><C-d> :LspDocumentDiagnostic<CR>
   nnoremap <buffer> <C-x><C-l> :LspNextError<CR>
+  nnoremap <buffer> <C-x><C-x> :ResetLsp<CR>
 
   inoremap <buffer> <expr><C-p> <SID>lsp_scroll(-2, "\<Up>")
 	inoremap <buffer> <expr><C-n> <SID>lsp_scroll(+2, "\<Down>")
@@ -58,8 +61,20 @@ function! s:close_popup()
   return "\<Ignore>"
 endfunction
 
-
+function! s:reset_lsp()
+  
+  for server in lsp#get_allowed_servers()
+    try
+      call lsp#stop_server(server)
+      call timer_start(300, { t -> execute(":edit %")})
+      echo "reset lsp : " . server
+    catch 
+      echomsg 'error occurred:' . v:exception
+    endtry
+  endfor
+endfunction
 augroup LspCommonGroup
   au!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+

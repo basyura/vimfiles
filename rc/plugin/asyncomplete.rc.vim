@@ -6,12 +6,13 @@ let s:use_my_processor = 1
 
 inoremap <expr> <cr> pumvisible() ? <SID>decide() : "\<cr>"
 
-let s:default_min_chars   = 0
-let s:default_popup_delay = 100
+let s:default_min_chars   = 2
+let s:default_popup_delay = 50
 let s:default_matcher     = 'starts_with'
 let s:settings = {
-      \ 'go'   : {'min_chars': 0, 'popup_delay': 50 },
-      \ 'html' : {'min_chars': 0, 'popup_delay': 50, 'matcher': 'fuzzy'},
+      \ 'go'         : {'min_chars': 1, 'popup_delay': 50 },
+      \ 'javascript' : {'min_chars': 0, 'popup_delay': 0 },
+      \ 'html'       : {'min_chars': 0, 'popup_delay': 50, 'matcher': 'fuzzy'},
       \}
 
 augroup MyAllAsyncompleteStting
@@ -120,12 +121,13 @@ function! s:gather_fuzzy(state, source_name, options, match) abort
 endfunction
 
 function! s:gather_starts_with(state, source_name, options, match)
-
   let isDebug = 0 "{{{
-  " if a:source_name == "asyncomplete_lsp_gopls"
-  "if a:source_name == "asyncomplete_lsp_typescript-language-server"
-  "  let isDebug = 1
-  "endif
+   " if a:source_name == "asyncomplete_lsp_gopls"
+   " if a:source_name == "asyncomplete_lsp_typescript-language-server"
+   " if a:source_name == "file"
+   " if a:source_name == "asyncomplete_lsp_vim-language-server"
+   "  let isDebug = 1
+  " endif
   "}}}
 
   " a:options.base を見て補完候補を見れば良かったのだけど、
@@ -159,6 +161,10 @@ function! s:gather_starts_with(state, source_name, options, match)
   for item in a:match['items']
     let word = item.word
     if has_key(a:state.visited, word)
+      continue
+    end
+
+    if a:source_name != "file" && stridx(word, ".") >= 0
       continue
     end
 
@@ -244,26 +250,29 @@ if s:use_my_processor
   let g:asyncomplete_preprocessor = [function('s:my_asyncomplete_preprocessor')]
 endif
 
+command! OnProcessor call s:change_processor(1)
+command! OffProcessor call s:change_processor(0)
+function! s:change_processor(flg)
+  if a:flg
+    let g:asyncomplete_preprocessor = [function('s:my_asyncomplete_preprocessor')]
+  else
+    let g:asyncomplete_preprocessor = []
+  end
+endfunction
+
 
 
 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
       \ 'name': 'buffer',
       \ 'allowlist': ['html','zsh'],
       \ 'blocklist': ['unite'],
-      \ 'priority': 300,
+      \ 'priority': 200,
       \ 'completor': function('asyncomplete#sources#buffer#completor'),
       \ 'config': {
         \    'max_buffer_size': 5000000,
         \  },
         \ }))
 
-call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-      \ 'name': 'file',
-      \ 'allowlist': ['*'],
-      \ 'blocklist': ['unite'],
-      \ 'priority': 300,
-      \ 'completor': function('asyncomplete#sources#file#completor')
-      \ }))
 
 call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
       \ 'name': 'neosnippet',
@@ -271,6 +280,14 @@ call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_opt
       \ 'blocklist': ['unite'],
       \ 'priority': 100,
       \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
+      \ }))
+
+call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+      \ 'name': 'file',
+      \ 'allowlist': ['*'],
+      \ 'blocklist': ['unite'],
+      \ 'priority': 300,
+      \ 'completor': function('asyncomplete#sources#file#completor')
       \ }))
 
 

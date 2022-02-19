@@ -15,36 +15,6 @@ options head
     command! ${1:#:command_name} call ${2:#:func_name}
 
 
-
-snippet unite-source
-  let s:save_cpo = &cpo
-  set cpo&vim
-
-  "
-  function! unite#sources#${1}#define()
-    return s:source
-  endfunction
-  "
-  let s:source = {
-        \ 'name': '${2}',
-        \ 'action_table'   : {},
-        \ 'default_action' : {'common' : 'execute'},
-        \ 'is_listed'      : 0,
-        \ }
-
-  " {
-  "   "word" : word,
-  "   "abbr" : abbr,
-  " }
-  function! s:source.gather_candidates(args, context)
-    
-  endfunction
-  "
-  let s:source.action_table.execute = {'description' : '${3}'}
-  function! s:source.action_table.execute.func(candidate)
-
-  endfunction
-
 snippet main
   function! s:main()
     echo 'hello'${1}
