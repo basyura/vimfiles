@@ -1,5 +1,4 @@
 " highlight for newspaper 
-
 if has('mac')
   set transparency=0
 endif
@@ -62,3 +61,6 @@ hi CleverFChar guibg=#dcdda8 guifg=#9e3224
 " vim-go
 "hi SignColumn guibg=#cccfbf
 hi SignColumn guifg=#666677 guibg=#cccfbf
+
+
+hi xmlTagName guifg=#0f58af 
