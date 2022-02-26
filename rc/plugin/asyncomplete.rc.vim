@@ -286,7 +286,7 @@ call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
       \ 'name': 'file',
       \ 'allowlist': ['*'],
       \ 'blocklist': ['unite'],
-      \ 'priority': 300,
+      \ 'priority': 0,
       \ 'completor': function('asyncomplete#sources#file#completor')
       \ }))
 
