@@ -64,3 +64,5 @@ hi SignColumn guifg=#666677 guibg=#cccfbf
 
 
 hi xmlTagName guifg=#0f58af 
+hi jsImport guifg=Brown
+hi jsFuncCall guifg=Brown
