@@ -2,18 +2,30 @@ if !has_key(g:plugs, 'asyncomplete.vim')
   finish
 end
 
+function! s:alias(base, types)
+  for typ in a:types
+    let s:settings[typ] = s:settings[a:base]
+  endfor
+endfunction
+
+
 let s:use_my_processor = 1
 
 inoremap <expr> <cr> pumvisible() ? <SID>decide() : "\<cr>"
 
-let s:default_min_chars   = 2
-let s:default_popup_delay = 50
+let s:default_min_chars   = 1
+let s:default_popup_delay = 100
 let s:default_matcher     = 'starts_with'
+
 let s:settings = {
-      \ 'go'         : {'min_chars': 1, 'popup_delay': 50 },
-      \ 'javascript' : {'min_chars': 0, 'popup_delay': 0 },
-      \ 'html'       : {'min_chars': 0, 'popup_delay': 50, 'matcher': 'fuzzy'},
+      \ 'go'   : {'min_chars': 1, 'popup_delay': 100 },
+      \ 'js'   : {'min_chars': 2, 'popup_delay': 100 },
+      \ 'html' : {'min_chars': 0, 'popup_delay': 50, 'matcher': 'fuzzy'},
       \}
+
+call s:alias('js', ['typescriptreact', 'javascript.jsx'])
+
+let g:async_comp_settings = s:settings
 
 augroup MyAllAsyncompleteStting
   autocmd!

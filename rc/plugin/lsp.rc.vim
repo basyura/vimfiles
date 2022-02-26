@@ -3,6 +3,12 @@ let g:lsp_log_file = ""
 let g:lsp_preview_doubletap = 0
 let g:lsp_preview_max_height = 2
 "let g:lsp_diagnostics_enabled = 0
+"
+ let g:lsp_settings = {
+ \  'typescript-language-server': {
+ \    'allowlist': ['js', 'javascript','javascript.jsx', 'ts', 'typescript', 'typescriptreact'],
+ \   },
+ \ }
 
 command! ResetLsp call s:reset_lsp()
 
