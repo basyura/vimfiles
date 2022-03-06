@@ -239,6 +239,7 @@ inoremap kk <ESC>O
 inoremap [[ []<Left>
 inoremap {{ {  }<Left><Left>
 inoremap (( (  )<Left><Left>
+inoremap `` ``<Left>
 inoremap <C-q> []<Left>
 
 vnoremap <C-e> <End><Left>
