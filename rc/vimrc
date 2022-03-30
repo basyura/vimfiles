@@ -127,8 +127,9 @@ nnoremap q <Nop>
 
 nnoremap <silent> U :<C-u>redo<CR>
 nnoremap vs :vsplit<CR>
-nnoremap nw :setlocal nowrap<CR>
-nnoremap ls :LspSettingsStatus<CR>
+nnoremap <C-@>nw :setlocal nowrap<CR>
+" nnoremap ls :LspSettingsStatus<CR>
+nnoremap <C-x><C-s> :LspSettingsStatus<CR>
 
 "ウインドウのフォーカス移動
 noremap wh <C-w>h
