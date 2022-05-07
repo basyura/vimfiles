@@ -12,11 +12,16 @@ let g:lsp_preview_max_height = 2
 
 command! ResetLsp call s:reset_lsp()
 
-function! Apply_lsp_common_settings()
-  call s:on_lsp_buffer_enabled()
-endfunction
+" function! Apply_lsp_common_settings()
+"   call s:on_lsp_buffer_enabled()
+" endfunction
 
 function! s:on_lsp_buffer_enabled()
+  if get(b:, "my_lsp_buffer_enabled", 0)
+    return 
+  endif
+  let b:my_lsp_buffer_enabled = 1
+
   setlocal omnifunc=lsp#complete
 
   nnoremap <buffer> gd :LspDefinition<CR>
@@ -68,7 +73,7 @@ function! s:close_popup()
 endfunction
 
 function! s:reset_lsp()
-  
+  let b:my_lsp_buffer_enabled = 0
   for server in lsp#get_allowed_servers()
     try
       call lsp#stop_server(server)
@@ -79,6 +84,7 @@ function! s:reset_lsp()
     endtry
   endfor
 endfunction
+
 augroup LspCommonGroup
   au!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()

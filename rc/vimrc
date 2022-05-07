@@ -241,6 +241,7 @@ inoremap [[ []<Left>
 inoremap {{ {  }<Left><Left>
 inoremap (( (  )<Left><Left>
 inoremap `` ``<Left>
+inoremap ``` ```
 inoremap <C-q> []<Left>
 
 vnoremap <C-e> <End><Left>
