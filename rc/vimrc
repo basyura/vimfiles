@@ -240,6 +240,7 @@ inoremap kk <ESC>O
 inoremap [[ []<Left>
 inoremap {{ {  }<Left><Left>
 inoremap (( (  )<Left><Left>
+inoremap << <><Left>
 inoremap `` ``<Left>
 inoremap ``` ```
 inoremap <C-q> []<Left>
@@ -254,8 +255,8 @@ cnoremap <C-n>  <Down>
 cnoremap <Down> <C-n>
 cnoremap <C-j> <C-u><ESC>
 
-" default is <C-W>N / my termwindkey is <C-l>
 tmap <Esc> <C-l>N
+" default is <C-W>N / my termwindkey is <C-l>
 
 "}}}
 

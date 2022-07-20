@@ -276,7 +276,7 @@ endfunction
 
 call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
       \ 'name': 'buffer',
-      \ 'allowlist': ['html','zsh'],
+      \ 'allowlist': ['html','zsh','less','css'],
       \ 'blocklist': ['unite'],
       \ 'priority': 200,
       \ 'completor': function('asyncomplete#sources#buffer#completor'),
