@@ -127,7 +127,7 @@ nnoremap q <Nop>
 
 nnoremap <silent> U :<C-u>redo<CR>
 nnoremap vs :vsplit<CR>
-nnoremap <C-@>nw :setlocal nowrap<CR>
+nnoremap <Space>nw :setlocal nowrap<CR>
 " nnoremap ls :LspSettingsStatus<CR>
 nnoremap <C-@>s :LspSettingsStatus<CR>
 
@@ -140,6 +140,8 @@ noremap wp <C-w>p
 nnoremap <Space>v :vsplit<CR>
 noremap <silent> gl :macaction selectNextWindow:<CR>
 noremap <script> gh :macaction selectPreviousWindow:<CR>
+
+nnoremap <Space>c <C-w><C-c>
 
 nnoremap en :enew<CR>
 
@@ -311,5 +313,22 @@ function! s:clever_move(word)
     call s:clever_move(a:word)
   endif
 endfunction
+
+
+function! s:close_loclists()
+  let wins = getwininfo()
+  let current = win_getid()
+
+  for w in wins
+    if w.loclist == 1
+      call win_gotoid(w.winid)
+      close
+    endif
+  endfor
+
+  call win_gotoid(current)
+endfunction
+
+nnoremap <silent> <Space>c :call <SID>close_loclists()<CR>
 
 " vim: foldmethod=marker
