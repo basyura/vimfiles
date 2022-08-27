@@ -29,7 +29,8 @@ function! s:on_lsp_buffer_enabled()
   nnoremap <buffer> K :LspHover<CR>
   nnoremap <buffer> <Leader>r :LspRename<CR>
   nnoremap <buffer> <C-x><C-f> :LspDocumentFormat<CR>
-  nnoremap <buffer> <C-x><C-d> :LspDocumentDiagnostic<CR><C-w>p
+  " nnoremap <buffer> <C-x><C-d> :LspDocumentDiagnostic<CR><C-w>p
+  nnoremap <buffer> <C-x><C-d> :call lsp_popup_diagnostics#show()<CR>
   nnoremap <buffer> <Space>d :LspDocumentDiagnostic<CR><C-w>p
   nnoremap <buffer> <C-x><C-l> :LspNextError<CR>
   nnoremap <buffer> <C-x><C-x> :ResetLsp<CR>

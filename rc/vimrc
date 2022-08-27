@@ -63,6 +63,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/copypath.vim'
 
   " lsp
+  Plug 'basyura/vim-lsp-popup-diagnostics'
   Plug 'mattn/vim-lsp-settings'
   Plug 'prabirshrestha/vim-lsp'
   Plug 'prabirshrestha/async.vim'
