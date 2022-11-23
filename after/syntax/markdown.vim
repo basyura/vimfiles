@@ -2,7 +2,7 @@
 syn region markdownCode matchgroup=markdownCodeDelimiter start="`" end="`" contains=markdownLineStart
 
 
-if g:colors_name == 'solarized' || g:colors_name == 'newspaper'
+if get(g:, colors_name) == 'solarized' || get(g:, colors_name) == 'newspaper'
   hi markdownH1                guifg=brown
   hi markdownH2                guifg=brown
   hi markdownH3                guifg=brown

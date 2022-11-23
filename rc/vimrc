@@ -89,9 +89,12 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 set background=dark
-let g:my_colorscheme = "default"
 if has("gui_running")
-  let g:my_colorscheme = "newspaper"
+  if get(g:, 'my_colorscheme', '') == ''
+    let g:my_colorscheme = "newspaper"
+  end
+else
+  let g:my_colorscheme = "default"
 endif
 execute 'colorscheme ' . g:my_colorscheme
 
