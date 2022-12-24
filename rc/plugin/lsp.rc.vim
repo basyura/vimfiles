@@ -2,6 +2,9 @@
 let g:lsp_log_file = ""
 let g:lsp_preview_doubletap = 0
 let g:lsp_preview_max_height = 2
+" エラー時にメッセージ表示
+let g:lsp_diagnostics_virtual_text_prefix = "          ▶ "
+
 "let g:lsp_diagnostics_enabled = 0
 "
  let g:lsp_settings = {
@@ -43,6 +46,7 @@ function! s:on_lsp_buffer_enabled()
   map <silent> <buffer> <C-c> <Plug>(lsp-float-close)
 
 
+  hi LspErrorVirtualText guifg=brown
   " どこかで上書きされる？
   if g:colors_name == "newspaper"
     hi SignColumn guibg=#cccfbf
