@@ -3,7 +3,9 @@ let g:lsp_log_file = ""
 let g:lsp_preview_doubletap = 0
 let g:lsp_preview_max_height = 2
 " エラー時にメッセージ表示
-let g:lsp_diagnostics_virtual_text_prefix = "          ▶ "
+let g:lsp_diagnostics_virtual_text_enabled = 0
+let g:lsp_diagnostics_virtual_text_prefix = " ▶ "
+let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
 
 "let g:lsp_diagnostics_enabled = 0
 "
@@ -47,6 +49,9 @@ function! s:on_lsp_buffer_enabled()
 
 
   hi LspErrorVirtualText guifg=brown
+  hi LspErrorHighlight guibg=bg guifg=orange gui=undercurl
+  " 左に出る E>
+  hi LspErrorText guibg=bg guifg=orange
   " どこかで上書きされる？
   if g:colors_name == "newspaper"
     hi SignColumn guibg=#cccfbf
