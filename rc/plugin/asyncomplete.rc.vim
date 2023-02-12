@@ -21,6 +21,7 @@ let s:settings = {
       \ 'go'   : {'min_chars': 1, 'popup_delay': 100 },
       \ 'js'   : {'min_chars': 2, 'popup_delay': 100 },
       \ 'html' : {'min_chars': 0, 'popup_delay': 50, 'matcher': 'fuzzy'},
+      \ 'markdown' : {'ignoreCase': 0},
       \}
 
 call s:alias('js', ['typescriptreact', 'javascript.jsx'])
@@ -64,16 +65,11 @@ function! s:all_settings()
 endfunction
 
 function! s:to_pair()
+  let param = {'min_chars': s:default_min_chars, 'popup_delay': s:default_popup_delay}
   if has_key(s:settings, &filetype)
-    return s:settings[&filetype]
+    let param = extend(param, s:settings[&filetype])
   end
-  return {'min_chars': s:default_min_chars, 'popup_delay': s:default_popup_delay}
-endfunction
-
-function! s:get_matcher(options, key)
-  let setting = get(s:settings, &filetype, {})
-  let matcher = get(setting, 'matcher', s:default_matcher)
-  return matcher
+  return param
 endfunction
 
 let b:before_comp = ''
@@ -91,11 +87,13 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
       break
     endif
 
-    let matcher = s:get_matcher(a:options, key)
+    let setting = get(s:settings, &filetype, {})
+    let matcher = get(setting, 'matcher', s:default_matcher)
+
     if matcher == 'fuzzy'
-      let items = s:gather_fuzzy(state, key.source_name, a:options, a:matches[key.source_name])
+      let items = s:gather_fuzzy(state, key.source_name, a:options, a:matches[key.source_name], setting)
     else 
-      let items = s:gather_starts_with(state, key.source_name, a:options, a:matches[key.source_name])
+      let items = s:gather_starts_with(state, key.source_name, a:options, a:matches[key.source_name], setting)
     endif
     let state.items += items
   endfor
@@ -110,7 +108,7 @@ function! s:my_asyncomplete_preprocessor(options, matches) abort
   let b:before_comp = comp
 endfunction
 
-function! s:gather_fuzzy(state, source_name, options, match) abort
+function! s:gather_fuzzy(state, source_name, options, match, setting) abort
   if a:options.base == ""
     return []
   endif
@@ -132,7 +130,7 @@ function! s:gather_fuzzy(state, source_name, options, match) abort
   return s:sort(appendix)
 endfunction
 
-function! s:gather_starts_with(state, source_name, options, match)
+function! s:gather_starts_with(state, source_name, options, match, setting)
   let isDebug = 0 "{{{
    " if a:source_name == "asyncomplete_lsp_gopls"
    " if a:source_name == "asyncomplete_lsp_typescript-language-server"
@@ -180,7 +178,8 @@ function! s:gather_starts_with(state, source_name, options, match)
       continue
     end
 
-    if word =~? reg
+    let isIgnoreCase = get(a:setting, "ignoreCase", 1)
+    if (isIgnoreCase && word =~? reg) || (!isIgnoreCase && word =~# reg)
       " neosnippet の word が重複していくのでコピーするようにしたが file を見直したら発生しなくなった
       " おかしな場所で補完されるようになったので comp_prefix をつけたが file を略
       if a:options.typed != a:options.base
