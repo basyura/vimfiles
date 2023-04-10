@@ -98,7 +98,7 @@ else
 endif
 execute 'colorscheme ' . g:my_colorscheme
 
-helptags ~/.vim/plugged/vimdoc-ja/doc
+" helptags ~/.vim/plugged/vimdoc-ja/doc
 
 call altercmd#load()
 
