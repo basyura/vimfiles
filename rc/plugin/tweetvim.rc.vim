@@ -2,6 +2,8 @@
 "          tweetvim          "
 """"""""""""""""""""""""""""""
 
+finish
+
 " tweetvim
 nnoremap <silent> s           :exe ":silent TweetVimSay"<CR>
 nnoremap <silent> <Space>re   :<C-u>TweetVimMentions<CR>

@@ -25,10 +25,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'tyru/vim-altercmd'
   Plug 'vim-jp/vimdoc-ja'
 
-  " twitter
-  Plug 'basyura/TweetVim'
-  Plug 'basyura/twibill.vim'
-  Plug 'rhysd/tweetvim-advanced-filter'
+  " mastodon
+  Plug 'mattn/vim-mastodon'
+
 
   " unite
   Plug 'basyura/unite-converter-file-directory'
