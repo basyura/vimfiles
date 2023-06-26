@@ -2,7 +2,7 @@
 "             unite              "
 """"""""""""""""""""""""""""""""""
 
-let g:unite_update_time = 50
+" let g:unite_update_time = 50
 
 function! Unite_substitute(profile, pat, subst, ...)
   let priority = get(a:000, 0, 0)
@@ -18,7 +18,7 @@ augroup MyGroup-unite
   autocmd!
   autocmd FileType unite  call s:unite_my_settings()
   autocmd FileType markdown call s:md_settings()
-  autocmd BufNewFile,BufRead,BufWritePost * set redrawtime=2000
+  " autocmd BufNewFile,BufRead,BufWritePost * set redrawtime=2000
 augroup END
 
 nnoremap <silent> <C-r>      :<C-u>Unite -buffer-name=file_mru file_mru -start-insert -hide-source-names<CR>
