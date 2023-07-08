@@ -2,6 +2,9 @@
 "          tweetvim          "
 """"""""""""""""""""""""""""""
 
+nnoremap <silent> ta :Mastodon timeline<CR>
+nnoremap s  :Mastodon toot 
+
 finish
 
 " tweetvim
