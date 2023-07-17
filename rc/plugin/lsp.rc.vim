@@ -7,6 +7,9 @@ let g:lsp_diagnostics_virtual_text_enabled = 0
 let g:lsp_diagnostics_virtual_text_prefix = " ▶ "
 let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
 
+hi LspErrorHighlight guifg=brown
+hi LspErrorText guifg=brown
+
 "let g:lsp_diagnostics_enabled = 0
 "
  let g:lsp_settings = {
