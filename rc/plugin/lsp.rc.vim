@@ -7,9 +7,6 @@ let g:lsp_diagnostics_virtual_text_enabled = 0
 let g:lsp_diagnostics_virtual_text_prefix = " ▶ "
 let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
 
-hi LspErrorHighlight guifg=brown
-hi LspErrorText guifg=brown
-
 "let g:lsp_diagnostics_enabled = 0
 "
  let g:lsp_settings = {
@@ -52,9 +49,9 @@ function! s:on_lsp_buffer_enabled()
 
 
   hi LspErrorVirtualText guifg=brown
-  hi LspErrorHighlight guibg=bg guifg=orange gui=undercurl
-  " 左に出る E>
-  hi LspErrorText guibg=bg guifg=orange
+  hi LspErrorHighlight guifg=brown gui=undercurl
+  hi LspErrorText guifg=brown
+
   " どこかで上書きされる？
   if g:colors_name == "newspaper"
     hi SignColumn guibg=#cccfbf
