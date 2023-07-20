@@ -48,14 +48,17 @@ function! s:on_lsp_buffer_enabled()
   map <silent> <buffer> <C-c> <Plug>(lsp-float-close)
 
 
-  hi LspErrorVirtualText guifg=brown
-  hi LspErrorHighlight guifg=brown gui=undercurl
-  hi LspErrorText guifg=brown
-
   " どこかで上書きされる？
   if g:colors_name == "newspaper"
+    hi LspErrorVirtualText guifg=brown
+    hi LspErrorHighlight guifg=brown gui=undercurl
+    " E>
+    hi LspErrorText guifg=brown
     hi SignColumn guibg=#cccfbf
   else
+    hi LspErrorHighlight guifg=orange gui=undercurl
+    " E>
+    hi LspErrorText guifg=orange
     hi SignColumn guibg=black
   endif
 endfunction
