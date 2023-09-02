@@ -3,6 +3,13 @@ if exists('RmVimball')
   delcommand RmVimball
 endif
 
+command! PutMessage call s:put_message()
+function! s:put_message()
+  :enew
+  :put =execute('messages')
+  :setf vim
+endfunction
+
 " change to newspaper colorscheme
 command! NewsPaper call s:newspaper()
 function! s:newspaper()
