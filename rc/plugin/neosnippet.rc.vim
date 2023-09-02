@@ -1,10 +1,10 @@
 " ■ snippet 補完
 let g:neosnippet#snippets_directory = '~/.vim/snippets'
 let g:neosnippet#disable_runtime_snippets = { '_' : 1 }
-let g:neosnippet#scope_aliases = {
-      \ 'typescriptreact' : 'javascript',
-      \ 'typescript' : 'javascript',
-      \}
+" let g:neosnippet#scope_aliases = {
+"       \ 'typescriptreact' : 'javascript',
+"       \ 'typescript' : 'javascript',
+"       \}
 
 
 imap <expr><C-l> pumvisible() ?
