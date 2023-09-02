@@ -15,6 +15,9 @@ endif
 
 call plug#begin('~/.vim/plugged')
 "{{{
+  Plug 'vim-denops/denops.vim'
+  Plug 'basyura/dsky.vim'
+
   " theme
   Plug 'vim-scripts/newspaper.vim'
   Plug 'vim-scripts/Wombat'
