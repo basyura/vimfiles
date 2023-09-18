@@ -9,11 +9,14 @@ let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
 
 "let g:lsp_diagnostics_enabled = 0
 "
- " let g:lsp_settings = {
- " \  'typescript-language-server': {
- " \    'allowlist': ['js', 'javascript','javascript.jsx', 'ts', 'typescript', 'typescriptreact'],
- " \   },
- " \ }
+let g:lsp_settings = {
+\  'typescript-language-server': {
+\    'allowlist': ['js', 'javascript','javascript.jsx', 'ts', 'typescript', 'typescriptreact'],
+\   },
+\  'deno': {
+\    'allowlist': ['js', 'javascript','javascript.jsx', 'ts', 'typescript', 'typescriptreact'],
+\   },
+\ }
 
 command! ResetLsp call s:reset_lsp()
 
