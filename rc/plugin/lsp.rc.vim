@@ -50,6 +50,7 @@ function! s:on_lsp_buffer_enabled()
   " to skip plugin's keybinding
   map <silent> <buffer> <C-c> <Plug>(lsp-float-close)
 
+  nnoremap <buffer> <Leader>f :LspDocumentFormat<CR>
 
   " どこかで上書きされる？
   if g:colors_name == "newspaper"
