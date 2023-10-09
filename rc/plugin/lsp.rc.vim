@@ -39,6 +39,7 @@ function! s:on_lsp_buffer_enabled()
   nnoremap <buffer> <C-x><C-f> :LspDocumentFormat<CR>
   " nnoremap <buffer> <C-x><C-d> :LspDocumentDiagnostic<CR><C-w>p
   nnoremap <buffer> <C-x><C-d> :call lsp_popup_diagnostics#show()<CR>
+  nnoremap <buffer> ? :call lsp_popup_diagnostics#show()<CR>
   nnoremap <buffer> <Space>d :LspDocumentDiagnostic<CR><C-w>p
   nnoremap <buffer> <C-x><C-l> :LspNextError<CR>
   nnoremap <buffer> <C-x><C-x> :ResetLsp<CR>
@@ -61,6 +62,7 @@ function! s:on_lsp_buffer_enabled()
     hi SignColumn guibg=#cccfbf
   else
     hi LspErrorHighlight guifg=orange gui=undercurl
+    hi LspWarningHighlight guibg=bg
     " E>
     hi LspErrorText guifg=orange
     hi SignColumn guibg=black
