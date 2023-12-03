@@ -22,6 +22,7 @@ augroup MyGroup
 
   autocmd FileType help :setlocal noexpandtab
 
+  autocmd BufRead,BufNewFile *.js   set filetype=javascript
   autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
   autocmd BufRead,BufNewFile *.md   set filetype=markdown
   " for uiki
