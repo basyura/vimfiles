@@ -85,6 +85,8 @@ snippet open
     defer fp.Close()
  
     scanner := bufio.NewScanner(fp)
+	  buf := make([]byte, 65536)
+	  scanner.Buffer(buf, 1048576)
     for scanner.Scan() {
         text := scanner.Text()
     }
