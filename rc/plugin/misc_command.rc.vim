@@ -51,8 +51,8 @@ command! -nargs=1 XPath let @" = util#xml#xpath_text(join(getline(1,'$'),"\n") ,
 
 command! MoveLeft call s:MoveLeft()
 function! s:MoveLeft()
-  winpos 0 0
   set lines=999
+  winpos -7 0
 endfunction
 
 command! CloseAll call s:close_all() "{{{
