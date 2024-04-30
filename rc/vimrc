@@ -15,8 +15,15 @@ endif
 
 call plug#begin('~/.vim/plugged')
 "{{{
+  " frozen
+  let frozen = { 'frozen': 1 }
+  Plug 'basyura/unite.vim', frozen
+  Plug 'basyura/vim-lsp-popup-diagnostics', frozen
+  Plug 'basyura/dsky.vim', frozen
+
+
+  " denops
   Plug 'vim-denops/denops.vim'
-  Plug 'basyura/dsky.vim'
 
   " theme
   Plug 'vim-scripts/newspaper.vim'
@@ -37,7 +44,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'basyura/unite-filters'
   Plug 'basyura/unite-matchers'
   Plug 'basyura/unite-outline'
-  Plug 'basyura/unite.vim'
   Plug 'rhysd/unite-go-import.vim'
   Plug 'soh335/unite-qflist'
   Plug 'supermomonga/unite-sudden-death'
@@ -65,7 +71,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/copypath.vim'
 
   " lsp
-  Plug 'basyura/vim-lsp-popup-diagnostics'
   Plug 'mattn/vim-lsp-settings'
   Plug 'prabirshrestha/vim-lsp'
   Plug 'prabirshrestha/async.vim'
