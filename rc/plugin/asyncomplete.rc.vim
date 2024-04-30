@@ -18,10 +18,10 @@ let s:default_popup_delay = 100
 let s:default_matcher     = 'starts_with'
 
 let s:settings = {
-      \ 'go'   : {'min_chars': 1, 'popup_delay': 100 },
-      \ 'js'   : {'min_chars': 2, 'popup_delay': 100 },
+      \ 'go'   : {'min_chars': 1, 'popup_delay': 50 },
+      \ 'js'   : {'min_chars': 2, 'popup_delay': 50 },
       \ 'html' : {'min_chars': 0, 'popup_delay': 50, 'matcher': 'fuzzy'},
-      \ 'markdown' : {'ignoreCase': 0},
+      \ 'markdown' : {'min_chars': 2, 'popup_delay': 200},
       \}
 
 call s:alias('js', ['typescriptreact', 'javascript.jsx'])
@@ -288,18 +288,18 @@ call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options
 call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
       \ 'name': 'neosnippet',
       \ 'allowlist': ['*'],
-      \ 'blocklist': ['unite'],
+      \ 'blocklist': ['unite', 'json'],
       \ 'priority': 100,
       \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
       \ }))
 
-call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-      \ 'name': 'file',
-      \ 'allowlist': ['*'],
-      \ 'blocklist': ['unite'],
-      \ 'priority': 0,
-      \ 'completor': function('asyncomplete#sources#file#completor')
-      \ }))
+" call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+"       \ 'name': 'file',
+"       \ 'allowlist': ['*'],
+"       \ 'blocklist': ['unite', 'json'],
+"       \ 'priority': 0,
+"       \ 'completor': function('asyncomplete#sources#file#completor')
+"       \ }))
 
 
 function! s:log(msg)
