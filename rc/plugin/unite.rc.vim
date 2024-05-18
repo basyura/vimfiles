@@ -24,7 +24,6 @@ augroup END
 nnoremap <silent> <C-r>      :<C-u>Unite -buffer-name=file_mru file_mru -start-insert -hide-source-names<CR>
 nnoremap <silent> <C-n>      :<C-u>Unite -buffer-name=buffer -hide-source-names buffer_tab<CR>
 nnoremap <silent> <Leader>d  :<C-u>Unite -buffer-name=files -hide-source-names file file/new<CR>
-nnoremap <silent> <Leader>b  :<C-u>Unite -buffer-name=bookmark -no-start-insert bookmark<CR>
 nnoremap <silent> <C-t>      :<C-u>Unite -buffer-name=tags tags -start-insert -hide-source-names<CR>
 nnoremap <Leader>f  :<C-u>Unite file_rec -input=
 
