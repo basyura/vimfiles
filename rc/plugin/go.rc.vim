@@ -3,6 +3,7 @@ let go_def_mapping_enabled = 0
 let go_doc_keywordprg_enabled = 0
 let go_textobj_enabled = 0
 let g:lsp_document_code_action_signs_enabled=0
+let g:goimports = 0
 
 command! GoFmt call s:gofmt()
 
@@ -18,7 +19,8 @@ augroup MyGroup-go
 augroup END
 
 function! s:settings()
-  nnoremap <buffer> gi :GoImport 
+  autocmd! BufWritePre *.go call execute('LspDocumentFormatSync')
+  nnoremap <buffer> gi :GoImportRun<CR>
   nnoremap <buffer> gp :Unite go/import<CR>
   nnoremap <buffer> gb :GoBuild<CR>
   nnoremap <buffer><silent> <C-x><C-b> :call <SID>gobuild()<CR>
