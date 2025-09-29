@@ -156,8 +156,6 @@ noremap <script> gh :macaction selectPreviousWindow:<CR>
 
 nnoremap <Space>c <C-w><C-c>
 
-nnoremap en :enew<CR>
-
 inoremap <C-d> <Del>
 cmap <C-d> <Del>
 
@@ -343,5 +341,80 @@ function! s:close_loclists()
 endfunction
 
 nnoremap <silent> <Space>c :call <SID>close_loclists()<CR>
+
+
+
+nnoremap <silent> en :call <SID>NewDraft()<CR>
+" nnoremap en :enew<CR>
+"
+" 起動中の連番
+if !exists("g:draft_counter")
+  let g:draft_counter = 1
+endif
+
+function! s:EnableDraftAutosave() abort
+  if exists('b:draft_autosave_enabled') | return | endif
+  let b:draft_autosave_enabled = 1
+  autocmd FocusLost,BufLeave <buffer> silent! update
+endfunction
+
+" 指定連番の最新ファイル（~/Downloads/draft_%03d_*）を返す。無ければ ''。
+function! s:LatestDraftFor(num) abort
+  let l:pat   = expand('~/Downloads/') . printf('draft_%03d_*', a:num)
+  let l:files = glob(l:pat, 0, 1)
+  if empty(l:files) | return '' | endif
+  " 最終更新時刻で最大のものを採用
+  let l:best = l:files[0]
+  let l:bestt = getftime(l:best)
+  for l:f in l:files[1:]
+    let l:t = getftime(l:f)
+    if l:t > l:bestt
+      let l:best = l:f | let l:bestt = l:t
+    endif
+  endfor
+  return l:best
+endfunction
+
+function! s:NewDraft() abort
+  " 1 回目だけ既存最大連番に追随
+  if g:draft_counter == 1
+    let l:all = glob(expand('~/Downloads/') . 'draft_*', 0, 1)
+    let l:maxnum = 0
+    for l:f in l:all
+      let l:fname = fnamemodify(l:f, ':t')
+      let l:m = matchlist(l:fname, '^draft_\(\d\+\)_')
+      if len(l:m) >= 2
+        let l:n = str2nr(l:m[1])
+        if l:n > l:maxnum | let l:maxnum = l:n | endif
+      endif
+    endfor
+    if l:maxnum >= 1
+      let g:draft_counter = l:maxnum + 1
+    endif
+  endif
+
+  " 直前の連番（存在すれば）の最新ファイルが空なら、それを開き直す
+  let l:prev = g:draft_counter - 1
+  if l:prev >= 1
+    let l:last = s:LatestDraftFor(l:prev)
+    if !empty(l:last) && filereadable(l:last) && getfsize(l:last) == 0
+      execute 'edit ' . fnameescape(l:last)
+      call s:EnableDraftAutosave()
+      return
+    endif
+  endif
+
+  " 新規作成（.txt 固定）
+  let l:num   = g:draft_counter
+  let l:fname = printf('draft_%03d_%s.txt', l:num, strftime('%Y%m%d%H%M%S'))
+  let l:path  = expand('~/Downloads/' . l:fname)
+
+  let g:draft_counter = l:num + 1
+
+  enew
+  execute 'file ' . fnameescape(l:path)
+  write
+  call s:EnableDraftAutosave()
+endfunction
 
 " vim: foldmethod=marker
