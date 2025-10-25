@@ -59,14 +59,14 @@ function! s:on_lsp_buffer_enabled()
     hi LspErrorHighlight guifg=brown gui=undercurl
     " E>
     hi LspErrorText guifg=brown
-    hi SignColumn guibg=#cccfbf
+    " hi SignColumn guibg=bg
   else
     hi LspErrorHighlight guifg=orange gui=undercurl
     hi LspWarningHighlight guibg=bg
     hi LspWarningText guifg=bg guifg=yellow
     " E>
     hi LspErrorText guifg=orange
-    hi SignColumn guibg=black
+    " hi SignColumn guibg=bg
   endif
 endfunction
 
