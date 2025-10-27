@@ -18,7 +18,7 @@ let s:default_popup_delay = 100
 let s:default_matcher     = 'starts_with'
 
 let s:settings = {
-      \ 'go'   : {'min_chars': 1, 'popup_delay': 50 },
+      \ 'go'   : {'min_chars': 1, 'popup_delay': 100 },
       \ 'js'   : {'min_chars': 2, 'popup_delay': 50 },
       \ 'html' : {'min_chars': 0, 'popup_delay': 50, 'matcher': 'fuzzy'},
       \ 'markdown' : {'min_chars': 2, 'popup_delay': 200},
@@ -273,16 +273,16 @@ endfunction
 
 
 
-call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-      \ 'name': 'buffer',
-      \ 'allowlist': ['html','zsh','less','css', 'markdown', 'md'],
-      \ 'blocklist': ['unite'],
-      \ 'priority': 200,
-      \ 'completor': function('asyncomplete#sources#buffer#completor'),
-      \ 'config': {
-        \    'max_buffer_size': 5000000,
-        \  },
-        \ }))
+" call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+"       \ 'name': 'buffer',
+"       \ 'allowlist': ['html','zsh','less','css', 'markdown', 'md'],
+"       \ 'blocklist': ['unite'],
+"       \ 'priority': 200,
+"       \ 'completor': function('asyncomplete#sources#buffer#completor'),
+"       \ 'config': {
+"         \    'max_buffer_size': 5000000,
+"         \  },
+"         \ }))
 
 
 call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
