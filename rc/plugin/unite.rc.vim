@@ -187,13 +187,8 @@ function! s:unite_my_settings()
   inoremap <silent><buffer> <C-a> <Esc>:call <SID>move_head()<CR>
 	noremap <silent><buffer><expr> <C-x><C-i> unite#do_action('insert')
   imap <buffer> <C-e> <Enter>
-  " Normal mode
-  nnoremap <silent><buffer> <C-n> <Plug>(unite_loop_cursor_down)
-  nnoremap <silent><buffer> <C-p> <Plug>(unite_loop_cursor_up)
-  " " Insert mode（E21対策）
-  inoremap <silent><buffer> <C-n> <C-\><C-n><Plug>(unite_loop_cursor_down)
-  inoremap <silent><buffer> <C-p> <C-\><C-n><Plug>(unite_loop_cursor_up)
-
+  nmap <buffer> <C-n> <Plug>(unite_loop_cursor_down)
+  nmap <buffer> <C-p> <Plug>(unite_loop_cursor_up)
   nmap <buffer> <C-j> <Plug>(unite_exit)
   imap <buffer> <C-r> <Plug>(unite_redraw)
 
