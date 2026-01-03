@@ -36,21 +36,6 @@ if has('vim_starting')
   endfor
 endif
 
-"*******************************************************
-"*                   保存・終了                        *
-"*******************************************************
-" gui の時だけ。Terminal ではやらない。
-command! -nargs=? -bang WQ  call s:WriteClose('<bang>')
-function! s:WriteClose(bang)
-  if a:bang == ''
-    write | bd
-  else
-    write! | bd!
-  endif
-endfunction
-
-AlterCommand q  Kwbd
-AlterCommand wq WQ
 
 """"""""""""""""""""""""""""""""""
 "             other              "

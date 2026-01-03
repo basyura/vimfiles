@@ -60,3 +60,19 @@ function! s:Kwbd(kwbdStage)
 endfunction
 
 command! Kwbd call <SID>Kwbd(1)
+
+
+"*******************************************************
+"*                   保存・終了                        *
+"*******************************************************
+command! -nargs=? -bang WQ  call s:WriteClose('<bang>')
+function! s:WriteClose(bang)
+  if a:bang == ''
+    write | bd
+  else
+    write! | bd!
+  endif
+endfunction
+
+AlterCommand q  Kwbd
+AlterCommand wq WQ
