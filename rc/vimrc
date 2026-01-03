@@ -5,10 +5,15 @@
 filetype plugin indent on
 syntax on
 
+" insert mode 時にカーソルを細くする
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
 nnoremap <C-e> <End>
 nnoremap <C-a> <HOME>
 nnoremap <C-f> <Right>
 nnoremap <C-b> <Left>
+
 
 if expand('%:t') ==# 'COMMIT_EDITMSG'
   finish
