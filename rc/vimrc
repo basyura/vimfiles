@@ -2,12 +2,18 @@
 "         core settings          "
 """"""""""""""""""""""""""""""""""
 
-if expand("%") == ".git/COMMIT_EDITMSG" || &filetype == 'gitcommit'
+filetype plugin indent on
+syntax on
+
+nnoremap <C-e> <End>
+nnoremap <C-a> <HOME>
+nnoremap <C-f> <Right>
+nnoremap <C-b> <Left>
+
+if expand('%:t') ==# 'COMMIT_EDITMSG'
   finish
 endif
 
-filetype plugin indent on
-syntax on
 
 if filereadable($HOME . '/.vimrc_local_before')
   source ~/.vimrc_local_before
@@ -186,10 +192,6 @@ imap <C-a> <ESC>0i
 imap <C-f> <Right>
 imap <C-b> <Left>
 
-nnoremap <C-e> <End>
-nnoremap <C-a> <HOME>
-nnoremap <C-f> <Right>
-nnoremap <C-b> <Left>
 " カウントアップ
 nnoremap <C-c> <C-a>
 
