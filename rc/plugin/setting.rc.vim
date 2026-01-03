@@ -26,7 +26,10 @@ set incsearch
 set laststatus=2
 set history=1000
 set noswapfile
-set cursorline
+
+if has('gui_running')
+  set cursorline
+endif
 if has('patch300')
   set breakindent
 endif

@@ -16,8 +16,8 @@ hi txtHeader  guifg=#cae682 gui=bold
 hi txtHeader2 guifg=orange gui=underline
 hi txtBold    guifg=#cae682 gui=bold
 
-hi SignColumn guibg=NONE
-hi CursorLineSign guibg=NONE
+hi SignColumn guibg=NONE ctermbg=NONE
+hi CursorLineSign guibg=NONE ctermbg=NONE
 hi LineNr guibg=bg
 
 " unite

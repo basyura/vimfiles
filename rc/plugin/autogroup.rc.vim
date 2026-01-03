@@ -43,9 +43,6 @@ augroup MyGroup
 
   autocmd BufRead,BufNewFile *.ex,*.exs set filetype=elixir
 
-  if !has('gui_running')
-    autocmd InsertEnter,InsertLeave * set cursorline!
-  endif
 augroup END
 
 function! s:subm()

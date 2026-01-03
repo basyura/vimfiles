@@ -298,6 +298,7 @@ if filereadable($HOME . '/.vimrc_local_after')
   source ~/.vimrc_local_after
 endif
 
+execute 'colorscheme ' . g:my_colorscheme
 if filereadable(expand('~/.vim/rc/highlight/' . g:my_colorscheme. '.vim'))
   execute 'source ~/.vim/rc/highlight/' . g:my_colorscheme . '.vim'
 endif
