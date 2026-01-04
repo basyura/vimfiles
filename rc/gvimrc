@@ -35,6 +35,11 @@ endif
 """"""""""""""""""""""""""""""""""
 nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>:<C-u>source $MYGVIMRC<Enter>
 
+execute 'colorscheme ' . g:my_colorscheme
+if filereadable(expand('~/.vim/rc/highlight/' . g:my_colorscheme. '.vim'))
+  execute 'source ~/.vim/rc/highlight/' . g:my_colorscheme . '.vim'
+endif
+
 if filereadable($HOME . '/.gvimrc_local_after')
   source ~/.gvimrc_local_after
 endif

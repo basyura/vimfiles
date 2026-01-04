@@ -20,12 +20,17 @@ set scrolloff=5
 set wrap
 set hlsearch
 set smartindent
-set timeout timeoutlen=300 ttimeoutlen=200
 set shellslash
 set incsearch
 set laststatus=2
 set history=1000
 set noswapfile
+
+set timeout timeoutlen=300 ttimeoutlen=200
+" normal に戻るときの点滅回避
+if !has("gui_running")
+  set ttimeoutlen=100
+endif
 
 if has('gui_running')
   set cursorline
