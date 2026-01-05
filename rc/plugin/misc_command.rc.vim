@@ -123,3 +123,52 @@ function! s:ChangeCurrentDir(directory, bang)
     pwd
   endif
 endfunction
+
+
+
+function! s:UrlEncode(str, ...) abort
+  " 追加で残す文字（例：'/' を残したい場合は keep='-._~/'）を第 2 引数で指定可能
+  let keep = (a:0 >= 1 ? a:1 : '-._~')
+
+  let out = []
+  " 文字単位で処理（文字列を 1 文字ずつのリストに分解）
+  for ch in split(a:str, '\zs')
+    if ch =~# '^[A-Za-z0-9' . escape(keep, ']-') . ']\+$'
+      " 許可文字はそのまま
+      call add(out, ch)
+    else
+      " UTF-8 に変換してバイト列を %HH に
+      let utf = iconv(ch, &encoding, 'utf-8')
+      " 文字列はバイトインデックスでアクセスできる
+      for i in range(0, strlen(utf) - 1)
+        let b = char2nr(utf[i])
+        call add(out, printf('%%%02X', b))
+      endfor
+    endif
+  endfor
+
+  return join(out, '')
+endfunction
+
+function! s:UrlEncodeClipboard(...) abort
+  " クリップボードから取得
+  let s = getreg('+')
+
+  if empty(s)
+    echo "Clipboard is empty."
+    return
+  endif
+
+  " 第 1 引数に追加で残したい文字を渡せる（例：'/')
+  let keep = (a:0 >= 1 ? a:1 : '-._~')
+
+  let encoded = s:UrlEncode(s, keep)
+
+  " クリップボードへ書き戻し
+  call setreg('+', encoded)
+
+  echo "URL-encoded to clipboard."
+endfunction
+
+
+command! UrlEncode call s:UrlEncodeClipboard()
