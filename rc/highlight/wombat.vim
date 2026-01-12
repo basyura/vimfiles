@@ -21,6 +21,7 @@ hi SignColumn guibg=NONE ctermbg=NONE
 hi CursorLineSign guibg=NONE ctermbg=NONE
 hi LineNr guibg=bg
 
+hi Pmenu ctermbg=DarkBlue
 " unite
 hi Unite_Cursor_Line guibg=#00008b
 hi uniteSource__FileMru_Time guifg=darkgray

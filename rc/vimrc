@@ -19,6 +19,10 @@ if expand('%:t') ==# 'COMMIT_EDITMSG'
   finish
 endif
 
+if expand('%:t') ==# 'git-rebase-todo'
+  finish
+endif
+
 
 if filereadable($HOME . '/.vimrc_local_before')
   source ~/.vimrc_local_before
