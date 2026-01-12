@@ -23,6 +23,9 @@ if expand('%:t') ==# 'git-rebase-todo'
   finish
 endif
 
+if expand('%:t') ==# 'MERGE_MSG'
+  finish
+endif
 
 if filereadable($HOME . '/.vimrc_local_before')
   source ~/.vimrc_local_before
