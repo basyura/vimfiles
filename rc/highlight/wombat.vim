@@ -10,7 +10,7 @@ hi String              gui=none
 hi StatusLine    ctermfg=Gray  gui=none
 hi StatusLineNC  ctermfg=Gray  gui=none
 hi IncSearch guifg=red guibg=white
-hi Search term=reverse ctermfg=0 ctermbg=14 guifg=Black guibg=#EAE49D
+hi Search term=reverse ctermfg=0 ctermbg=LightBlue guifg=Black guibg=#EAE49D
 hi ModeMsg gui=none guifg=gray
 
 hi txtHeader  guifg=#cae682 gui=bold
