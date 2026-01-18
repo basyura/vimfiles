@@ -432,4 +432,17 @@ function! s:NewDraft() abort
   call s:EnableDraftAutosave()
 endfunction
 
+" 開いているファイルを Shiba.app で開く
+command! Shiba call s:open_with_shiba()
+
+function! s:open_with_shiba() abort
+  let l:file = expand('%:p')
+  if empty(l:file)
+    echoerr 'ファイルが開かれていません'
+    return
+  endif
+  silent execute '!open -a "Shiba.app" ' . shellescape(l:file)
+  redraw!
+endfunction
+
 " vim: foldmethod=marker
