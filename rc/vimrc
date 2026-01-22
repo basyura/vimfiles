@@ -168,6 +168,7 @@ noremap wl <C-w>l
 noremap wj <C-w>j
 noremap wk <C-w>k
 noremap wp <C-w>p
+nnoremap <nowait> <silent> <C-@> <C-w>w
 nnoremap <Space>v :vsplit<CR>
 noremap <silent> gl :macaction selectNextWindow:<CR>
 noremap <script> gh :macaction selectPreviousWindow:<CR>
@@ -244,7 +245,7 @@ nnoremap Y y$
 vnoremap Y "*y
 vnoremap v $h
 
-nnoremap <silent> <C-@><C-@> :Restart!<CR>
+nnoremap <silent> <C-]><C-]> :Restart!<CR>
 " Change current directory.
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
