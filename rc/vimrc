@@ -439,9 +439,18 @@ command! Shiba call s:open_with_shiba()
 function! s:open_with_shiba() abort
   let l:file = expand('%:p')
   if empty(l:file)
-    echoerr 'ファイルが開かれていません'
+    echoerr 'no file'
     return
   endif
+
+  " Windows
+  if has('win32') || has('win64')
+    let s:shiba = 'C:\repos\Shiba\target\release\shiba.exe'
+    call job_start([s:shiba, l:file])
+    return
+  endif
+
+  " Mac
   silent execute '!open -a "Shiba.app" ' . shellescape(l:file)
   redraw!
 endfunction
