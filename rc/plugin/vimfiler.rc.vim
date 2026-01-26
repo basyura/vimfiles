@@ -4,6 +4,7 @@
 
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_no_default_key_mappings = 1
+let g:vimfiler_ignore_pattern = []
 
 augroup MyVimFiler
   autocmd!
