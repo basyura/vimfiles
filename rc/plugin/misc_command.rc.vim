@@ -46,6 +46,14 @@ function! s:indent_xml()
   set nopaste
   :0
 endfunction
+
+" indent html
+function! IndentHtml() abort
+  execute '%!prettier --parser html --no-config --html-whitespace-sensitivity ignore --print-width 400'
+endfunction
+
+command! IndentHtml call IndentHtml()
+
 " xpath
 command! -nargs=1 XPath let @" = util#xml#xpath_text(join(getline(1,'$'),"\n") , <f-args>) | echo @"
 
