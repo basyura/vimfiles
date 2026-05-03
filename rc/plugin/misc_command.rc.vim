@@ -48,11 +48,18 @@ function! s:indent_xml()
 endfunction
 
 " indent html
-function! IndentHtml() abort
-  execute '%!prettier --parser html --no-config --html-whitespace-sensitivity ignore --print-width 400'
+function! IndentHtml(...) abort
+  let l:print_width = a:0 >= 1 && a:1 !=# '' ? a:1 : '150'
+
+  if l:print_width !~# '^\d\+$' || str2nr(l:print_width) <= 0
+    echoerr 'IndentHtml: print-width must be a positive integer'
+    return
+  endif
+
+  execute '%!prettier --parser html --no-config --html-whitespace-sensitivity ignore --print-width ' . l:print_width
 endfunction
 
-command! IndentHtml call IndentHtml()
+command! -nargs=? IndentHtml call IndentHtml(<q-args>)
 
 " xpath
 command! -nargs=1 XPath let @" = util#xml#xpath_text(join(getline(1,'$'),"\n") , <f-args>) | echo @"
