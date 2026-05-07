@@ -1472,7 +1472,6 @@ function! s:spawn(name, spec, queue, opts)
             \ 'Invalid arguments (or job table is full)']
     endif
   elseif s:vim8
-    let cmd = join(map(copy(argv), 'plug#shellescape(v:val, {"script": 0})'))
     let job_opts = {
     \ 'out_cb':   function('s:job_cb', ['s:job_out_cb',  job]),
     \ 'err_cb':   function('s:job_cb', ['s:job_out_cb',  job]),
@@ -1485,10 +1484,14 @@ function! s:spawn(name, spec, queue, opts)
       if has_key(a:opts, 'dir')
         let job_opts.cwd = a:opts.dir
       endif
-    elseif has_key(a:opts, 'dir')
-      let cmd = s:with_cd(cmd, a:opts.dir, 0)
+      let job_cmd = join(map(copy(argv), 's:job_arg(v:val)'))
+    else
+      let cmd = join(map(copy(argv), 'plug#shellescape(v:val, {"script": 0})'))
+      if has_key(a:opts, 'dir')
+        let cmd = s:with_cd(cmd, a:opts.dir, 0)
+      endif
+      let job_cmd = ['sh', '-c', cmd]
     endif
-    let job_cmd = s:is_win ? join(map(copy(argv), 's:job_arg(v:val)')) : ['sh', '-c', cmd]
     let jid = job_start(job_cmd, job_opts)
     if job_status(jid) == 'run'
       let job.jobid = jid
