@@ -35,9 +35,9 @@ call plug#begin('~/.vim/plugged')
 "{{{
   " frozen
   let frozen = { 'frozen': 1 }
-  Plug 'basyura/unite.vim', frozen
-  Plug 'basyura/vim-lsp-popup-diagnostics', frozen
-  Plug 'basyura/dsky.vim', frozen
+  Plug 'basyura/unite.vim'
+  Plug 'basyura/vim-lsp-popup-diagnostics'
+  Plug 'basyura/dsky.vim'
 
 
   " denops
