@@ -1,5 +1,6 @@
 " wombat 用 highlight
 
+hi Normal guifg=#e9e9e9
 hi Cursor   guifg=bg    guibg=orange
 hi Visual   guifg=black guibg=#bde682
 hi VimShellUserPrompt guifg=#95e454
@@ -34,3 +35,6 @@ hi Title gui=none guifg=orange
 if has('win32')
   hi Normal guifg=#ffffff
 endif
+
+" markdown
+hi markdownBold guifg=orange
