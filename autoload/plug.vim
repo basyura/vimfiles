@@ -1,3 +1,4 @@
+let g:plug_window = 'enew'
 " vim-plug: Vim plugin manager
 " ============================
 "
