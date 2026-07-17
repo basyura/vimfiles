@@ -101,6 +101,7 @@ set termwinkey=<C-l>
 
 nnoremap <Leader>p :Prettier<enter>:w<enter>
 
+autocmd FileType markdown setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
 
 augroup redraw_group
   autocmd!
